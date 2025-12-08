@@ -5,6 +5,9 @@
 
 \newenvironment{grayed}{\color{gray}}{\ignorespacesafterend}
 
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+
 \newcommand{\setcond}[2]{\left\{ #1 \mid #2 \right\}}
 \DeclareMathOperator{\xlim}{xlim}
 
@@ -66,9 +69,23 @@ Each continuous function has an antiderivative and \href{https://chatgpt.com/s/t
 
 % If at some point of time~$t_{\operatorname{crit}}$ speed~$u$ becomes non-continuous,
 
-Let's introduce a Banach norm on~$\mathbb{R}^3$:
-\[ \lVert y\rVert_2 = \sqrt{\sum_{i=1}^3 y_i^2}. \]
+% Let's introduce a Banach norm on~$\mathbb{R}^3$:\fxwarning{Unused.}
+% \[ \lVert y\rVert_2 = \sqrt{\sum_{i=1}^3 y_i^2}. \]
 % \[ \lVert y\rVert = \sqrt{\sup\setcond{\limsup_{x\to 0} f(x)^2}{f:\mathbb{R}^3\to\mathbb{R}, \lim_{x\to 0} f(x) = y}}. \]
+
+\begin{defn}
+I call the following defined for continuous functions taking supersingularities as values:
+\[ ?? \]
+\emph{Porton solutions} of Navier-Stokes equations.
+\end{defn}
+
+\begin{thm}
+Porton solutions of Navier-Stokes equations restricted to differentiable\fxnote{Point the exact differentiability class.} functions are exactly solutions of Navier-Stokes equations taken on the space of supersingularities.
+\end{thm}
+
+\begin{proof}
+??
+\end{proof}
 
 \section{TODO}
 
