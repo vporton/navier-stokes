@@ -1,0 +1,41 @@
+\documentclass{amsart}
+\usepackage{hyperref}
+\usepackage[draft]{fixme}
+
+\begin{document}
+
+\noindent
+Ad: \href{https://science-dao.org}{Donate for science.}
+
+\title{A Review of ChatGPT's Proof of Navier-Stokes Clay Math Millennium Prize Problem}
+
+\author{Victor Porton, ORCID 0000-0001-7064-7975}
+
+\email{\href{mailto:mailto:porton.victor@gmail.com}{porton.victor@gmail.com}}
+
+\urladdr{\href{https://math.portonvictor.org}{https://math.portonvictor.org}}
+
+\date{\today}
+
+\maketitle
+
+\section{Introduction}
+
+This is an attempt to elaborate and check the proof by ChatGPT~\cite{navier-stokes-chat} of the Navier-Stokes Clay Math Millennium Prize Problem, using the approach of generalized limits~\cite{limit} (more general generalized functions than distributions).
+
+So, I did a half of work (the theorem that $\lim$ (limit) functional can be linearly extended to the space of all functions and that on the space of extended limits all operations can be extended with preservation of all algebraic identities). And ChatGPT did a half of work (applied known methods with addition of my this theorem).
+
+I have a trouble to understand the ChatGPT's proof, because while being the world-best expert in general topology, I am no expert in differential equations. So, you may help.
+
+\section{Relation to distributions}
+
+We define multiplication in the space of generalized limits, but well-behaved (fundamental theorem of calculus) integrals are in the space of distributions. (There are definite integrals in the space of generalized limits functions, but for them it seems that the fundamental theorem of calculus does not hold.) So, we need to immerse the space of distributions into the space of generalized limits, to freely operate with all three spaces: functions with real number values, distributions, and functions with generalized limit values.
+
+\section{TODO}
+
+\fxwarning{The article is not finished.}
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}
