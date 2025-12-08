@@ -1,6 +1,9 @@
 \documentclass{amsart}
 \usepackage{hyperref}
 \usepackage[draft]{fixme}
+\usepackage{xcolor}
+
+\newenvironment{grayed}{\color{gray}}{\ignorespacesafterend}
 
 \begin{document}
 
@@ -27,11 +30,15 @@ So, I did a half of work (the theorem that $\lim$ (limit) functional can be line
 
 I have a trouble to understand the ChatGPT's proof, because while being the world-best expert in general topology, I am no expert in differential equations. So, you may help.
 
+\begin{grayed}
 \section{Relation to distributions}
 
 We define multiplication in the space of generalized limits, but well-behaved (fundamental theorem of calculus) integrals are in the space of distributions. (There are definite integrals in the space of generalized limits functions, but for them it seems that the fundamental theorem of calculus does not hold.) So, we need to immerse the space of distributions into the space of generalized limits, to freely operate with all three spaces: functions with real number values, distributions, and functions with generalized limit values.
+\end{grayed}
 
-\fxwarning{But each continuous function has an antiderivative, isn't this enough, so not needing the space of distributions? \href{https://chatgpt.com/s/t_69364f2479308191b79639101dbbfa48}{Here} it's said that the term under the integral is continuous, so we can define it through the antiderivative.}
+Let define definite integrals in the space of generalized limits functions as the difference of values of an antiderivative at the endpoints of the interval.
+
+Each continuous function has an antiderivative and \href{https://chatgpt.com/s/t_69364f2479308191b79639101dbbfa48}{here} it's said that the terms under the integrals are continuous
 
 \section{TODO}
 
