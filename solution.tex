@@ -73,14 +73,16 @@ Each continuous function has an antiderivative and \href{https://chatgpt.com/s/t
 % \[ \lVert y\rVert_2 = \sqrt{\sum_{i=1}^3 y_i^2}. \]
 % \[ \lVert y\rVert = \sqrt{\sup\setcond{\limsup_{x\to 0} f(x)^2}{f:\mathbb{R}^3\to\mathbb{R}, \lim_{x\to 0} f(x) = y}}. \]
 
+Let denote Leray projection as~$\mathbb{P}$.
+
 \begin{defn}
 I call the following defined for continuous functions taking supersingularities as values:
-\[ u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} P \nabla \cdot (u \otimes u)(s) ds. \]
-\emph{Supersingular integral solutions} of Navier-Stokes equations.
+\[ u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) ds. \]
+\emph{Supersingular integral solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Navier-Stokes equations.
 \end{defn}
 
 \begin{thm}
-Supersingular integral solutions of Navier-Stokes equations restricted to differentiable\fxnote{Point the exact differentiability class.} functions are exactly solutions of Navier-Stokes equations taken on the space of supersingularities.
+Doubly differentiable supersingular integral solutions of Navier-Stokes equations are exactly solutions of Navier-Stokes equations taken on the space of supersingularities.
 \end{thm}
 
 \begin{proof}
