@@ -74,22 +74,23 @@ Each continuous function has an antiderivative and \href{https://chatgpt.com/s/t
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
 
 \begin{thm}
-\fxerror{The theorem is wrong: Take $k=0$.}
-If $f:\mathbb{R}^n\to\SUPER(\mathbb{R})$ is continuous, then $f=kg$ for some $k\in\SUPER(\mathbb{R})$ and $g:\mathbb{R}^n\to\mathbb{R}$.
+If $f:\mathbb{R}^n\to\SUPER(\mathbb{R})$ is continuous, then $\mathbb{R}^n\setminus\setcond{x\in\mathbb{R}^n}{f(x)\ne 0}$ splits into Lebesgue measurable sets (``zones''), each zone $Z=\setcond{ka}{k\in\mathbb{R}}$ for some $a\in\SUPER(\mathbb{R})$, where for boundary points~$x$ of the zones it holds that $f(x)=0$ for all $x$ on the boundary, then $f=kg$ for some $k\in\SUPER(\mathbb{R})$ and $g:\mathbb{R}^n\to\mathbb{R}$.
 \end{thm}
 
 \begin{proof}
-Split $\SUPER(\mathbb{R})$ into connected components with each one being~$c(a)=\setcond{ka}{k\in\mathbb{R}}$, where $a\in\SUPER(\mathbb{R})$.
-
 Really, the distance between $c(a)$ and $c(b)$ for $\forall p,q\in\mathbb{R}:pa\ne qb$ is
-\[ \inf_{p,q\in\mathbb{R}}|p a-q b| > 0. \]
+\[ \inf_{p,q\in\mathbb{R}}|p a-q b| > 0, \]
+if $p,q\ne 0$. Therefore boundaries of zones have $p,q=0$.
 
-So, due to continuity, all values of~$f$ lie in the same connected component.
+Subtracting boundaries from zones, we have zones (without loss of generality) being open sets and therefore Lebesgue measurable.
 \end{proof}
 
 \section{Lebesgue integrals}
 
-Denote Lebesgue integrals on the space of generalized limits functions \href{https://chatgpt.com/s/t_6937850a6b68819190a49e130f270ddb}{the same way} as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities.
+Define Lebesgue integrals as $\int_A f(x) dx = \sum_{Z\in S}k\int_Z a(x) dx$.
+
+\begin{grayed}
+Define Lebesgue integrals on the space of continuous generalized limits functions \href{https://chatgpt.com/s/t_6937850a6b68819190a49e130f270ddb}{the same way} as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities.
 
 Let $B$ be a set of supersingularities.\fxwarning{Elaborate the notation, prove details.}
 \[ \sup B = \sup\setcond{\lim_{x\to 0} f(x)}{\lim_{x\to 0} f(x) \in B} \]
@@ -97,13 +98,17 @@ Let $B$ be a set of supersingularities.\fxwarning{Elaborate the notation, prove 
 \begin{rem}
 Lebesgue integral is infinite, if $\sup B$ wents infinite on at least one ultrafilter.\fxnote{Explain.}
 \end{rem}
+\end{grayed}
 
 \begin{thm}
 If an integral is absolutely convergent on a measurable set, then it is convergent.
 \end{thm}
 
 \begin{proof}
+Obvious.
+\begin{grayed}
 \href{https://chatgpt.com/s/t_6937889e364881919fce0669e53a3115}{The same proof} as for real numbers.
+\end{grayed}
 \end{proof}
 
 \section{Properties of Lebesgue integrals}
@@ -122,7 +127,7 @@ then $F$ is absolutely continuous on $[a,b]$, differentiable almost everywhere o
 \end{thm}
 
 \begin{proof}
-
+Obvious.
 \end{proof}
 
 \section{Rewriting in integral form}
