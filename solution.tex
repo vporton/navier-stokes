@@ -41,6 +41,8 @@ This is an attempt to elaborate and check the proof by ChatGPT~\cite{navier-stok
 
 So, I did a half of work (the theorem that $\lim$ (limit) functional can be linearly extended to the space of all functions and that on the space of extended limits all operations can be extended with preservation of all algebraic identities). And ChatGPT did a half of work (applied known methods with addition of my this theorem).
 
+Extaordinary claims need extraordinary evidence. The claim is a Millennium Prize Problem solution. The evidence of this ``functional extension'' theorem is an extraordinary evidence, because it is a new very powerful theorem in general topology.
+
 I have a trouble to understand the ChatGPT's proof, because while being the world-best expert in general topology, I am no expert in differential equations. So, you may help.
 
 \begin{grayed}
@@ -174,6 +176,32 @@ Continuous supersingular integral solutions of Navier-Stokes equations are exact
 
 \begin{proof}
 It is known that \[ \widehat{\mathbb{P}f}(\xi) = \left(I - \frac{\xi \otimes \xi}{|\xi|^2}\right)\hat{f}(\xi). \]
+
+$\mathbb{P}$ is obviously a linear operator.
+
+$\mathbb{P}\nabla q=0$ for any scalar~$q$.
+
+$\mathbb{P}$ commutes with $\Delta$ and with the heat semigroup: 
+$\mathbb{P}\Delta=\Delta\mathbb{P}$,
+$\mathbb{P}e^{\nu t \Delta}=e^{\nu t \Delta}\mathbb{P}$. (It's clear from these eqaulities in the classical case and linear combinations for the zones.)
+
+Apply $\mathbb{P}$ to the PDE. Since $\mathbb{P}\nabla p=0$, we get
+\[ \mathbb{P}\partial_t u - \nu\mathbb{P}\Delta u - \mathbb{P}((u\cdot\nabla) u) = 0. \]
+
+Because $u$ is divergence-free and $\mathbb{P}$ equals identity on divergence-free fields, $\mathbb{P}u=u$. $\mathbb{P}$ commutes with $\partial_t$ and $\Delta$.\fxnote{Need a symbolic proof.}
+
+Thus we have the consequence
+\[ \partial_t u - \nu\Delta u - \mathbb{P}((u\cdot\nabla) u) = 0. \]
+
+We can write the nonlinear term as a divergence of a tensor:
+\[ \mathbb{P}((u\cdot\nabla) u) = \nabla \cdot (\mathbb{P}(u\otimes u)), \]
+because $(u\otimes u)_{ij}=u_i u_j$ and $\nabla \cdot (\mathbb{P}(u\otimes u)) = \sum_j\partial_j (u_i u_j)$.
+
+Thus the PDE becomes: \[ \partial_t u - \nu\Delta u - \mathbb{P}\nabla \cdot (u\otimes u) = 0. \]
+
+Rewrite this PDE as a system:
+\[ \partial_t u - \nu\Delta u = -F(t),\quad F(t) = \mathbb{P}\nabla \cdot (u\otimes u). \]
+
 ??
 \end{proof}
 
