@@ -6,4 +6,4 @@ Before I proved the above very powerful theorem (without use of AI). Then I trie
 
 Now I am elaborating and checking for errors the ChatGPT's proof.
 
-I am the word-best expert in general topology, but no expert in differential equations. I need to study much during the way. So, I call you to help.
+I am the world-best expert in general topology, but no expert in differential equations. I need to study much during the way. So, I call you to help.
