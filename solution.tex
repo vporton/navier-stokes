@@ -74,20 +74,17 @@ Each continuous function has an antiderivative and \href{https://chatgpt.com/s/t
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
 
 \begin{thm}
+\fxerror{The theorem is wrong: Take $k=0$.}
 If $f:\mathbb{R}^n\to\SUPER(\mathbb{R})$ is continuous, then $f=kg$ for some $k\in\SUPER(\mathbb{R})$ and $g:\mathbb{R}^n\to\mathbb{R}$.
 \end{thm}
 
 \begin{proof}
-\begin{grayed}
-Suppose it does not hold. Then?? there are sequences~$a$ and~$b$, $a-b\to 0$ such that $f(a_n)\neq kf(b_n)$ for all big~$n$ and all $k\in\mathbb{R}$.
-
-But due to continuity of $f$ there is a $\lim f(a_n) = \lim f(b_n)$. Thus for all big~$n$ $f(\lim_{n\to\infty}a_n) = f(\lim_{n\to\infty}b_n)$.
-\end{grayed}
-
 Split $\SUPER(\mathbb{R})$ into connected components with each one being~$c(a)=\setcond{ka}{k\in\mathbb{R}}$, where $a\in\SUPER(\mathbb{R})$.
 
 Really, the distance between $c(a)$ and $c(b)$ for $\forall p,q\in\mathbb{R}:pa\ne qb$ is
 \[ \inf_{p,q\in\mathbb{R}}|p a-q b| > 0. \]
+
+So, due to continuity, all values of~$f$ lie in the same connected component.
 \end{proof}
 
 \section{Lebesgue integrals}
