@@ -162,13 +162,21 @@ u_s(x,s) &= f(x,s).
 \end{aligned}
 \right.
 \end{equation*}
-If the above family of equations have solutions $u_s(x, t)$ then the function
+If the above family of equations have continuous in~$s$ solutions~$u_s(x,t)$ on supersingularities then the function
 \[ u(x,t) = \int_0^t u_s(x,t) ds \]
-is a solution of the inhomogeneous linear evolution equation.
+is a continuous solution of the inhomogeneous linear evolution equation in supersingularities.
 \end{thm}
 
 \begin{proof}
-??
+Continuity of $u_s$ makes the integral defined.
+
+$u({\cdot},0) = 0$ is obvious.
+
+By the Leibniz rule for an integral with moving upper limit,
+\[ \partial_t u(x,t) = \partial_t \int_0^t u_s(x,t) ds = u_t(x,t) + \int_0^t \partial_t u_s(x,t) ds. \]
+
+$(\partial_t - \Delta)u(x,t) = \partial_t \int_0^t u_s(x,t) ds - \Delta \int_0^t u_s(x,t) ds =
+u_t(x,t) + \int_0^t (\partial_t u_s(x,t) - \Delta u_s(x,t)) ds = f(x,t)$, so $(\partial_t - \Delta)u = f$.
 \end{proof}
 
 \section{Rewriting in integral form}
