@@ -138,7 +138,38 @@ Obvious.
 
 \section{Inhomogenious linear differential equations}
 
+Theorem elaborated from \href{https://amirkdv.ca/files/inhom-pde.pdf}{here}.
 
+\begin{defn}
+\emph{Inhomogeneous linear evolution} with~$\Delta$ as the differential operator is
+\begin{equation*}
+\left\{
+\begin{aligned}
+(\partial_t - \Delta)u &= f;\\
+u({\cdot},0) &= 0.
+\end{aligned}
+\right.
+\end{equation*}
+\end{defn}
+
+\begin{thm}[First order Duhamel's principle]
+Define auxiliary equations
+\begin{equation*}
+\left\{
+\begin{aligned}
+(\partial_t - \Delta)u_s &= 0;\\
+u_s(x,s) &= f(x,s).
+\end{aligned}
+\right.
+\end{equation*}
+If the above family of equations have solutions $u_s(x, t)$ then the function
+\[ u(x,t) = \int_0^t u_s(x,t) ds \]
+is a solution of the inhomogeneous linear evolution equation.
+\end{thm}
+
+\begin{proof}
+??
+\end{proof}
 
 \section{Rewriting in integral form}
 
