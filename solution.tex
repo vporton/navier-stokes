@@ -136,6 +136,10 @@ then $F$ is absolutely continuous on $[a,b]$, differentiable almost everywhere o
 Obvious.
 \end{proof}
 
+\section{Inhomogenious linear differential equations}
+
+
+
 \section{Rewriting in integral form}
 
 % The below proof assures uniqueness only of continuous solutions (because the integral requires a continuous argument). I didn't prove uniqueness of solutions. However, if at some point of time~$t_{\operatorname{crit}}$, the solutions ``split'' into both continuous and non-continuous~$u$, then it contradicts to a known theorem\fxnote{Cite.}, stating that under initial condition at~$t_{\operatorname{crit}}$ solutions are preserved to be smooth\fxwarning{Seems to be a wrong logic, because at~$t_{\operatorname{crit}}$ this solution can take only the initial value.}, so by contradiction we have full Clay Math problem solution.
@@ -191,13 +195,13 @@ Apply $\mathbb{P}$ to the PDE. Since $\mathbb{P}\nabla p=0$, we get
 Because $u$ is divergence-free and $\mathbb{P}$ equals identity on divergence-free fields, $\mathbb{P}u=u$. $\mathbb{P}$ commutes with $\partial_t$ and $\Delta$.\fxnote{Need a symbolic proof.}
 
 Thus we have the consequence
-\[ \partial_t u - \nu\Delta u - \mathbb{P}((u\cdot\nabla) u) = 0. \]
+\[ \partial_t u - \nu\Delta u + \mathbb{P}((u\cdot\nabla) u) = 0. \]
 
 We can write the nonlinear term as a divergence of a tensor:
 \[ \mathbb{P}((u\cdot\nabla) u) = \nabla \cdot (\mathbb{P}(u\otimes u)), \]
 because $(u\otimes u)_{ij}=u_i u_j$ and $\nabla \cdot (\mathbb{P}(u\otimes u)) = \sum_j\partial_j (u_i u_j)$.
 
-Thus the PDE becomes: \[ \partial_t u - \nu\Delta u - \mathbb{P}\nabla \cdot (u\otimes u) = 0. \]
+Thus the PDE becomes: \[ \partial_t u - \nu\Delta u + \mathbb{P}\nabla \cdot (u\otimes u) = 0. \]
 
 Rewrite this PDE as a system:
 \[ \partial_t u - \nu\Delta u = -F(t),\quad F(t) = \mathbb{P}\nabla \cdot (u\otimes u). \]
