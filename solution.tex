@@ -78,13 +78,16 @@ If $f:\mathbb{R}^n\to\SUPER(\mathbb{R})$ is continuous, then $f=kg$ for some $k\
 \end{thm}
 
 \begin{proof}
+\begin{grayed}
 Suppose it does not hold. Then?? there are sequences~$a$ and~$b$, $a-b\to 0$ such that $f(a_n)\neq kf(b_n)$ for all big~$n$ and all $k\in\mathbb{R}$.
 
 But due to continuity of $f$ there is a $\lim f(a_n) = \lim f(b_n)$. Thus for all big~$n$ $f(\lim_{n\to\infty}a_n) = f(\lim_{n\to\infty}b_n)$.
+\end{grayed}
 
-??
+Split $\SUPER(\mathbb{R})$ into connected components with each one being~$c(a)=\setcond{ka}{k\in\mathbb{R}}$, where $a\in\SUPER(\mathbb{R})$.
 
-Another take: Try to split $\SUPER(\mathbb{R})$ into connected components with each one being~$\setcond\end{proof}{a\in\SUPER(\mathbb{R}),k\in\mathbb{R}}$.
+Really, the distance between $c(a)$ and $c(b)$ for $\forall p,q\in\mathbb{R}:pa\ne qb$ is
+\[ \inf_{k_a,k_b\in\mathbb{R}}|k_a a-k_b b| > 0. \]
 \end{proof}
 
 \section{Lebesgue integrals}
