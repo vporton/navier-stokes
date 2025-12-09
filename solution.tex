@@ -6,6 +6,7 @@
 \newenvironment{grayed}{\color{gray}}{\ignorespacesafterend}
 
 \newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
 \newtheorem{defn}{Definition}
 \newtheorem{rem}{Remark}
 
@@ -145,14 +146,24 @@ Obvious.
 
 Let denote Leray projection as~$\mathbb{P}$.
 
+\begin{lem}
+If $u$ is a continuous super-sin\-gu\-lar function, then \[ e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) \] is also a continuous super-singular function for $s\in[0,t]$.
+\end{lem}
+
+\begin{proof}
+
+\end{proof}
+
 \begin{defn}
 I call the following defined for continuous functions taking supersingularities as values:
-\[ u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) ds. \]
+\begin{equation}
+u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) ds.
+\end{equation}
 \emph{Supersingular integral solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Navier-Stokes equations.
 \end{defn}
 
 \begin{thm}
-Doubly differentiable supersingular integral solutions of Navier-Stokes equations are exactly solutions of Navier-Stokes equations taken on the space of supersingularities.
+Continuous supersingular integral solutions of Navier-Stokes equations are exactly solutions of Navier-Stokes equations taken on the space of supersingularities.
 \end{thm}
 
 \begin{proof}
