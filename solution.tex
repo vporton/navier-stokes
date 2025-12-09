@@ -11,6 +11,7 @@
 
 \newcommand{\setcond}[2]{\left\{ #1 \mid #2 \right\}}
 \DeclareMathOperator{\xlim}{xlim}
+\DeclareMathOperator{\SUPER}{SUPER}
 
 \begin{document}
 
@@ -68,12 +69,24 @@ This definition suits only for integrals on a (closed) interval.
 
 Each continuous function has an antiderivative and \href{https://chatgpt.com/s/t_69364f2479308191b79639101dbbfa48}{here} it's said that the terms under the integrals are continuous. The classic solution of the differential equations however, also require~$u$ to be continuous. So, this is not restrictive.
 
+\section{Continuous functions on $\SUPER$}
+
+The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
+
+\begin{thm}
+If $f:\mathbb{R}^n\to\SUPER(\mathbb{R})$ is continuous, then $f=kg$ for some $k\in\SUPER(\mathbb{R})$ and $g:\mathbb{R}^n\to\mathbb{R}$.
+\end{thm}
+
+\begin{proof}
+Suppose ??
+\end{proof}
+
 \section{Lebesgue integrals}
 
 Denote Lebesgue integrals on the space of generalized limits functions \href{https://chatgpt.com/s/t_6937850a6b68819190a49e130f270ddb}{the same way} as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities.
 
 Let $B$ be a set of supersingularities.\fxwarning{Elaborate the notation, prove details.}
-\[ \sup B = \sup\setcond{\limsup_{x\to 0} f(x)}{\lim_{x\to 0} f(x) \in B} \]
+\[ \sup B = \sup\setcond{\lim_{x\to 0} f(x)}{\lim_{x\to 0} f(x) \in B} \]
 
 \begin{rem}
 Lebesgue integral is infinite, if $\sup B$ wents infinite on at least one ultrafilter.\fxnote{Explain.}
@@ -90,7 +103,16 @@ If an integral is absolutely convergent on a measurable set, then it is converge
 \section{Properties of Lebesgue integrals}
 
 \begin{thm}
-The fundamental theorem of calculus holds for integrals of continuous functions on the space of generalized limits functions.
+The fundamental theorem of calculus holds for integrals of continuous functions on the space of generalized limits functions:
+
+Let $a<b$ be real numbers. Then:
+\begin{enumerate}
+\item If $f\in L^1([a,b])$ (absolutely integrable by Lebesgue) and
+\[ F(x) = \int_a^x f(t) dt \quad\text{for } x\in [a,b]\]
+then $F$ is absolutely continuous on $[a,b]$, differentiable almost everywhere on $[a,b]$, and $F'(x) = f(x)$ almost everywhere on $[a,b]$.
+\item $G:[a,b]\to\SUPER(\mathbb{R})$ is absolutely continuous on $[a,b]$, $G'$ exists almost everywhere, and $G'(x) \in L^1([a,b])$ and
+\[ G(x)-G(a) = \int_a^x G'(t) dt \quad\text{for } x\in [a,b].\]
+\end{enumerate}
 \end{thm}
 
 \begin{proof}
