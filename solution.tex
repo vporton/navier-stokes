@@ -202,7 +202,7 @@ Use the norm $\lvert{\cdot}\rvert$ (note: it is not re\-al-va\-lu\-ed) in the sp
 We will show that \[ s\mapsto e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) \] is a continuous regarding this norm.
 \end{grayed}
 
-Represent $u$ through zones. On each zone it's continuous, therefore it's continuous on the entire $[0,t]$.
+\fxerror{Continuity of derivative doesn't follow from continuity of~$u$.}Represent $u$ through zones. On each zone it's continuous, therefore it's continuous on the entire $[0,t]$.
 \end{proof}
 
 \begin{defn}
@@ -245,6 +245,43 @@ Thus the PDE becomes: \[ \partial_t u - \nu\Delta u + \mathbb{P}\nabla \cdot (u\
 Rewrite this PDE as a system:
 \[ \partial_t u - \nu\Delta u = -F(t),\quad F(t) = \mathbb{P}\nabla \cdot (u\otimes u). \]
 
+For the linear homogeneous heat equation $\partial_t v - \nu\Delta v = 0$ with initial data $v(0)=v_0$ the solution is $v(t) = G_t v_0$.\fxnote{Need to define $G_t$.}
+
+For the inhomogeneous equation, the Duhamel principle (variation-of-constants formula) gives the unique solution as
+\[ u(t) = G_t u_0 + \int_0^t G_{t-s} \bigl( -F(s) \bigr) \, ds = G_t u_0 - \int_0^t G_{t-s} F(s) \, ds. \]
+
+Substituting the value of~$F$ gives exactly the mild formula.
+
+Now prove in the converse: if continuous~$u$ satisfies the mild equation, then it satisfies the PDE and we can recover a pressure~$p$.
+
+Assume $u$ to be a continuous supersingular function.
+
+Differentiate the mild equation in~$t$. Use facts:
+\begin{itemize}
+\item $\partial_t(e^{\nu t \Delta}u_0) = \nu \Delta e^{\nu t \Delta} u_0$;
+\item $\frac{d}{dt}\int_0^t e^{\nu (t-s) \Delta} F(s) ds = F(t) + \int_0^t \nu e^{\nu (t-s) \Delta} F(s) ds$.
+\end{itemize}
+Apply this with $F(s) = \mathbb{P}\nabla \cdot (u\otimes u)(s)$. Differentiating mild gives:
+\[
+\partial_t u(t) = \nu \Delta e^{\nu t\Delta}u_0 - \mathbb{P}\nabla \cdot (u\otimes u)(t) + \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}\nabla \cdot (u\otimes u)(s) ds.
+\]
+Group terms:
+\[ \partial_t u(t) - \nu \Delta u(t) = \mathbb{P}\nabla \cdot (u\otimes u)(t). \]
+This is exactly the projected PDE.
+
+Since $\mathbb{P}$ annihilates gradients, applying $(I-\mathbb{P})$ to the PDE recovers the pressure gradient term: start from the original PDE form:
+\[ \partial_t u - \nu\Delta u + (u \cdot \nabla) u + \nabla p = 0 \]
+
+We already have projection $\mathbb{P}$ of this equation satisfied. To obtain $\nabla p$ explicitly, take divergence of the PDE:
+\[ \nabla \cdot \bigl(((u\cdot\nabla)u) + \nabla p\bigr) = 0 \]
+because
+\[ \nabla \cdot (\partial_t u - \nu\Delta u) = \partial_t(\nabla\cdot u) -\nabla\Delta(\nabla\cdot u) = 0 \]
+when $\nabla\cdot u=0$ initially and evolution preserves it (or check separately).\fxnote{More detailed proof.}
+
+Use $\nabla \cdot \bigl(u\cdot\nabla)u\bigr) = \sum_{i,j}\partial_i\partial_j(u_i u_j)$. Thus
+\[ -\Delta p = \nabla \cdot \nabla (u\otimes u), \]
+i.e.
+\[ -\Delta p = \sum_{i,j}\partial_i\partial_j(u_i u_j)\quad\text{(Poisson)}. \]
 ??
 \end{proof}
 
