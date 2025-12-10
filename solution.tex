@@ -312,7 +312,7 @@ Define the solution $u(t)=L_{n\to\infty}u^{(n)}(t)$ as the limit of this sequenc
 Let $L$ be our extended limit. On each (closed) zone (a closed interval), $L$ is a bounded linear operator. Therefore (because it is a linear bounded operator\fxnote{Check that this is enough.} $L$~can be interchanged with integrals.)
 It also maps\fxnote{Check.} absolutely convergent series to absolutely convergent series, therefore this extends to the entire closed interval. Thus we have:
 
-\[ L_{n\to\infty}u^{(n)}(t) = G_t u(0) - \int_0^t L_{n\to\infty}(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s))ds = G_t u(0) - \int_0^t L_{n\to\infty}(G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s))ds, \]
+\[ L_{n\to\infty}u^{(n)}(t) = G_t u(0) - \int_0^t L_{n\to\infty}(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s))ds = G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s))s, \]
 that is it is a solution.
 
 \begin{thm}
