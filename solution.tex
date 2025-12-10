@@ -212,7 +212,7 @@ u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \c
 \end{defn}
 
 \begin{thm}
-$C^\infty$ supersingular integral solutions of Navier-Stokes equations are exactly $C^\infty$ solutions of Navier-Stokes equations taken on the space of supersingularities.
+$C^\infty$ supersingular integral solutions of Navier-Stokes equations are exactly $C^\infty$ solutions of Navier-Stokes equations (without the requirement that~$p$ is $C^\infty$) taken on the space of supersingularities.
 \end{thm}
 
 \begin{proof}
@@ -280,6 +280,19 @@ Use $\nabla \cdot \bigl(u\cdot\nabla)u\bigr) = \sum_{i,j}\partial_i\partial_j(u_
 \[ -\Delta p = \nabla \cdot \nabla (u\otimes u), \]
 i.e.
 \[ -\Delta p = \sum_{i,j}\partial_i\partial_j(u_i u_j)\quad\text{(Poisson)}. \]
+It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$ is $C^\infty$.
+
+\fxwarning{Need a detailed solution in su\-per-sin\-gu\-lar case.}
+Solve the Poisson equation for $p(\cdot,t)$ (up to additive function of $t$) by convolution with the Newton potential: for each fixed $t$,
+\[
+p(\cdot,t) = (-\Delta)^{-1}\nabla\cdot\nabla\cdot(u\otimes u)(\cdot,t) = \mathcal{R}_i\mathcal{R}_j(u_i u_j),
+\]
+where $\mathcal{R}_k$ are the Riesz transforms. This recovers~$p$ (up to function of time) and shows that
+\[ \nabla p = (I-\mathbb{P})\nabla\cdot\cdot(u\otimes u), \]
+so the full PDE
+\[ \partial_t u - \nu\Delta u + \nabla p + \nabla\cdot(u\otimes u) = 0 \]
+holds.
+
 ??
 \end{proof}
 
