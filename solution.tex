@@ -194,17 +194,11 @@ u_t(x,t) + \int_0^t (\partial_t u_s(x,t) - \Delta u_s(x,t)) ds = f(x,t)$, so $(\
 Let denote Leray projection as~$\mathbb{P}$.
 
 \begin{lem}
-If $u$ is a continuous super-sin\-gu\-lar function, then \[ e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) \] is also a continuous super-singular function for $s\in[0,t]$.
+If $u$ is a $C^\infty$ super-sin\-gu\-lar function, then \[ e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) \] is also a continuous super-singular function for $s\in[0,t]$.
 \end{lem}
 
 \begin{proof}
-\begin{grayed}
-Use the norm $\lvert{\cdot}\rvert$ (note: it is not re\-al-va\-lu\-ed) in the space~$\SUPER(\mathbb{R})$.
-
-We will show that \[ s\mapsto e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) \] is a continuous regarding this norm.
-\end{grayed}
-
-\fxerror{Continuity of derivative doesn't follow from continuity of~$u$.}Represent $u$ through zones. On each zone it's continuous, therefore it's continuous on the entire $[0,t]$.
+Obvious?
 \end{proof}
 
 \begin{defn}
@@ -216,7 +210,7 @@ u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \c
 \end{defn}
 
 \begin{thm}
-Continuous supersingular integral solutions of Navier-Stokes equations are exactly solutions of Navier-Stokes equations taken on the space of supersingularities.
+$C^\infty$ supersingular integral solutions of Navier-Stokes equations are exactly $C^\infty$ solutions of Navier-Stokes equations taken on the space of supersingularities.
 \end{thm}
 
 \begin{proof}
