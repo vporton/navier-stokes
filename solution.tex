@@ -298,10 +298,32 @@ holds.
 
 \section{The sequence of approximate solutions}
 
+Define the Picard iteration mapping~$T$ on time-dependent vector fields by
+\begin{equation}
+(\mathcal{T}v)(t) = G_t u_0 - \int_0^t G_{t-s}\mathbb{P}\nabla\cdot(v\otimes v)(s)ds.
+\end{equation}
+So, we have a sequence
+\[ u^{(0)}(t) = u_0,\quad u^{(n+1)}(t) = \mathcal{T}u^{(n)}(t). \]
+
+Each element of this sequence is a continuous\fxwarning{Check!} supersingular function.
+
+Define the solution $u(t)=L_{n\to\infty}u^{(n)}(t)$ as the limit of this sequence. The limit exists\fxwarning{Check!} because the sequence is can be calculated for each zone.
+
+\section{Interchange of limit and integration}
+
 Let $L$ be our extended limit. On each (closed) zone (a closed interval), $L$ is a bounded linear operator. Therefore (because it is a linear bounded operator\fxnote{Check that this is enough.} $L$~can be interchanged with integrals.)
 It also maps\fxnote{Check.} absolutely convergent series to absolutely convergent series, therefore this extends to the entire closed interval. Thus we have:
 
+\[ L_{n\to\infty}u^{(n)}(t) = G_t u(0) - \int_0^t L_{n\to\infty}(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s))ds = G_t u(0) - \int_0^t L_{n\to\infty}(G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s))ds, \]
+that is it is a solution.
 
+\begin{thm}
+The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f:\mathbb{R}^3\to\SUPER(\mathbb{R})$.
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
 
 \section{TODO}
 
