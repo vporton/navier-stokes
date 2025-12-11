@@ -2,6 +2,7 @@
 \usepackage{hyperref}
 \usepackage[draft]{fixme}
 \usepackage{xcolor}
+\usepackage{mathrsfs}
 
 \newenvironment{grayed}{\color{gray}}{\ignorespacesafterend}
 
@@ -13,6 +14,8 @@
 \newcommand{\setcond}[2]{\left\{ #1 \mid #2 \right\}}
 \DeclareMathOperator{\xlim}{xlim}
 \DeclareMathOperator{\SUPER}{SUPER}
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
+\newcommand{\subsets}{\mathscr{P}}
 
 \hypersetup{pdftitle={A Proof of Existence of a Smooth Classical Solution of 3D Navier-Stokes Equations},
  pdfauthor={Victor Porton},
@@ -73,14 +76,23 @@ for viscosity $\nu>0$ and initial condition $u_0\in C^\infty$.
 
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
 
-\fxwarning{The domain of integration is not necessarily $\mathbb{R}^n$}
+\begin{defn}
+Let $a,b\in\SUPER(\mathbb{R})$. \[ a<b\eqdef \exists f,g:X\to\mathbb{R}:\left(\lim_{x\to 0}f(x)=a\land\lim_{x\to 0}g(x)=b\land f<g\right). \] \fxnote{Define~$X$.}
+\end{defn}
+
+\begin{thm}
+For each $S\in\subsets\SUPER(\mathbb{R})$, such that \[ \forall a\in S\,\exists F:X\to\mathbb{R}:\left(\lim_{x \to 0}F=a\land F>0\right), \] there exists $\inf S\in\SUPER(\mathbb{R})$.
+\end{thm}
+
+\begin{proof}
+\end{proof}
 
 \begin{thm}
 If a set $X$ is Lebesgue measurable and $f:X\to\SUPER(\mathbb{R})$ is continuous, then:
 \begin{enumerate}
 \item $\setcond{x\in X}{f(x)\ne 0}$ is partitioned into Lebesgue measurable sets (\emph{zones}), each zone \[ Z=\setcond{ka}{k\in\SUPER(\mathbb{R}),k\ne 0} \] for some $a\in\SUPER(\mathbb{R})\setminus\{0\}$.
 \item $f(x)=0$ for each $x$ on the boundary $X\cap\partial Z$ of a each zone.
-\item $f(x)=k_Z g_Z(x)$ for each $x\in\overline{Z}$ for some $k_Z\in\SUPER(\mathbb{R})\setminus\{0\}$ and $g_Z:\overline{Z}\to\mathbb{R}$ for each zone $Z$.
+\item $f(x)=k_Z g_Z(x)$ for each $x\in X\cap\overline{Z}$ for some $k_Z\in\SUPER(\mathbb{R})\setminus\{0\}$ and $g_Z:X\cap\overline{Z}\to\mathbb{R}$ for each zone $Z$.
 \end{enumerate}
 \end{thm}
 
