@@ -69,16 +69,6 @@ u({\cdot},0) &= u_0
 \end{align*}
 for viscosity $\nu>0$ and initial condition $u_0\in C^\infty$.
 
-\begin{grayed}
-\section{Integrals for supersingularities}
-
-Let define definite integrals in the space of generalized limits functions as the difference of values of an antiderivative at the endpoints of the interval.
-
-This definition suits only for integrals on a (closed) interval.
-
-Each continuous function has an antiderivative and \href{https://chatgpt.com/s/t_69364f2479308191b79639101dbbfa48}{here} it's said that the terms under the integrals are continuous. The classic solution of the differential equations however, also require~$u$ to be continuous. So, this is not restrictive.
-\end{grayed}
-
 \section{Continuous functions on $\SUPER$}
 
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
@@ -97,20 +87,13 @@ Subtracting boundaries from zones, we have zones (without loss of generality) be
 
 \section{Lebesgue integrals}
 
+\begin{rem}
+(Lebesgue) integrals could be instead defined on the space of generalized limits functions \href{https://chatgpt.com/s/t_6937850a6b68819190a49e130f270ddb}{the same way} as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities. But for our purposes it is enough to define integrals on the space of continuous generalized limits functions, and this special case is much simpler to prove properties of.
+\end{rem}
+
 Define Lebesgue integrals on the space of continuous generalized limits functions as \[ \int_A f(x) dx = \sum_{Z\in S}k_Z\int_Z a_Z(x) dx \] where $S$~is a set of zones.
 
 It is easy to show that this definition does not depend on the choice of~$k_Z$ and~$a_Z$.
-
-\begin{grayed}
-Define Lebesgue integrals on the space of generalized limits functions \href{https://chatgpt.com/s/t_6937850a6b68819190a49e130f270ddb}{the same way} as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities.
-
-Let $B$ be a set of supersingularities.\fxwarning{Elaborate the notation, prove details.}
-\[ \sup B = \sup\setcond{\lim_{x\to 0} f(x)}{\lim_{x\to 0} f(x) \in B} \]
-
-\begin{rem}
-Lebesgue integral is infinite, if $\sup B$ wents infinite on at least one ultrafilter.\fxnote{Explain.}
-\end{rem}
-\end{grayed}
 
 \begin{thm}
 If an integral is absolutely convergent on a measurable set, then it is convergent.
