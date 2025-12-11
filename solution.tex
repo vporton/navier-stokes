@@ -17,6 +17,7 @@
 \DeclareMathOperator{\SUPER}{SUPER}
 \newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
 \newcommand{\subsets}{\mathscr{P}}
+\newcommand{\supfun}[1]{\left\langle #1\right\rangle}
 
 \hypersetup{pdftitle={A Proof of Existence of a Smooth Classical Solution of 3D Navier-Stokes Equations},
  pdfauthor={Victor Porton},
@@ -86,7 +87,9 @@ The above defines is a (strict) partial order on~$\SUPER(\mathbb{R})$.
 \end{prop}
 
 \begin{proof}
-Transitivity and an\-ti-ref\-le\-xi\-vi\-ty are obvious. For antisymmetry, let $a<b$ and $b<a$. Then $a\ne b$ and ??
+Transitivity and an\-ti-ref\-le\-xi\-vi\-ty are obvious.
+
+\fxnote{Detailed proof.}For antisymmetry, let $a<b$. Then $a\ne b$ and there is an ultrafilter $\mathcal{F}$ in vicinity of $0$ such that both $\supfun{f'}\mathcal{F}<\supfun{g'}\mathcal{F}$ and $\supfun{g''}\mathcal{F}<\supfun{f''}\mathcal{F}$ for some $f',g',f'',g'':X\to\mathbb{R}$, $\lim_{x\to 0}f'(x)=f''(x)=a$ and $\lim_{x\to 0}g(x)=g''(x)=b$. This is impossible, because $\supfun{\SUPER(\mathbb{R})}\supfun{f'}\mathcal{F}>\supfun{\SUPER(\mathbb{R})}\supfun{g'}\mathcal{F}$ and therefore $\supfun{f'}\mathcal{F}-\supfun{g'}\mathcal{F}>0$ making it impossible $b<a$.
 \end{proof}
 
 \begin{thm}
@@ -94,6 +97,11 @@ For each $S\in\subsets\SUPER(\mathbb{R})$, such that $\forall a\in S:a>0$, there
 \end{thm}
 
 \begin{proof}
+Consider\fxerror{The formula is wrong.}
+\[ m=\sup_{f:x\to\SUPER(\mathbb{R})}\inf_{D\in\supfun{\SUPER(\mathbb{R})}\{0\}}\sup_{D\in\supfun{f}D}f|_D \]
+for $f\in S$. Then $m\in\SUPER(\mathbb{R})$ and $m\le a$ for each $a\in S$.
+
+??
 \end{proof}
 
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
