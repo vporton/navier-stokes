@@ -69,12 +69,14 @@ u({\cdot},0) &= u_0
 \end{align*}
 for viscosity $\nu>0$ and initial condition $u_0\in C^\infty$.
 
-\section{Continuous functions on $\SUPER$}
+\section{Continuous functions on $\SUPER(\mathbb{R})$}
 
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
 
+\fxwarning{The domain of integration is not necessarily $\mathbb{R}^n$}
+
 \begin{thm}
-If $f:\mathbb{R}^n\to\SUPER(\mathbb{R})$ is continuous, then $\mathbb{R}^n\setminus\setcond{x\in\mathbb{R}^n}{f(x)\ne 0}$ splits into Lebesgue measurable sets (``zones''), each zone $Z=\setcond{ka}{k\in\mathbb{R}}$ for some $a\in\SUPER(\mathbb{R})$, where for boundary points~$x$ of the zones it holds that $f(x)=0$ for all $x$ on the boundary, then $f=kg$ for some $k\in\SUPER(\mathbb{R})$ and $g:\mathbb{R}^n\to\mathbb{R}$.
+If a set $X$ is Lebesgue measurable and $f:X\to\SUPER(\mathbb{R})$ is continuous, then $\setcond{x\in X}{f(x)\ne 0}$ splits into Lebesgue measurable sets (``zones''), each zone $Z=\setcond{ka}{k\in\mathbb{R}}$ for some $a\in\SUPER(\mathbb{R})$, where for boundary points~$x$ of the zones it holds that $f(x)=0$ for all $x$ on the boundary, then $f=kg$ for some $k\in\SUPER(\mathbb{R})$ and $g:\mathbb{R}^n\to\mathbb{R}$.
 \end{thm}
 
 \begin{proof}
