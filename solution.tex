@@ -8,6 +8,7 @@
 
 \newtheorem{thm}{Theorem}
 \newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
 \newtheorem{defn}{Definition}
 \newtheorem{rem}{Remark}
 
@@ -77,8 +78,16 @@ for viscosity $\nu>0$ and initial condition $u_0\in C^\infty$.
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
 
 \begin{defn}
-Let $a,b\in\SUPER(\mathbb{R})$. \[ a<b\eqdef \exists f,g:X\to\mathbb{R}:\left(\lim_{x\to 0}f(x)=a\land\lim_{x\to 0}g(x)=b\land f<g\right). \] \fxnote{Define~$X$.}
+Let $a,b\in\SUPER(\mathbb{R})$. \[ a<b\eqdef a\ne b\land\exists f,g:X\to\mathbb{R}:\left(\lim_{x\to 0}f(x)=a\land\lim_{x\to 0}g(x)=b\land f<g\right). \] \fxnote{Define~$X$.}
 \end{defn}
+
+\begin{prop}
+The above defines is a (strict) partial order on~$\SUPER(\mathbb{R})$.
+\end{prop}
+
+\begin{proof}
+Transitivity and an\-ti-ref\-le\-xi\-vi\-ty are obvious. For antisymmetry, let $a<b$ and $b<a$. Then $a\ne b$ and ??
+\end{proof}
 
 \begin{thm}
 For each $S\in\subsets\SUPER(\mathbb{R})$, such that \[ \forall a\in S\,\exists F:X\to\mathbb{R}:\left(\lim_{x \to 0}F=a\land F>0\right), \] there exists $\inf S\in\SUPER(\mathbb{R})$.
