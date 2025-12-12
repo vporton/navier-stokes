@@ -17,6 +17,7 @@
 \DeclareMathOperator{\SUPER}{SUPER}
 \newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
 \newcommand{\subsets}{\mathscr{P}}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \newcommand{\supfun}[1]{\left\langle #1\right\rangle}
 
 \hypersetup{pdftitle={A Proof of Existence of a Smooth Classical Solution of 3D Navier-Stokes Equations},
@@ -223,7 +224,7 @@ If $u$ is a $C^\infty$ super-sin\-gu\-lar function, then \[ e^{\nu (t-s) \Delta}
 \end{lem}
 
 \begin{proof}
-Obvious?
+Obvious? (There is a proof by ChatGPT.)
 \end{proof}
 
 \begin{defn}
@@ -265,6 +266,8 @@ Thus the PDE becomes: \[ \partial_t u - \nu\Delta u + \mathbb{P}\nabla \cdot (u\
 
 Rewrite this PDE as a system:
 \[ \partial_t u - \nu\Delta u = -F(t),\quad F(t) = \mathbb{P}\nabla \cdot (u\otimes u). \]
+
+Denote $G_t = e^{\nu t\Delta}$.
 
 For the linear homogeneous heat equation $\partial_t v - \nu\Delta v = 0$ with initial data $v(0)=v_0$ the solution is $v(t) = G_t v_0$.\fxnote{Need to define $G_t$.}
 
@@ -353,16 +356,27 @@ The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ fo
 \end{thm}
 
 \begin{proof}
+Below the norms are taken in~$\SUPER(\mathbb{R})$.
+
+We will prove $\norm{e^{t\Delta}f}_{H^{s+r}}\le Ct^{-r/2}\norm{f}_{H^s}$, where the norms are taken in~$\SUPER(\mathbb{R})$.\fxnote{Details and how the thesis follows.}
+
+By uniform continuity of the argument\fxnote{Specify the argument.} of $G_t$ on closed inteval, its argument is $H^{s+r}$. So it is enough to show that $\norm{G_t}_{H^{s+r}\to H^s}\le Ct^{-r/2}$.
+
+Equilently\fxnote{Prove the equilence.} for $k\ge 0$,
+\[ \norm{\nabla^k G_t f}_{L^2}\leq Ct^{-r/2}\norm{f}_{L^2}. \]
+
+??
+\begin{grayed}
 It is known\fxnote{Reference.}, that $G_t$ is infinitely smoothing classical functions (and even distributions).
 
-So, $G_t f^{(n)}\in C^\infty$ for any classical~$f$.
+So, $G_t f\in C^\infty$ for any classical~$f$.
 
 \fxnote{Formulate the proof exactly.}Let $F$ be a supersingular function. Let $\mathcal{X}$ be an ultrafilter or, equilently, a sequence of points converging to a point $x$.
-% $F\mathcal{X} = \lim_{x\to\mathcal{X}}f^{(n)}(x)$.
 
 By the above shown interchange of limits,
-\[ \supfun{G_t}\underline{F}\mathcal{X} = G_t\lim_{x\to\mathcal{X}}f^{(n)}(x) = \lim_{x\to\mathcal{X}}G_t f^{(n)}(x). \]
+\[ \supfun{G_t}\underline{F}\mathcal{X} = G_t\lim_{x\to\mathcal{X}}f(x) = \lim_{x\to\mathcal{X}}G_t F(x). \]
 So $G_t$ is a limit of an infinitely smoothing function and so is infinitely smoothing.
+\end{grayed}
 \end{proof}
 
 Therefore the integral~$u$ is $C^\infty$.
