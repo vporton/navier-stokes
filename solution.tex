@@ -111,7 +111,8 @@ The following theorem allows to extend Lebesgue integrals to the space of genera
 \begin{thm}
 If a set $X$ is Lebesgue measurable and $f:X\to\SUPER(\mathbb{R})$ is continuous, then:
 \begin{enumerate}
-\item $\setcond{x\in X}{f(x)\ne 0}$ is partitioned into Lebesgue measurable sets (\emph{zones}), each zone \[ Z=\setcond{x\in X}{\exists a\in\mathbb{R}\setminus\{0\}:f(x)=ka} \] for some $k\in\SUPER(\mathbb{R})\setminus\{0\}$.
+\item $\setcond{x\in X}{f(x)\ne 0}$ is partitioned into Lebesgue measurable sets (\emph{zones}):
+\[ \setcond{\setcond{x\in X}{\exists a\in\mathbb{R}\setminus\{0\}:f(x)=ka}}{k\in\SUPER(\mathbb{R})\setminus\{0\}}. \]
 \item $f(x)=0$ for each $x$ on the boundary $X\cap\partial Z$ of a each zone.
 \item $f(x)=k_Z g_Z(x)$ for each $x\in X\cap\overline{Z}$ for some $k_Z\in\SUPER(\mathbb{R})\setminus\{0\}$ and $g_Z:X\cap\overline{Z}\to\mathbb{R}$ for each zone $Z$.
 \end{enumerate}
@@ -131,7 +132,7 @@ Subtracting boundaries from zones, we have zones (without loss of generality) be
 (Lebesgue) integrals could be instead defined on the space of generalized limits functions \href{https://chatgpt.com/s/t_6937850a6b68819190a49e130f270ddb}{the same way} as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities. But for our purposes it is enough to define integrals on the space of continuous generalized limits functions, and this special case is much simpler to prove properties of.
 \end{rem}
 
-Define Lebesgue integrals on the space of continuous generalized limits functions as \[ \int_A f(x) dx = \sum_{Z\in S}k_Z\int_Z a_Z(x) dx \] where $S$~is a set of zones.
+Define Lebesgue integrals on the space of continuous generalized limits functions as \[ \int_A f(x) dx = \sum_{Z\in S}k_Z\int_Z a_Z(x) dx \] if each Lebesque integral on the right side exists and the sum is absolutely convergent (and so does not depend on the order of summation), where $S$~is a set of zones.
 
 It is easy to show that this definition does not depend on the choice of~$k_Z$ and~$a_Z$.
 
@@ -344,7 +345,15 @@ The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ fo
 \end{thm}
 
 \begin{proof}
-It is known\fxnote{Reference.}, that $G_t$ is infinitely smoothing classical functions (and even distributions). So it is infinitely smoothing su\-per-sin\-gu\-lar functions at each ultrafilter\fxnote{Detailed proof} and therefore for $f:X\to\SUPER(\mathbb{R})$.
+It is known\fxnote{Reference.}, that $G_t$ is infinitely smoothing classical functions (and even distributions).
+
+So, $G_t f^{(n)}\in C^\infty$ for any classical~$f$.
+
+\fxnote{Formulate the proof exactly.}Let $F$ be a supersingular function. Let $\mathcal{X}$ be an ultrafilter or, equilently, a sequence of points converging to a point $x$. $F\mathcal{X} = \lim_{\mathcal{X}\to x}f^{(n)}(x)$.
+
+By the above shown interchange of limits,
+\[ G_t F\mathcal{X} = \lim_{\mathcal{X}\to x}G_t f^{(n)}(x) = G_t\lim_{\mathcal{X}\to x}f^{(n)}(x). \]
+That is, it is infinitely smoothing supersingular functions at each ultrafilter.
 \end{proof}
 
 Therefore the integral~$u$ is $C^\infty$.
