@@ -81,7 +81,8 @@ for viscosity $\nu>0$ and initial condition $u_0\in C^\infty$.
 Let $X$ be some Lebesgue measurable set and some element $0\in X$ (not necessarily real zero or zero vector).
 
 \begin{defn}
-Let $a,b\in\SUPER(\mathbb{R})$. \[ a<b\eqdef a\ne b\land\exists f,g:X\to\mathbb{R}:\left(\lim_{x\to 0}f(x)=a\land\lim_{x\to 0}g(x)=b\land f<g\right). \]
+Let $a,b\in\SUPER(\mathbb{R})$.
+\[ a\le b \eqdef \exists f,g:X\to\mathbb{R}:\left(\lim_{x\to 0}f(x)=a\land\lim_{x\to 0}g(x)=b\land f\le g\right). \]
 \end{defn}
 
 \begin{prop}
@@ -318,9 +319,7 @@ where $\mathcal{R}_k$ are the Riesz transforms. This recovers~$p$ (up to functio
 \[ \nabla p = (I-\mathbb{P})\nabla\cdot(u\otimes u), \]
 so the full PDE
 \[ \partial_t u - \nu\Delta u + \nabla p + \nabla\cdot(u\otimes u) = 0 \]
-holds.
-
-??
+holds. Since $\mathbb{P}\nabla p=0$, the splitting\fxnote{Check!} $\mathbb{P}\nabla\cdot(u\otimes u)-(I-\mathbb{P})\nabla\cdot(u\otimes u)=\nabla\cdot(u\otimes u)$ recovers the original nonlinear term plus the pressure.
 \end{proof}
 
 \section{The sequence of approximate solutions}
@@ -344,13 +343,11 @@ It also maps\fxnote{Check.} absolutely convergent series to absolutely convergen
 \[ L_{n\to\infty}u^{(n)}(t) = G_t u(0) - \int_0^t L_{n\to\infty}(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s))ds = G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s))s, \]
 that is it is a solution.
 
+\begin{grayed}
 Let's denote for $\underline{a}\mathcal{X}=\supfun{\mathbb{R}}\supfun{f}\mathcal{X}$ for $a\in\mathbb{R}$, $f\in X\to\mathbb{R}$, $\lim_{\mathcal{X}}f=a$.
 
 Prove that it does not depend on the choice of~$f$:
-
-\begin{proof}
-??
-\end{proof}
+\end{grayed}
 
 \begin{thm}
 The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f:X\to\SUPER(\mathbb{R})$ for $t>0$.
@@ -392,8 +389,6 @@ I also wonder why Clay Math considered physically irreasonable energy reaching i
 So, whether the energy is uniformly bounded remains an open problem, without a clear physical hint.
 
 Proving existence of classical $C^\infty$ solution moves the problem into classical analysis, where I don't claim to be an expert (despite my specialization in the university was ``math analysis'').
-
-\fxwarning{The article is not finished.}
 
 \bibliographystyle{plain}
 \bibliography{refs}
