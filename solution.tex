@@ -18,6 +18,7 @@
 \newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
 \newcommand{\subsets}{\mathscr{P}}
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
 \newcommand{\supfun}[1]{\left\langle #1\right\rangle}
 
 \hypersetup{pdftitle={A Proof of Existence of a Smooth Classical Solution of 3D Navier-Stokes Equations},
@@ -224,7 +225,7 @@ If $u$ is a $C^\infty$ super-sin\-gu\-lar function, then \[ e^{\nu (t-s) \Delta}
 \end{lem}
 
 \begin{proof}
-Obvious? (There is a proof by ChatGPT.)
+Obvious? (There is a proof by ChatGPT. Below it's also prroved more general case of derivatives.)
 \end{proof}
 
 \begin{defn}
@@ -356,16 +357,18 @@ The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ fo
 \end{thm}
 
 \begin{proof}
-Below the norms are taken in~$\SUPER(\mathbb{R})$.
+Below the norms are taken in~$\SUPER(\mathbb{R})$.\fxnote{Need to prove that the used formulas are OK for this norm.}
 
 We will prove $\norm{e^{t\Delta}f}_{H^{s+r}}\le Ct^{-r/2}\norm{f}_{H^s}$, where the norms are taken in~$\SUPER(\mathbb{R})$.\fxnote{Details and how the thesis follows.}
 
 By uniform continuity of the argument\fxnote{Specify the argument.} of $G_t$ on closed inteval, its argument is $H^{s+r}$. So it is enough to show that $\norm{G_t}_{H^{s+r}\to H^s}\le Ct^{-r/2}$.
 
-Equilently\fxnote{Prove the equilence.} for $k\ge 0$,
+Equilently\fxnote{Prove the equivalence.} for $k\ge 0$,
 \[ \norm{\nabla^k G_t f}_{L^2}\leq Ct^{-r/2}\norm{f}_{L^2}. \]
 
-??
+Using the Fourier transform
+\[ \widehat{G_t f}(\xi) = \int_{\mathbb{R}^3}(1+\abs{\xi}^2)^{s+r}e^{-2\nu t\abs{\xi^2}}\abs{\hat{f}(\xi)}^2 d\xi. \]
+It's easy to see\fxnote{Show.} that $(1+\abs{\xi}^2)^{s+r}e^{-2\nu t\abs{\xi^2}}\le Ct^{-r}$. Thus the integral $\le Ct^{-r}\norm{f}_{H^s}^2$. Take square root to get the stated estimate.
 \begin{grayed}
 It is known\fxnote{Reference.}, that $G_t$ is infinitely smoothing classical functions (and even distributions).
 
