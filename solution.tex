@@ -244,7 +244,7 @@ u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \c
 
 Riesz transform of a classical function~$f$ is defined~\cite{enwiki:riesz} as
 \[
-\mathcal{R}f(x) = c \lim_{\epsilon\to 0}\int_{\mathbb{R}^3\setminus B_{\epsilon(0)}}\frac{(x_j-t_j)f(t)}{|x-t|^4} dt.
+\mathcal{R}_j f(x) = c \lim_{\epsilon\to 0}\int_{\mathbb{R}^3\setminus B_{\epsilon(0)}}\frac{(x_j-t_j)f(t)}{|x-t|^4} dt.
 \]
 where $c$ is a real constant.
 This obviously generalizes to supersingular functions.
@@ -322,6 +322,10 @@ i.e.
 \[ -\Delta p = \sum_{i,j}\partial_i\partial_j(u_i u_j)\quad\text{(Poisson)}. \]
 It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$ is $C^\infty$.
 
+Because $u$ is continuous, we can split this equality into zones, and it is true in every zone.
+So, we have supersingular solution, too.\fxerror{But what's about smoothness on zone borders?}
+
+\begin{grayed}
 \fxwarning{Need a detailed solution in su\-per-sin\-gu\-lar case.}
 Solve the Poisson equation for $p(\cdot,t)$ (up to additive function of $t$) by convolution with the Newton potential: for each fixed $t$,
 \[
@@ -332,6 +336,7 @@ where $\mathcal{R}_k$ are the Riesz transforms. This recovers~$p$ (up to functio
 so the full PDE
 \[ \partial_t u - \nu\Delta u + \nabla p + \nabla\cdot(u\otimes u) = 0 \]
 holds. Since $\mathbb{P}\nabla p=0$, the splitting\fxnote{Check!} $\mathbb{P}\nabla\cdot(u\otimes u)-(I-\mathbb{P})\nabla\cdot(u\otimes u)=\nabla\cdot(u\otimes u)$ recovers the original nonlinear term plus the pressure.
+\end{grayed}
 \end{proof}
 
 \section{The sequence of approximate solutions}
