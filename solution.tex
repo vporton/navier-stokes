@@ -336,14 +336,16 @@ So, we have supersingular solution, too.
 
 \section{The sequence of approximate solutions}
 
-Define the Picard iteration mapping~$\mathcal{T}$ on time-dependent vector fields by
+Define the Picard iteration mapping~$\mathcal{T}$ on ti\-me-de\-pen\-dent $C^\infty$ vector fields by
 \begin{equation}
 (\mathcal{T}v)(t) = G_t u_0 - \int_0^t G_{t-s}\mathbb{P}\nabla\cdot(v\otimes v)(s)ds.
 \end{equation}
 So, we have a sequence
 \[ u^{(0)}(t) = u_0,\quad u^{(n+1)}(t) = (\mathcal{T}u^{(n)})(t). \]
 
-Each element of this sequence is a continuous\fxwarning{Check!} supersingular function.
+Note that the integrand is~$L^1$ because $\nabla\cdot(v\otimes v)$ is~$C^\infty$.
+
+Each element of this sequence is a continuous supersingular function.
 
 Define the solution $u(t)=\lim_{n\to\infty}u^{(n)}(t)$ as the limit of this sequence. The limit exists as I show below.
 
