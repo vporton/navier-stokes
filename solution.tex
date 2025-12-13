@@ -90,9 +90,13 @@ The above defines is a (strict) partial order on~$\SUPER(\mathbb{R})$.
 \end{prop}
 
 \begin{proof}
-Transitivity and an\-ti-ref\-le\-xi\-vi\-ty are obvious.
+Transitivity and reflexivity are obvious.
 
-\fxnote{Detailed proof.}For antisymmetry, let $a<b$. Then $a\ne b$ and there is an ultrafilter $\mathcal{F}$ in vicinity of $0$ such that both $\supfun{f'}\mathcal{F}<\supfun{g'}\mathcal{F}$ and $\supfun{g''}\mathcal{F}<\supfun{f''}\mathcal{F}$ for some $f',g',f'',g'':X\to\mathbb{R}$, $\lim_{x\to 0}f'(x)=f''(x)=a$ and $\lim_{x\to 0}g(x)=g''(x)=b$. This is impossible, because $\supfun{\SUPER(\mathbb{R})}\supfun{f'}\mathcal{F}>\supfun{\SUPER(\mathbb{R})}\supfun{g'}\mathcal{F}$ and therefore $\supfun{f'}\mathcal{F}-\supfun{g'}\mathcal{F}>0$ making it impossible $b<a$.
+For antisymmetry, let $a\leq b$ and $b\leq a$. Then there are $f',g':X\to\mathbb{R}$ such that $\lim_{x\to 0}f'(x)=a$ and $\lim_{x\to 0}f''(x)=a$ and $f'\leq g'$ and $f'',g'':X\to\mathbb{R}$ such that $\lim_{x\to 0}g'(x)=b$ and $\lim_{x\to 0}g''(x)=b$. and $f''\geq g''$. 
+
+Take $h=f'\sqcup g''=g'\sqcap f''$. Thus, from obvious monotonicity of $\lim$,
+\[ a\leq\lim_{x\to 0}h(x)\leq b \quad\text{and}\quad a\geq\lim_{x\to 0}h(x)\geq b. \]
+So, $a=b$.
 \end{proof}
 
 \begin{thm}
