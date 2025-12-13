@@ -88,7 +88,7 @@ The above defines is a partial order on~$\SUPER(\mathbb{R})$.
 \begin{proof}
 Transitivity and reflexivity are obvious.
 
-For antisymmetry, let $a\leq b$ and $b\leq a$. We have $\lim_{x\to 0}|g(x)-f(x)|\geq 0$ and $\lim_{x\to 0}|g(x)-f(x)|\leq 0$. So, $\lim_{x\to 0}|g(x)-f(x)|=0$ and therefore $a=b$.\fxnote{More detailed proof.}
+For antisymmetry, let $a\leq b$ and $b\leq a$. We have $\lim_{x\to 0}|g(x)-f(x)|\geq 0$ and $\lim_{x\to 0}|g(x)-f(x)|\leq 0$. So, $\lim_{x\to 0}|g(x)-f(x)|=0$ and therefore $a=b$.
 \end{proof}
 
 \begin{thm}
@@ -103,7 +103,6 @@ Let
 ($\inf_{f\in F}\max\{f(x),B\}$ exists because this set is bounded from below.) We will show that $m$ is the infimum of~$S$.
 
 It's obvious that $\forall a\in S:m\le a$ and $\forall a\in S:x\le a\Rightarrow x\le m$. 
-\fxnote{More detailed proof.}
 \end{proof}
 
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
@@ -261,7 +260,7 @@ $\mathbb{P}e^{\nu t \Delta}=e^{\nu t \Delta}\mathbb{P}$. (It's clear from these 
 Apply $\mathbb{P}$ to the PDE. Since $\mathbb{P}\nabla p=0$, we get
 \[ \mathbb{P}\partial_t u - \nu\mathbb{P}\Delta u - \mathbb{P}((u\cdot\nabla) u) = 0. \]
 
-Because $u$ is divergence-free and $\mathbb{P}$ equals identity on divergence-free fields, $\mathbb{P}u=u$. $\mathbb{P}$ commutes with $\partial_t$ and $\Delta$.\fxnote{Need a symbolic proof.}
+Because $u$ is divergence-free and $\mathbb{P}$ equals identity on divergence-free fields, $\mathbb{P}u=u$. $\mathbb{P}$ commutes with $\partial_t$ and $\Delta$.
 
 Thus we have the consequence
 \[ \partial_t u - \nu\Delta u + \mathbb{P}((u\cdot\nabla) u) = 0. \]
@@ -307,13 +306,13 @@ Since $\mathbb{P}$ annihilates gradients, applying $(I-\mathbb{P})$ to the PDE r
 We already have projection $\mathbb{P}$ of this equation satisfied. To obtain $\nabla p$ explicitly, take divergence of the PDE:
 \[ \nabla \cdot \bigl(((u\cdot\nabla)u) + \nabla p\bigr) = 0 \]
 because
-\[ \nabla \cdot (\partial_t u - \nu\Delta u) = \partial_t(\nabla\cdot u) -\nabla\Delta(\nabla\cdot u) = 0 \]
-when $\nabla\cdot u=0$ initially and evolution preserves it (or check separately).\fxnote{More detailed proof.}
+\[ \nabla \cdot (\partial_t u - \nu\Delta u) = \partial_t(\nabla\cdot u) -\nu\Delta(\nabla\cdot u) = 0 \]
+when $\nabla\cdot u=0$ initially and evolution preserves it (or check separately).
 
-Use $\nabla \cdot \bigl(u\cdot\nabla)u\bigr) = \sum_{i,j}\partial_i\partial_j(u_i u_j)$. Thus
-\[ -\Delta p = \nabla \cdot \nabla (u\otimes u), \]
-i.e.
-\[ -\Delta p = \sum_{i,j}\partial_i\partial_j(u_i u_j)\quad\text{(Poisson)}. \]
+Use $\nabla\cdot(u\cdot\nabla)u = \sum_{i,j}\partial_i\partial_j(u_i u_j)$. Thus
+\[ -\Delta p = \nabla \cdot \nabla (u\otimes u)\quad\text{(Poisson)}. \]
+% i.e.
+% \[ -\Delta p = \sum_{i,j}\partial_i\partial_j(u_i u_j). \]
 It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$ is $C^\infty$.
 
 Because $u$ is continuous, we can split this equality into zones, and it is true in every zone.
