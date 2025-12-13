@@ -94,25 +94,24 @@ The above defines is a partial order on~$\SUPER(\mathbb{R})$.
 \begin{proof}
 Transitivity and reflexivity are obvious.
 
-For antisymmetry, let $a\leq b$ and $b\leq a$. Then there are $f',g':X\to\mathbb{R}$ such that $\lim_{x\to 0}f'(x)=a$ and $\lim_{x\to 0}f''(x)=a$ and $f'\leq g'$ and $f'',g'':X\to\mathbb{R}$ such that $\lim_{x\to 0}g'(x)=b$ and $\lim_{x\to 0}g''(x)=b$. and $f''\geq g''$. 
+For antisymmetry, let $a\leq b$ and $b\leq a$. %Then there are $f',g':X\to\mathbb{R}$ such that $\lim_{x\to 0}f'(x)=a$ and $\lim_{x\to 0}f''(x)=a$ and $f'\leq g'$ and $f'',g'':X\to\mathbb{R}$ such that $\lim_{x\to 0}g'(x)=b$ and $\lim_{x\to 0}g''(x)=b$. and $f''\geq g''$. 
 
-Take $h=f'\sqcup g''=g'\sqcap f''$. Thus, from obvious monotonicity of $\lim$,\fxerror{It's not yet proved, that it's a partial order!}
-\[ a\leq\lim_{x\to 0}h(x)\leq b \quad\text{and}\quad a\geq\lim_{x\to 0}h(x)\geq b. \]
-So, $a=b$.
+For $a\leq b$ we have $\lim_{x\to 0}|g(x)-f(x)|\geq 0$ and $\lim_{x\to 0}|g(x)-f(x)|\leq 0$. So, $\lim_{x\to 0}|g(x)-f(x)|=0$ and therefore $a=b$.\fxnote{More detailed proof.}
 \end{proof}
 
 \begin{thm}
-For each $S\in\subsets\SUPER(\mathbb{R})$, such that $\forall a\in S:a>0$, there exists $\inf S\in\SUPER(\mathbb{R})$.
+For each $S\in\subsets\SUPER(\mathbb{R})$, such that $\forall a\in S:a>B$ for some coonstant $B\in\mathbb{R}$, there exists $\inf S\in\SUPER(\mathbb{R})$.
 \end{thm}
 
 \begin{proof}
 Choose
 \[ F\in\prod_{a\in S}\setcond{f:X\to\SUPER(\mathbb{R})}{\lim_{x\to 0}f(x)=a}. \]
 Let
-\[ m=\lim_{x\to 0}\left(x\mapsto\inf_{f\in F}\max\{f(x),0\}\right). \]
-($\inf_{f\in F}\max\{f(x),0\}$ exists because this set is bounded from below.) We will show that $m$ is the infimum of~$S$.
+\[ m=\lim_{x\to 0}\left(x\mapsto\inf_{f\in F}\max\{f(x),B\}\right). \]
+($\inf_{f\in F}\max\{f(x),B\}$ exists because this set is bounded from below.) We will show that $m$ is the infimum of~$S$.
 
-??
+It's obvious that $\forall a\in S:m\le a$ and $\forall a\in S:x\le a\Rightarrow x\le m$. 
+\fxnote{More detailed proof.}
 \end{proof}
 
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
