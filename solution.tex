@@ -320,18 +320,18 @@ Because $u$ is continuous, we can split this equality into zones, and it is true
 On borders of zones, it can be constructed as a limit of the Poisson equation's solution in a zone. It does not depend on choice of the zone we take limit in, because~$u\in C^\infty$. Outside of zones it's zero.
 So, we have supersingular solution, too.
 
-\begin{grayed}
-\fxwarning{Need a detailed solution in su\-per-sin\-gu\-lar case.}
-Solve the Poisson equation for $p(\cdot,t)$ (up to additive function of $t$) by convolution with the Newton potential: for each fixed $t$,
-\[
-p(\cdot,t) = (-\Delta)^{-1}\nabla\cdot\nabla\cdot(u\otimes u)(\cdot,t) = \mathcal{R}_i\mathcal{R}_j(u_i u_j),
-\]
-where $\mathcal{R}_k$ are the Riesz transforms. This recovers~$p$ (up to function of time) and shows that
-\[ \nabla p = (I-\mathbb{P})\nabla\cdot(u\otimes u), \]
-so the full PDE
-\[ \partial_t u - \nu\Delta u + \nabla p + \nabla\cdot(u\otimes u) = 0 \]
-holds. Since $\mathbb{P}\nabla p=0$, the splitting\fxnote{Check!} $\mathbb{P}\nabla\cdot(u\otimes u)-(I-\mathbb{P})\nabla\cdot(u\otimes u)=\nabla\cdot(u\otimes u)$ recovers the original nonlinear term plus the pressure.
-\end{grayed}
+% \begin{grayed}
+% \fxwarning{Need a detailed solution in su\-per-sin\-gu\-lar case.}
+% Solve the Poisson equation for $p(\cdot,t)$ (up to additive function of $t$) by convolution with the Newton potential: for each fixed $t$,
+% \[
+% p(\cdot,t) = (-\Delta)^{-1}\nabla\cdot\nabla\cdot(u\otimes u)(\cdot,t) = \mathcal{R}_i\mathcal{R}_j(u_i u_j),
+% \]
+% where $\mathcal{R}_k$ are the Riesz transforms. This recovers~$p$ (up to function of time) and shows that
+% \[ \nabla p = (I-\mathbb{P})\nabla\cdot(u\otimes u), \]
+% so the full PDE
+% \[ \partial_t u - \nu\Delta u + \nabla p + \nabla\cdot(u\otimes u) = 0 \]
+% holds. Since $\mathbb{P}\nabla p=0$, the splitting\fxnote{Check!} $\mathbb{P}\nabla\cdot(u\otimes u)-(I-\mathbb{P})\nabla\cdot(u\otimes u)=\nabla\cdot(u\otimes u)$ recovers the original nonlinear term plus the pressure.
+% \end{grayed}
 \end{proof}
 
 \section{The sequence of approximate solutions}
@@ -345,21 +345,23 @@ So, we have a sequence
 
 Each element of this sequence is a continuous\fxwarning{Check!} supersingular function.
 
-Define the solution $u(t)=L_{n\to\infty}u^{(n)}(t)$ as the limit of this sequence. The limit exists\fxwarning{Check!} because the sequence is can be calculated for each zone.
+Define the solution $u(t)=L_{n\to\infty}u^{(n)}(t)$ as the limit of this sequence. The limit exists as I show below.
 
 \section{Interchange of limit and integration}
 
 Let $L$ be our extended limit. On each (closed) zone (a closed interval), $L$ is a bounded linear operator. Therefore (because it is a linear bounded operator\fxnote{Check that this is enough.} $L$~can be interchanged with integrals.)
 It also maps\fxnote{Check.} absolutely convergent series to absolutely convergent series, therefore this extends to the entire closed interval. Thus we have:
 
-\[ L_{n\to\infty}u^{(n)}(t) = G_t u(0) - \int_0^t L_{n\to\infty}(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s))ds = G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s))s, \]
+\begin{multline*}
+L_{n\to\infty}u^{(n)}(t) = G_t u(0) - \int_0^t L_{n\to\infty}(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s))ds =\\ G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s))s,
+\end{multline*}
 that is it is a solution.
 
-\begin{grayed}
-Let's denote for $\underline{a}\mathcal{X}=\supfun{\mathbb{R}}\supfun{f}\mathcal{X}$ for $a\in\mathbb{R}$, $f\in X\to\mathbb{R}$, $\lim_{\mathcal{X}}f=a$.
+% \begin{grayed}
+% Let's denote for $\underline{a}\mathcal{X}=\supfun{\mathbb{R}}\supfun{f}\mathcal{X}$ for $a\in\mathbb{R}$, $f\in X\to\mathbb{R}$, $\lim_{\mathcal{X}}f=a$.
 
-Prove that it does not depend on the choice of~$f$:
-\end{grayed}
+% Prove that it does not depend on the choice of~$f$:
+% \end{grayed}
 
 \begin{thm}
 The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f:X\to L^1(\SUPER(\mathbb{R}))$ for $t>0$. (The norm is taken in~$\SUPER(\mathbb{R})$\fxnote{Mention that $\mathbb{P}$ is bounded to prove $L^1$.})
