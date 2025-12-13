@@ -366,6 +366,9 @@ The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ fo
 \end{thm}
 
 \begin{proof}
+There is only one zone for $G_t f$, because $G_t f(x)\ne 0$. So the classical result applies.
+
+\begin{grayed}
 Below the norms are taken in~$\SUPER(\mathbb{R})$.\fxnote{Need to prove that the used formulas are OK for this norm.}
 
 We will prove $\norm{e^{t\Delta}f}_{H^{s+r}}\le Ct^{-r/2}\norm{f}_{H^s}$, where the norms are taken in~$\SUPER(\mathbb{R})$.\fxnote{Details and how the thesis follows.}
@@ -378,6 +381,7 @@ Equilently\fxnote{Prove the equivalence.} for $k\ge 0$,
 Using the Fourier transform
 \[ \widehat{G_t f}(\xi) = \int_{\mathbb{R}^3}(1+\abs{\xi}^2)^{s+r}e^{-2\nu t\abs{\xi^2}}\abs{\hat{f}(\xi)}^2 d\xi. \]
 It's easy to see\fxnote{Show.} that $(1+\abs{\xi}^2)^{s+r}e^{-2\nu t\abs{\xi^2}}\le Ct^{-r}$. Thus the integral $\le Ct^{-r}\norm{f}_{H^s}^2$. Take square root to get the stated estimate.
+\end{grayed}
 
 % It is known\fxnote{Reference.}, that $G_t$ is infinitely smoothing classical functions (and even distributions).
 
