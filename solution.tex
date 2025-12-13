@@ -33,7 +33,7 @@ Ad: \href{https://science-dao.org}{Donate for science.}
 
 The most recent version of this document is available \href{https://github.com/vporton/navier-stokes}{here}.
 
-\title{Draft: A Proof of Existence of a Smooth Classical Solution of 3D Navier-Stokes Equations}
+\title{A Proof of Existence of a Smooth Classical Solution of 3D Navier-Stokes Equations}
 
 \author{Victor Porton, ORCID 0000-0001-7064-7975}
 
@@ -365,26 +365,26 @@ that is it is a solution.
 % \end{grayed}
 
 \begin{thm}
-The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f:X\to L^1(\SUPER(\mathbb{R}))$ for $t>0$. (The norm is taken in~$\SUPER(\mathbb{R})$\fxnote{Mention that $\mathbb{P}$ is bounded to prove $L^1$.})
+The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f:X\to L^1(\SUPER(\mathbb{R}))$ for $t>0$. (The norm is taken in~$\SUPER(\mathbb{R})$)
 \end{thm}
 
 \begin{proof}
 There is only one zone for $G_t f$, because $G_t f(x)\ne 0$. So the classical result applies.
 
-\begin{grayed}
-Below the norms are taken in~$\SUPER(\mathbb{R})$.\fxnote{Need to prove that the used formulas are OK for this norm.}
+% \begin{grayed}
+% Below the norms are taken in~$\SUPER(\mathbb{R})$.\fxnote{Need to prove that the used formulas are OK for this norm.}
 
-We will prove $\norm{e^{t\Delta}f}_{H^{s+r}}\le Ct^{-r/2}\norm{f}_{H^s}$, where the norms are taken in~$\SUPER(\mathbb{R})$.\fxnote{Details and how the thesis follows.}
+% We will prove $\norm{e^{t\Delta}f}_{H^{s+r}}\le Ct^{-r/2}\norm{f}_{H^s}$, where the norms are taken in~$\SUPER(\mathbb{R})$.\fxnote{Details and how the thesis follows.}
 
-By uniform continuity of the argument\fxnote{Specify the argument.} of $G_t$ on closed inteval, its argument is $H^{s+r}$. So it is enough to show that $\norm{G_t}_{H^{s+r}\to H^s}\le Ct^{-r/2}$.
+% By uniform continuity of the argument\fxnote{Specify the argument.} of $G_t$ on closed inteval, its argument is $H^{s+r}$. So it is enough to show that $\norm{G_t}_{H^{s+r}\to H^s}\le Ct^{-r/2}$.
 
-Equilently\fxnote{Prove the equivalence.} for $k\ge 0$,
-\[ \norm{\nabla^k G_t f}_{L^2}\leq Ct^{-r/2}\norm{f}_{L^2}. \]
+% Equilently\fxnote{Prove the equivalence.} for $k\ge 0$,
+% \[ \norm{\nabla^k G_t f}_{L^2}\leq Ct^{-r/2}\norm{f}_{L^2}. \]
 
-Using the Fourier transform
-\[ \widehat{G_t f}(\xi) = \int_{\mathbb{R}^3}(1+\abs{\xi}^2)^{s+r}e^{-2\nu t\abs{\xi^2}}\abs{\hat{f}(\xi)}^2 d\xi. \]
-It's easy to see\fxnote{Show.} that $(1+\abs{\xi}^2)^{s+r}e^{-2\nu t\abs{\xi^2}}\le Ct^{-r}$. Thus the integral $\le Ct^{-r}\norm{f}_{H^s}^2$. Take square root to get the stated estimate.
-\end{grayed}
+% Using the Fourier transform
+% \[ \widehat{G_t f}(\xi) = \int_{\mathbb{R}^3}(1+\abs{\xi}^2)^{s+r}e^{-2\nu t\abs{\xi^2}}\abs{\hat{f}(\xi)}^2 d\xi. \]
+% It's easy to see\fxnote{Show.} that $(1+\abs{\xi}^2)^{s+r}e^{-2\nu t\abs{\xi^2}}\le Ct^{-r}$. Thus the integral $\le Ct^{-r}\norm{f}_{H^s}^2$. Take square root to get the stated estimate.
+% \end{grayed}
 
 % It is known\fxnote{Reference.}, that $G_t$ is infinitely smoothing classical functions (and even distributions).
 
