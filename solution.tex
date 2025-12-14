@@ -55,9 +55,9 @@ This is a rectified proof by ChatGPT~\cite{navier-stokes-chat} of the Navier-Sto
 
 In my approach multiplication of every functions is defined, what allows to write formulas undefined for distributions.
 
-So, I did a half of work (the theorem that $\lim$ (limit) functional can be linearly extended to the space of all functions and that on the space of extended limits all operations can be extended with preservation of all algebraic identities). And ChatGPT did a half of work (applied known methods with addition of my this theorem).
+So, I did a half of work (the theorem that $\lim$ (limit) functional can be linearly extended to the space of all functions and that on the space of extended limits all continuous operations can be extended with preservation of all algebraic identities). And ChatGPT did a half of work (applied known methods with addition of my this theorem).
 
-Extraordinary claims need extraordinary evidence. The claim is a partial Millennium Prize Problem solution. The evidence of this ``functional extension'' theorem is an extraordinary evidence, because it is a new very powerful theorem in general topology and its proof is extraordinary longer than a noob would expect.
+Extraordinary claims need extraordinary evidence. The claim is a partial Millennium Prize Problem solution. The evidence of this ``functional extension'' theorem is an extraordinary evidence, because it is a new very powerful theorem in general topology and its proof is extraordinarily longer than a noob would expect.
 
 I had a little trouble to understand the ChatGPT's proof, because while being the world-best expert in general topology, I am no expert in differential equations. But I was able to write down my more detailed (and in parts more elegant than ChatGPT's) proof.
 
@@ -75,7 +75,7 @@ for viscosity $\nu>0$, $f(t,x)\in C^\infty$ and initial condition $u_0\in C^\inf
 \section{The limit extension theorem}
 
 \begin{thm}
-The $\lim$ (limit) functional can be linearly extended to the space of all functions and that on the space of extended limits all continuous operations can be extended with preservation of all algebraic identities.
+The $\lim$ (limit) functional can be linearly extended to the space of all functions and on the space of extended limits all continuous operations can be extended with preservation of all algebraic identities.
 \end{thm}
 
 \begin{proof}
@@ -124,7 +124,7 @@ If a set $X$ is Lebesgue measurable and $f:X\to\SUPER(\mathbb{R})$ is continuous
   \[ \setcond{Z_k}{k\in\SUPER(\mathbb{R})\setminus\{0\}}, \]
   where zone
   \[ Z_k=\setcond{x\in X}{\exists a\in\mathbb{R}\setminus\{0\}:f(x)=ka}. \]
-\item Each $Z_k$ is an open set.
+\item Each $Z_k$ is an open set in~$X$.
 \item $f(x)=0$ for each $x$ on the boundary $X\cap\partial Z$ of each zone.
 \item\label{as-func-mult} $f(x)=k_Z g_Z(x)$ for each $x\in X\cap\overline{Z}$ for some $k_Z\in\SUPER(\mathbb{R})\setminus\{0\}$ and $g_Z:X\cap\overline{Z}\to\mathbb{R}$ for each zone $Z$.
 \end{enumerate}
@@ -161,7 +161,7 @@ If an integral is absolutely convergent on a measurable set, then it is converge
 \end{thm}
 
 \begin{proof}
-Obvious.
+Obvious consequence of the same property for Lebesgue integrals on the space of functions with real number values.
 \end{proof}
 
 \subsection{Properties of Lebesgue integrals}
@@ -180,7 +180,7 @@ then $F$ is absolutely continuous on $[a,b]$, differentiable almost everywhere o
 \end{thm}
 
 \begin{proof}
-Obvious.
+Obvious consequence of the same property for Lebesgue integrals on the space of functions with real number values (we use an absolutely convergent series).
 \end{proof}
 
 \section{Inhomogenious linear differential equations}
@@ -252,7 +252,7 @@ I call the following defined for continuous functions taking supersingularities 
 u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) ds
 + \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} f(s) ds.
 \end{equation}
-\emph{Supersingular integral solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Navier-Stokes equations.
+\emph{Supersingular mild solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Navier-Stokes equations.
 \end{defn}
 
 % \begin{grayed}
@@ -265,7 +265,7 @@ u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \c
 % \end{grayed}
 
 \begin{thm}
-$C^\infty$ supersingular integral solutions of Navier-Stokes equations are exactly $C^\infty$ solutions of Navier-Stokes equations (without the requirement that~$p$ is $C^\infty$) taken on the space of supersingularities.
+$C^\infty$ supersingular mild solutions of Navier-Stokes equations are exactly $C^\infty$ solutions of Navier-Stokes equations (without the requirement that~$p$ is $C^\infty$) taken on the space of supersingularities.
 \end{thm}
 
 \begin{proof}
@@ -288,8 +288,8 @@ Thus we have the consequence
 \[ \partial_t u - \nu\Delta u + \mathbb{P}((u\cdot\nabla) u) = \mathbb{P}f. \]
 
 We can write the nonlinear term as a divergence of a tensor:
-\[ \mathbb{P}((u\cdot\nabla) u) = \nabla \cdot (\mathbb{P}(u\otimes u)), \]
-because $(u\otimes u)_{ij}=u_i u_j$ and $\nabla \cdot (\mathbb{P}(u\otimes u)) = \sum_j\partial_j (u_i u_j)$.
+\[ (u\cdot\nabla) u = \nabla \cdot (u\otimes u), \]
+because $(u\otimes u)_{ij}=u_i u_j$ and $\nabla \cdot (u\otimes u) = \sum_j\partial_j (u_i u_j)$.
 
 Thus the PDE becomes: \[ \partial_t u - \nu\Delta u + \mathbb{P}\nabla \cdot (u\otimes u) = \mathbb{P}f. \]
 
@@ -337,7 +337,7 @@ Use $\nabla\cdot(u\cdot\nabla)u = \sum_{i,j}\partial_i\partial_j(u_i u_j)$. Thus
 % \[ -\Delta p = \sum_{i,j}\partial_i\partial_j(u_i u_j). \]
 It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$ and $f$ are $C^\infty$.
 
-Because $u$ is continuous, we can split this equality into zones, and it is true in every zone.
+Because $u$ is smooth, we can split this equality into zones, and it is true in every zone.
 On borders of zones, it can be constructed as a limit of the Poisson equation's solution in a zone. It does not depend on choice of the zone we take limit in, because~$u\in C^\infty$. Outside of zones it's zero.
 So, we have supersingular solution, too.
 
@@ -358,9 +358,9 @@ So, we have supersingular solution, too.
 \section{The sequence of approximate solutions}
 
 Define the Picard iteration mapping~$\mathcal{T}$ on ti\-me-de\-pen\-dent $C^\infty$ vector fields by
-\begin{equation}
+\begin{equation*}
 (\mathcal{T}v)(t) = G_t u_0 - \int_0^t G_{t-s}\mathbb{P}\nabla\cdot(v\otimes v)(s)ds + \int_0^t G_{t-s}\mathbb{P}f(s)ds.
-\end{equation}
+\end{equation*}
 So, we have a sequence
 \[ u^{(0)}(t) = u_0,\quad u^{(n+1)}(t) = (\mathcal{T}u^{(n)})(t). \]
 
@@ -368,7 +368,7 @@ Note that the integrand is~$L^1$ because $\nabla\cdot(v\otimes v)$ is~$C^\infty$
 
 Each element of this sequence is a continuous supersingular function.
 
-Define the solution $u(t)=\lim_{n\to\infty}u^{(n)}(t)$ as the limit of this sequence. The limit exists as I show below.
+Try as the solution $u(t)=\lim_{n\to\infty}u^{(n)}(t)$ as the limit of this sequence. The limit exists as I show below.
 
 \section{Interchange of limit and integration}
 
@@ -376,7 +376,7 @@ Let $\lim$ be our extended limit. On each (closed) zone (a closed interval), $\l
 It also maps absolutely convergent series to absolutely convergent series, therefore this extends to the entire closed interval. Thus we have:
 
 \begin{multline*}
-\lim_{n\to\infty}u^{(n)}(t) = G_t u(0) - \int_0^t \lim_{n\to\infty}\bigl(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)ds =\\ G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds,
+\lim_{n\to\infty}u^{(n)}(t) = G_t u(0) - \int_0^t \lim_{n\to\infty}\bigl(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds =\\ G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds,
 \end{multline*}
 that is it is a solution.
 
