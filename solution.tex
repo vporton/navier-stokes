@@ -63,12 +63,10 @@ I had a little trouble to understand the ChatGPT's proof, because while being th
 
 \section{Problem statement}
 
-\fxerror{ChatGPT got the problem statement~\cite{navier-stokes-clay} somehow wrong: It forgot non-zero external force.}
-
 We are going to prove existece (in the sense of classical real-number solutions) and smoothness~($C^\infty$) of solutions to Navier-Stokes equations on $\mathbb{R}^3$.
 Let $u:\mathbb{R}^3\times\mathbb{R}\to\mathbb{R}^3$ and pressure $p(x,t)$.
 \begin{align*}
-\partial_t u - \nu\Delta u + (u \cdot \nabla) u + \nabla p &= 0;\\
+\partial_t u - \nu\Delta u + (u \cdot \nabla) u + \nabla p &= f ;\\
 \nabla \cdot u &= 0;\\
 u({\cdot},0) &= u_0
 \end{align*}
@@ -251,7 +249,8 @@ Obvious? (There is a proof by ChatGPT. Below it's also prroved more general case
 \begin{defn}
 I call the following defined for continuous functions taking supersingularities as values:
 \begin{equation}
-u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) ds.
+u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u u)(s) ds
++ \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} f(s) ds.
 \end{equation}
 \emph{Supersingular integral solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Navier-Stokes equations.
 \end{defn}
@@ -281,28 +280,28 @@ $\mathbb{P}\Delta=\Delta\mathbb{P}$,
 $\mathbb{P}e^{\nu t \Delta}=e^{\nu t \Delta}\mathbb{P}$. (It's clear from these eqaulities in the classical case and linear combinations for the zones.)
 
 Apply $\mathbb{P}$ to the PDE. Since $\mathbb{P}\nabla p=0$, we get
-\[ \mathbb{P}\partial_t u - \nu\mathbb{P}\Delta u - \mathbb{P}((u\cdot\nabla) u) = 0. \]
+\[ \mathbb{P}\partial_t u - \nu\mathbb{P}\Delta u - \mathbb{P}((u\cdot\nabla) u) = \mathbb{P}f. \]
 
 Because $u$ is divergence-free and $\mathbb{P}$ equals identity on divergence-free fields, $\mathbb{P}u=u$. $\mathbb{P}$ commutes with $\partial_t$ and $\Delta$.
 
 Thus we have the consequence
-\[ \partial_t u - \nu\Delta u + \mathbb{P}((u\cdot\nabla) u) = 0. \]
+\[ \partial_t u - \nu\Delta u + \mathbb{P}((u\cdot\nabla) u) = \mathbb{P}f. \]
 
 We can write the nonlinear term as a divergence of a tensor:
 \[ \mathbb{P}((u\cdot\nabla) u) = \nabla \cdot (\mathbb{P}(u\otimes u)), \]
 because $(u\otimes u)_{ij}=u_i u_j$ and $\nabla \cdot (\mathbb{P}(u\otimes u)) = \sum_j\partial_j (u_i u_j)$.
 
-Thus the PDE becomes: \[ \partial_t u - \nu\Delta u + \mathbb{P}\nabla \cdot (u\otimes u) = 0. \]
+Thus the PDE becomes: \[ \partial_t u - \nu\Delta u + \mathbb{P}\nabla \cdot (u\otimes u) = \mathbb{P}f. \]
 
 Rewrite this PDE as a system:
-\[ \partial_t u - \nu\Delta u = -F(t),\quad F(t) = \mathbb{P}\nabla \cdot (u\otimes u). \]
+\[ \partial_t u - \nu\Delta u = -F(t) + \mathbb{P}f(t),\quad F(t) = \mathbb{P}\nabla \cdot (u\otimes u). \]
 
 Denote $G_t = e^{\nu t\Delta}$.
 
 For the linear homogeneous heat equation $\partial_t v - \nu\Delta v = 0$ with initial data $v(0)=v_0$ the solution is $v(t) = G_t v_0$.
 
 For the inhomogeneous equation, the Duhamel principle (variation-of-constants formula) gives the unique solution as
-\[ u(t) = G_t u_0 + \int_0^t G_{t-s} \bigl( -F(s) \bigr) \, ds = G_t u_0 - \int_0^t G_{t-s} F(s) \, ds. \]
+\[ u(t) = G_t u_0 + \int_0^t G_{t-s} \bigl( -F(s) + \mathbb{P}f(s) \bigr) \, ds = G_t u_0 - \int_0^t G_{t-s} F(s) \, ds + \int_0^t G_{t-s} \mathbb{P}f(s) \, ds. \]
 
 Substituting the value of~$F$ gives exactly the mild formula.
 
@@ -317,26 +316,26 @@ Differentiate the mild equation in~$t$. Use facts:
 \end{itemize}
 Apply this with $F(s) = \mathbb{P}\nabla \cdot (u\otimes u)(s)$. Differentiating mild gives:
 \[
-\partial_t u(t) = \nu \Delta e^{\nu t\Delta}u_0 - \mathbb{P}\nabla \cdot (u\otimes u)(t) + \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}\nabla \cdot (u\otimes u)(s) ds.
+\partial_t u(t) = \nu \Delta e^{\nu t\Delta}u_0 - \mathbb{P}\nabla \cdot (u\otimes u)(t) + \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}\nabla \cdot (u\otimes u)(s) ds + \mathbb{P}f(t) - \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}f(s) ds.
 \]
 Group terms:
-\[ \partial_t u(t) - \nu \Delta u(t) = \mathbb{P}\nabla \cdot (u\otimes u)(t). \]
+\[ \partial_t u(t) - \nu \Delta u(t) = \mathbb{P}\nabla \cdot (u\otimes u)(t) + \mathbb{P}f(t). \]
 This is exactly the projected PDE.
 
 Since $\mathbb{P}$ annihilates gradients, applying $(I-\mathbb{P})$ to the PDE recovers the pressure gradient term: start from the original PDE form:
-\[ \partial_t u - \nu\Delta u + (u \cdot \nabla) u + \nabla p = 0 \]
+\[ \partial_t u - \nu\Delta u + (u \cdot \nabla) u + \nabla p = f \]
 
 We already have projection $\mathbb{P}$ of this equation satisfied. To obtain $\nabla p$ explicitly, take divergence of the PDE:
-\[ \nabla \cdot \bigl(((u\cdot\nabla)u) + \nabla p\bigr) = 0 \]
+\[ \nabla \cdot \bigl(((u\cdot\nabla)u) + \nabla p - f\bigr) = 0 \]
 because
 \[ \nabla \cdot (\partial_t u - \nu\Delta u) = \partial_t(\nabla\cdot u) -\nu\Delta(\nabla\cdot u) = 0 \]
 when $\nabla\cdot u=0$ initially and evolution preserves it (or check separately).
 
 Use $\nabla\cdot(u\cdot\nabla)u = \sum_{i,j}\partial_i\partial_j(u_i u_j)$. Thus
-\[ -\Delta p = \nabla \cdot \nabla (u\otimes u)\quad\text{(Poisson)}. \]
+\[ -\Delta p = \nabla \cdot \nabla (u\otimes u) - \nabla \cdot f\quad\text{(Poisson)}. \]
 % i.e.
 % \[ -\Delta p = \sum_{i,j}\partial_i\partial_j(u_i u_j). \]
-It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$ is $C^\infty$.
+It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$ and $f$ are $C^\infty$.
 
 Because $u$ is continuous, we can split this equality into zones, and it is true in every zone.
 On borders of zones, it can be constructed as a limit of the Poisson equation's solution in a zone. It does not depend on choice of the zone we take limit in, because~$u\in C^\infty$. Outside of zones it's zero.
@@ -360,7 +359,7 @@ So, we have supersingular solution, too.
 
 Define the Picard iteration mapping~$\mathcal{T}$ on ti\-me-de\-pen\-dent $C^\infty$ vector fields by
 \begin{equation}
-(\mathcal{T}v)(t) = G_t u_0 - \int_0^t G_{t-s}\mathbb{P}\nabla\cdot(v\otimes v)(s)ds.
+(\mathcal{T}v)(t) = G_t u_0 - \int_0^t G_{t-s}\mathbb{P}\nabla\cdot(v\otimes v)(s)ds + \int_0^t G_{t-s}\mathbb{P}f(s)ds.
 \end{equation}
 So, we have a sequence
 \[ u^{(0)}(t) = u_0,\quad u^{(n+1)}(t) = (\mathcal{T}u^{(n)})(t). \]
@@ -377,7 +376,7 @@ Let $\lim$ be our extended limit. On each (closed) zone (a closed interval), $\l
 It also maps absolutely convergent series to absolutely convergent series, therefore this extends to the entire closed interval. Thus we have:
 
 \begin{multline*}
-\lim_{n\to\infty}u^{(n)}(t) = G_t u(0) - \int_0^t \lim_{n\to\infty}\bigl(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)ds =\\ G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s)ds,
+\lim_{n\to\infty}u^{(n)}(t) = G_t u(0) - \int_0^t \lim_{n\to\infty}\bigl(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)ds =\\ G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds,
 \end{multline*}
 that is it is a solution.
 
