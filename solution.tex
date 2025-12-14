@@ -149,7 +149,7 @@ We have zones (without loss of generality) being open sets and therefore Lebesgu
 \section{Lebesgue integrals}
 
 \begin{rem}
-(Lebesgue) integrals could be instead defined on the space of generalized limits functions \href{https://chatgpt.com/s/t_6937850a6b68819190a49e130f270ddb}{the same way} as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities. But for our purposes it is enough to define integrals on the space of continuous generalized limits functions, and this special case is much simpler to prove properties of.
+(Lebesgue) integrals could be instead defined on the space of generalized limits functions the same way as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities. But for our purposes it is enough to define integrals on the space of continuous generalized limits functions, and this special case is much simpler to prove properties of.
 \end{rem}
 
 Define Lebesgue integrals on the space of continuous generalized limits functions as \[ \int_A f(x) dx = \sum_{Z\in S}k_Z\int_Z a_Z(x) dx \] if each Lebesgue integral on the right side exists and the sum is absolutely convergent (and so does not depend on the order of summation), where $S$~is a set of zones.
@@ -185,7 +185,7 @@ Obvious.
 
 \section{Inhomogenious linear differential equations}
 
-Theorem elaborated from \href{https://amirkdv.ca/files/inhom-pde.pdf}{here}.
+Theorem elaborated from~\cite{duhamel-chat}.
 
 \begin{defn}
 \emph{Inhomogeneous linear evolution} with~$\Delta$ as the differential operator is
@@ -243,13 +243,13 @@ If $u$ is a $C^\infty$ super-sin\-gu\-lar function, then \[ e^{\nu (t-s) \Delta}
 \end{lem}
 
 \begin{proof}
-Obvious? (There is a proof by ChatGPT. Below it's also proved more general case of derivatives.)
+Obvious.
 \end{proof}
 
 \begin{defn}
 I call the following defined for continuous functions taking supersingularities as values:
 \begin{equation}
-u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u u)(s) ds
+u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) ds
 + \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} f(s) ds.
 \end{equation}
 \emph{Supersingular integral solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Navier-Stokes equations.
@@ -432,6 +432,10 @@ So, whether the energy is uniformly bounded remains an open problem, without a c
 Proving existence of classical $C^\infty$ solution moves the problem into classical analysis, where I don't claim to be an expert (despite my specialization in the university was ``math analysis'').
 
 Also, I want to note that the real breakthrough is not this proof of existence of solutions, my theory of ordered semicategory actions (with generalized limit being its small part).
+
+\section{The ChatGPT prompt}
+
+The prompt is not displayed in~\cite{navier-stokes-chat} (apparently, due to a ChatGPT bug). So, the exact prompt has been lost. It seems that I asked ChatGPT to solve the Navier-Stokes Millennium Prize problem using my general topology result as an axiom.
 
 \bibliographystyle{plain}
 \bibliography{refs}
