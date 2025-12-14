@@ -53,6 +53,8 @@ A proof of existence of classical smooth solutions of the Navier-Stokes Millenni
 
 This is an attempt to elaborate and check the proof by ChatGPT~\cite{navier-stokes-chat} of the Navier-Stokes Clay Math Millennium Prize Problem~\cite{navier-stokes-clay}, using the approach of generalized limits~\cite{limit} (more general generalized functions than distributions). In fact, ChatGPT didn't prove the energy inequality, but only existence of solutions, despite it claimed~\cite{navier-stokes-clay} a full solution.
 
+In my approach multiplication of every functions is defined, what allows to write formulas undefined for distributions.
+
 So, I did a half of work (the theorem that $\lim$ (limit) functional can be linearly extended to the space of all functions and that on the space of extended limits all operations can be extended with preservation of all algebraic identities). And ChatGPT did a half of work (applied known methods with addition of my this theorem).
 
 Extaordinary claims need extraordinary evidence. The claim is a partial Millennium Prize Problem solution. The evidence of this ``functional extension'' theorem is an extraordinary evidence, because it is a new very powerful theorem in general topology.
@@ -112,7 +114,7 @@ If a set $X$ is Lebesgue measurable and $f:X\to\SUPER(\mathbb{R})$ is continuous
 \begin{enumerate}
 \item $\setcond{x\in X}{f(x)\ne 0}$ is partitioned into Lebesgue measurable sets (\emph{zones}):
 \[ \setcond{\setcond{x\in X}{\exists a\in\mathbb{R}\setminus\{0\}:f(x)=ka}}{k\in\SUPER(\mathbb{R})\setminus\{0\}}. \]
-\item $f(x)=0$ for each $x$ on the boundary $X\cap\partial Z$ of a each zone.
+\item $f(x)=0$ for each $x$ on the boundary $X\cap\partial Z$ of each zone.
 \item $f(x)=k_Z g_Z(x)$ for each $x\in X\cap\overline{Z}$ for some $k_Z\in\SUPER(\mathbb{R})\setminus\{0\}$ and $g_Z:X\cap\overline{Z}\to\mathbb{R}$ for each zone $Z$.
 \end{enumerate}
 \end{thm}
