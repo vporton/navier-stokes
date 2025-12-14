@@ -118,23 +118,24 @@ If a set $X$ is Lebesgue measurable and $f:X\to\SUPER(\mathbb{R})$ is continuous
   \[ Z_k=\setcond{x\in X}{\exists a\in\mathbb{R}\setminus\{0\}:f(x)=ka}. \]
 \item Each $Z_k$ is an open set.
 \item $f(x)=0$ for each $x$ on the boundary $X\cap\partial Z$ of each zone.
-\item $f(x)=k_Z g_Z(x)$ for each $x\in X\cap\overline{Z}$ for some $k_Z\in\SUPER(\mathbb{R})\setminus\{0\}$ and $g_Z:X\cap\overline{Z}\to\mathbb{R}$ for each zone $Z$.
+\item\label{as-func-mult} $f(x)=k_Z g_Z(x)$ for each $x\in X\cap\overline{Z}$ for some $k_Z\in\SUPER(\mathbb{R})\setminus\{0\}$ and $g_Z:X\cap\overline{Z}\to\mathbb{R}$ for each zone $Z$.
 \end{enumerate}
 \end{thm}
 
 \begin{proof}
 To prove that $f(a)=0$ on boundaries of zones, consider two only possible cases for $a\in X\cap\partial Z_k$:
 \begin{enumerate}
-\item ``$a\in\overline{Z_k}$ and $\forall\epsilon>0\exists x\in\mathbb{R}:(\abs{a-x}<\epsilon\land f(x)=0)$'' ??
+\item ``$a\in\overline{Z_k}$ and $\forall\epsilon>0\exists x\in\mathbb{R}:(\abs{a-x}<\epsilon\land f(x)=0)$.'' This is obviously\fxnote{More detailed proof.} possible only if $f(a)=0$.
 
-\item ``$a\in\overline{Z_k}$ and $\forall\epsilon>0\exists x\in\mathbb{R}:(\abs{a-x}<\epsilon\land f(x)=k'g(x))$, where $k'\in\SUPER(\mathbb{R})\setminus\{0\}$ and $g:X\cap\overline{Z'}\to\mathbb{R}$ where zone $Z'\ne Z_k$.'' ??
+\item ``$a\in\overline{Z_k}$ and $\forall\epsilon>0\exists x\in\mathbb{R}:(\abs{a-x}<\epsilon\land f(x)=k'g(x))$, where $k'\in\SUPER(\mathbb{R})\setminus\{0\}$ and $g:X\cap\overline{Z'}\to\mathbb{R}$ where zone $Z'\ne Z_k$.''
+$f(x)$ belongs to the same zone $Z_k$, unless $f(a)=0$.
 \end{enumerate}
 
-Really, the distance between $c(x)$ and $c(b)$\fxwarning{What is~$c$? Give full proof.} for $\forall p,q\in\mathbb{R}:pa\ne qb$ is
-\[ \inf_{p,q\in\mathbb{R}}|pa-qb| > 0, \]
-if $p,q\ne 0$. Therefore boundaries of zones have $p,q=0$.
+$Z_k$ doesn't intersect $\partial Z_k$ and is, therefore, open. Obviously zones don't intersect and their union is $\setcond{x\in X}{f(x)\ne 0}$.
 
-Subtracting boundaries from zones, we have zones (without loss of generality) being open sets and therefore Lebesgue measurable.
+Item~\ref{as-func-mult} is obvious.
+
+We have zones (without loss of generality) being open sets and therefore Lebesgue measurable.
 \end{proof}
 
 \section{Lebesgue integrals}
