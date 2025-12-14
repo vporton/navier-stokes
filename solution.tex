@@ -24,7 +24,7 @@
 \hypersetup{pdftitle={A Proof of Existence of a Smooth Classical Solution of 3D Navier-Stokes Equations},
  pdfauthor={Victor Porton},
  pdfsubject={Navier-Stokes equations},
- pdfkeywords={Navier-Stokes equations existence and smoothness, Navier-Stokes Clay Math Millennium Prize Problem, PDE, partial differencial equations}}
+ pdfkeywords={Navier-Stokes equations existence and smoothness, Navier-Stokes Clay Math Millennium Prize Problem, PDE, partial differential equations}}
 
 \begin{document}
 
@@ -57,20 +57,20 @@ In my approach multiplication of every functions is defined, what allows to writ
 
 So, I did a half of work (the theorem that $\lim$ (limit) functional can be linearly extended to the space of all functions and that on the space of extended limits all operations can be extended with preservation of all algebraic identities). And ChatGPT did a half of work (applied known methods with addition of my this theorem).
 
-Extaordinary claims need extraordinary evidence. The claim is a partial Millennium Prize Problem solution. The evidence of this ``functional extension'' theorem is an extraordinary evidence, because it is a new very powerful theorem in general topology and its proof is extraordinary longer than a noob would expect.
+Extraordinary claims need extraordinary evidence. The claim is a partial Millennium Prize Problem solution. The evidence of this ``functional extension'' theorem is an extraordinary evidence, because it is a new very powerful theorem in general topology and its proof is extraordinary longer than a noob would expect.
 
 I had a little trouble to understand the ChatGPT's proof, because while being the world-best expert in general topology, I am no expert in differential equations. But I was able to write down my more detailed (and in parts more elegant than ChatGPT's) proof.
 
 \section{Problem statement}
 
-We are going to prove existece (in the sense of classical real-number solutions) and smoothness~($C^\infty$) of solutions to Navier-Stokes equations on $\mathbb{R}^3$.
+We are going to prove existence (in the sense of classical real-number solutions) and smoothness~($C^\infty$) of solutions to Navier-Stokes equations on $\mathbb{R}^3$.
 Let $u:\mathbb{R}^3\times\mathbb{R}\to\mathbb{R}^3$ and pressure $p(x,t)$.
 \begin{align*}
 \partial_t u - \nu\Delta u + (u \cdot \nabla) u + \nabla p &= f ;\\
 \nabla \cdot u &= 0;\\
 u({\cdot},0) &= u_0
 \end{align*}
-for viscosity $\nu>0$ and initial condition $u_0\in C^\infty$.
+for viscosity $\nu>0$, $f(t,x)\in C^\infty$ and initial condition $u_0\in C^\infty$.
 
 \section{The limit extension theorem}
 
@@ -102,7 +102,7 @@ For antisymmetry, let $a\leq b$ and $b\leq a$. We have $\lim_{x\to 0}|g(x)-f(x)|
 \end{proof}
 
 \begin{thm}
-For each $S\in\subsets\SUPER(\mathbb{R})$, such that $\forall a\in S:a>B$ for some coonstant $B\in\mathbb{R}$, there exists $\inf S\in\SUPER(\mathbb{R})$.
+For each $S\in\subsets\SUPER(\mathbb{R})$, such that $\forall a\in S:a>B$ for some constant $B\in\mathbb{R}$, there exists $\inf S\in\SUPER(\mathbb{R})$.
 \end{thm}
 
 \begin{proof}
@@ -152,7 +152,7 @@ We have zones (without loss of generality) being open sets and therefore Lebesgu
 (Lebesgue) integrals could be instead defined on the space of generalized limits functions \href{https://chatgpt.com/s/t_6937850a6b68819190a49e130f270ddb}{the same way} as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities. But for our purposes it is enough to define integrals on the space of continuous generalized limits functions, and this special case is much simpler to prove properties of.
 \end{rem}
 
-Define Lebesgue integrals on the space of continuous generalized limits functions as \[ \int_A f(x) dx = \sum_{Z\in S}k_Z\int_Z a_Z(x) dx \] if each Lebesque integral on the right side exists and the sum is absolutely convergent (and so does not depend on the order of summation), where $S$~is a set of zones.
+Define Lebesgue integrals on the space of continuous generalized limits functions as \[ \int_A f(x) dx = \sum_{Z\in S}k_Z\int_Z a_Z(x) dx \] if each Lebesgue integral on the right side exists and the sum is absolutely convergent (and so does not depend on the order of summation), where $S$~is a set of zones.
 
 It is easy to show that this definition does not depend on the choice of~$k_Z$ and~$a_Z$.
 
@@ -243,7 +243,7 @@ If $u$ is a $C^\infty$ super-sin\-gu\-lar function, then \[ e^{\nu (t-s) \Delta}
 \end{lem}
 
 \begin{proof}
-Obvious? (There is a proof by ChatGPT. Below it's also prroved more general case of derivatives.)
+Obvious? (There is a proof by ChatGPT. Below it's also proved more general case of derivatives.)
 \end{proof}
 
 \begin{defn}
@@ -277,7 +277,7 @@ $\mathbb{P}\nabla q=0$ for any scalar~$q$.
 
 $\mathbb{P}$ commutes with $\Delta$ and with the heat semigroup: 
 $\mathbb{P}\Delta=\Delta\mathbb{P}$,
-$\mathbb{P}e^{\nu t \Delta}=e^{\nu t \Delta}\mathbb{P}$. (It's clear from these eqaulities in the classical case and linear combinations for the zones.)
+$\mathbb{P}e^{\nu t \Delta}=e^{\nu t \Delta}\mathbb{P}$. (It's clear from these equalities in the classical case and linear combinations for the zones.)
 
 Apply $\mathbb{P}$ to the PDE. Since $\mathbb{P}\nabla p=0$, we get
 \[ \mathbb{P}\partial_t u - \nu\mathbb{P}\Delta u - \mathbb{P}((u\cdot\nabla) u) = \mathbb{P}f. \]
@@ -421,11 +421,11 @@ There is only one zone for $G_t f$, because $G_t f(x)\ne 0$. So the classical re
 
 Therefore the integral~$u$ is $C^\infty$.
 
-\section{Futher directions}
+\section{Further directions}
 
-I could argue, that the requirement of $C^\infty$ for physical reasonabliness is superfluous, because it is not used in the PDE derivation. So, the real physical problem remains unsolved: Is the solution unique if we require only existence of classical differential operators?
+I could argue, that the requirement of $C^\infty$ for physical reasonableness is superfluous, because it is not used in the PDE derivation. So, the real physical problem remains unsolved: Is the solution unique if we require only existence of classical differential operators?
 
-I also wonder why Clay Math considered physically irreasonable energy reaching infinity. The physically unreasonable assumption is not this but a force acting onto the fluid remaining the same no matter how the fluid moves. This may probably lead to infinite work, what is physically unreasonable.
+I also wonder why Clay Math considered physically unreasonable energy reaching infinity. The physically unreasonable assumption is not this but a force acting onto the fluid remaining the same no matter how the fluid moves. This may probably lead to infinite work, what is physically unreasonable.
 
 So, whether the energy is uniformly bounded remains an open problem, without a clear physical hint.
 
