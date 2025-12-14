@@ -135,10 +135,10 @@ If a set $X$ is Lebesgue measurable and $f:X\to\SUPER(\mathbb{R})$ is continuous
 \begin{proof}
 To prove that $f(a)=0$ on boundaries of zones, consider two only possible cases for $a\in X\cap\partial Z_k$:
 \begin{enumerate}
-\item ``$a\in\overline{Z_k}$ and $\forall\epsilon>0\exists x\in\mathbb{R}:(\abs{a-x}<\epsilon\land f(x)=0)$.'' This is obviously\fxnote{More detailed proof.} possible only if $f(a)=0$.
+\item ``$a\in\overline{Z_k}$ and $\forall\epsilon>0\exists x\in\mathbb{R}:(\abs{a-x}<\epsilon\land f(x)=0)$.'' This is possible only if $f(a)=0$ due to continuity of~$f$.
 
 \item ``$a\in\overline{Z_k}$ and $\forall\epsilon>0\exists x\in\mathbb{R}:(\abs{a-x}<\epsilon\land f(x)=k'g(x))$, where $k'\in\SUPER(\mathbb{R})\setminus\{0\}$ and $g:X\cap\overline{Z'}\to\mathbb{R}$ where zone $Z'\ne Z_k$.''
-$f(x)$ belongs to the same zone $Z_k$, unless $f(a)=0$.
+$f(x)$ belongs to the same zone $Z_k$, unless $f(a)=0$, because otherwise we would have $kf(x)=k'f(x)$ for $k$ and~$k'$ from different zones $Z_k$ and~$Z'$, respectively.
 \end{enumerate}
 
 $Z_k$ doesn't intersect $\partial Z_k$ and is, therefore, open. Obviously zones don't intersect and their union is $\setcond{x\in X}{f(x)\ne 0}$.
