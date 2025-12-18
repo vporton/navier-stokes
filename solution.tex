@@ -250,9 +250,9 @@ Obvious.
 I call the following defined for continuous functions taking supersingularities as values:
 \begin{equation}
 u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) ds
-+ \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} f(s) ds.
++ \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} f(s) ds
 \end{equation}
-\emph{Supersingular mild solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Navier-Stokes equations.
+\emph{supersingular mild solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Navier-Stokes equations.
 \end{defn}
 
 % \begin{grayed}
@@ -315,9 +315,9 @@ Differentiate the mild equation in~$t$. Use facts:
 \item $\frac{d}{dt}\int_0^t e^{\nu (t-s) \Delta} F(s) ds = F(t) + \int_0^t \nu e^{\nu (t-s) \Delta} F(s) ds$.
 \end{itemize}
 Apply this with $F(s) = \mathbb{P}\nabla \cdot (u\otimes u)(s)$. Differentiating mild gives:
-\[
-\partial_t u(t) = \nu \Delta e^{\nu t\Delta}u_0 - \mathbb{P}\nabla \cdot (u\otimes u)(t) + \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}\nabla \cdot (u\otimes u)(s) ds + \mathbb{P}f(t) - \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}f(s) ds.
-\]
+\begin{multline*}
+\partial_t u(t) = \nu \Delta e^{\nu t\Delta}u_0 - \mathbb{P}\nabla \cdot (u\otimes u)(t) + {} \\ \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}\nabla \cdot (u\otimes u)(s) ds + \mathbb{P}f(t) - \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}f(s) ds.
+\end{multline*}
 Group terms:
 \[ \partial_t u(t) - \nu \Delta u(t) = \mathbb{P}\nabla \cdot (u\otimes u)(t) + \mathbb{P}f(t). \]
 This is exactly the projected PDE.
