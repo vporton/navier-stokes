@@ -273,7 +273,7 @@ u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \c
 % \end{grayed}
 
 \begin{thm}
-$C^\infty$ supersingular mild solutions of Navier-Stokes equations are exactly $C^\infty$ solutions of Navier-Stokes equations (without the requirement that~$p$ is $C^\infty$) taken on the space of supersingularities (almost everywhere).
+$C^\infty$ supersingular mild solutions of Navier-Stokes equations are exactly $C^\infty$ solutions of Navier-Stokes equations (without the requirement that~$p$ is $C^\infty$) taken on the space of supersingularities.
 \end{thm}
 
 \begin{proof}
@@ -313,7 +313,7 @@ For the inhomogeneous equation, the Duhamel principle (variation-of-constants fo
 
 Substituting the value of~$F$ gives exactly the mild formula.
 
-Now prove in the converse: if continuous~$u$ satisfies the mild equation, then it satisfies the PDE and we can recover a pressure~$p$.
+Now prove in the converse: if continuous~$u$ satisfies the mild equation, then it satisfies the PDE and we can recover a pressure~$p$. The below proof is correct only almost everywhere in time. But since the functions in question are~$C^\infty$, it extends to everywhere.
 
 Assume $u$ to be a continuous supersingular function.
 
@@ -384,7 +384,7 @@ Let $\lim$ be our extended limit. On each (closed) zone (a closed interval), $\l
 It also maps absolutely convergent series to absolutely convergent series, therefore this extends to the entire closed interval. Thus we have:
 
 \begin{multline*}
-\lim_{n\to\infty}u^{(n)}(t) = G_t u(0) - \int_0^t \lim_{n\to\infty}\bigl(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds =\\ G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds,
+u(t) = \lim_{n\to\infty}u^{(n)}(t) =\\ G_t u(0) - \int_0^t \lim_{n\to\infty}\bigl(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds =\\ G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds,
 \end{multline*}
 that is it is a solution.
 
