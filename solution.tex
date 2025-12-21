@@ -21,10 +21,10 @@
 \newcommand{\abs}[1]{\left\lvert #1\right\rvert}
 \newcommand{\supfun}[1]{\left\langle #1\right\rangle}
 
-\hypersetup{pdftitle={A Proof of Existence of Smooth Classical Solutions of Navier-Stokes Equations},
+\hypersetup{pdftitle={A Proof of Existence of Smooth Classical Solutions of Na\-vi\-er-Sto\-kes Equations},
  pdfauthor={Victor Porton},
- pdfsubject={Navier-Stokes equations},
- pdfkeywords={Navier-Stokes equations existence and smoothness, Navier-Stokes Clay Math Millennium Prize Problem, PDE, partial differential equations}}
+ pdfsubject={Na\-vi\-er-Sto\-kes equations},
+ pdfkeywords={Na\-vi\-er-Sto\-kes equations existence and smoothness, Na\-vi\-er-Sto\-kes Clay Math Millennium Prize Problem, PDE, partial differential equations}}
 
 \begin{document}
 
@@ -33,7 +33,7 @@ Ad: \href{https://science-dao.org}{Donate for science.}
 
 The most recent version of this document is available \href{https://github.com/vporton/navier-stokes}{here}.
 
-\title[Navier-Stokes]{A Proof of Existence of Smooth Classical Solutions of Navier-Stokes Equations}
+\title[Na\-vi\-er-Sto\-kes]{A Proof of Existence of Smooth Classical Solutions of Na\-vi\-er-Sto\-kes Equations}
 
 \author{Victor Porton, ORCID 0000-0001-7064-7975}
 
@@ -44,7 +44,7 @@ The most recent version of this document is available \href{https://github.com/v
 \date{\today}
 
 \begin{abstract}
-A proof of existence of classical smooth solutions of the Navier-Stokes Millennium Prize problem, by usage of my general topology theorem proved before. This constitutes a solution of the Millennium Prize problem.
+A proof of existence of classical smooth solutions of the Na\-vi\-er-Sto\-kes Millennium Prize problem, by usage of my general topology theorem proved before. This constitutes a solution of the Millennium Prize problem.
 \end{abstract}
 
 \subjclass[2020]{35Q30, 35A01, 35A09, 35A25, 35D99}
@@ -53,7 +53,7 @@ A proof of existence of classical smooth solutions of the Navier-Stokes Millenni
 
 \section{Introduction}
 
-This is a rectified proof by ChatGPT~\cite{navier-stokes-chat} of the Navier-Stokes Clay Math Millennium Prize Problem~\cite{navier-stokes-clay}, using the approach of generalized limits~\cite{limit} (more general generalized functions than distributions). In fact, that ChatGPT's proof didn't settle the energy inequality, but only existence of solutions, despite it claimed~\cite{navier-stokes-chat} a full solution.
+This is a rectified proof by ChatGPT~\cite{navier-stokes-chat} of the Na\-vi\-er-Sto\-kes Clay Math Millennium Prize Problem~\cite{navier-stokes-clay}, using the approach of generalized limits~\cite{limit} (more general generalized functions than distributions). In fact, that ChatGPT's proof didn't settle the energy inequality, but only existence of solutions, despite it claimed~\cite{navier-stokes-chat} a full solution.
 
 In my approach multiplication of every functions is defined, what allows to write formulas undefined for distributions.
 
@@ -65,8 +65,8 @@ I had a little trouble to understand the ChatGPT's proof, because while being th
 
 \section{Problem statement}
 
-We are going to prove existence (in the sense of classical real-number solutions) and smoothness~($C^\infty$) of solutions to Navier-Stokes equations on $\mathbb{R}^N$ ($N\in\mathbb{N}$).
-Let $u:\mathbb{R}^N\times[0;\infty)\to\mathbb{R}^N$ and pressure $p(x,t)$.
+We are going to prove existence (in the sense of classical real-number solutions) and smoothness~($C^\infty$) of solutions to Na\-vi\-er-Sto\-kes equations on $\mathbb{R}^N$ ($N\in\mathbb{N}$).
+Let $u(x,t):\mathbb{R}^N\times[0;\infty)\to\mathbb{R}^N$ and pressure $p(x,t):\mathbb{R}^N\times[0;\infty)\to\mathbb{R}$.
 \begin{align*}
 \partial_t u - \nu\Delta u + (u \cdot \nabla) u + \nabla p &= f ;\\
 \nabla \cdot u &= 0;\\
@@ -260,7 +260,7 @@ I call the following defined for continuous functions taking supersingularities 
 u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) ds
 + \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} f(s) ds
 \end{equation}
-\emph{supersingular mild solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Navier-Stokes equations.
+\emph{supersingular mild solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Na\-vi\-er-Sto\-kes equations.
 \end{defn}
 
 % \begin{grayed}
@@ -273,7 +273,7 @@ u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \c
 % \end{grayed}
 
 \begin{thm}
-$C^\infty$ supersingular mild solutions of Navier-Stokes equations are exactly $C^\infty$ solutions of Navier-Stokes equations (without the requirement that~$p$ is $C^\infty$) taken on the space of supersingularities.
+$C^\infty$ supersingular mild solutions of Na\-vi\-er-Sto\-kes equations are exactly $C^\infty$ solutions of Na\-vi\-er-Sto\-kes equations (without the requirement that~$p$ is $C^\infty$) taken on the space of supersingularities.
 \end{thm}
 
 \begin{proof}
@@ -443,7 +443,7 @@ First, note that it is well-known that the classical solutions are unique.
 
 To finish the solution of the Clay Math Millennium Prize Problem, we need to prove the energy inequality~\cite{navier-stokes-clay} in the 3D case.
 
-It is well-known that the energy inequality holds for classical solutions. For a reference, see~\cite{navier-stokes-energy}.
+But it is well-known that the energy inequality holds for classical solutions. For a reference, see~\cite{navier-stokes-energy}.
 
 \section{Further directions}
 
@@ -453,7 +453,7 @@ Also, I want to note that the real breakthrough is not this proof of existence o
 
 \section{The ChatGPT prompt}
 
-The prompt is not displayed in~\cite{navier-stokes-chat} (apparently, due to a ChatGPT bug). So, the exact prompt has been lost. It seems that I asked ChatGPT to solve the Navier-Stokes Millennium Prize problem positively using my general topology result as an axiom.
+The prompt is not displayed in~\cite{navier-stokes-chat} (apparently, due to a ChatGPT bug). So, the exact prompt has been lost. It seems that I asked ChatGPT to solve the Na\-vi\-er-Sto\-kes Millennium Prize problem positively using my general topology result as an axiom.
 
 \bibliographystyle{plain}
 \bibliography{refs}
