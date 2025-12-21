@@ -44,7 +44,7 @@ The most recent version of this document is available \href{https://github.com/v
 \date{\today}
 
 \begin{abstract}
-A proof of existence of classical smooth solutions of the Navier-Stokes Millennium Prize problem, by usage of my general topology theorem proved before. This constitutes a partial solution of the Millennium Prize problem (no proof of boundness of energy is provided).
+A proof of existence of classical smooth solutions of the Navier-Stokes Millennium Prize problem, by usage of my general topology theorem proved before. This constitutes a solution of the Millennium Prize problem.
 \end{abstract}
 
 \subjclass[2020]{35Q30, 35A01, 35A09, 35A25, 35D99}
@@ -53,13 +53,13 @@ A proof of existence of classical smooth solutions of the Navier-Stokes Millenni
 
 \section{Introduction}
 
-This is a rectified proof by ChatGPT~\cite{navier-stokes-chat} of the Navier-Stokes Clay Math Millennium Prize Problem~\cite{navier-stokes-clay}, using the approach of generalized limits~\cite{limit} (more general generalized functions than distributions). In fact, ChatGPT didn't prove the energy inequality, but only existence of solutions, despite it claimed~\cite{navier-stokes-chat} a full solution. I also don't provide a proof of energy inequality.
+This is a rectified proof by ChatGPT~\cite{navier-stokes-chat} of the Navier-Stokes Clay Math Millennium Prize Problem~\cite{navier-stokes-clay}, using the approach of generalized limits~\cite{limit} (more general generalized functions than distributions). In fact, that ChatGPT's proof didn't settle the energy inequality, but only existence of solutions, despite it claimed~\cite{navier-stokes-chat} a full solution.
 
 In my approach multiplication of every functions is defined, what allows to write formulas undefined for distributions.
 
 So, I did a half of the work (the theorem that $\lim$ (limit) functional can be linearly extended to the space of all functions and that on the space of extended limits all continuous operations can be extended with preservation of all algebraic identities). And ChatGPT did a half of work (applied known methods with addition of my this theorem).
 
-Extraordinary claims need extraordinary evidence. The claim is a partial Millennium Prize Problem solution. The evidence of this ``functional extension'' theorem is an extraordinary evidence, because it is a new very powerful theorem in general topology and its proof is extraordinarily longer than a noob would expect.
+Extraordinary claims need extraordinary evidence. The claim is a Millennium Prize Problem solution. The evidence of this ``functional extension'' theorem is an extraordinary evidence, because it is a new very powerful theorem in general topology and its proof is extraordinarily longer than a noob would expect.
 
 I had a little trouble to understand the ChatGPT's proof, because while being the world-best expert in general topology, I am no expert in differential equations. But I was able to write down my more detailed (and in parts more elegant than ChatGPT's) proof.
 
@@ -437,15 +437,17 @@ G_t u(0) - u(t) = \int_0^t G_{t-s} \bigl(\mathbb{P}\nabla\cdot(u\otimes u)(s) - 
 
 It is well-known that~$u$ is classical for some time interval starting from $t=0$. Suppose that at the time $t_{\operatorname{crit}}$, the solution becomes non-clas\-si\-cal. This is possible only at a border of a ``classical'' zone (the integrand is equal to~$0$), therefore the left derivative (and by $C^\infty$, right derivative, too) of the integral is in~$\mathbb{R}$. This makes the change of the left part of the equation ``gradual'' (derivative is in~$\mathbb{R}$), what contradicts non-clas\-si\-ca\-li\-ty of $G_t u(0) - u(t)$ and therefore of $u(t)$.
 
+\section{The energy inequality}
+
+First, note that it is well-known that the classical solutions are unique.
+
+To finish the solution of the Clay Math Millennium Prize Problem, we need to prove the energy inequality~\cite{navier-stokes-clay} in the 3D case.
+
+It is well-known that the energy inequality holds for classical solutions. For a reference, see~\cite{navier-stokes-energy}.
+
 \section{Further directions}
 
 I could argue, that the requirement of $C^\infty$ for physical reasonableness is superfluous, because it is not used in the PDE derivation. So, the real physical problem remains unsolved: Is the solution unique if we require only existence of classical differential operators?
-
-I also wonder why Clay Math considered physically unreasonable energy reaching infinity. The physically unreasonable assumption is not this but a force acting onto the fluid remaining the same no matter how the fluid moves. This may probably lead to infinite work, what is physically unreasonable.
-
-So, whether the energy is uniformly bounded remains an open problem, without a clear physical hint.
-
-Proving existence of classical $C^\infty$ solution moves the problem into classical analysis, where I don't claim to be an expert (despite my specialization in the university was ``math analysis'').
 
 Also, I want to note that the real breakthrough is not this proof of existence of solutions, but my theory of ordered semicategory actions (with generalized limit being its small part).
 
