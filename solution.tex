@@ -76,27 +76,27 @@ for viscosity $\nu>0$, $f(t,x)\in C^\infty$ and initial condition $u_0\in C^\inf
 
 \section{The limit extension theorem}
 
-\begin{thm}
-(The following does apply for $\mathbb{R}$-va\-lu\-ed functions defined on well-be\-ha\-ved subsets of $\mathbb{R}^M$. For details and more general cases see~\cite{limit}.)
+Refer to~\cite{limit} for definitions and theorems that warrant for our spaces ($\mathbb{R}^P$):
 
-The $\lim$ (limit) functional can be linearly extended to the space~$\SUPER(X)$ (where $X$ is the set non-ex\-ten\-ded limits take) of all functions and on the space of extended limits all continuous operations can be extended with preservation of all algebraic identities.
+The $\lim$ (limit) functional can be linearly extended to the space all functions having as the range the space~$\SUPER(X)$ of generalized limits (where $X$ is the set non-ex\-ten\-ded limits take).
 
-Moreover, for the limit extension it can hold, that any finite number of limits $\lim\dots\lim f$ (for $f:Y\to X$) is defined.
-\end{thm}
+Limits can be futher taken (with values remaining in~$\SUPER(X)$) for functions with values in $\SUPER(X)$.
 
-\begin{proof}
-This is a summary of several theorems from~\cite{limit}.
-\end{proof}
+All finitary continuous operations can be extended from~$X$ to~$\SUPER(X)$ with preservation of all algebraic identities.
 
 I will call functions with values in $\SUPER(X)$ ``su\-per-sin\-gu\-lar functions''.
+
+Note that \[\SUPER(X)=X\cup\operatorname{SLA}(X)\cup\operatorname{SLA}(\operatorname{SLA}(X))\cup\dots\] where $\operatorname{SLA}(X)\supseteq X$ and all generalized limits of functions to~$X$ fall into $\operatorname{SLA}(X)$.
+
+Note that the above allows to take (su\-per-sin\-gu\-lar) derivatives of arbitrary functions.
 
 \section{Continuous functions with values in $\SUPER(\mathbb{R})$}
 
 Let $X$ be some Lebesgue measurable set and some element $0\in X$ (not necessarily real zero or zero vector).
 
 \begin{defn}
-Let $a,b\in\SUPER(\mathbb{R})$.
-\[ a\le b \eqdef \exists f,g:X\to\mathbb{R}:\left(\lim_{x\to 0}f(x)=a\land\lim_{x\to 0}g(x)=b\land f\le g\right). \]
+Let $a,b\in\operatorname{SLA}(X)$. Then for limits of functions $Y\to X$:
+\[ a\le b \eqdef \exists f,g:Y\to X:\left(\lim_{x\to 0}f(x)=a\land\lim_{x\to 0}g(x)=b\land f\le g\right). \]
 \end{defn}
 
 \begin{prop}
