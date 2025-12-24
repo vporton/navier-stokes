@@ -15,6 +15,7 @@
 \newcommand{\setcond}[2]{\left\{ #1 \mid #2 \right\}}
 \DeclareMathOperator{\xlim}{xlim}
 \DeclareMathOperator{\SUPER}{SUPER}
+\DeclareMathOperator{\SLA}{SLA}
 \newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
 \newcommand{\subsets}{\mathscr{P}}
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
@@ -86,7 +87,7 @@ All finitary continuous operations can be extended from~$X$ to~$\SUPER(X)$ with 
 
 I will call functions with values in $\SUPER(X)$ ``su\-per-sin\-gu\-lar functions''.
 
-Note that \[\SUPER(X)=X\cup\operatorname{SLA}(X)\cup\operatorname{SLA}(\operatorname{SLA}(X))\cup\dots\] where $\operatorname{SLA}(X)\supseteq X$ and all generalized limits of functions to~$X$ fall into $\operatorname{SLA}(X)$.
+Note that \[\SUPER(X)=X\cup\SLA(X)\cup\SLA(\SLA(X))\cup\dots\] where $\SLA(X)\supseteq X$ and all generalized limits of functions to~$X$ fall into $\SLA(X)$.
 
 Note that the above allows to take (su\-per-sin\-gu\-lar) derivatives of arbitrary functions.
 
@@ -95,15 +96,22 @@ Note that the above allows to take (su\-per-sin\-gu\-lar) derivatives of arbitra
 Let $X$ be some Lebesgue measurable set and some element $0\in X$ (not necessarily real zero or zero vector).
 
 \begin{defn}
-Let $a,b\in\operatorname{SLA}(X)$. Then for limits of functions $Y\to X$:
+Let $a,b\in\SLA(X)$. Then for limits of functions $Y\to X$:
 \[ a\le b \eqdef \exists f,g:Y\to X:\left(\lim_{x\to 0}f(x)=a\land\lim_{x\to 0}g(x)=b\land f\le g\right). \]
 \end{defn}
+
+The above easily can be easily extended to $a,b\in\SUPER(X)$.
 
 \begin{prop}
 The above defined is a partial order on~$\SUPER(\mathbb{R})$.
 \end{prop}
 
 \begin{proof}
+Let
+\[ a,b\in\underbrace{\SLA(\dots\SLA(\mathbb{R})\dots)}_{\text{Apply $\SLA$ $K$ times}}. \]
+
+By induction, we have:
+
 Transitivity and reflexivity are obvious.
 
 For antisymmetry, let $a\leq b$ and $b\leq a$. We have $\lim_{x\to 0}|g(x)-f(x)|\geq 0$ and $\lim_{x\to 0}|g(x)-f(x)|\leq 0$. So, $\lim_{x\to 0}|g(x)-f(x)|=0$ and therefore $a=b$.
