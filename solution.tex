@@ -54,7 +54,7 @@ A proof of existence of classical smooth solutions of the Na\-vi\-er-Sto\-kes Mi
 
 \section{Introduction}
 
-This is a rectified proof by ChatGPT~\cite{navier-stokes-chat} of the Na\-vi\-er-Sto\-kes Clay Math Millennium Prize Problem~\cite{navier-stokes-clay}, using the approach of generalized limits~\cite{limit} (more general generalized functions than distributions). In fact, that ChatGPT's proof didn't settle the energy inequality, but only existence of solutions, despite it claimed~\cite{navier-stokes-chat} a full solution.
+This is a rectified proof by ChatGPT~\cite{navier-stokes-chat} of the Na\-vi\-er-Sto\-kes Clay Math Millennium Prize Problem~\cite{navier-stokes-clay}, using the approach of generalized limits~\cite{limit} (more general generalized functions than distributions) suggested to the LLM by me. In fact, that ChatGPT's proof didn't settle the energy inequality, but only existence of solutions, despite it claimed~\cite{navier-stokes-chat} a full solution.
 
 In my approach multiplication of every functions is defined, what allows to write formulas undefined for distributions.
 
@@ -118,21 +118,21 @@ For antisymmetry, let $a\leq b$ and $b\leq a$. We have $\lim_{x\to 0}|g(x)-f(x)|
 \end{proof}
 
 \begin{thm}
-For each $S\in\subsets\SUPER(\mathbb{R})$, such that $\forall a\in S:a\ge B$ for some constant $B\in\mathbb{R}$, there exists $\inf S\in\SUPER(\mathbb{R})$.
+For each $S\in\subsets\underbrace{\SLA(\dots\SLA(\mathbb{R})\dots)}_{\text{Finite number of times}}$, such that $\forall a\in S:a\ge B$ for some constant $B\in\mathbb{R}$, there exists $\inf S\in\SUPER(\mathbb{R})$.
 \end{thm}
 
 \begin{proof}
 For the first level of the limit (of $\mathbb{R}$-va\-lu\-ed functions) we use this reasoning:
 
 Choose
-\[ F\in\prod_{a\in S}\setcond{f:X\to\SUPER(\mathbb{R})}{\lim_{x\to 0}f(x)=a}. \]
+\[ F\in\prod_{a\in S}\setcond{f:X\to\mathbb{R}}{\lim_{x\to 0}f(x)=a}. \]
 Let
 \[ m=\lim_{x\to 0}\left(x\mapsto\inf_{f\in F}\max\{f(x),B\}\right). \]
 ($\inf_{f\in F}\max\{f(x),B\}$ exists because this set is bounded from below.) We will show that $m$ is the infimum of~$S$.
 
 It's obvious that $\forall a\in S:m\le a$ and $\forall a\in S:x\le a\Rightarrow x\le m$.
 
-For $\lim\dots\lim$ (finite number of limits) the same reasoning applies inductively.
+For $\SLA(\dots\SLA(\mathbb{R})\dots)$ (finite number of limits) the same reasoning applies inductively.
 \end{proof}
 
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
