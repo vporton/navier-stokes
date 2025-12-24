@@ -77,6 +77,8 @@ for viscosity $\nu>0$, $f(t,x)\in C^\infty$ and initial condition $u_0\in C^\inf
 \section{The limit extension theorem}
 
 \begin{thm}
+(The following does apply for $\mathbb{R}$-va\-lu\-ed functions defined on well-be\-ha\-ved subsets of $\mathbb{R}^M$. For details and more general cases see~\cite{limit}.)
+
 The $\lim$ (limit) functional can be linearly extended to the space~$\SUPER(X)$ (where $X$ is the set non-ex\-ten\-ded limits take) of all functions and on the space of extended limits all continuous operations can be extended with preservation of all algebraic identities.
 
 Moreover, for the limit extension it can hold, that any finite number of limits $\lim\dots\lim f$ (for $f:Y\to X$) is defined.
@@ -112,13 +114,17 @@ For each $S\in\subsets\SUPER(\mathbb{R})$, such that $\forall a\in S:a\ge B$ for
 \end{thm}
 
 \begin{proof}
+For the first level of the limit (of $\mathbb{R}$-va\-lu\-ed functions) we use this reasoning:
+
 Choose
 \[ F\in\prod_{a\in S}\setcond{f:X\to\SUPER(\mathbb{R})}{\lim_{x\to 0}f(x)=a}. \]
 Let
 \[ m=\lim_{x\to 0}\left(x\mapsto\inf_{f\in F}\max\{f(x),B\}\right). \]
 ($\inf_{f\in F}\max\{f(x),B\}$ exists because this set is bounded from below.) We will show that $m$ is the infimum of~$S$.
 
-It's obvious that $\forall a\in S:m\le a$ and $\forall a\in S:x\le a\Rightarrow x\le m$. 
+It's obvious that $\forall a\in S:m\le a$ and $\forall a\in S:x\le a\Rightarrow x\le m$.
+
+For $\lim\dots\lim$ (finite number of limits) the same reasoning applies inductively.
 \end{proof}
 
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
