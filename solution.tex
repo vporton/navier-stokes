@@ -77,19 +77,30 @@ for viscosity $\nu>0$, $f(t,x)\in C^\infty$ and initial condition $u_0\in C^\inf
 
 \section{The limit extension theorem}
 
-Refer to~\cite{limit} for definitions and theorems that warrant for our spaces ($\mathbb{R}^P$):
+We will consider functions $\mathbb{R}^P\to\mathbb{R}^Q$ or sequences $\mathbb{N}\to\mathbb{R}^Q$ for some $P,Q\in\mathbb{N}$. We define \emph{generalized limits} of such functions  (and of sequences at infinity) by the formula~(1) in~\cite[p.~6]{limit}:
+\begin{itemize}
+\item For the group~$G$ in~\cite{limit} take the group of translations of $\mathbb{R}^P$ (or, alternatively, its isometries) or $\mathbb{Z}$.
+\item On~$\mathbb{R}^Q$ we will consider the proximity relation~$\mathrm{X}$:
+\[ A\mathrel{\mathrm{X}}B \eqdef \inf_{x\in A,y\in B}\abs{x-y}=0,\quad A,B\in\mathbb{R}^Q. \]
 
-The $\lim$ (limit) functional can be linearly extended to the space all functions having as the range the space~$\SUPER(X)$ of generalized limits (where $X$ is the set non-ex\-ten\-ded limits take).
+It's easy to show that for this relation, if considered as a funcoid~\cite{volume-1-edition1}, $\mathrm{X}^{-1}\circ\mathrm{X}=\mathrm{X}$.
+\item It's obvious that $\mathrm{X}$ (as a funcoid~\cite[chapter~7, p.~144]{volume-1-edition1}) commutes with elements of~$G$.
+\item Thus generalized limit is defined.
+\end{itemize}
 
-Limits can be futher taken (with values remaining in~$\SUPER(X)$) for functions with values in $\SUPER(X)$.
+The generalized limit is defined for every function at all points.
 
-All finitary continuous operations can be extended from~$X$ to~$\SUPER(X)$ with preservation of all algebraic identities.
+In~\cite{limit} the set of all generalized limits over $X$ we denote as $\SLA(X)$. We can assume $X\subseteq\SLA(X)$ (by injectivity of $\tau$~\cite[p.~7]{limit}, using that $\mathbb{R}^Q$ is Hausdorff). When the usual limit exists, it is equal to the generalized limit~\cite[corollary 3, p.~7]{limit}.
+
+We have all derivatives on the set~$X$ to be always defined taking values in~$\SLA(X)$.
+
+Let denote
+\[ \SUPER(X) = X\cup\SLA(X)\cup\SLA(\SLA(X))\cup\dots. \]
+We have $\SUPER(X)$ closed regarding derivatives.
+
+We have all continuous finitary operations on~$\mathbb{R}^Q$ extendable to~$\SUPER(\mathbb{R}^Q)$ \cite[section 9, p.~8]{limit}. For all such operations, algebraic identities ($f(\dots)=g(\dots)$) on~$\SUPER(X)$ are the same as on~$X$~\cite[theorem 6, p.~10]{limit}, particularly generalized limit is a linear extension of the usual limit.
 
 I will call functions with values in $\SUPER(X)$ ``su\-per-sin\-gu\-lar functions''.
-
-Note that \[\SUPER(X)=X\cup\SLA(X)\cup\SLA(\SLA(X))\cup\dots\] where $\SLA(X)\supseteq X$ and all generalized limits of functions to~$X$ fall into $\SLA(X)$.
-
-Note that the above allows to take (su\-per-sin\-gu\-lar) derivatives of arbitrary functions.
 
 \section{Continuous functions with values in $\SUPER(\mathbb{R})$}
 
