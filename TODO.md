@@ -1,0 +1,3 @@
+* limited -> bounded
+
+* SLA -> SNG
