@@ -269,13 +269,8 @@ so $(\partial_t - \Delta)u = f$.
 
 \section{Rewriting in integral form}
 
-% The below proof assures uniqueness only of continuous solutions (because the integral requires a continuous argument). I didn't prove uniqueness of solutions. However, if at some point of time~$t_{\operatorname{crit}}$, the solutions ``split'' into both continuous and non-continuous~$u$, then it contradicts to a known theorem\fxnote{Cite.}, stating that under initial condition at~$t_{\operatorname{crit}}$ solutions are preserved to be smooth\fxwarning{Seems to be a wrong logic, because at~$t_{\operatorname{crit}}$ this solution can take only the initial value.}, so by contradiction we have full Clay Math problem solution.
 
-% If at some point of time~$t_{\operatorname{crit}}$ speed~$u$ becomes non-continuous,
 
-% Let's introduce a Banach norm on~$\mathbb{R}^N$:\fxwarning{Unused.}
-% \[ \lVert y\rVert_2 = \sqrt{\sum_{i=1}^N y_i^2}. \]
-% \[ \lVert y\rVert = \sqrt{\sup\setcond{\limsup_{x\to 0} f(x)^2}{f:\mathbb{R}^N\to\mathbb{R}, \lim_{x\to 0} f(x) = y}}. \]
 
 Let denote Leray projection as~$\mathbb{P}$.
 
@@ -296,14 +291,6 @@ u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \c
 \emph{supersingular mild solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Na\-vi\-er-Sto\-kes equations.
 \end{defn}
 
-% \begin{grayed}
-% Riesz transform of a classical function~$f$ is defined~\cite{enwiki:riesz} as
-% \[
-% \mathcal{R}_j f(x) = c \lim_{\epsilon\to 0}\int_{\mathbb{R}^N\setminus B_{\epsilon(0)}}\frac{(x_j-t_j)f(t)}{|x-t|^4} dt.
-% \]
-% where $c$ is a real constant.
-% This obviously generalizes to supersingular functions.
-% \end{grayed}
 
 \begin{thm}
 $C^\infty$ supersingular mild solutions of Na\-vi\-er-Sto\-kes equations are exactly $C^\infty$ solutions of Na\-vi\-er-Sto\-kes equations (without the requirement that~$p$ is $C^\infty$) taken on the space of supersingularities.
@@ -374,26 +361,12 @@ when $\nabla\cdot u=0$ initially and evolution preserves it (or check separately
 
 Use $\nabla\cdot(u\cdot\nabla)u = \sum_{i,j}\partial_i\partial_j(u_i u_j)$. Thus
 \[ -\Delta p = \nabla \cdot \nabla (u\otimes u) - \nabla \cdot f\quad\text{(Poisson)}. \]
-% i.e.
-% \[ -\Delta p = \sum_{i,j}\partial_i\partial_j(u_i u_j). \]
 It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$ and $f$ are $C^\infty$.
 
 Because $u$ is smooth, we can split this equality into zones, and it is true in every zone.
 On borders of zones, it can be constructed as a limit of the Poisson equation's solution in a zone. It does not depend on choice of the zone we take limit in, because~$u\in C^\infty$. Outside of zones it's zero.
 So, we have supersingular solution, too.
 
-% \begin{grayed}
-% \fxwarning{Need a detailed solution in su\-per-sin\-gu\-lar case.}
-% Solve the Poisson equation for $p(\cdot,t)$ (up to additive function of $t$) by convolution with the Newton potential: for each fixed $t$,
-% \[
-% p(\cdot,t) = (-\Delta)^{-1}\nabla\cdot\nabla\cdot(u\otimes u)(\cdot,t) = \mathcal{R}_i\mathcal{R}_j(u_i u_j),
-% \]
-% where $\mathcal{R}_k$ are the Riesz transforms. This recovers~$p$ (up to function of time) and shows that
-% \[ \nabla p = (I-\mathbb{P})\nabla\cdot(u\otimes u), \]
-% so the full PDE
-% \[ \partial_t u - \nu\Delta u + \nabla p + \nabla\cdot(u\otimes u) = 0 \]
-% holds. Since $\mathbb{P}\nabla p=0$, the splitting\fxnote{Check!} $\mathbb{P}\nabla\cdot(u\otimes u)-(I-\mathbb{P})\nabla\cdot(u\otimes u)=\nabla\cdot(u\otimes u)$ recovers the original nonlinear term plus the pressure.
-% \end{grayed}
 \end{proof}
 
 \section{The sequence of approximate solutions}
@@ -421,11 +394,7 @@ u(t) = \lim_{n\to\infty}u^{(n)}(t) =\\ G_t u(0) - \int_0^t \lim_{n\to\infty}\big
 \end{multline*}
 that is it is a solution.
 
-% \begin{grayed}
-% Let's denote for $\underline{a}\mathcal{X}=\supfun{\mathbb{R}}\supfun{f}\mathcal{X}$ for $a\in\mathbb{R}$, $f\in X\to\mathbb{R}$, $\lim_{\mathcal{X}}f=a$.
 
-% Prove that it does not depend on the choice of~$f$:
-% \end{grayed}
 
 \begin{thm}
 The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f:X\to L^1(\SUPER(\mathbb{R}))$ for $t>0$. (The norm is taken in~$\SUPER(\mathbb{R})$.)
@@ -433,32 +402,15 @@ The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ fo
 
 \begin{proof}
 Apply the classical result for each closed zone~$\overline{Z}$ of~$G_t f$.
-% There is only one zone for $G_t f$, because $G_t f(x)\ne 0$. So the classical result applies.
 
-% \begin{grayed}
-% Below the norms are taken in~$\SUPER(\mathbb{R})$.\fxnote{Need to prove that the used formulas are OK for this norm.}
 
-% We will prove $\norm{e^{t\Delta}f}_{H^{s+r}}\le Ct^{-r/2}\norm{f}_{H^s}$, where the norms are taken in~$\SUPER(\mathbb{R})$.\fxnote{Details and how the thesis follows.}
 
-% By uniform continuity of the argument\fxnote{Specify the argument.} of $G_t$ on closed inteval, its argument is $H^{s+r}$. So it is enough to show that $\norm{G_t}_{H^{s+r}\to H^s}\le Ct^{-r/2}$.
 
-% Equilently\fxnote{Prove the equivalence.} for $k\ge 0$,
-% \[ \norm{\nabla^k G_t f}_{L^2}\leq Ct^{-r/2}\norm{f}_{L^2}. \]
 
-% Using the Fourier transform
-% \[ \widehat{G_t f}(\xi) = \int_{\mathbb{R}^N}(1+\abs{\xi}^2)^{s+r}e^{-2\nu t\abs{\xi^2}}\abs{\hat{f}(\xi)}^2 d\xi. \]
-% It's easy to see\fxnote{Show.} that $(1+\abs{\xi}^2)^{s+r}e^{-2\nu t\abs{\xi^2}}\le Ct^{-r}$. Thus the integral $\le Ct^{-r}\norm{f}_{H^s}^2$. Take square root to get the stated estimate.
-% \end{grayed}
 
-% It is known\fxnote{Reference.}, that $G_t$ is infinitely smoothing classical functions (and even distributions).
 
-% So, $G_t f\in C^\infty$ for any classical~$f$.
 
-% \fxnote{Formulate the proof exactly.}Let $F$ be a supersingular function. Let $\mathcal{X}$ be an ultrafilter or, equilently, a sequence of points converging to a point $x$.
 
-% By the above shown interchange of limits,
-% \[ \supfun{G_t}\underline{F}\mathcal{X} = G_t\lim_{x\to\mathcal{X}}f(x) = \lim_{x\to\mathcal{X}}G_t F(x). \]
-% So $G_t$ is a limit of an infinitely smoothing function and so is infinitely smoothing.
 \end{proof}
 
 Therefore the integral~$u$ is $C^\infty$ (on the set $\SUPER(\mathbb{R}^N)$).
