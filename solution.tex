@@ -16,6 +16,7 @@
 \DeclareMathOperator{\xlim}{xlim}
 \DeclareMathOperator{\SUPER}{SUPER}
 \DeclareMathOperator{\SNG}{SNG}
+\DeclareMathOperator{\fSNG}{fSNG}
 \newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
 \newcommand{\subsets}{\mathscr{P}}
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
@@ -94,17 +95,11 @@ In~\cite{limit} the set of all generalized limits over $X$ we denote as $\SNG(X)
 
 We have all derivatives on the set~$X$ to be always defined taking values in~$\SNG(X)$.
 
-Let denote
-\[ \SUPER(X) = X\cup\SNG(X)\cup\SNG(\SNG(X))\cup\dots. \]
-We have $\SUPER(X)$ closed regarding derivatives.
+We have all continuous finitary operations on~$\mathbb{R}^Q$ extendable to~$\fSNG({-},\mathbb{R}^Q)$ \cite[section 9, p.~8]{limit}. For all such operations, algebraic identities ($f(\dots)=g(\dots)$) on~$\fSNG({-},X)$ are the same as on~$X$~\cite[theorem 6, p.~10]{limit}, particularly generalized limit is a linear extension of the usual limit.
 
-We have all continuous finitary operations on~$\mathbb{R}^Q$ extendable to~$\SUPER(\mathbb{R}^Q)$ \cite[section 9, p.~8]{limit}. For all such operations, algebraic identities ($f(\dots)=g(\dots)$) on~$\SUPER(X)$ are the same as on~$X$~\cite[theorem 6, p.~10]{limit}, particularly generalized limit is a linear extension of the usual limit.
+As shown in \cite[section~12, p.~11]{limit}, on $\fSNG({-},X)$ there is defined funcoid structure, what allows to take limits on it.
 
-As shown in \cite[section~12, p.~11]{limit}, on $\SUPER(X)$ there is defined funcoid structure, what allows to take limits on it.
-
-I will call functions with values in $\SUPER(X)$ ``su\-per-sin\-gu\-lar functions''.
-
-\section{Continuous functions with values in $\SUPER(\mathbb{R})$}
+\section{Continuous supersingular functions with values in}
 
 Let $X$ be some Lebesgue measurable set and some element $0\in X$ (not necessarily real zero or zero vector).
 
@@ -151,7 +146,7 @@ For $\SNG(\dots\SNG(\mathbb{R})\dots)$ (finite number of limits) the same reason
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
 
 \begin{thm}
-If a set $X$ is Lebesgue measurable and $f:X\to\SUPER(\mathbb{R}^N)$ is continuous, then:
+If a set $X$ is Lebesgue measurable and $f:fSNG({-},\mathbb{R}^N)$ is continuous, then:
 \begin{enumerate}
 \item $\setcond{x\in X}{f(x)\ne 0}$ is partitioned into Lebesgue measurable sets (\emph{zones})
   \[ \setcond{Z_k}{k\in\SUPER(\mathbb{R}^N)\setminus\{0\}}, \]
@@ -185,6 +180,8 @@ I call the zone with $k\in\mathbb{R}^N\setminus\{0\}$ \emph{the classical zone}.
 
 \section{Lebesgue integrals}
 
+By a \emph{supersingular function} or a solution in \emph{supersingularities} I mean a function $f:\fSNG(X,\mathbb{R})$ (where~$X$ is a suitable space), see~\cite{limit}.
+
 \begin{rem}
 (Lebesgue) integrals could be instead defined on the space of generalized limits functions the same way as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities. But for our purposes it is enough to define integrals on the space of continuous generalized limits functions, and this special case is much simpler to prove properties of.
 \end{rem}
@@ -213,7 +210,7 @@ Let $a<b$ be real numbers. Then:
 \item If $f\in L^1([a,b])$ (absolutely integrable by Lebesgue) and
 \[ F(x) = \int_a^x f(t) dt \quad\text{for } x\in [a,b]\]
 then $F$ is absolutely continuous on $[a,b]$, differentiable almost everywhere on $[a,b]$, and $F'(x) = f(x)$ almost everywhere on $[a,b]$.
-\item $G:[a,b]\to\SUPER(\mathbb{R})$ is absolutely continuous on $[a,b]$, $G'$ exists almost everywhere, and $G'(x) \in L^1([a,b])$ and
+\item $G\in fSNG([a,b],\mathbb{R})$ is absolutely continuous on $[a,b]$, $G'$ exists almost everywhere, and $G'(x) \in L^1([a,b])$ and
 \[ G(x)-G(a) = \int_a^x G'(t) dt \quad\text{for } x\in [a,b].\]
 \end{enumerate}
 \end{thm}
@@ -248,7 +245,7 @@ u_s(x,s) &= f(x,s).
 \end{aligned}
 \right.
 \end{equation*}
-If the above family of equations have continuous in~$s$ solutions~$u_s(x,t)$ on supersingularities then the function
+If the above family of equations have continuous in~$s$ solutions~$u_s(x,t)$ in supersingularities then the function
 \[ u(x,t) = \int_0^t u_s(x,t) ds \]
 is a continuous solution of the inhomogeneous linear evolution equation in supersingularities.
 \end{thm}
@@ -275,7 +272,7 @@ so $(\partial_t - \Delta)u = f$.
 Let denote Leray projection as~$\mathbb{P}$.
 
 \begin{lem}
-If $u$ is a $C^\infty$ super-sin\-gu\-lar function, then \[ e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) \] is also a continuous super-singular function for $s\in[0,t]$.
+If $u$ is a $C^\infty$ super-sin\-gu\-lar function, then \[ e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) \] is also a continuous super-sin\-gu\-lar function for $s\in[0,t]$.
 \end{lem}
 
 \begin{proof}
@@ -283,7 +280,7 @@ Obvious.
 \end{proof}
 
 \begin{defn}
-I call the following defined for continuous functions taking supersingularities as values:
+I call the following defined for supersingular continuous functions:
 \begin{equation}
 u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) ds
 + \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} f(s) ds
@@ -293,7 +290,7 @@ u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \c
 
 
 \begin{thm}
-$C^\infty$ supersingular mild solutions of Na\-vi\-er-Sto\-kes equations are exactly $C^\infty$ solutions of Na\-vi\-er-Sto\-kes equations (without the requirement that~$p$ is $C^\infty$) taken on the space of supersingularities.
+$C^\infty$ supersingular mild solutions of Na\-vi\-er-Sto\-kes equations are exactly $C^\infty$ solutions of Na\-vi\-er-Sto\-kes equations (without the requirement that~$p$ is $C^\infty$) in supersingularities.
 \end{thm}
 
 \begin{proof}
@@ -366,7 +363,6 @@ It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$
 Because $u$ is smooth, we can split this equality into zones, and it is true in every zone.
 On borders of zones, it can be constructed as a limit of the Poisson equation's solution in a zone. It does not depend on choice of the zone we take limit in, because~$u\in C^\infty$. Outside of zones it's zero.
 So, we have supersingular solution, too.
-
 \end{proof}
 
 \section{The sequence of approximate solutions}
@@ -395,14 +391,14 @@ u(t) = \lim_{n\to\infty}u^{(n)}(t) =\\ G_t u(0) - \int_0^t \lim_{n\to\infty}\big
 that is it is a solution.
 
 \begin{thm}
-The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f:X\to L^1(\SUPER(\mathbb{R}))$ for $t>0$. (The norm is taken in~$\SUPER(\mathbb{R})$.)
+The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f:X\to L^1$ on $\fSNG({-},\mathbb{R})$ for $t>0$. (The norm is taken in~$\fSNG({-},\mathbb{R})$.)
 \end{thm}
 
 \begin{proof}
 Apply the classical result for each closed zone~$\overline{Z}$ of~$G_t f$.
 \end{proof}
 
-Therefore the integral~$u$ is $C^\infty$ (on the set $\SUPER(\mathbb{R}^N)$).
+Therefore the integral~$u$ is $C^\infty$ (on the set $\fSNG({-},\mathbb{R}^N)$).
 
 It remains to prove that $u$ takes on values in~$\mathbb{R}^N$ (is classical).
 
