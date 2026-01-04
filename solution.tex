@@ -22,6 +22,8 @@
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \newcommand{\abs}[1]{\left\lvert #1\right\rvert}
 \newcommand{\supfun}[1]{\left\langle #1\right\rangle}
+\newcommand{\suprel}[1]{\left[#1\right]}
+\newcommand{\rsuprel}[1]{\left[#1\right]^\ast}
 
 \hypersetup{pdftitle={A Proof of Existence of Smooth Classical Solutions of Na\-vi\-er-Sto\-kes Equations},
  pdfauthor={Victor Porton},
@@ -83,8 +85,8 @@ for viscosity $\nu>0$, $f(t,x)\in C^\infty$ and initial condition $u_0(x)\in C^\
 We will consider functions $\mathbb{R}^P\to\mathbb{R}^Q$ or sequences $\mathbb{N}\to\mathbb{R}^Q$ for some $P,Q\in\mathbb{N}$. We define \emph{generalized limits} of such functions at points of $\mathbb{R}^P$ (and of sequences at infinity) by the formula~(1) in~\cite[p.~6]{limit}:
 \begin{itemize}
 \item For the group~$G$ in~\cite{limit} take the group of translations of $\mathbb{R}^P$ (or, alternatively, its isometries). For limits of sequences at infinity take~$G$ to be the identity permutations group.
-\item On~$\mathbb{R}^Q$ we will consider the proximity relation~$\mathrm{X}$:
-\[ A\mathrel{\mathrm{X}}B \eqdef \inf_{x\in A,y\in B}\abs{x-y}=0,\quad A,B\in\mathbb{R}^Q. \]
+\item On~$\mathbb{R}^Q$ we will consider the proximity~$\mathrm{X}$ with corresponding nearness relation~$\rsuprel{\mathrm{X}}$:
+\[ A\rsuprel{\mathrm{X}}B \eqdef \inf_{x\in A,y\in B}\abs{x-y}=0,\quad A,B\in\mathbb{R}^Q. \]
 
 It's easy to show that for this relation, if considered as a funcoid~\cite{volume-1-edition1}, $\mathrm{X}^{-1}\circ\mathrm{X}=\mathrm{X}$ and consequently formula~(3) in~\cite{limit} by~\cite[proposition~6, p.~6]{limit} is valid.
 \item It's obvious that $\mathrm{X}$ (as a funcoid~\cite[chapter~7, p.~144]{volume-1-edition1}) commutes with elements of~$G$.
