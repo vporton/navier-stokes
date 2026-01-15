@@ -17,6 +17,7 @@
 \DeclareMathOperator{\SUPER}{SUPER}
 \DeclareMathOperator{\SNG}{SNG}
 \DeclareMathOperator{\fSNG}{fSNG}
+\DeclareMathOperator{\interrior}{int}
 \newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
 \newcommand{\subsets}{\mathscr{P}}
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
@@ -146,7 +147,7 @@ For $\SNG(\dots\SNG(\mathbb{R})\dots)$ (finite number of limits) the same reason
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
 
 \begin{thm}
-If a set $X$ is Lebesgue measurable and $f\in fSNG({-},\mathbb{R}^N)$ is continuous, then:
+If a set $X$ is Lebesgue measurable and $f\in\fSNG({-},\mathbb{R}^N)$ is continuous, then:
 \begin{enumerate}
 \item $\setcond{x\in X}{f(x)\ne 0}$ is partitioned into Lebesgue measurable sets (\emph{zones})
   \[ \setcond{Z_k}{k\in\SUPER(\mathbb{R}^N)\setminus\{0\}}\setminus\{\emptyset\}, \]
@@ -210,13 +211,41 @@ Let $a<b$ be real numbers. Then:
 \item If $f\in L^1([a,b])$ (absolutely integrable by Lebesgue) and
 \[ F(x) = \int_a^x f(t) dt \quad\text{for } x\in [a,b]\]
 then $F$ is absolutely continuous on $[a,b]$, differentiable almost everywhere on $[a,b]$, and $F'(x) = f(x)$ almost everywhere on $[a,b]$.
-\item $G\in fSNG([a,b],\mathbb{R})$ is absolutely continuous on $[a,b]$, $G'$ exists almost everywhere, and $G'(x) \in L^1([a,b])$ and
+\item If $G\in\fSNG([a,b],\mathbb{R})$ is absolutely continuous on $[a,b]$, $G'$ exists almost everywhere, and $G'(x) \in L^1([a,b])$, then
 \[ G(x)-G(a) = \int_a^x G'(t) dt \quad\text{for } x\in [a,b].\]
 \end{enumerate}
 \end{thm}
 
 \begin{proof}
-Obvious consequence of the same property for Lebesgue integrals on the space of functions with real number values (we use an absolutely convergent series).
+Let $f\in L^1([a,b])$ and $F(x) = \int_a^x f(t) dt$. Then because each zone (for function~$f$) $Z$ is an open set, it is representable as at most countable union~$I_Z$ of intervals. Moreover, then the entire union of all zones $\bigcup_{Z\in S} I_Z$ is representable as at most countable union~$I'$ of intervals. The interior $\interrior\setcond{x\in [a,b]}{f(x)=0}$ is also representable as at most countable union~$I''$ of intervals. Let denote the set of all such intervals $I = I'\cup I''$. The set of points on the borders of these intervals~$I$ is therefore at most countable and thus negligible.
+
+Let us denote $K=\setcond{J\in I'}{\max J<x}$.
+
+Therefore either $x\in J$ for some~$J\in I'$ or $x\in J$ for some $J\in I''$ ($f(x)=0$). Consider both cases
+
+\begin{itemize}
+\item If $x\in J$ for some $J\in I'$ then
+\[ F(x) = \int_{\bigcup K} f(t) dt + \int_{J\cap [a,x]} f(t) dt \]
+(This integral is absolutely convergent because $K$ is at most countable.)
+
+Obviously, $F$ is absolutely continuous at~$x$, differentiable at~$x$ (except of a negligible set of points) and \[ F'(x) = 0 + \left(x\mapsto\int_{J\cap [a,x]} f(t) dt\right)' = f(x). \]
+
+\item If $x\in J$ for some $J\in I''$, then it's obvious.
+\end{itemize}
+
+The other direction:
+
+Let $G\in\fSNG([a,b],\mathbb{R})$ be absolutely continuous on $[a,b]$, $G'$ exists almost everywhere, and $G'(x) \in L^1([a,b])$.
+
+We have for suitable~$k_j$
+\begin{multline*}
+\int_a^x G'(t) dt =
+\sum_{j\in K}\int_j k_j (G'(t)/k_j) dt + \int_{J\cap [a,x]} k_J (G'(t)/k_J) dt =\\
+\sum_{J\in K}k_j\int_j (G'(t)/k_j) dt + k_J\int_{J\cap [a,x]} k_J (G'(t)/k_J) dt =\\
+\sum_{J\in K}k_j(G(\inf j) - G(\sup j))/k_j + k_J(G(x) - G(a))/k_J =\\
+\sum_{J\in K}(G(\inf j) - G(\sup j)) + (G(x) - G(a)) = G(x) - G(a),
+\end{multline*}
+because $G'$ is zero between zones.
 \end{proof}
 
 \section{Inhomogenious linear differential equations}
