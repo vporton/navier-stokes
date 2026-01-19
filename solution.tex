@@ -72,11 +72,15 @@ I had a little trouble to understand the ChatGPT's proof, because while being an
 
 We are going to prove existence (in the sense of classical real-number solutions) and smoothness~($C^\infty$) of solutions to Na\-vi\-er-Sto\-kes equations on $\mathbb{R}^N$ ($N\in\mathbb{N}$).
 Let speed $u(x,t):\mathbb{R}^N\times[0;\infty)\to\mathbb{R}^N$ and pressure $p(x,t):\mathbb{R}^N\times[0;\infty)\to\mathbb{R}$.
-\begin{align*}
+\[
+\left\{
+\begin{aligned}
 \partial_t u - \nu\Delta u + (u \cdot \nabla) u + \nabla p &= f ;\\
 \nabla \cdot u &= 0;\\
 u({\cdot},0) &= u_0
-\end{align*}
+\end{aligned}
+\right.
+\]
 for viscosity $\nu>0$, $f(t,x)\in C^\infty$ and initial condition $u_0(x)\in C^\infty$.
 
 \section{The limit extension theorems}
