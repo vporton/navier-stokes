@@ -58,7 +58,7 @@ I analyze Na\-vi\-er-Sto\-kes equations using ``generalized limit'' (a linearly 
 
 \section{Introduction}
 
-This is a rectified proof by ChatGPT~\cite{navier-stokes-chat} of the Na\-vi\-er-Sto\-kes Clay Math Millennium Prize Problem~\cite{navier-stokes-clay}, using the approach of generalized limits~\cite{limit}\footnote{In~\cite{limit-old} there was found an error, so I refer to the preprint with corrected error, instead.} (more general generalized functions than distributions) suggested to the LLM by me. In fact, that ChatGPT's proof didn't settle the energy inequality, but only existence of solutions, despite it claimed~\cite{navier-stokes-chat} a full solution.
+This is a rectified proof by ChatGPT~\cite{navier-stokes-chat} of the Na\-vi\-er-Sto\-kes Clay Math Millennium Prize Problem~\cite{navier-stokes-clay}, using the approach of generalized limits~\cite{limit} (more general generalized functions than distributions) suggested to the LLM by me. In fact, that ChatGPT's proof didn't settle the energy inequality, but only existence of solutions, despite it claimed~\cite{navier-stokes-chat} a full solution.
 
 In my approach multiplication of every functions is defined, what allows to write formulas undefined for distributions.
 
@@ -433,7 +433,7 @@ Rewrite the equation as:
 G_t u(0) - u(t) = \int_0^t G_{t-s} \bigl(\mathbb{P}\nabla\cdot(u\otimes u)(s) - \mathbb{P}f(s)\bigr)ds.
 \end{equation}
 
-It is well-known that~$u$ is classical for some time interval starting from $t=0$. Suppose that at the time $t_{\operatorname{crit}}$, the solution becomes non-clas\-si\-cal. This is possible only at a border of the classical zone (the integrand in~\eqref{to-classical} is equal to~$0$ at $t=t_{\operatorname{crit}}$), therefore the left derivative (and by $C^\infty$, right derivative, too) of the integral is in~$\mathbb{R}$ for $t\in[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$. This warrants that the derivative on $[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$ is limited and therefore the integral takes on $[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$ values in~$\mathbb{R}$. Therefore the integral is in~$\mathbb{R}$ at~$t=t_{\operatorname{crit}}$.
+It is well-known that~$u$ is classical for some time interval starting from $t=0$. Suppose that at the time $t_{\operatorname{crit}}$, the solution becomes non-clas\-si\-cal. This is possible only at a border of the classical zone (the integrand in~\eqref{to-classical} is equal to~$0$ at $t=t_{\operatorname{crit}}$), therefore the left derivative (and by $C^\infty$, right derivative, too) of the integral is in~$\mathbb{R}$ for $t\in[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$. This warrants that the derivative on $[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$ is bounded and therefore the integral takes on $[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$ values in~$\mathbb{R}$. Therefore the integral is in~$\mathbb{R}$ at~$t=t_{\operatorname{crit}}$.
 
 \section{The energy inequality}
 
