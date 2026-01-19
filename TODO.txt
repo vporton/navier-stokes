@@ -1,0 +1,2 @@
+- "The heat semigroup Gt is infinitely smoothing" contains wrong function notations
+  like fSNG(-,R) instead of fSNG(X,R) and nonsense ->L^1
