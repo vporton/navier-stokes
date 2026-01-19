@@ -417,11 +417,11 @@ u(t) = \lim_{n\to\infty}u^{(n)}(t) =\\ G_t u(0) - \int_0^t \lim_{n\to\infty}\big
 that is it is a solution.
 
 \begin{thm}
-The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f:X\to L^1$ on $\fSNG({-},\mathbb{R})$ for $t>0$. (The norm is taken in~$\fSNG({-},\mathbb{R})$.)
+The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f\in\fSNG({-},\mathbb{R})\cap L^1$ for $t>0$. (The norm is taken in~$\fSNG({-},\mathbb{R})$.)
 \end{thm}
 
 \begin{proof}
-Apply the classical result for each closed zone~$\overline{Z}$ of~$G_t f$.
+Apply the classical result for each closed zone~$\overline{Z}$ of~$G_t f$. (Outside closed zones, points have a neighborhood where $G_t f$ is zero and thus smooth, too.)
 \end{proof}
 
 Therefore the integral~$u$ is $C^\infty$ (on the set $\fSNG({-},\mathbb{R}^N)$).
