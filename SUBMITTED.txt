@@ -4,4 +4,5 @@ Partial Differential Equations and Applications - submitted 30 Dec 2025 - reject
 Israel Journal of Mathematics - submitted 11 Jan 2026 - rejected 13 Jan 2025 "not to consider papers purporting to prove this theorem".
 Applied General Topology - Papers dealing with generalizations... of topological spaces... will not be considered.
 Journal of Topology - submitted 13 Jan 2026 - withdrawn 14 Jan 2026 "want to submit to a more topical journal"- reply 18 Jan 2025 "falls outside of the scope"
-Annals of PDE - submitted 14 Jan 2026
+Annals of PDE - submitted 14 Jan 2026 - rejected 20 Feb 2026 with an intentionally unclear reason
+
