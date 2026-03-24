@@ -6,5 +6,6 @@ Applied General Topology - Papers dealing with generalizations... of topological
 Journal of Topology - submitted 13 Jan 2026 - withdrawn 14 Jan 2026 "want to submit to a more topical journal"- reply 18 Jan 2025 "falls outside of the scope"
 Annals of PDE - submitted 14 Jan 2026 - rejected 20 Feb 2026 with an intentionally unclear reason
 Journal of Functional Analysis - submitted 20 Feb 2026 - rejected 18 Mar 2026 "highest quality articles"
-Journal of Differential Equations - can transfer to it
+Journal of Differential Equations - can transfer to it - BUGS
 Physics of Fluids - submitted 22 Mar 2026 - rejected as not belonging to a physics journal
+Journal of Mathematical Physics - submitted 24 Mar 2026
