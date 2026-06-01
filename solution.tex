@@ -40,7 +40,7 @@ The most recent version of this document is available \href{https://github.com/v
 
 \title[Na\-vi\-er-Sto\-kes]{Analyzing Na\-vi\-er-Sto\-kes Equations Using a Linearly Extended Limit Functional}
 
-\author{Victor Porton, ORCID 0000-0001-7064-7975, Ashkelon}
+\author{Victor Porton, ORCID 0000-0001-7064-7975, Ashkelon  }
 
 \email{\href{mailto:porton.victor@gmail.com}{porton.victor@gmail.com}}
 
@@ -445,13 +445,24 @@ G_t u(0) - u(t) = \int_0^t G_{t-s} \bigl(\mathbb{P}\nabla\cdot(u\otimes u)(s) - 
 
 It is well-known that~$u$ is classical for some time interval starting from $t=0$. Suppose that at the time $t_{\operatorname{crit}}$, the solution becomes non-clas\-si\-cal. This is possible only at a border of the classical zone (the integrand in~\eqref{to-classical} is equal to~$0$ at $t=t_{\operatorname{crit}}$), therefore the left derivative (and by $C^\infty$, right derivative, too) of the integral is in~$\mathbb{R}$ for $t\in[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$. This warrants that the derivative on $[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$ is bounded and therefore the integral takes on $[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$ values in~$\mathbb{R}$. Therefore the integral is in~$\mathbb{R}$ at~$t=t_{\operatorname{crit}}$.
 
+For further contradiction to come, assume that such $t_{\operatorname{crit}}$ exists.
+
 \section{The energy inequality}
 
 First, note that it is well-known that the classical solutions are unique.
 
-To finish the solution of the Clay Math Millennium Prize Problem, we need to prove the energy inequality~\cite{navier-stokes-clay} in the 3D case.
+We need to prove the energy inequality~\cite{navier-stokes-clay} in the 3D case.
 
 But it is well-known that the energy inequality holds for classical solutions. For a reference, see~\cite{navier-stokes-energy}.
+
+\section{Local continuation principle}
+
+By the well-known \emph{local continuation principle} (continuation is possible after~$t_{\operatorname{crit}}$, by taking it as the new initial conditions), the solution can be continuedas a classical solution after $t_{\operatorname{crit}}$. This (the continued solution  ) is a contradiction.
+Thus, the solution is classical for all $t\ge 0$ (in classical sense) on $[0;t_{\operatorname{crit}}+\epsilon]$ for some $\epsilon>0$. 
+
+Local continuation principle for Navier-Stokes equations states that if a solution (in classical sense) on $[0;t_{\operatorname{crit}}]$ exists, then for some $\epsilon'>0$ the solution can be continued to $[0;t_{\operatorname{crit}}+\epsilon']$.
+
+To finish the proof by contradicting to the value $t_{\operatorname{crit}}$, we need to show that the solution glued together solution is $C^\infty$, that is that at $t_{\operatorname{crit}}$ in the it's $C^\infty$. Really, it is $C^\infty$ at the left and at the right derivatives are determined by the same functions of~$u$ as on the left and are therefore the same. \fxwarning{Prove}Pressure~$p$ is therefore also in~$C^\infty$. $C^\infty$~at~$t_{\operatorname{crit}}$ is proved.
 
 \section{Further directions}
 
