@@ -122,25 +122,42 @@ We have all continuous finitary operations on~$\mathbb{R}^Q$ extendable to
 Let $X$ be some Lebesgue measurable set and some element $0\in X$ (not necessarily real zero or zero vector).
 
 \begin{defn}
-Let $a,b\in\SNG(X)$. Then for limits of functions $Y\to X$:
-\[ a\le b \eqdef \exists f,g:Y\to X:\left(\lim_{x\to 0}f(x)=a\land\lim_{x\to 0}g(x)=b\land f\le g\right). \]
+Let $\wedge:\SUPER(\mathbb{R})^2\to\SUPER(\mathbb{R})$ be the
+levelwise extension of the continuous operation
+\[
+  (x,y)\mapsto\min\{x,y\}
+\]
+provided by the limit extension theorem.  For $a,b\in\SUPER(\mathbb{R})$,
+define
+\[
+  a\leq b \eqdef a\wedge b=a.
+\]
 \end{defn}
 
-The above easily can be easily extended to $a,b\in\SUPER(X)$.
-
 \begin{prop}
-The above defined is a partial order on~$\SUPER(\mathbb{R})$.
+The above defined relation is a partial order on~$\SUPER(\mathbb{R})$ and
+extends the usual order on~$\mathbb{R}$.
 \end{prop}
 
 \begin{proof}
-Let
-\[ a,b\in\underbrace{\SNG(\dots\SNG(\mathbb{R})\dots)}_{\text{Apply $\SNG$ $K$ times}}. \]
-
-By induction, we have:
-
-Transitivity and reflexivity are obvious.
-
-For antisymmetry, let $a\leq b$ and $b\leq a$. We have $\lim_{x\to 0}|g(x)-f(x)|\geq 0$ and $\lim_{x\to 0}|g(x)-f(x)|\leq 0$. So, $\lim_{x\to 0}|g(x)-f(x)|=0$ and therefore $a=b$.
+The identities
+\[
+  a\wedge a=a,\qquad
+  a\wedge b=b\wedge a,\qquad
+  (a\wedge b)\wedge c=a\wedge(b\wedge c)
+\]
+hold on~$\mathbb{R}$ and therefore hold for their levelwise extensions by the
+limit extension theorem.  Thus $a\leq a$.  If $a\leq b$ and $b\leq a$, then
+\[
+  a=a\wedge b=b\wedge a=b.
+\]
+If $a\leq b$ and $b\leq c$, then
+\[
+  a\wedge c=(a\wedge b)\wedge c
+  =a\wedge(b\wedge c)=a\wedge b=a,
+\]
+so $a\leq c$.  Finally, for $a,b\in\mathbb{R}$ the equality
+$\min\{a,b\}=a$ is equivalent to the usual inequality $a\leq b$.
 \end{proof}
 
 \begin{thm}
@@ -476,21 +493,14 @@ To finish the proof by contradicting to the value $t_{\operatorname{crit}}$, we 
 This is the opinion (now edited by me) of Open AI's GPT-5.5 Medium on my proof.
 
 The preceding argument does not prove global existence of classical solutions.  The
-following issues need to be resolved.
+following list records the issues and their status.
 
 \begin{enumerate}
-\item The proposed order on $\SUPER(\mathbb{R})$ is not proved to be
-well-defined.  It is defined by the existence of representatives, but the proof
-of antisymmetry uses one pair $f,g$ as if it simultaneously witnessed both
-$a\leq b$ and $b\leq a$.  The two inequalities may have different witnesses.
-Transitivity, independence of representatives, and the induction through the
-levels of $\SNG$ are also not proved.
-
 \item The proof of existence of $\inf S$ is incomplete.  To prove the
-greatest-lower-bound property one must compare representatives simultaneously;
-the existential definition of the order does not justify the displayed
-pointwise infimum argument.  The empty-set case is not handled, and the claimed
-induction over iterated generalized limits is not given.
+greatest-lower-bound property for the algebraically defined order, the displayed
+pointwise infimum argument must be justified.  The empty-set case is not
+handled, and the claimed induction over iterated generalized limits is not
+given.
 
 \item The zone sets do not form the claimed indexed partition as written.  If
 $k'=ck$ for a nonzero real scalar $c$, then $Z_{k'}=Z_k$, so distinct indices
