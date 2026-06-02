@@ -464,6 +464,143 @@ Local continuation principle for Navier-Stokes equations states that if a soluti
 
 To finish the proof by contradicting to the value $t_{\operatorname{crit}}$, we need to show that the solution glued together solution is $C^\infty$, that is that at $t_{\operatorname{crit}}$ in the it's $C^\infty$. Really, it is $C^\infty$ at the left and at the right derivatives are determined by the same functions of~$u$ as on the left and are therefore the same. \fxwarning{Prove}Pressure~$p$ is therefore also in~$C^\infty$. $C^\infty$~at~$t_{\operatorname{crit}}$ is proved.
 
+\section{Errors and insufficiently justified steps}
+
+This is the opinion of Open AI's GPT-5.5 Medium on my proof.
+
+The preceding argument does not prove global existence of classical solutions.  The
+following issues need to be resolved.
+
+\begin{enumerate}
+\item The problem statement is not the Clay problem as stated.  It allows arbitrary
+$N$ and arbitrary smooth $u_0$ and $f$, without assumptions such as
+divergence-free initial data, decay, periodicity, or finite energy.  Smooth
+functions on $\mathbb{R}^N$ need not be integrable or have finite energy.
+
+\item It is asserted that generalized limits are defined for every function, that
+derivatives always exist with values in $\SNG(X)$, and that
+$\fSNG({-},\mathbb{R}^Q)$ is closed under differential operators.  The cited
+extension of continuous finitary operations does not by itself establish these
+claims: differentiation, integration, the heat semigroup, and the Leray
+projection are not finitary pointwise operations.  The required domains,
+topologies, and compatibility results are not supplied.
+
+\item The proposed order on $\SUPER(\mathbb{R})$ is not proved to be
+well-defined.  It is defined by the existence of representatives, but the proof
+of antisymmetry uses one pair $f,g$ as if it simultaneously witnessed both
+$a\leq b$ and $b\leq a$.  The two inequalities may have different witnesses.
+Transitivity, independence of representatives, and the induction through the
+levels of $\SNG$ are also not proved.
+
+\item The proof of existence of $\inf S$ is incomplete.  To prove the
+greatest-lower-bound property one must compare representatives simultaneously;
+the existential definition of the order does not justify the displayed
+pointwise infimum argument.  The empty-set case is not handled, and the claimed
+induction over iterated generalized limits is not given.
+
+\item The zone sets do not form the claimed indexed partition as written.  If
+$k'=ck$ for a nonzero real scalar $c$, then $Z_{k'}=Z_k$, so distinct indices
+can name the same nonempty set.  The proof that zone boundaries have value zero
+also assumes without proof that the only alternative to nearby zero values is a
+single fixed neighboring zone.  A neighborhood can meet infinitely many
+different zones.  The multiplication argument in that case does not establish
+the conclusion.  Consequently openness, measurability, and the representation
+on the closure of each zone are not established.
+
+\item Continuity and absolute convergence for generalized-valued functions are
+used without a specified topology, norm, or complete topological vector space.
+In particular, the definition
+\[
+\int_A f(x)\,dx=\sum_{Z\in S}k_Z\int_Z a_Z(x)\,dx
+\]
+does not define what absolute convergence of a possibly uncountable
+generalized-valued sum means, and independence of the choices of $k_Z$ and
+$a_Z$ is only asserted.
+
+\item The generalized-valued fundamental theorem of calculus is not proved.
+The interval decomposition does not cover all relevant points: the complement
+of the union of the zones and the interior of the zero set can contain a
+positive-measure boundary set.  Local differentiability on component intervals
+does not prove global absolute continuity.  In the converse direction the
+calculation divides by generalized values without justification, has
+inconsistent indices and an extra factor $k_J$, uses reversed endpoint
+differences, and assumes a telescoping identity that has not been established.
+
+\item The proof of Duhamel's principle assumes precisely the analytic facts that
+need proof in the new setting.  Continuity alone does not imply that the
+newly-defined integral exists.  The Leibniz rule, differentiation under the
+integral sign, and commutation of $\Delta$ with the integral are not justified
+for generalized-valued functions.
+
+\item The Leray projection and heat semigroup are nonlocal operators.  Their
+classical Fourier formulas do not automatically extend by ``linear
+combinations for the zones.''  Function spaces on which these operators act,
+their mapping properties, and their compatibility with generalized limits must
+be proved.  The lemma declaring the nonlinear integrand continuous is therefore
+not obvious.  Moreover, the statement that the integrand is $L^1$ because it is
+$C^\infty$ is false on $\mathbb{R}^N$.
+
+\item There are sign errors in the projected-equation computation.  Applying
+$\mathbb{P}$ to the displayed Navier--Stokes equation gives a plus sign in
+front of $\mathbb{P}((u\cdot\nabla)u)$, contrary to one displayed line.
+Differentiating the mild formula should give
+\[
+\partial_tu-\nu\Delta u
+=-\mathbb{P}\nabla\cdot(u\otimes u)+\mathbb{P}f,
+\]
+not the formula displayed in the converse calculation.  The signs of the
+integral terms in that differentiation are also reversed.
+
+\item Recovery of the pressure is incomplete.  It requires an appropriate
+Helmholtz decomposition and a solution theory for the Poisson equation in
+specified function spaces.  The displayed Poisson formula has ambiguous
+notation, and smoothness of the data alone does not justify the proposed
+zone-by-zone construction or the claim that the constructions agree on zone
+boundaries.
+
+\item The Picard iteration is not shown to converge in any classical function
+space, nor is it shown to remain in a space on which all displayed integrals
+exist.  Taking an extended limit of an arbitrary sequence does not replace the
+estimates needed for convergence.  It is also necessary to prove shift
+invariance
+\[
+\lim_{n\to\infty}u^{(n+1)}=\lim_{n\to\infty}u^{(n)}
+\]
+before passing from $u^{(n+1)}=\mathcal{T}u^{(n)}$ to a fixed-point equation.
+
+\item The interchange of generalized limit and integration is unsupported.
+Linearity of an algebraic extension of the usual limit does not imply
+boundedness.  No Banach spaces, norms, or operator bounds are defined, and the
+assertion that the limit is bounded on each closed zone is not proved.  The
+same problem applies to moving the limit through multiplication,
+differentiation, $\mathbb{P}$, and $G_t$.
+
+\item The smoothing theorem is not obtained by applying the classical heat
+semigroup theorem separately on zones.  Heat flow is nonlocal and mixes values
+from different spatial regions.  In addition, estimates near $s=t$ are needed
+to infer smoothness of the time integral in the mild formula.  These estimates
+are absent.
+
+\item The argument that the generalized solution is classical at
+$t_{\operatorname{crit}}$ is invalid.  No first nonclassical time is shown to
+exist.  A boundary of a classical zone for $u$ need not be a boundary at which
+the integrand in~\eqref{to-classical} vanishes.  Real-valuedness of a derivative
+does not imply the uniform spatial bounds needed at the endpoint, and
+pointwise real-valuedness is not enough to apply a local well-posedness theorem.
+
+\item The continuation principle cannot be applied merely because values at
+$t_{\operatorname{crit}}$ are claimed to be classical.  One needs control of
+an appropriate norm of the solution as $t\uparrow t_{\operatorname{crit}}$.
+Obtaining such control is the central unresolved global-regularity issue.  The
+existing \verb|\fxwarning{Prove}| at the gluing step records an additional
+unproved assertion rather than completing this argument.
+
+\item The energy-inequality section does not fill this gap.  Smoothness alone
+does not give a finite-energy inequality for arbitrary smooth data on
+$\mathbb{R}^N$, and the standard energy inequality does not provide the
+three-dimensional regularity bound needed for global continuation.
+\end{enumerate}
+
 \section{Further directions}
 
 I could argue, that the requirement of $C^\infty$ for physical reasonableness is superfluous, because it is not used in the PDE derivation. So, the real physical problem remains unsolved: Is the solution unique if we require only existence of classical differential operators?
