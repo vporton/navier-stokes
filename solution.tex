@@ -70,6 +70,11 @@ I had a little trouble to understand the ChatGPT's proof, because while being an
 
 \section{Problem statement}
 
+The problem statement is wider (``weaker'') than the Clay problem as stated.  It allows arbitrary
+$N$ and arbitrary smooth $u_0$ and $f$, without assumptions such as
+divergence-free initial data, decay, periodicity, or finite energy.  Smooth
+functions on $\mathbb{R}^N$ need not be integrable or have finite energy. So, the Clay's statement follows from it.
+
 We are going to prove existence (in the sense of classical real-number solutions) and smoothness~($C^\infty$) of solutions to Na\-vi\-er-Sto\-kes equations on $\mathbb{R}^N$ ($N\in\mathbb{N}$).
 Let speed $u(x,t):\mathbb{R}^N\times[0;\infty)\to\mathbb{R}^N$ and pressure $p(x,t):\mathbb{R}^N\times[0;\infty)\to\mathbb{R}$.
 \[
@@ -472,11 +477,6 @@ The preceding argument does not prove global existence of classical solutions.  
 following issues need to be resolved.
 
 \begin{enumerate}
-\item The problem statement is not the Clay problem as stated.  It allows arbitrary
-$N$ and arbitrary smooth $u_0$ and $f$, without assumptions such as
-divergence-free initial data, decay, periodicity, or finite energy.  Smooth
-functions on $\mathbb{R}^N$ need not be integrable or have finite energy.
-
 \item It is asserted that generalized limits are defined for every function, that
 derivatives always exist with values in $\SNG(X)$, and that
 $\fSNG({-},\mathbb{R}^Q)$ is closed under differential operators.  The cited
