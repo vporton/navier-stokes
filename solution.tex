@@ -12,6 +12,7 @@
 \DeclareMathOperator{\fSNG}{fSNG}
 \newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
 \newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \newcommand{\rsuprel}[1]{\left[#1\right]^\ast}
 
 \hypersetup{pdftitle={Analyzing Na\-vi\-er-Sto\-kes Equations Using a Linearly Extended Limit Functional},
@@ -42,8 +43,9 @@ can be used to construct classical global smooth solutions of the
 Na\-vi\-er-Sto\-kes equations.  The extension theorem supplies pointwise
 extensions of finitary continuous operations and preserves algebraic
 identities.  I describe these consequences directly and identify the
-additional analytic properties that would be required for a PDE argument.
-The resulting framework is organized toward a proof of global regularity.
+additional analytic properties that would be required for a PDE argument.  I
+define a partial $\SUPER(\mathbb{R})$-valued sup norm and formulate the
+remaining analytic requirements in terms of this norm.
 \end{abstract}
 
 \subjclass[2020]{35Q30, 35A01, 35A09, 35A25, 35D99}
@@ -64,6 +66,8 @@ PDE argument also requires analytic structure: integration, topologies and
 norms, operator bounds, semigroup estimates, and justified interchange of
 limits with nonlocal operators.  The purpose of this revision is to separate
 the algebraic facts from the analytic structure used in the PDE argument.
+Below I introduce a partial ring-valued sup norm as a candidate analytic
+structure and state the additional properties it would need.
 
 \section{Problem statement}
 
@@ -192,23 +196,208 @@ topology, a norm, a notion of absolute continuity, and an integration theory
 for supersingular-valued functions.
 \end{rem}
 
+\begin{prop}\label{prop:funcoid-super}
+Let $\mathrm{X}$ be the base funcoid on~$R$.  The construction
+in~\cite[sections ``Funcoid of singularities'' and ``Funcoid of
+supersingularities'']{limit} equips $\SUPER(R)$ with a funcoid, hence with a
+generalized nearness structure in the sense of~\cite{limit}.  As a bare set,
+$\SUPER(R)$ also admits ordinary topologies, for example the discrete
+topology.
+\end{prop}
+
+\begin{proof}
+The cited construction first extends the nearness relation from~$R$ to each
+singularity level.  For subsets $y_0,y_1\subseteq\SUPER(R)$ it then declares
+$y_0$ and~$y_1$ near when there exist $m,n\in\mathbb{N}$ such that
+\[
+  \tau^n[y_0\cap\SNG^m(R)]
+  \mathrel{\rsuprel{\mathrm{X}}}
+  \tau^m[y_1\cap\SNG^n(R)].
+\]
+Both sides belong to the same level $\SNG^{m+n}(R)$.  The cited proof checks
+the pointfree funcoid axioms for this relation.  Independently, every set
+admits the discrete topology.
+\end{proof}
+
+\begin{rem}\label{rem:funcoid-not-analytic}
+Proposition~\ref{prop:funcoid-super} is not an analytic realization.  A
+funcoid is a generalized nearness structure, while the discrete topology is
+only a set-theoretic example.  The following construction is a candidate
+normed structure, but its domain, completeness, integration theory, and
+operator bounds still have to be studied.
+\end{rem}
+
+\section{A partial ring-valued sup norm}
+
+Write
+\[
+  \mathbb{R}_*=\SUPER(\mathbb{R}).
+\]
+It has levelwise ring operations and the partial order defined above.
+For $z\in\SUPER(\mathbb{R}^Q)$, let $\abs{z}_*$ denote the levelwise extension
+of the Euclidean norm on~$\mathbb{R}^Q$.  In particular, for $Q=1$ this is the
+levelwise extension of the absolute value.
+
+\begin{defn}\label{def:ring-sup-norm}
+Let $D$ be a nonempty set.  A function
+$v:D\to\SUPER(\mathbb{R}^Q)$ is \emph{sup-normable} when
+\[
+  \sup_{x\in D}\abs{v(x)}_*
+\]
+exists in the partially ordered ring~$\mathbb{R}_*$.  In that case define its
+\emph{partial ring-valued sup norm} by
+\[
+  \norm{v}_{\infty,*}
+  \eqdef \sup_{x\in D}\abs{v(x)}_*\in\mathbb{R}_*.
+\]
+The same definition applies in particular to sup-normable elements of
+$\fSNG(D,\mathbb{R}^Q)$.
+\end{defn}
+
+\begin{prop}\label{prop:ring-sup-norm}
+The partial ring-valued sup norm has the following properties.
+\begin{enumerate}
+\item Constant functions and functions for which
+$\{\abs{v(x)}_*:x\in D\}$ has a maximum are sup-normable.
+\item If $v$ is sup-normable, then
+$\norm{v}_{\infty,*}\geq0$, and
+$\norm{v}_{\infty,*}=0$ if and only if $v=0$.
+\item If $v$, $w$, and $v+w$ are sup-normable, then
+\[
+  \norm{v+w}_{\infty,*}
+  \leq\norm{v}_{\infty,*}+\norm{w}_{\infty,*}.
+\]
+\item If $v$ is sup-normable and $c\in\mathbb{R}$, then $cv$ is
+sup-normable and
+\[
+  \norm{cv}_{\infty,*}=\abs{c}\norm{v}_{\infty,*}.
+\]
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+The identities and inequalities
+\[
+  \abs{z}_*\geq0,\qquad
+  \abs{z+w}_*\leq\abs{z}_*+\abs{w}_*,\qquad
+  \abs{cz}_*=\abs{c}\abs{z}_*
+\]
+are levelwise extensions of the corresponding Euclidean identities and
+inequalities.  Inequalities are expressed using the extended meet operation
+from the definition of the order.  Taking a supremum gives the first three
+claims whenever the displayed suprema exist.  Multiplication by a positive
+real number is an order automorphism of~$\mathbb{R}_*$, with inverse given by
+multiplication by its reciprocal, which proves the last claim.  Finally,
+$\abs{z}_*=0$ implies $z=0$: each coordinate has absolute value at most
+$\abs{z}_*$.  For a scalar~$a$, the extended identities
+$a\wedge\abs{a}=a$ and $(-a)\wedge\abs{a}=-a$ show that
+$\abs{a}=0$ implies $a\leq0$ and $-a\leq0$, hence $a=0$.  Thus
+$\norm{v}_{\infty,*}=0$ implies $v(x)=0$ for every~$x$.
+\end{proof}
+
+\begin{rem}\label{rem:norm-domain}
+The sup-normable functions need not form a vector space.  If the two suprema
+$\norm{v}_{\infty,*}$ and $\norm{w}_{\infty,*}$ exist, the triangle inequality
+gives an upper bound for $\{\abs{v(x)+w(x)}_*:x\in D\}$, but a bounded subset
+of~$\mathbb{R}_*$ has not been proved to have a supremum.  This differs from
+the usual functional-analytic situation: an ordinary operator norm may be
+infinite or undefined for an unbounded operator, but the real-valued norm on
+the ambient normed space is defined for every vector.
+\end{rem}
+
+\begin{defn}\label{def:admissible}
+An \emph{admissible ring-normed space} on~$D$ is a real linear subspace
+\[
+  \mathcal{E}(D)\subseteq\fSNG(D,\mathbb{R}^Q)
+\]
+consisting of sup-normable functions.  On such a space
+$\norm{{-}}_{\infty,*}$ is a total $\mathbb{R}_*$-valued norm.
+\end{defn}
+
+\begin{prop}\label{prop:real-radius-topology}
+Let $\mathcal{E}(D)$ be admissible.  For $\epsilon>0$, let
+\[
+  U_\epsilon=
+  \left\{(v,w)\in\mathcal{E}(D)^2:
+  \norm{v-w}_{\infty,*}\leq\epsilon\right\},
+\]
+where $\epsilon$ is embedded into~$\mathbb{R}_*$.  The sets~$U_\epsilon$
+generate a translation-invariant uniform topology on~$\mathcal{E}(D)$.
+\end{prop}
+
+\begin{proof}
+The diagonal belongs to every~$U_\epsilon$, and each~$U_\epsilon$ is
+symmetric.  The triangle inequality gives
+\[
+  U_{\epsilon/2}\circ U_{\epsilon/2}\subseteq U_\epsilon.
+\]
+Also,
+$U_{\min\{\epsilon,\delta\}}\subseteq U_\epsilon\cap U_\delta$.
+These are the axioms for a base of a uniformity.
+\end{proof}
+
+\begin{rem}
+The real-radius topology need not be Hausdorff.  A nonzero~$v$ satisfying
+$\norm{v}_{\infty,*}\leq\epsilon$ for every real $\epsilon>0$ cannot be
+separated from zero by these neighborhoods.  One may pass to the Hausdorff
+quotient or investigate a suitable directed family of positive
+$\mathbb{R}_*$-valued radii.  Either choice requires separate analysis.
+\end{rem}
+
+\begin{defn}\label{def:ring-operator-bound}
+Let $\mathcal{E}(D)$ and $\mathcal{F}(D)$ be admissible ring-normed spaces.
+A linear operator $T:\mathcal{E}(D)\to\mathcal{F}(D)$ is
+\emph{ring-bounded} if there exists $C\in\mathbb{R}_*$, $C\geq0$, such that
+\[
+  \norm{Tv}_{\infty,*}\leq C\norm{v}_{\infty,*}
+  \quad\text{for every }v\in\mathcal{E}(D).
+\]
+If the set of such constants has an infimum, define
+\[
+  \norm{T}_{\mathrm{op},*}
+  \eqdef\inf\left\{C\in\mathbb{R}_*:C\geq0,\
+  \norm{Tv}_{\infty,*}\leq C\norm{v}_{\infty,*}
+  \text{ for every }v\in\mathcal{E}(D)\right\}.
+\]
+\end{defn}
+
+\begin{rem}
+Definition~\ref{def:ring-operator-bound} does not assert that every operator
+norm exists.  For the PDE argument, the useful statements are explicit
+ring-valued bounds for the particular operators and bilinear maps that occur.
+\end{rem}
+
+\begin{defn}\label{def:ring-bilinear-bound}
+Let $\mathcal{E}_1$, $\mathcal{E}_2$, and $\mathcal{F}$ be admissible
+ring-normed spaces.  A bilinear map
+$B:\mathcal{E}_1\times\mathcal{E}_2\to\mathcal{F}$ is
+\emph{ring-bounded} if there exists $C\in\mathbb{R}_*$, $C\geq0$, such that
+\[
+  \norm{B(v,w)}_{\infty,*}
+  \leq C\norm{v}_{\infty,*}\norm{w}_{\infty,*}
+\]
+for all $v\in\mathcal{E}_1$ and $w\in\mathcal{E}_2$.
+\end{defn}
+
 \section{Analytic structure required by the PDE argument}
 
-The pointwise algebra above is the algebraic part of the evolution equation.
-To apply standard PDE arguments directly, one needs an analytic realization.
-For each relevant domain~$D$, this would consist of spaces
-$\mathcal{E}(D)$ of supersingular-valued functions with at least the following
-properties:
+The pointwise algebra and the partial ring-valued norm above are the starting
+points for a ring-valued analytic realization.  For each relevant domain~$D$,
+one needs to choose admissible spaces~$\mathcal{E}(D)$ with at least the
+following properties:
 
 \begin{enumerate}
-\item $\mathcal{E}(D)$ has a specified complete topology and contains the
-classical functions used in the argument.
+\item The ring-valued norm is total on~$\mathcal{E}(D)$, and an appropriate
+topology, such as a Hausdorff version of the topology from
+Proposition~\ref{prop:real-radius-topology}, is complete.
 \item Continuous time-dependent elements of $\mathcal{E}(D)$ can be integrated.
 The integral is linear, satisfies an appropriate fundamental theorem of
-calculus, and permits the required differentiation under the integral sign.
+calculus, permits the required differentiation under the integral sign, and
+satisfies ring-valued norm estimates.
 \item Spatial differential operators, the heat semigroup
 $G_t=e^{\nu t\Delta}$, and the Leray projection~$\mathbb{P}$ act on specified
-spaces with the mapping properties and estimates used below.
+admissible spaces with the ring-valued operator bounds and smoothing estimates
+used below.
 \item The extended sequence-limit operator is defined on a specified sequence
 space, is continuous where continuity is needed, is invariant under shifts of
 the sequence index, and is compatible with the operators through which it is
@@ -216,25 +405,30 @@ moved.
 \end{enumerate}
 
 \begin{prop}\label{prop:not-analytic}
-The finitary extension theorem supplies the algebraic part of the
-construction; the analytic realization additionally specifies topology,
-integration, and operator theory.
+The finitary extension theorem and the funcoid on~$\SUPER(R)$ supply
+algebraic and generalized-nearness parts of the construction.
+Definition~\ref{def:ring-sup-norm} supplies a partial ring-valued norm.  A
+ring-valued analytic realization additionally selects admissible spaces and
+proves completeness, integration, and operator estimates.
 \end{prop}
 
 \begin{proof}
 Proposition~\ref{prop:finitary} applies to finitary operations evaluated at a
 point.  Integration is an operation on an entire function, and the heat
 semigroup and Leray projection are nonlocal operators.  Continuity and
-boundedness of linear maps are provided by the specified topology.  Likewise,
-an extended value assigned to an arbitrary sequence is combined with shift
-invariance and interchange with an integral.  These are additional assertions
-supplied by the analytic realization.
+ring-boundedness of linear maps require estimates in the chosen admissible
+spaces.  Likewise, an extended value assigned to an arbitrary sequence is
+combined with shift invariance and interchange with an integral.  These are
+additional assertions supplied by the analytic realization, not consequences
+of Proposition~\ref{prop:funcoid-super} or
+Definition~\ref{def:ring-sup-norm}.
 \end{proof}
 
-\section{Conditional Duhamel principle}
+\section{Classical Duhamel principle and its ring-valued analogue}
 
 The variation-of-constants formula is naturally formulated in a Banach space.
-The following standard statement shows which analytic facts are used.
+The following standard statement shows which analytic facts need ring-valued
+analogues.
 
 \begin{thm}[Duhamel's principle]\label{thm:duhamel}
 Let $E$ be a Banach space, let $A$ generate a strongly continuous semigroup
@@ -260,10 +454,16 @@ rule gives
 \]
 \end{proof}
 
-To apply Theorem~\ref{thm:duhamel} to supersingular functions, construct an
-analytic realization $\mathcal{E}(D)$ with the required properties.
-Proposition~\ref{prop:not-analytic} identifies the role of the pointwise
-extension theorem in that construction.
+Theorem~\ref{thm:duhamel} does not apply directly when the norm takes values
+in~$\mathbb{R}_*$.  Its ring-valued replacement must construct the integral
+and prove the corresponding estimates, for example
+\[
+  \norm{\int_0^t h(s)\,ds}_{\infty,*}
+  \leq\int_0^t\norm{h(s)}_{\infty,*}\,ds
+\]
+whenever both sides are defined.  It must also prove the Leibniz rule and the
+required commutation with spatial operators.  Proposition~\ref{prop:not-analytic}
+identifies the role of the pointwise extension theorem in that construction.
 
 \section{Na\-vi\-er-Sto\-kes mild equation}
 
@@ -271,7 +471,7 @@ Let $\mathbb{P}$ denote the Leray projection and let
 $G_t=e^{\nu t\Delta}$.  Pointwise tensor products are defined for
 supersingular functions by Proposition~\ref{prop:algebra}.  The operators
 $\mathbb{P}$ and $G_t$ are nonlocal, so their action on supersingular-valued
-functions requires the additional analytic realization described above.
+functions requires ring-bounded extensions on chosen admissible spaces.
 
 In a classical function space where the required operations are justified,
 applying $\mathbb{P}$ to the Na\-vi\-er-Sto\-kes equation for a
@@ -288,15 +488,15 @@ The corresponding mild equation is
 \end{equation}
 
 \begin{prop}\label{prop:conditional-mild}
-Suppose an analytic realization has been constructed on which the integrals
-in~\eqref{mild} exist, Theorem~\ref{thm:duhamel} applies, and the Leray
-projection has its usual mapping and commutation properties.  Then every
-sufficiently regular solution of~\eqref{mild} satisfies the projected
-Na\-vi\-er-Sto\-kes equation.
+Suppose a ring-valued analytic realization has been constructed on which the
+integrals in~\eqref{mild} exist, the ring-valued analogue of
+Theorem~\ref{thm:duhamel} applies, and the Leray projection has its usual
+mapping and commutation properties.  Then every sufficiently regular solution
+of~\eqref{mild} satisfies the projected Na\-vi\-er-Sto\-kes equation.
 \end{prop}
 
 \begin{proof}
-Apply Theorem~\ref{thm:duhamel} to the two inhomogeneous terms
+Apply the assumed ring-valued Duhamel principle to the two inhomogeneous terms
 \[
   -\mathbb{P}\nabla\cdot(u\otimes u)
   \quad\text{and}\quad
@@ -333,8 +533,14 @@ and the sequence
   u^{(n+1)}(t)=(\mathcal{T}u^{(n)})(t).
 \]
 To make this iteration rigorous, one must choose a function space on which
-$\mathcal{T}$ is defined and prove the estimates needed for convergence.
-Spatial integrability on~$\mathbb{R}^N$ is handled separately from smoothness.
+$\mathcal{T}$ is defined and prove ring-valued estimates of the form
+\[
+  \norm{\mathcal{T}v-\mathcal{T}w}_{\infty,*}
+  \leq C\norm{v-w}_{\infty,*}
+\]
+on a suitable subset, with a contraction property strong enough to imply
+convergence in the selected topology.  Spatial integrability on~$\mathbb{R}^N$
+is handled separately from smoothness.
 
 One might try to assign the sequence a generalized limit
 \[
@@ -354,18 +560,24 @@ and
 The second identity includes passage of the extended limit through
 integration, the heat semigroup, the Leray projection, spatial
 differentiation, and the nonlinear term.  Proposition~\ref{prop:algebra}
-handles the pointwise algebraic expression, and the analytic realization
-supplies the required interchanges.
+handles the pointwise algebraic expression.  Ring-valued operator estimates
+and compatibility theorems supply the required interchanges.
 
 \section{Smoothing, classicality, and continuation}
 
-In classical spaces the heat semigroup has smoothing estimates.  The
-analytic realization $\mathcal{E}(D)$ extends those estimates directly.
-Heat flow is nonlocal, so the extension uses the full analytic structure.
+In classical spaces the heat semigroup has smoothing estimates.  A
+ring-valued realization needs corresponding estimates between chosen
+admissible spaces, for example
+\[
+  \norm{\nabla^kG_t v}_{\infty,*}
+  \leq C_k(t)\norm{v}_{\infty,*}.
+\]
+Heat flow is nonlocal, so these estimates do not follow from pointwise
+extensions alone.
 
 Even if a supersingular fixed point of~\eqref{mild} is constructed, the
-analytic realization proves that it takes values in $\mathbb{R}^N$ and is a
-classical solution.
+ring-valued analytic realization must prove that it takes values in
+$\mathbb{R}^N$ and is a classical solution.
 
 Finally, a local continuation theorem requires control of an appropriate
 classical norm as time approaches a possible endpoint.  The
@@ -384,23 +596,27 @@ data on~$\mathbb{R}^N$.
 The preceding discussion isolates the following analytic steps in the proof.
 
 \begin{enumerate}
-\item The analytic realization $\mathcal{E}(D)$ specifies a complete topology,
-norm, and integration theory for supersingular-valued functions.
+\item Choose admissible spaces~$\mathcal{E}(D)$ on which the partial
+ring-valued norm is total.  Prove completeness for a suitable Hausdorff
+topology derived from the norm.
 
 \item Formal supersingular derivatives are used together with a fundamental
 theorem of calculus, a Leibniz rule for parameter-dependent integrals, and
-commutation of spatial derivatives with integration.
+commutation of spatial derivatives with integration.  Prove ring-valued norm
+estimates for these operations.
 
 \item The Leray projection and heat semigroup are nonlocal operators.  Their
-domains, mapping properties, estimates, and compatibility with generalized
-limits are handled in the chosen analytic realization.
+domains, mapping properties, ring-valued operator estimates, and compatibility
+with generalized limits are handled in the chosen admissible spaces.  The
+nonlinear term requires a ring-valued bilinear estimate as in
+Definition~\ref{def:ring-bilinear-bound}.
 
 \item Recovery of the pressure uses an appropriate Helmholtz decomposition and
 a solution theory for the Poisson equation in specified function spaces.
 
-\item The Picard iteration converges in a classical function space and remains
-in a space on which the displayed integrals exist.  The required estimates are
-part of the argument.
+\item The Picard iteration remains in an admissible space on which the
+displayed integrals exist.  Prove a contraction or an alternative convergence
+argument using ring-valued estimates and a precise meaning of convergence.
 
 \item Passing from $u^{(n+1)}=\mathcal{T}u^{(n)}$ to a fixed-point equation
 uses shift invariance of the extended sequence limit and justifies moving that
@@ -408,8 +624,8 @@ limit through integration, differentiation, $\mathbb{P}$, $G_t$, and the
 nonlinear term.
 
 \item Heat-semigroup smoothing for supersingular-valued functions requires
-direct estimates.  Classical smoothing extends to the new function space
-through those estimates.
+direct ring-valued estimates.  Classical smoothing does not automatically
+extend to the new function space.
 
 \item A supersingular fixed point is shown to be a classical real-valued
 solution, with the uniform norm bounds required by a local continuation
@@ -422,9 +638,10 @@ data on $\mathbb{R}^N$.
 
 \section{Further directions}
 
-A possible next step is to investigate whether supersingular functions admit an
-analytic realization with useful integration and semigroup theories.  Such a
-construction would need to address the requirements listed above directly.
+A possible next step is to identify useful admissible subspaces for the
+partial ring-valued sup norm and prove integration and semigroup estimates on
+them.  Such a construction would need to address the requirements listed
+above directly.
 
 The generalized-limit construction is also part of my broader work on ordered
 semicategory actions.  Its value as an independent construction does not depend
