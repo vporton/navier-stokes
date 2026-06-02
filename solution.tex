@@ -1,10 +1,5 @@
 \documentclass{amsart}
 \usepackage{hyperref}
-\usepackage[draft]{fixme}
-\usepackage{xcolor}
-\usepackage{mathrsfs}
-
-\newenvironment{grayed}{\color{gray}}{\ignorespacesafterend}
 
 \newtheorem{thm}{Theorem}
 \newtheorem{lem}{Lemma}
@@ -12,17 +7,11 @@
 \newtheorem{defn}{Definition}
 \newtheorem{rem}{Remark}
 
-\newcommand{\setcond}[2]{\left\{ #1 \mid #2 \right\}}
-\DeclareMathOperator{\xlim}{xlim}
 \DeclareMathOperator{\SUPER}{SUPER}
 \DeclareMathOperator{\SNG}{SNG}
 \DeclareMathOperator{\fSNG}{fSNG}
-\DeclareMathOperator{\interrior}{int}
 \newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
-\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \newcommand{\abs}[1]{\left\lvert #1\right\rvert}
-\newcommand{\supfun}[1]{\left\langle #1\right\rangle}
-\newcommand{\suprel}[1]{\left[#1\right]}
 \newcommand{\rsuprel}[1]{\left[#1\right]^\ast}
 
 \hypersetup{pdftitle={Analyzing Na\-vi\-er-Sto\-kes Equations Using a Linearly Extended Limit Functional},
@@ -48,7 +37,13 @@ The most recent version of this document is available \href{https://github.com/v
 \date{\today}
 
 \begin{abstract}
-I analyze Na\-vi\-er-Sto\-kes equations using ``generalized limit'' (a linearly extended limit functional) toward proving existence of classical global smooth solutions.
+I analyze whether ``generalized limits'' (linearly extended limit functionals)
+can be used to construct classical global smooth solutions of the
+Na\-vi\-er-Sto\-kes equations.  The extension theorem supplies pointwise
+extensions of finitary continuous operations and preserves algebraic
+identities.  I describe these consequences directly and identify the
+additional analytic properties that would be required for a PDE argument.
+The resulting framework is organized toward a proof of global regularity.
 \end{abstract}
 
 \subjclass[2020]{35Q30, 35A01, 35A09, 35A25, 35D99}
@@ -57,24 +52,30 @@ I analyze Na\-vi\-er-Sto\-kes equations using ``generalized limit'' (a linearly 
 
 \section{Introduction}
 
-This is a rectified proof by ChatGPT~\cite{navier-stokes-chat} of the Na\-vi\-er-Sto\-kes Clay Math Millennium Prize Problem~\cite{navier-stokes-clay}, using the approach of generalized limits~\cite{limit} (more general generalized functions than distributions) suggested to the LLM (large  language model) by me. In fact, the ChatGPT's proof didn't settle the energy inequality, but only existence of solutions, despite it claimed~\cite{navier-stokes-chat} a full solution.
+This article examines an attempted application of generalized
+limits~\cite{limit} to the Na\-vi\-er-Sto\-kes Clay Mathematics Millennium
+Prize Problem~\cite{navier-stokes-clay}.  The attempt originated in a
+conversation with ChatGPT~\cite{navier-stokes-chat}.
 
-In my approach multiplication of every two functions is defined, what allows to write formulas undefined for distributions.
-
-So, I did a part of the work (the theorem that $\lim$ (limit) functional can be linearly extended to the space of all functions and that on the space of extended limits all continuous operations can be extended with preservation of all algebraic identities). And ChatGPT did a part of work (applied known methods with addition of my this theorem).
-
-Extraordinary claims need extraordinary evidence. The claim is a Millennium Prize Problem solution. The evidence of this ``functional extension'' theorem is an extraordinary evidence, because it is a new very powerful theorem in general topology and its proof is extraordinarily longer than a noob would expect.
-
-I had a little trouble to understand the ChatGPT's proof, because while being an expert in general topology, I am no expert in differential equations. But I was able to write down my more detailed (and in parts more elegant than ChatGPT's) proof.
+The generalized-limit construction extends finitary continuous operations and
+preserves their algebraic identities.  In particular, pointwise multiplication
+is available for supersingular functions.  This is useful algebraically, but a
+PDE argument also requires analytic structure: integration, topologies and
+norms, operator bounds, semigroup estimates, and justified interchange of
+limits with nonlocal operators.  The purpose of this revision is to separate
+the algebraic facts from the analytic structure used in the PDE argument.
 
 \section{Problem statement}
 
-The problem statement is wider (``weaker'') than the Clay problem as stated.  It allows arbitrary
-$N$ and arbitrary smooth $u_0$ and $f$, without assumptions such as
-divergence-free initial data, decay, periodicity, or finite energy.  Smooth
-functions on $\mathbb{R}^N$ need not be integrable or have finite energy. So, the Clay's statement follows from it.
+The formulation below is broader than the Clay problem as stated.  It allows
+arbitrary $N$ and arbitrary smooth $u_0$ and $f$, without assumptions such as
+divergence-free initial data, decay, periodicity, or finite energy.  The
+analytic claims specify the function spaces in which they are intended to
+hold.  Moreover, the incompressibility equation requires the compatibility
+condition $\nabla\cdot u_0=0$.
 
-We are going to prove existence (in the sense of classical real-number solutions) and smoothness~($C^\infty$) of solutions to Na\-vi\-er-Sto\-kes equations on $\mathbb{R}^N$ ($N\in\mathbb{N}$).
+Consider classical real-valued smooth solutions of the Na\-vi\-er-Sto\-kes
+equations on $\mathbb{R}^N$ ($N\in\mathbb{N}$).
 Let speed $u(x,t):\mathbb{R}^N\times[0;\infty)\to\mathbb{R}^N$ and pressure $p(x,t):\mathbb{R}^N\times[0;\infty)\to\mathbb{R}$.
 \[
 \left\{
@@ -116,26 +117,60 @@ We have all continuous finitary operations on~$\mathbb{R}^Q$ extendable to
 \[ \fSNG({-},\mathbb{R}^Q) \subseteq \SUPER(\mathbb{R}^Q) \]
 (my kind of generalized functions) \cite[section 9, p.~8]{limit}. For all such operations, algebraic identities ($f(\dots)=g(\dots)$) on~$\fSNG({-},X)$ are the same as on~$X$~\cite[theorem 6, p.~10]{limit}, particularly generalized limit is a linear extension of the usual limit. Also, $\fSNG({-},\mathbb{R}^Q)$ is closed under differential operators.
 
-\section{Continuous supersingular functions}
+\section{Direct properties of supersingular functions}
 
-Let $X$ be some Lebesgue measurable set and some element $0\in X$ (not necessarily real zero or zero vector).
+By a \emph{supersingular function} I mean an element of
+$\fSNG(D,\mathbb{R}^Q)$ for a suitable domain~$D$, as in~\cite{limit}.
+The properties below are pointwise consequences of the limit extension
+theorem.  They do not require a decomposition of the domain.
+
+\begin{prop}\label{prop:finitary}
+Let $D$ be a set.  Let
+\[
+  \Phi:(\mathbb{R}^Q)^m\to\mathbb{R}^R
+\]
+be a continuous finitary operation, and let $\widetilde{\Phi}$ be its
+levelwise extension.  If
+$f_1,\dots,f_m\in\fSNG(D,\mathbb{R}^Q)$, then
+\[
+  x\longmapsto
+  \widetilde{\Phi}(f_1(x),\dots,f_m(x))
+\]
+is a supersingular function.  Every identity between expressions formed from
+such operations that holds on ordinary real vectors continues to hold
+pointwise after extension.
+\end{prop}
+
+\begin{proof}
+The existence of $\widetilde{\Phi}$ and preservation of identities are the
+content of the extension theorem quoted in~\cite[section~9 and theorem~6]{limit}.
+Apply that theorem at each $x\in D$.
+\end{proof}
+
+\begin{prop}\label{prop:algebra}
+Supersingular scalar-valued functions are closed under pointwise addition,
+subtraction, and multiplication.  Supersingular vector-valued functions are
+closed under pointwise addition, scalar multiplication, and tensor products.
+The usual polynomial identities for these operations remain valid.
+\end{prop}
+
+\begin{proof}
+Apply Proposition~\ref{prop:finitary} to the corresponding continuous
+operations on finite-dimensional real vector spaces.
+\end{proof}
 
 \begin{defn}
-Let $\wedge:\SUPER(\mathbb{R})^2\to\SUPER(\mathbb{R})$ be the
-levelwise extension of the continuous operation
-\[
-  (x,y)\mapsto\min\{x,y\}
-\]
-provided by the limit extension theorem.  For $a,b\in\SUPER(\mathbb{R})$,
-define
+Let $\wedge:\SUPER(\mathbb{R})^2\to\SUPER(\mathbb{R})$ be the levelwise
+extension of $(x,y)\mapsto\min\{x,y\}$.  For
+$a,b\in\SUPER(\mathbb{R})$, define
 \[
   a\leq b \eqdef a\wedge b=a.
 \]
 \end{defn}
 
 \begin{prop}
-The above defined relation is a partial order on~$\SUPER(\mathbb{R})$ and
-extends the usual order on~$\mathbb{R}$.
+The above relation is a partial order on~$\SUPER(\mathbb{R})$ and extends the
+usual order on~$\mathbb{R}$.
 \end{prop}
 
 \begin{proof}
@@ -145,446 +180,255 @@ The identities
   a\wedge b=b\wedge a,\qquad
   (a\wedge b)\wedge c=a\wedge(b\wedge c)
 \]
-hold on~$\mathbb{R}$ and therefore hold for their levelwise extensions by the
-limit extension theorem.  Thus $a\leq a$.  If $a\leq b$ and $b\leq a$, then
-\[
-  a=a\wedge b=b\wedge a=b.
-\]
-If $a\leq b$ and $b\leq c$, then
-\[
-  a\wedge c=(a\wedge b)\wedge c
-  =a\wedge(b\wedge c)=a\wedge b=a,
-\]
-so $a\leq c$.  Finally, for $a,b\in\mathbb{R}$ the equality
-$\min\{a,b\}=a$ is equivalent to the usual inequality $a\leq b$.
+hold on~$\mathbb{R}$ and therefore hold for their levelwise extensions.
+They give reflexivity, antisymmetry, and transitivity.  For real $a,b$, the
+identity $\min\{a,b\}=a$ is equivalent to the usual inequality $a\leq b$.
 \end{proof}
-
-The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
-
-\begin{thm}
-If a set $X$ is Lebesgue measurable and $f\in\fSNG({-},\mathbb{R}^N)$ is continuous, then:
-\begin{enumerate}
-\item $\setcond{x\in X}{f(x)\ne 0}$ is partitioned into Lebesgue measurable sets (\emph{zones})
-  \[ \setcond{Z_k}{k\in\SUPER(\mathbb{R}^N)\setminus\{0\}}\setminus\{\emptyset\}, \]
-  where zone
-  \[ Z_k=\setcond{x\in X}{\exists a\in\mathbb{R}\setminus\{0\}:f(x)=ka}. \]
-\item Each $Z_k$ is an open set in~$X$.
-\item $f(x)=0$ for each $x$ on the boundary $X\cap\partial Z$ of each zone.
-\item\label{as-func-mult} $f(x)=k_Z g_Z(x)$ for each $x\in X\cap\overline{Z}$ for some $k_Z\in\SUPER(\mathbb{R}^N)\setminus\{0\}$ and $g_Z:X\cap\overline{Z}\to\mathbb{R}$ for each zone $Z$.
-\end{enumerate}
-\end{thm}
-
-\begin{proof}
-To prove that $f(a)=0$ on boundaries of zones, consider two only possible cases for $a\in X\cap\partial Z_k$:
-\begin{enumerate}
-\item ``$a\in\overline{Z_k}$ and $\forall\epsilon>0\exists x\in\mathbb{R}:(\abs{a-x}<\epsilon\land f(x)=0)$.'' This is possible only if $f(a)=0$ due to continuity of~$f$.
-
-\item ``$a\in\overline{Z_k}$ and $\forall\epsilon>0\exists x\in\mathbb{R}:(\abs{a-x}<\epsilon\land f(x)=k'g(x))$, where $k'\in\SUPER(\mathbb{R}^N)\setminus\{0\}$ and $g:X\cap\overline{Z'}\to\mathbb{R}$ where zone $Z'\ne Z_k$.''
-$f(x)$ belongs to the same zone $Z_k$, unless $f(a)=0$, because otherwise we would have $kf(x)=k'f(x)$ for $k$ and~$k'$ from different zones $Z_k$ and~$Z'$, respectively.
-\end{enumerate}
-
-$Z_k$ doesn't intersect $\partial Z_k$ and is, therefore, open. Obviously zones don't intersect and their union is $\setcond{x\in X}{f(x)\ne 0}$.
-
-Item~\ref{as-func-mult} is obvious.
-
-We have zones (without loss of generality) being open sets (because not containing points from their boundaries) and therefore Lebesgue measurable.
-\end{proof}
-
-\begin{defn}
-I call the zone with $k\in\mathbb{R}^N\setminus\{0\}$ \emph{the classical zone}.
-\end{defn}
-
-\section{Lebesgue integrals}
-
-By a \emph{supersingular function} or a solution in \emph{supersingularities} I mean a function $f\in\fSNG(X,\mathbb{R})$ (where~$X$ is a suitable space), see~\cite{limit}.
 
 \begin{rem}
-(Lebesgue) integrals could be instead defined on the space of supersingular functions the same way as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities. But for our purposes it is enough to define integrals on the space of continuous generalized limits functions, and this special case is much simpler to prove properties of.
+The cited construction also claims closure under differential operators.
+This gives formal supersingular derivatives.  A full theory also includes a
+topology, a norm, a notion of absolute continuity, and an integration theory
+for supersingular-valued functions.
 \end{rem}
 
-Define Lebesgue integrals on the space of continuous generalized limits functions as \[ \int_A f(x) dx = \sum_{Z\in S}k_Z\int_Z a_Z(x) dx \] if each Lebesgue integral on the right side exists and the sum is absolutely convergent (and so does not depend on the order of summation), where $S$~is the set of zones.
+\section{Analytic structure required by the PDE argument}
 
-It is easy to show that this definition does not depend on the choice of~$k_Z$ and~$a_Z$.
+The pointwise algebra above is the algebraic part of the evolution equation.
+To apply standard PDE arguments directly, one needs an analytic realization.
+For each relevant domain~$D$, this would consist of spaces
+$\mathcal{E}(D)$ of supersingular-valued functions with at least the following
+properties:
 
-Below, we will, contrary to the usual notation, denote~$L^1(X)$ the space of functions on~$X$ integrable by the above formula, not all Lebesgue integrable functions.
-
-\begin{thm}
-If an integral is absolutely convergent on a measurable set, then it is convergent.
-\end{thm}
-
-\begin{proof}
-Obvious consequence of the same property for Lebesgue integrals on the space of functions with real number values.
-\end{proof}
-
-\subsection{Properties of Lebesgue integrals}
-
-\begin{thm}
-The fundamental theorem of calculus holds for integrals of continuous functions on the space of generalized limits functions:
-
-Let $a<b$ be real numbers. Then:
 \begin{enumerate}
-\item If $f\in L^1([a,b])$ (absolutely integrable by Lebesgue) and
-\[ F(x) = \int_a^x f(t) dt \quad\text{for } x\in [a,b]\]
-then $F$ is absolutely continuous on $[a,b]$, differentiable almost everywhere on $[a,b]$, and $F'(x) = f(x)$ almost everywhere on $[a,b]$.
-\item If $G\in\fSNG([a,b],\mathbb{R})$ is absolutely continuous on $[a,b]$, $G'$ exists almost everywhere, and $G'(x) \in L^1([a,b])$, then
-\[ G(x)-G(a) = \int_a^x G'(t) dt \quad\text{for } x\in [a,b].\]
+\item $\mathcal{E}(D)$ has a specified complete topology and contains the
+classical functions used in the argument.
+\item Continuous time-dependent elements of $\mathcal{E}(D)$ can be integrated.
+The integral is linear, satisfies an appropriate fundamental theorem of
+calculus, and permits the required differentiation under the integral sign.
+\item Spatial differential operators, the heat semigroup
+$G_t=e^{\nu t\Delta}$, and the Leray projection~$\mathbb{P}$ act on specified
+spaces with the mapping properties and estimates used below.
+\item The extended sequence-limit operator is defined on a specified sequence
+space, is continuous where continuity is needed, is invariant under shifts of
+the sequence index, and is compatible with the operators through which it is
+moved.
 \end{enumerate}
-\end{thm}
+
+\begin{prop}\label{prop:not-analytic}
+The finitary extension theorem supplies the algebraic part of the
+construction; the analytic realization additionally specifies topology,
+integration, and operator theory.
+\end{prop}
 
 \begin{proof}
-Let $f\in L^1([a,b])$ and $F(x) = \int_a^x f(t) dt$. Then because each zone (for function~$f$) $Z$ is an open set, it is representable as at most countable union~$I_Z$ of intervals. Moreover, then the entire union of all zones $\bigcup_{Z\in S} I_Z$ is representable as at most countable union~$I'$ of intervals. The interior $\interrior\setcond{x\in [a,b]}{f(x)=0}$ is also representable as at most countable union~$I''$ of intervals. Let denote the set of all such intervals $I = I'\cup I''$. The set of points on the borders of these intervals~$I$ is therefore at most countable and thus negligible.
-
-Let us denote $K=\setcond{J\in I'}{\max J<x}$.
-
-Therefore either $x\in J$ for some~$J\in I'$ or $x\in J$ for some $J\in I''$ ($f(x)=0$). Consider both cases
-
-\begin{itemize}
-\item If $x\in J$ for some $J\in I'$ then
-\[ F(x) = \int_{\bigcup K} f(t) dt + \int_{J\cap [a,x]} f(t) dt \]
-(This integral is absolutely convergent because $K$ is at most countable.)
-
-Obviously, $F$ is absolutely continuous at~$x$, differentiable at~$x$ (except of a negligible set of points) and \[ F'(x) = 0 + \left(x\mapsto\int_{J\cap [a,x]} f(t) dt\right)' = f(x). \]
-
-\item If $x\in J$ for some $J\in I''$, then it's obvious.
-\end{itemize}
-
-The other direction:
-
-Let $G\in\fSNG([a,b],\mathbb{R})$ be absolutely continuous on $[a,b]$, $G'$ exists almost everywhere, and $G'(x) \in L^1([a,b])$.
-
-We have for suitable~$k_j$
-\begin{multline*}
-\int_a^x G'(t) dt =
-\sum_{j\in K}\int_j k_j (G'(t)/k_j) dt + \int_{J\cap [a,x]} k_J (G'(t)/k_J) dt =\\
-\sum_{J\in K}k_j\int_j (G'(t)/k_j) dt + k_J\int_{J\cap [a,x]} k_J (G'(t)/k_J) dt =\\
-\sum_{J\in K}k_j(G(\inf j) - G(\sup j))/k_j + k_J(G(x) - G(a))/k_J =\\
-\sum_{J\in K}(G(\inf j) - G(\sup j)) + (G(x) - G(a)) = G(x) - G(a),
-\end{multline*}
-because $G'$ is zero between zones.
+Proposition~\ref{prop:finitary} applies to finitary operations evaluated at a
+point.  Integration is an operation on an entire function, and the heat
+semigroup and Leray projection are nonlocal operators.  Continuity and
+boundedness of linear maps are provided by the specified topology.  Likewise,
+an extended value assigned to an arbitrary sequence is combined with shift
+invariance and interchange with an integral.  These are additional assertions
+supplied by the analytic realization.
 \end{proof}
 
-\section{Inhomogenious linear differential equations}
+\section{Conditional Duhamel principle}
 
-Theorem elaborated from~\cite{duhamel-chat}.
+The variation-of-constants formula is naturally formulated in a Banach space.
+The following standard statement shows which analytic facts are used.
 
-\begin{defn}
-\emph{Inhomogeneous linear evolution} with~$\Delta$ as the differential operator is
-\begin{equation*}
-\left\{
-\begin{aligned}
-(\partial_t - \Delta)u &= f;\\
-u({\cdot},0) &= 0.
-\end{aligned}
-\right.
-\end{equation*}
-\end{defn}
-
-\begin{thm}[First order Duhamel's principle]
-Define auxiliary equations
-\begin{equation*}
-\left\{
-\begin{aligned}
-(\partial_t - \Delta)u_s &= 0;\\
-u_s(x,s) &= f(x,s).
-\end{aligned}
-\right.
-\end{equation*}
-If the above family of equations have continuous in~$s$ solutions~$u_s(x,t)$ in supersingularities then the function
-\[ u(x,t) = \int_0^t u_s(x,t) ds \]
-is a continuous solution of the inhomogeneous linear evolution equation in supersingularities.
-\end{thm}
-
-\begin{proof}
-Continuity of $u_s$ makes the integral defined.
-
-$u({\cdot},0) = 0$ is obvious.
-
-By the Leibniz rule for an integral with moving upper limit,
-\[ \partial_t u(x,t) = \partial_t \int_0^t u_s(x,t) ds = u_t(x,t) + \int_0^t \partial_t u_s(x,t) ds. \]
-\begin{multline*}
-(\partial_t - \Delta)u(x,t) = \partial_t \int_0^t u_s(x,t) ds - \Delta \int_0^t u_s(x,t) ds =\\
-u_t(x,t) + \int_0^t (\partial_t u_s(x,t) - \Delta u_s(x,t)) ds = f(x,t),
-\end{multline*}
-so $(\partial_t - \Delta)u = f$.
-\end{proof}
-
-\section{Rewriting in integral form}
-
-Let denote Leray projection as~$\mathbb{P}$.
-
-\begin{lem}
-If $u$ is a $C^\infty$ super-sin\-gu\-lar function, then \[ e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) \] is a continuous super-sin\-gu\-lar function for $s\in[0,t]$.
-\end{lem}
-
-\begin{proof}
-Obvious.
-\end{proof}
-
-\begin{defn}
-I call the following defined for supersingular continuous functions:
+\begin{thm}[Duhamel's principle]\label{thm:duhamel}
+Let $E$ be a Banach space, let $A$ generate a strongly continuous semigroup
+$(G_t)_{t\geq0}$ on~$E$, and let $h:[0,T]\to E$ be continuous.  Then the
+Bochner integral
 \[
-u(t) = e^{\nu t \Delta} u_0 - \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} \nabla \cdot (u \otimes u)(s) ds
-+ \int_0^t e^{\nu (t-s) \Delta} \mathbb{P} f(s) ds
+  u(t)=\int_0^t G_{t-s}h(s)\,ds
 \]
-\emph{supersingular mild solutions}\footnote{This formula is usually called \emph{mild (Duhamel) formulation}.} of Na\-vi\-er-Sto\-kes equations.
-\end{defn}
-
-
-\begin{thm}
-$C^\infty$ supersingular mild solutions of Na\-vi\-er-Sto\-kes equations are exactly $C^\infty$ solutions of Na\-vi\-er-Sto\-kes equations (without the requirement that~$p$ is $C^\infty$) in supersingularities.
+is defined and gives a mild solution with $u(0)=0$.  If $h$ and the semigroup
+are sufficiently regular to differentiate the integral and move~$A$ through
+it, then
+\[
+  u'(t)-Au(t)=h(t).
+\]
 \end{thm}
 
 \begin{proof}
-It is known that \[ \widehat{\mathbb{P}f}(\xi) = \left(I - \frac{\xi \otimes \xi}{|\xi|^2}\right)\hat{f}(\xi). \]
-
-$\mathbb{P}$ is obviously a linear operator.
-
-$\mathbb{P}\nabla q=0$ for any scalar~$q$.
-
-$\mathbb{P}$ commutes with $\Delta$ and with the heat semigroup: 
-$\mathbb{P}\Delta=\Delta\mathbb{P}$,
-$\mathbb{P}e^{\nu t \Delta}=e^{\nu t \Delta}\mathbb{P}$. (It's clear from these equalities in the classical case and linear combinations for the zones.)
-
-Apply $\mathbb{P}$ to the PDE (partial differential equation). Since $\mathbb{P}\nabla p=0$, we get
-\[ \mathbb{P}\partial_t u - \nu\mathbb{P}\Delta u - \mathbb{P}((u\cdot\nabla) u) = \mathbb{P}f. \]
-
-Because $u$ is divergence-free and $\mathbb{P}$ equals identity on divergence-free fields, $\mathbb{P}u=u$. $\mathbb{P}$ commutes with $\partial_t$ and $\Delta$.
-
-Thus we have the consequence
-\[ \partial_t u - \nu\Delta u + \mathbb{P}((u\cdot\nabla) u) = \mathbb{P}f. \]
-
-We can write the nonlinear term as a divergence of a tensor:
-\[ (u\cdot\nabla) u = \nabla \cdot (u\otimes u), \]
-because $(u\otimes u)_{ij}=u_i u_j$ and $\nabla \cdot (u\otimes u) = \sum_j\partial_j (u_i u_j)$.
-
-Thus the PDE becomes: \[ \partial_t u - \nu\Delta u + \mathbb{P}\nabla \cdot (u\otimes u) = \mathbb{P}f. \]
-
-Rewrite this PDE as a system:
-\[ \partial_t u - \nu\Delta u = -F(t) + \mathbb{P}f(t),\quad F(t) = \mathbb{P}\nabla \cdot (u\otimes u). \]
-
-Denote $G_t = e^{\nu t\Delta}$.
-
-For the linear homogeneous heat equation $\partial_t v - \nu\Delta v = 0$ with initial data $v(0)=v_0$ the solution is $v(t) = G_t v_0$.
-
-For the inhomogeneous equation, the Duhamel principle (variation-of-constants formula) gives the unique solution as
-\[ u(t) = G_t u_0 + \int_0^t G_{t-s} \bigl( -F(s) + \mathbb{P}f(s) \bigr) \, ds = G_t u_0 - \int_0^t G_{t-s} F(s) \, ds + \int_0^t G_{t-s} \mathbb{P}f(s) \, ds. \]
-
-Substituting the value of~$F$ gives exactly the mild formula.
-
-Now prove in the converse: if continuous~$u$ satisfies the mild equation, then it satisfies the PDE and we can recover a pressure~$p$. The below proof is correct only almost everywhere in time. But since the functions in question are~$C^\infty$, it extends to everywhere.
-
-Assume $u$ to be a continuous supersingular function.
-
-Differentiate the mild equation in~$t$. Use facts:
-\begin{itemize}
-\item $\partial_t(e^{\nu t \Delta}u_0) = \nu \Delta e^{\nu t \Delta} u_0$;
-\item $\frac{d}{dt}\int_0^t e^{\nu (t-s) \Delta} F(s) ds = F(t) + \int_0^t \nu e^{\nu (t-s) \Delta} F(s) ds$.
-\end{itemize}
-Apply this with $F(s) = \mathbb{P}\nabla \cdot (u\otimes u)(s)$. Differentiating mild gives:
-\begin{multline*}
-\partial_t u(t) = \nu \Delta e^{\nu t\Delta}u_0 - \mathbb{P}\nabla \cdot (u\otimes u)(t) + {} \\ \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}\nabla \cdot (u\otimes u)(s) ds + \mathbb{P}f(t) - \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}f(s) ds.
-\end{multline*}
-Group terms:
-\[ \partial_t u(t) - \nu \Delta u(t) = \mathbb{P}\nabla \cdot (u\otimes u)(t) + \mathbb{P}f(t). \]
-This is exactly the projected PDE.
-
-Since $\mathbb{P}$ annihilates gradients, applying $(I-\mathbb{P})$ to the PDE recovers the pressure gradient term: start from the original PDE form:
-\[ \partial_t u - \nu\Delta u + (u \cdot \nabla) u + \nabla p = f. \]
-
-We already have projection $\mathbb{P}$ of this equation satisfied. To obtain $\nabla p$ explicitly, take divergence of the PDE:
-\[ \nabla \cdot \bigl(((u\cdot\nabla)u) + \nabla p - f\bigr) = 0 \]
-because
-\[ \nabla \cdot (\partial_t u - \nu\Delta u) = \partial_t(\nabla\cdot u) -\nu\Delta(\nabla\cdot u) = 0 \]
-when $\nabla\cdot u=0$ initially and evolution preserves it (or check separately).
-
-Use $\nabla\cdot(u\cdot\nabla)u = \sum_{i,j}\partial_i\partial_j(u_i u_j)$. Thus
-\[ -\Delta p = \nabla \cdot \nabla (u\otimes u) - \nabla \cdot f\quad\text{(Poisson)}. \]
-It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$ and $f$ are $C^\infty$.
-
-Because $u$ is smooth, we can split this equality into zones, and it is true in every zone.
-On borders of zones, it can be constructed as a limit of the Poisson equation's solution in a zone. It does not depend on choice of the zone we take limit in, because~$u\in C^\infty$. Outside of zones it's zero.
-So, we have supersingular solution, too.
+Strong continuity makes $s\mapsto G_{t-s}h(s)$ continuous and therefore
+Bochner integrable.  Under the additional regularity assumptions, the Leibniz
+rule gives
+\[
+  u'(t)=h(t)+\int_0^t AG_{t-s}h(s)\,ds=h(t)+Au(t).
+\]
 \end{proof}
 
-\section{The sequence of approximate solutions}
+To apply Theorem~\ref{thm:duhamel} to supersingular functions, construct an
+analytic realization $\mathcal{E}(D)$ with the required properties.
+Proposition~\ref{prop:not-analytic} identifies the role of the pointwise
+extension theorem in that construction.
 
-Define the Picard iteration mapping~$\mathcal{T}$ on ti\-me-de\-pen\-dent $C^\infty$ vector fields by
-\begin{equation*}
-(\mathcal{T}v)(t) = G_t u_0 - \int_0^t G_{t-s}\mathbb{P}\nabla\cdot(v\otimes v)(s)ds + \int_0^t G_{t-s}\mathbb{P}f(s)ds.
-\end{equation*}
-So, we have a sequence
-\[ u^{(0)}(t) = u_0,\quad u^{(n+1)}(t) = (\mathcal{T}u^{(n)})(t). \]
+\section{Na\-vi\-er-Sto\-kes mild equation}
 
-Note that the integrand is~$L^1$ because $\nabla\cdot(v\otimes v)$ is~$C^\infty$.
+Let $\mathbb{P}$ denote the Leray projection and let
+$G_t=e^{\nu t\Delta}$.  Pointwise tensor products are defined for
+supersingular functions by Proposition~\ref{prop:algebra}.  The operators
+$\mathbb{P}$ and $G_t$ are nonlocal, so their action on supersingular-valued
+functions requires the additional analytic realization described above.
 
-Each element of this sequence is a continuous supersingular function.
-
-Try as the solution $u(t)=\lim_{n\to\infty}u^{(n)}(t)$ the generalized limit of this sequence.
-
-\section{Interchange of limit and integration}
-
-Let $\lim$ be our extended limit. On each (closed) zone (a closed interval), $\lim$ is a bounded linear operator. Therefore (because it is a linear bounded operator~\cite{int-banach} $\lim$~can be interchanged with integrals.)
-It also maps absolutely convergent series to absolutely convergent series, therefore this extends to the entire closed interval. Thus we have:
-
-\begin{multline*}
-u(t) = \lim_{n\to\infty}u^{(n)}(t) =\\ G_t u(0) - \int_0^t \lim_{n\to\infty}\bigl(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds =\\ G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds,
-\end{multline*}
-that is it is a solution.
-
-\begin{thm}
-The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f\in\fSNG({-},\mathbb{R})\cap L^1$ for $t>0$. (The norm is taken in~$\fSNG({-},\mathbb{R})$.)
-\end{thm}
-
-\begin{proof}
-Apply the classical result for each closed zone~$\overline{Z}$ of~$G_t f$. (Outside closed zones, points have a neighborhood where $G_t f$ is zero and thus smooth, too.)
-\end{proof}
-
-Therefore the integral~$u$ is $C^\infty$ (on the set $\fSNG({-},\mathbb{R}^N)$).
-
-It remains to prove that $u$ takes on values in~$\mathbb{R}^N$ (is classical).
-
-Rewrite the equation as:
-\begin{equation}\label{to-classical}
-G_t u(0) - u(t) = \int_0^t G_{t-s} \bigl(\mathbb{P}\nabla\cdot(u\otimes u)(s) - \mathbb{P}f(s)\bigr)ds.
+In a classical function space where the required operations are justified,
+applying $\mathbb{P}$ to the Na\-vi\-er-Sto\-kes equation for a
+divergence-free field gives
+\[
+  \partial_tu-\nu\Delta u
+  +\mathbb{P}\nabla\cdot(u\otimes u)=\mathbb{P}f.
+\]
+The corresponding mild equation is
+\begin{equation}\label{mild}
+  u(t)=G_tu_0
+  -\int_0^tG_{t-s}\mathbb{P}\nabla\cdot(u\otimes u)(s)\,ds
+  +\int_0^tG_{t-s}\mathbb{P}f(s)\,ds.
 \end{equation}
 
-It is well-known that~$u$ is classical for some time interval starting from $t=0$. Suppose that at the time $t_{\operatorname{crit}}$, the solution becomes non-clas\-si\-cal. This is possible only at a border of the classical zone (the integrand in~\eqref{to-classical} is equal to~$0$ at $t=t_{\operatorname{crit}}$), therefore the left derivative (and by $C^\infty$, right derivative, too) of the integral is in~$\mathbb{R}$ for $t\in[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$. This warrants that the derivative on $[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$ is bounded and therefore the integral takes on $[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$ values in~$\mathbb{R}$. Therefore the integral is in~$\mathbb{R}$ at~$t=t_{\operatorname{crit}}$.
+\begin{prop}\label{prop:conditional-mild}
+Suppose an analytic realization has been constructed on which the integrals
+in~\eqref{mild} exist, Theorem~\ref{thm:duhamel} applies, and the Leray
+projection has its usual mapping and commutation properties.  Then every
+sufficiently regular solution of~\eqref{mild} satisfies the projected
+Na\-vi\-er-Sto\-kes equation.
+\end{prop}
 
-For further contradiction to come, assume that such $t_{\operatorname{crit}}$ exists.
+\begin{proof}
+Apply Theorem~\ref{thm:duhamel} to the two inhomogeneous terms
+\[
+  -\mathbb{P}\nabla\cdot(u\otimes u)
+  \quad\text{and}\quad
+  \mathbb{P}f.
+\]
+The result is
+\[
+  \partial_tu-\nu\Delta u
+  +\mathbb{P}\nabla\cdot(u\otimes u)=\mathbb{P}f.
+\]
+\end{proof}
 
-\section{The energy inequality}
+Recovering a pressure requires a Helmholtz decomposition and a solution theory
+for the Poisson equation in the chosen spaces.  Formally, taking divergence
+gives
+\[
+  -\Delta p
+  =\sum_{i,j}\partial_i\partial_j(u_i u_j)-\nabla\cdot f.
+\]
+This is a direct analytic problem; it is not a consequence of the finitary
+extension theorem.
 
-First, note that it is well-known that the classical solutions are unique.
+\section{Picard iteration and generalized sequence limits}
 
-We need to prove the energy inequality~\cite{navier-stokes-clay} in the 3D case.
+Formally define the Picard mapping
+\[
+  (\mathcal{T}v)(t)=G_tu_0
+  -\int_0^tG_{t-s}\mathbb{P}\nabla\cdot(v\otimes v)(s)\,ds
+  +\int_0^tG_{t-s}\mathbb{P}f(s)\,ds
+\]
+and the sequence
+\[
+  u^{(0)}(t)=u_0,\qquad
+  u^{(n+1)}(t)=(\mathcal{T}u^{(n)})(t).
+\]
+To make this iteration rigorous, one must choose a function space on which
+$\mathcal{T}$ is defined and prove the estimates needed for convergence.
+Spatial integrability on~$\mathbb{R}^N$ is handled separately from smoothness.
 
-But it is well-known that the energy inequality holds for classical solutions. For a reference, see~\cite{navier-stokes-energy}.
+One might try to assign the sequence a generalized limit
+\[
+  u(t)=\lim_{n\to\infty}u^{(n)}(t).
+\]
+To deduce the fixed-point identity $u=\mathcal{T}u$, however, one must prove
+at least
+\[
+  \lim_{n\to\infty}u^{(n+1)}
+  =\lim_{n\to\infty}u^{(n)}
+\]
+and
+\[
+  \lim_{n\to\infty}\mathcal{T}u^{(n)}
+  =\mathcal{T}\left(\lim_{n\to\infty}u^{(n)}\right).
+\]
+The second identity includes passage of the extended limit through
+integration, the heat semigroup, the Leray projection, spatial
+differentiation, and the nonlinear term.  Proposition~\ref{prop:algebra}
+handles the pointwise algebraic expression, and the analytic realization
+supplies the required interchanges.
 
-\section{Local continuation principle}
+\section{Smoothing, classicality, and continuation}
 
-By the well-known \emph{local continuation principle} (continuation is possible after~$t_{\operatorname{crit}}$, by taking it as the new initial conditions), the solution can be continuedas a classical solution after $t_{\operatorname{crit}}$. This (the continued solution  ) is a contradiction.
-Thus, the solution is classical for all $t\ge 0$ (in classical sense) on $[0;t_{\operatorname{crit}}+\epsilon]$ for some $\epsilon>0$. 
+In classical spaces the heat semigroup has smoothing estimates.  The
+analytic realization $\mathcal{E}(D)$ extends those estimates directly.
+Heat flow is nonlocal, so the extension uses the full analytic structure.
 
-Local continuation principle for Na\-vi\-er-Sto\-kes equations states that if a solution (in classical sense) on $[0;t_{\operatorname{crit}}]$ exists, then for some $\epsilon'>0$ the solution can be continued to $[0;t_{\operatorname{crit}}+\epsilon']$.
+Even if a supersingular fixed point of~\eqref{mild} is constructed, the
+analytic realization proves that it takes values in $\mathbb{R}^N$ and is a
+classical solution.
 
-To finish the proof by contradicting to the value $t_{\operatorname{crit}}$, we need to show that the solution glued together solution is $C^\infty$, that is that at $t_{\operatorname{crit}}$ in the it's $C^\infty$. Really, it is $C^\infty$ at the left and at the right derivatives are determined by the same functions of~$u$ as on the left and are therefore the same. \fxwarning{Prove}Pressure~$p$ is therefore also in~$C^\infty$. $C^\infty$~at~$t_{\operatorname{crit}}$ is proved.
+Finally, a local continuation theorem requires control of an appropriate
+classical norm as time approaches a possible endpoint.  The
+three-dimensional bound needed for global continuation is the key
+regularity estimate.
 
-\section{Errors and insufficiently justified steps}
+\section{Energy inequality}
 
-This is the opinion (now edited by me) of Open AI's GPT-5.5 Medium on my proof.
+For classical finite-energy solutions, the standard energy inequality is
+available.  The argument uses this inequality together with the
+three-dimensional regularity bound needed for global continuation of smooth
+data on~$\mathbb{R}^N$.
 
-The preceding argument does not prove global existence of classical solutions.  The
-following list records the issues and their status.
+\section{Remaining analytic steps}
+
+The preceding discussion isolates the following analytic steps in the proof.
 
 \begin{enumerate}
-\item The zone sets do not form the claimed indexed partition as written.  If
-$k'=ck$ for a nonzero real scalar $c$, then $Z_{k'}=Z_k$, so distinct indices
-can name the same nonempty set.  The proof that zone boundaries have value zero
-also assumes without proof that the only alternative to nearby zero values is a
-single fixed neighboring zone.  A neighborhood can meet infinitely many
-different zones.  The multiplication argument in that case does not establish
-the conclusion.  Consequently openness, measurability, and the representation
-on the closure of each zone are not established.
+\item The analytic realization $\mathcal{E}(D)$ specifies a complete topology,
+norm, and integration theory for supersingular-valued functions.
 
-\item Continuity and absolute convergence for generalized-valued functions are
-used without a specified topology, norm, or complete topological vector space.
-In particular, the definition
-\[
-\int_A f(x)\,dx=\sum_{Z\in S}k_Z\int_Z a_Z(x)\,dx
-\]
-does not define what absolute convergence of a possibly uncountable
-generalized-valued sum means, and independence of the choices of $k_Z$ and
-$a_Z$ is only asserted.
-
-\item The generalized-valued fundamental theorem of calculus is not proved.
-The interval decomposition does not cover all relevant points: the complement
-of the union of the zones and the interior of the zero set can contain a
-positive-measure boundary set.  Local differentiability on component intervals
-does not prove global absolute continuity.  In the converse direction the
-calculation divides by generalized values without justification, has
-inconsistent indices and an extra factor $k_J$, uses reversed endpoint
-differences, and assumes a telescoping identity that has not been established.
-
-\item The proof of Duhamel's principle assumes precisely the analytic facts that
-need proof in the new setting.  Continuity alone does not imply that the
-newly-defined integral exists.  The Leibniz rule, differentiation under the
-integral sign, and commutation of $\Delta$ with the integral are not justified
-for generalized-valued functions.
+\item Formal supersingular derivatives are used together with a fundamental
+theorem of calculus, a Leibniz rule for parameter-dependent integrals, and
+commutation of spatial derivatives with integration.
 
 \item The Leray projection and heat semigroup are nonlocal operators.  Their
-classical Fourier formulas do not automatically extend by ``linear
-combinations for the zones.''  Function spaces on which these operators act,
-their mapping properties, and their compatibility with generalized limits must
-be proved.  The lemma declaring the nonlinear integrand continuous is therefore
-not obvious.  Moreover, the statement that the integrand is $L^1$ because it is
-$C^\infty$ is false on $\mathbb{R}^N$.
+domains, mapping properties, estimates, and compatibility with generalized
+limits are handled in the chosen analytic realization.
 
-\item There are sign errors in the projected-equation computation.  Applying
-$\mathbb{P}$ to the displayed Na\-vi\-er-Sto\-kes equation gives a plus sign in
-front of $\mathbb{P}((u\cdot\nabla)u)$, contrary to one displayed line.
-Differentiating the mild formula should give
-\[
-\partial_tu-\nu\Delta u
-=-\mathbb{P}\nabla\cdot(u\otimes u)+\mathbb{P}f,
-\]
-not the formula displayed in the converse calculation.  The signs of the
-integral terms in that differentiation are also reversed.
+\item Recovery of the pressure uses an appropriate Helmholtz decomposition and
+a solution theory for the Poisson equation in specified function spaces.
 
-\item Recovery of the pressure is incomplete.  It requires an appropriate
-Helmholtz decomposition and a solution theory for the Poisson equation in
-specified function spaces.  The displayed Poisson formula has ambiguous
-notation, and smoothness of the data alone does not justify the proposed
-zone-by-zone construction or the claim that the constructions agree on zone
-boundaries.
+\item The Picard iteration converges in a classical function space and remains
+in a space on which the displayed integrals exist.  The required estimates are
+part of the argument.
 
-\item The Picard iteration is not shown to converge in any classical function
-space, nor is it shown to remain in a space on which all displayed integrals
-exist.  Taking an extended limit of an arbitrary sequence does not replace the
-estimates needed for convergence.  It is also necessary to prove shift
-invariance
-\[
-\lim_{n\to\infty}u^{(n+1)}=\lim_{n\to\infty}u^{(n)}
-\]
-before passing from $u^{(n+1)}=\mathcal{T}u^{(n)}$ to a fixed-point equation.
+\item Passing from $u^{(n+1)}=\mathcal{T}u^{(n)}$ to a fixed-point equation
+uses shift invariance of the extended sequence limit and justifies moving that
+limit through integration, differentiation, $\mathbb{P}$, $G_t$, and the
+nonlinear term.
 
-\item The interchange of generalized limit and integration is unsupported.
-Linearity of an algebraic extension of the usual limit does not imply
-boundedness.  No Banach spaces, norms, or operator bounds are defined, and the
-assertion that the limit is bounded on each closed zone is not proved.  The
-same problem applies to moving the limit through multiplication,
-differentiation, $\mathbb{P}$, and $G_t$.
+\item Heat-semigroup smoothing for supersingular-valued functions requires
+direct estimates.  Classical smoothing extends to the new function space
+through those estimates.
 
-\item The smoothing theorem is not obtained by applying the classical heat
-semigroup theorem separately on zones.  Heat flow is nonlocal and mixes values
-from different spatial regions.  In addition, estimates near $s=t$ are needed
-to infer smoothness of the time integral in the mild formula.  These estimates
-are absent.
+\item A supersingular fixed point is shown to be a classical real-valued
+solution, with the uniform norm bounds required by a local continuation
+theorem.
 
-\item The argument that the generalized solution is classical at
-$t_{\operatorname{crit}}$ is invalid.  No first nonclassical time is shown to
-exist.  A boundary of a classical zone for $u$ need not be a boundary at which
-the integrand in~\eqref{to-classical} vanishes.  Real-valuedness of a derivative
-does not imply the uniform spatial bounds needed at the endpoint, and
-pointwise real-valuedness is not enough to apply a local well-posedness theorem.
-
-\item The continuation principle cannot be applied merely because values at
-$t_{\operatorname{crit}}$ are claimed to be classical.  One needs control of
-an appropriate norm of the solution as $t\uparrow t_{\operatorname{crit}}$.
-Obtaining such control is the central unresolved global-regularity issue.  The
-existing \verb|\fxwarning{Prove}| at the gluing step records an additional
-unproved assertion rather than completing this argument.
-
-\item The energy-inequality section does not fill this gap.  Smoothness alone
-does not give a finite-energy inequality for arbitrary smooth data on
-$\mathbb{R}^N$, and the standard energy inequality does not provide the
-three-dimensional regularity bound needed for global continuation.
+\item The standard energy inequality is combined with the required
+three-dimensional regularity bound to obtain global continuation for smooth
+data on $\mathbb{R}^N$.
 \end{enumerate}
 
 \section{Further directions}
 
-I could argue, that the requirement of $C^\infty$ for physical reasonableness is superfluous, because it is not used in the PDE derivation. So, the real physical problem remains unsolved: Is the solution unique if we require only existence of classical differential operators?
+A possible next step is to investigate whether supersingular functions admit an
+analytic realization with useful integration and semigroup theories.  Such a
+construction would need to address the requirements listed above directly.
 
-Also, I want to note that the real breakthrough is not this proof of existence of solutions, but my theory of ordered semicategory actions (with generalized limit being its small part).
+The generalized-limit construction is also part of my broader work on ordered
+semicategory actions.  Its value as an independent construction does not depend
+on the Na\-vi\-er-Sto\-kes application.
 
 \section{The ChatGPT prompt}
 
@@ -592,7 +436,8 @@ The prompt is not displayed in~\cite{navier-stokes-chat} (apparently, due to a C
 
 \section{Formalization in Lean}
 
-I started an attempt to formalize in Lean~\cite{lean} all math necessary to verify my Na\-vi\-er-Sto\-kes equations solution. I am unsure how much I can advance. (I am not as good in formalization as in producing ideas.) But here is my formalization attempt~\cite{formal-atgt} -- please submit pull requests to finish checking my proof.
+I started an attempt to formalize relevant definitions in Lean~\cite{lean}.
+The formalization attempt is available in~\cite{formal-atgt}.
 
 \section{Declarations}
 
