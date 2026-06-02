@@ -19,7 +19,6 @@
 \DeclareMathOperator{\fSNG}{fSNG}
 \DeclareMathOperator{\interrior}{int}
 \newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
-\newcommand{\subsets}{\mathscr{P}}
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \newcommand{\abs}[1]{\left\lvert #1\right\rvert}
 \newcommand{\supfun}[1]{\left\langle #1\right\rangle}
@@ -158,24 +157,6 @@ If $a\leq b$ and $b\leq c$, then
 \]
 so $a\leq c$.  Finally, for $a,b\in\mathbb{R}$ the equality
 $\min\{a,b\}=a$ is equivalent to the usual inequality $a\leq b$.
-\end{proof}
-
-\begin{thm}
-For each $S\in\subsets\underbrace{\SNG(\dots\SNG(\mathbb{R})\dots)}_{\text{Finite number of times}}$, such that $\forall a\in S:a\ge B$ for some constant $B\in\mathbb{R}$, there exists $\inf S\in\underbrace{\SNG(\dots\SNG(\mathbb{R})\dots)}_{\text{The same number of times}}$.
-\end{thm}
-
-\begin{proof}
-For the first level of the limit (of $\mathbb{R}$-va\-lu\-ed functions) we use this reasoning:
-
-Choose
-\[ F\in\prod_{a\in S}\setcond{f:X\to\mathbb{R}}{\lim_{x\to 0}f(x)=a}. \]
-Let
-\[ m=\lim_{x\to 0}\left(x\mapsto\inf_{f\in F}\max\{f(x),B\}\right). \]
-($\inf_{f\in F}\max\{f(x),B\}$ exists because this set is bounded from below.) We will show that $m$ is the infimum of~$S$.
-
-It's obvious that $\forall a\in S:m\le a$ and $\forall a\in S:x\le a\Rightarrow x\le m$.
-
-For $\SNG(\dots\SNG(\mathbb{R})\dots)$ (finite number of limits) the same reasoning applies inductively.
 \end{proof}
 
 The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
@@ -496,12 +477,6 @@ The preceding argument does not prove global existence of classical solutions.  
 following list records the issues and their status.
 
 \begin{enumerate}
-\item The proof of existence of $\inf S$ is incomplete.  To prove the
-greatest-lower-bound property for the algebraically defined order, the displayed
-pointwise infimum argument must be justified.  The empty-set case is not
-handled, and the claimed induction over iterated generalized limits is not
-given.
-
 \item The zone sets do not form the claimed indexed partition as written.  If
 $k'=ck$ for a nonzero real scalar $c$, then $Z_{k'}=Z_k$, so distinct indices
 can name the same nonempty set.  The proof that zone boundaries have value zero
