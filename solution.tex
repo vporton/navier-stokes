@@ -160,8 +160,7 @@ so $a\leq c$.  Finally, for $a,b\in\mathbb{R}$ the equality
 $\min\{a,b\}=a$ is equivalent to the usual inequality $a\leq b$.
 \end{proof}
 
-The following theorem is just the classical fundamental theorem of calculus,
-used in the next section.
+The calculus facts used later are stated after the integral definitions.
 
 \section{Lebesgue integrals}
 
@@ -447,13 +446,9 @@ the same-level result applied to the raised elements reflects back to
 $r\wedge\alpha=r$ in~$R$.
 \end{proof}
 
-\begin{thm}[Fundamental theorem for ring-valued integral values]
-Let $a<b$ be real numbers, and let $E$ be a compatible real-complete
-ring-valued normed module over $R=\SUPER(\mathbb{R})$.
-
-Let $f:[a,b]\to E$ be norm-continuous at $x\in(a,b)$, and assume that the
-integrals below exist for all sufficiently small real $h$ with
-$x+h\in[a,b]$.  Define the oriented interval integral by
+\begin{defn}
+Whenever the displayed interval integrals exist, define the oriented interval
+integral by
 \[
   \int_\alpha^\beta f(t)\,dt
   \eqdef
@@ -462,6 +457,94 @@ $x+h\in[a,b]$.  Define the oriented interval integral by
     -\int_{[\beta,\alpha]} f(t)\,dt,& \beta<\alpha.
   \end{cases}
 \]
+\end{defn}
+
+\begin{prop}
+Let $E$ be a compatible real-complete ring-valued normed module over
+$R=\SUPER(\mathbb{R})$.  If $x_n\to x$ in the norm topology of $E$ and
+\[
+  \norm{x_n}_E\leq M
+\]
+for every $n$, where $M\in R$, then $\norm{x}_E\leq M$.
+\end{prop}
+
+\begin{proof}
+For every real $\eta>0$, choose $n$ such that
+$\norm{x-x_n}_E\leq\eta$.  Then
+\[
+  \norm{x}_E\leq\norm{x-x_n}_E+\norm{x_n}_E\leq M+\eta .
+\]
+The real-epsilon order-limit property of $R$ gives $\norm{x}_E\leq M$.
+\end{proof}
+
+\begin{prop}[Basic interval-integral rules]
+Let $E$ be a compatible real-complete ring-valued normed module over
+$R=\SUPER(\mathbb{R})$.  For functions whose displayed integrals exist, the
+interval integral is linear and finitely additive over adjacent real
+intervals: for $c,d\in R$,
+\[
+  \int_\alpha^\beta (cf(t)+dg(t))\,dt
+  =
+  c\int_\alpha^\beta f(t)\,dt+d\int_\alpha^\beta g(t)\,dt
+\]
+and, for $\alpha\leq\beta\leq\gamma$,
+\[
+  \int_\alpha^\gamma f(t)\,dt
+  =
+  \int_\alpha^\beta f(t)\,dt+\int_\beta^\gamma f(t)\,dt .
+\]
+The same additivity holds for oriented intervals after the signs in the
+definition above are applied.
+\end{prop}
+
+\begin{proof}
+Both assertions hold for simple functions and their simple-function sums.
+Passing to the defining norm limits preserves the equalities because addition
+and scalar multiplication are continuous in the norm topology.
+\end{proof}
+
+\begin{prop}[Bounded-integral estimate]
+Let $A$ be a measurable set of finite real measure, let $E$ be a compatible
+real-complete ring-valued normed module over $R=\SUPER(\mathbb{R})$, and let
+$f:A\to E$ be integrable.  If $M\in R$ and
+\[
+  \norm{f(t)}_E\leq M
+  \quad\text{for all }t\in A,
+\]
+then
+\[
+  \norm{\int_A f(t)\,dt}_E\leq M\,|A|.
+\]
+Consequently, for real $\alpha,\beta$,
+\[
+  \norm{\int_\alpha^\beta f(t)\,dt}_E
+  \leq M\,\abs{\beta-\alpha}
+\]
+whenever the oriented interval integral exists and the same pointwise bound
+holds on the ordinary interval between $\alpha$ and $\beta$.
+\end{prop}
+
+\begin{proof}
+For a simple-function approximating sum
+$S=\sum_i m_i y_i$ with each $m_i\geq0$, $\sum_i m_i=|A|$, and
+$\norm{y_i}_E\leq M$, the triangle inequality and homogeneity with real
+coefficients give
+\[
+  \norm{S}_E\leq\sum_i m_i\norm{y_i}_E\leq M\sum_i m_i=M\,|A|.
+\]
+The integral is the norm limit of such sums, so the closed norm-estimate
+proposition passes this bound to the integral.  The oriented-interval estimate
+is the same argument applied to the underlying non-oriented interval; the sign
+does not change the norm.
+\end{proof}
+
+\begin{thm}[Fundamental theorem for ring-valued integral values]
+Let $a<b$ be real numbers, and let $E$ be a compatible real-complete
+ring-valued normed module over $R=\SUPER(\mathbb{R})$.
+
+Let $f:[a,b]\to E$ be norm-continuous at $x\in(a,b)$, and assume that the
+integrals below exist for all sufficiently small real $h$ with
+$x+h\in[a,b]$.
 If
 \[
   F(y)\eqdef\int_a^y f(t)\,dt ,
@@ -483,6 +566,8 @@ For real $h\neq0$ with $x+h\in[a,b]$,
   =
   \frac{1}{h}\int_x^{x+h}(f(t)-f(x))\,dt .
 \]
+Here the equality follows from interval additivity and from
+$\int_x^{x+h} f(x)\,dt=hf(x)$.
 Let $\epsilon>0$ be real.  By norm-continuity of $f$ at $x$, there is
 $\delta>0$ such that
 \[
@@ -490,20 +575,8 @@ $\delta>0$ such that
   \quad\text{whenever } t\in[a,b]\text{ and } \abs{t-x}<\delta .
 \]
 Fix such an $h$ with $0<\abs{h}<\delta$, and put $g(t)=f(t)-f(x)$ on the
-ordinary real interval between $x$ and $x+h$.  Every simple-function
-approximating sum $S=\sum_i m_i g(t_i)$ for this interval satisfies, by the
-triangle inequality and homogeneity with real coefficients,
-\[
-  \norm{S}_E
-  \leq
-  \sum_i m_i\norm{g(t_i)}_E
-  \leq
-  \epsilon\sum_i m_i
-  =
-  \epsilon\abs{h}.
-\]
-Passing to the defining norm limit of the integral and using the assumed
-closedness of order intervals gives
+ordinary real interval between $x$ and $x+h$.  The bounded-integral estimate
+gives
 \[
   \norm{\int_x^{x+h}g(t)\,dt}_E\leq\epsilon\abs{h}.
 \]
@@ -516,6 +589,111 @@ Since this holds for every real $\epsilon>0$ once $\abs{h}$ is sufficiently
 small, the difference quotient converges to $f(x)$ in the norm topology.
 Compatibility of the norm topology with $\mathrm{X}_{\SUPER}$ then gives the
 same convergence in the supersingular-funcoid topology.
+\end{proof}
+
+\begin{lem}
+Let $W:[a,b]\to E$ be norm-continuous and norm-differentiable on $(a,b)$.  If
+$W'(t)=0$ for every $t\in(a,b)$, then $W$ is constant.
+\end{lem}
+
+\begin{proof}
+Fix $\alpha,\beta\in(a,b)$ with $\alpha<\beta$ and a real $\epsilon>0$.  Since
+$W'(t)=0$, for every $t\in[\alpha,\beta]$ there is a radius $\delta(t)>0$ such
+that
+\[
+  \norm{W(y)-W(t)}_E\leq\epsilon\abs{y-t}
+\]
+whenever $y\in[\alpha,\beta]$ and $\abs{y-t}<\delta(t)$.  By the Cousin
+covering lemma for compact real intervals, choose a tagged partition
+$\alpha=t_0<t_1<\dots<t_n=\beta$ with tags $\xi_i\in[t_{i-1},t_i]$ and
+$[t_{i-1},t_i]\subset(\xi_i-\delta(\xi_i),\xi_i+\delta(\xi_i))$.  Then
+\[
+  \norm{W(t_i)-W(t_{i-1})}_E
+  \leq
+  \norm{W(t_i)-W(\xi_i)}_E+\norm{W(\xi_i)-W(t_{i-1})}_E
+  \leq\epsilon(t_i-t_{i-1}).
+\]
+Therefore
+\[
+  \norm{W(\beta)-W(\alpha)}_E
+  \leq\epsilon(\beta-\alpha).
+\]
+Since this holds for every real $\epsilon>0$, the real-epsilon order-limit
+property gives $\norm{W(\beta)-W(\alpha)}_E=0$, hence
+$W(\beta)=W(\alpha)$.  Norm-continuity extends the equality to endpoints.
+\end{proof}
+
+\begin{thm}[Converse fundamental theorem for norm-$C^1$ paths]
+Let $a<b$ be real numbers, and let $E$ be a compatible real-complete
+ring-valued normed module over $R=\SUPER(\mathbb{R})$.  Let
+$U:[a,b]\to E$ be norm-continuous and norm-differentiable on $(a,b)$, with
+norm-continuous derivative $U':[a,b]\to E$.  Assume the interval integrals of
+$U'$ exist.  Then, for all $\alpha,\beta\in[a,b]$,
+\[
+  U(\beta)-U(\alpha)=\int_\alpha^\beta U'(t)\,dt .
+\]
+\end{thm}
+
+\begin{proof}
+It is enough to prove the claim for $\alpha<\beta$.  Put
+\[
+  V(y)=U(y)-U(\alpha)-\int_\alpha^y U'(t)\,dt .
+\]
+The first fundamental-theorem statement gives
+$\left(\int_\alpha^y U'(t)\,dt\right)'=U'(y)$ for $y\in(\alpha,\beta)$.
+Hence $V'(y)=0$ on $(\alpha,\beta)$.  The preceding lemma gives
+$V(\beta)=V(\alpha)=0$, which is the desired identity.  The oriented case
+$\beta<\alpha$ follows by changing the sign of the interval integral.
+\end{proof}
+
+\begin{thm}[Leibniz rule for a moving upper limit]
+Let $T>0$, let $E$ be a compatible real-complete ring-valued normed module
+over $R=\SUPER(\mathbb{R})$, and let $q:[0,T]\times[0,T]\to E$ be
+norm-continuous.  Suppose that the partial derivative $\partial_2 q$ exists
+with respect to the second variable and is norm-continuous, and assume that
+all displayed interval integrals exist.  For
+\[
+  H(t)\eqdef\int_0^t q(s,t)\,ds
+\]
+and $t\in(0,T)$,
+\[
+  H'(t)=q(t,t)+\int_0^t \partial_2q(s,t)\,ds .
+\]
+\end{thm}
+
+\begin{proof}
+For $h\neq0$ sufficiently small,
+\[
+  \frac{H(t+h)-H(t)}{h}
+  =
+  \int_0^t\frac{q(s,t+h)-q(s,t)}{h}\,ds
+  +\frac{1}{h}\int_t^{t+h}q(s,t+h)\,ds .
+\]
+By the converse fundamental theorem applied in the second variable,
+\[
+  \frac{q(s,t+h)-q(s,t)}{h}-\partial_2q(s,t)
+  =
+  \frac{1}{h}\int_t^{t+h}
+  \bigl(\partial_2q(s,\tau)-\partial_2q(s,t)\bigr)\,d\tau .
+\]
+Uniform norm-continuity of $\partial_2q$ on the compact rectangle implies
+that the right-hand side converges uniformly to $0$ for
+$s\in[0,t]$.  The bounded-integral estimate then gives
+\[
+  \int_0^t\frac{q(s,t+h)-q(s,t)}{h}\,ds
+  \longrightarrow
+  \int_0^t\partial_2q(s,t)\,ds
+\]
+in the norm topology.
+
+For the endpoint term,
+\[
+  \frac{1}{h}\int_t^{t+h}q(s,t+h)\,ds-q(t,t)
+  =
+  \frac{1}{h}\int_t^{t+h}\bigl(q(s,t+h)-q(t,t)\bigr)\,ds .
+\]
+Norm-continuity of $q$ at $(t,t)$ and the bounded-integral estimate show that
+this tends to $0$.  Combining the two limits gives the formula.
 \end{proof}
 
 \section{Inhomogenious linear differential equations}
@@ -807,23 +985,18 @@ The preceding argument does not prove global existence of classical solutions.
 Some points below have been partly addressed by adding definitions or by
 replacing an invalid argument with a conditional criterion, but none of the
 main analytic gaps is fully resolved.  The status of each issue is recorded
-explicitly.
+explicitly.  The former first item, concerning the fundamental theorem of
+calculus, has been removed after the added details above; the remaining items
+keep their previous numbering.
 
 \begin{enumerate}
-\item \textbf{Partly addressed, but unresolved.} The first part of the
-fundamental theorem of calculus has been proved above for norm-continuous
-integrands on ordinary real intervals with values in a ring-valued normed
-module over $R=\SUPER(\mathbb{R})$, assuming the relevant integrals exist.  This
-does not yet prove a full generalized-valued Lebesgue differentiation theorem,
-nor the converse absolutely-continuous form.  In particular, existence of the
-needed generalized-valued integrals and the Leibniz rules used later still
-require separate proof.
-
-\item \textbf{Unresolved.} The proof of Duhamel's principle assumes precisely the analytic facts that
-need proof in the new setting.  Continuity alone does not imply that the
-newly-defined integral exists.  The Leibniz rule, differentiation under the
-integral sign, and commutation of $\Delta$ with the integral are not justified
-for generalized-valued functions.
+\setcounter{enumi}{1}
+\item \textbf{Unresolved.} The proof of Duhamel's principle assumes precisely
+the hypotheses of the ring-valued integral rules that still need verification
+for the functions at hand.  Continuity alone does not imply that the
+newly-defined integral exists.  It remains to prove that the relevant
+time-derivatives are norm-continuous and integrable and that $\Delta$ commutes
+with the integral in the selected generalized-valued function spaces.
 
 \item \textbf{Unresolved.} The Leray projection and heat semigroup are nonlocal operators.  Their
 classical Fourier formulas do not automatically extend by linearity alone.  Function spaces on which these operators act,
