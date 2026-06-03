@@ -1116,9 +1116,100 @@ The needed integrability of the two Duhamel terms is part of
 Definition~\ref{def:admissible-projected-heat}; it is not implied merely by
 $C^\infty$ regularity on $\mathbb{R}^N$.
 
-Each element of this sequence is a continuous supersingular function.
+The following formal variant proves the weaker unrestricted-in-time statement
+obtained by allowing values in $\SUPER$ or $\fSNG$ instead of requiring
+ordinary real-valued vector fields at every step.  After these iterates are
+formed, one can still try as the solution
+$u(t)=\lim_{n\to\infty}u^{(n)}(t)$, the generalized limit of this sequence.
 
-Try as the solution $u(t)=\lim_{n\to\infty}u^{(n)}(t)$ the generalized limit of this sequence.
+\begin{defn}[Formal supersingular Picard operations]\label{def:formal-super-picard}
+For a path $q:[0,\infty)\to\fSNG({-},R^N)$ define the formal supersingular
+time integral by
+\[
+  \mathcal I_t^{\SUPER}(q)
+  \eqdef
+  \xlim_{k\to\infty}
+  \sum_{j=0}^{k-1}\frac{t}{k}\,q\left(\frac{jt}{k}\right),
+  \qquad t\geq0.
+\]
+The generalized limit exists for every sequence, so this expression is always
+defined as a $\SUPER$-valued vector field.  When the ordinary Banach-valued or
+Lebesgue integral exists, $\mathcal I_t^{\SUPER}(q)$ agrees with it by agreement
+of $\xlim$ with ordinary limits and by linearity.
+
+In the same formal supersingular sense, the nonlocal operators $G_t$ and
+$\mathbb{P}$ are understood as their regularized and truncated classical
+formulas followed by $\xlim$ over the regularization and truncation
+parameters.  Thus they are total operations on the corresponding
+$\SUPER$-valued vector fields, possibly after raising the singularity level.
+This is a weaker assertion than boundedness on a classical Banach space.
+\end{defn}
+
+\begin{thm}[Unrestricted supersingular Picard iterates]
+\label{thm:unrestricted-super-picard}
+Interpret the Picard formula with the formal supersingular operations of
+Definition~\ref{def:formal-super-picard}.  If $u_0$ and $f$ are embedded in
+the supersingular vector-field universe, then for every $n\in\mathbb N$ and
+every finite $t\geq0$, the Picard iterate $u^{(n)}(t)$ is defined as a
+$\SUPER$-valued vector field.  If the chosen representatives of the formal
+operations land in the closed $\fSNG$ part, then the iterates are
+$\fSNG$-valued; otherwise they are still $\SUPER$-valued after finitely many
+level raises.
+\end{thm}
+
+\begin{proof}
+The proof is by induction on $n$.  The initial path
+$u^{(0)}(t)=u_0$ is defined for all $t\geq0$ by embedding $u_0$ into the
+supersingular universe.
+
+Assume $u^{(n)}(t)$ is defined for every finite $t\geq0$.  The tensor product
+$u^{(n)}\otimes u^{(n)}$ is obtained from pointwise multiplication and
+addition of coordinates, hence is defined by the extension of continuous
+finitary operations.  The divergence
+\[
+  \nabla\cdot(u^{(n)}\otimes u^{(n)})
+\]
+is defined because $\fSNG$ is closed under generalized differential
+operators, again with possible level raising in $\SUPER$.  By
+Definition~\ref{def:formal-super-picard}, applying $\mathbb{P}$ and then
+$G_{t-s}$ to this vector field is defined for every $0\leq s\leq t$, and the
+same is true for $G_{t-s}\mathbb{P}f(s)$.
+
+The two Duhamel terms are then
+\[
+  \mathcal I_t^{\SUPER}
+  \bigl(s\mapsto
+  G_{t-s}\mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)
+  \quad\text{and}\quad
+  \mathcal I_t^{\SUPER}
+  \bigl(s\mapsto G_{t-s}\mathbb{P}f(s)\bigr),
+\]
+so they are defined for every finite $t\geq0$ by the definition of
+$\mathcal I_t^{\SUPER}$.  Finally, addition and subtraction are continuous
+finitary operations and therefore have supersingular extensions.  Hence
+\[
+  u^{(n+1)}(t)
+  =
+  G_tu_0
+  -\mathcal I_t^{\SUPER}
+  \bigl(s\mapsto
+  G_{t-s}\mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)
+  +\mathcal I_t^{\SUPER}
+  \bigl(s\mapsto G_{t-s}\mathbb{P}f(s)\bigr)
+\]
+is defined for every finite $t\geq0$.  No estimate in the induction depends on
+an upper endpoint $T$, so the construction is unrestricted in time.  The
+last assertion follows from whether the selected formal extensions stay in
+$\fSNG$ or only in the larger hierarchy $\SUPER$.
+\end{proof}
+
+\begin{rem}
+Theorem~\ref{thm:unrestricted-super-picard} proves only that each finite
+Picard iterate can be formed for all times after allowing supersingular
+values.  It does not prove convergence of the Picard sequence in a classical
+space, boundedness of the generalized operators, or that the eventual
+generalized-limit solution is $\mathbb{R}^N$-valued.
+\end{rem}
 
 \begin{prop}[Shift invariance for a convergent Picard sequence]\label{prop:picard-shift}
 Let $E$ be a compatible real-complete ring-valued normed module and let
@@ -1413,19 +1504,27 @@ carried out in spaces such as $H^m(\mathbb{R}^N)$, $m>N/2+1$.  It does not
 justify the broader formulation with arbitrary smooth data and no decay or
 Sobolev assumptions.
 
-\item \textbf{Locally addressed in Sobolev spaces, but globally unresolved.}
-Theorem~\ref{thm:local-sobolev-picard} proves that, for data in
-$H^m(\mathbb{R}^N)$ with $m>N/2+1$ and on a sufficiently short time interval,
-the Picard iterates remain in a space on which the displayed Duhamel integrals
-exist and converge in $C([0,T];H^m)$.  Proposition~\ref{prop:picard-shift}
-then proves the needed shift invariance
+\item \textbf{Partly addressed.}
+Theorem~\ref{thm:unrestricted-super-picard} proves that, after giving up
+real-valuedness and interpreting the time and nonlocal operations in the
+formal supersingular sense, every finite Picard iterate is defined for every
+finite time $t\geq0$.  Thus the iterates remain in a $\SUPER$/$\fSNG$-valued
+space on the unrestricted time interval.
+
+In the classical Sobolev setting, Theorem~\ref{thm:local-sobolev-picard}
+proves more, but only locally in time: for data in $H^m(\mathbb{R}^N)$ with
+$m>N/2+1$, the Picard iterates remain in a space on which the displayed
+Duhamel integrals exist and converge in $C([0,T];H^m)$ for sufficiently small
+$T$.  Proposition~\ref{prop:picard-shift} then proves the needed shift
+invariance
 \[
 \lim_{n\to\infty}u^{(n+1)}=\lim_{n\to\infty}u^{(n)}
 \]
-whenever such convergence is known.  This does not prove global convergence in
-a classical space on $\mathbb{R}^N$, nor does it treat arbitrary smooth data
-without Sobolev bounds.  Taking an extended limit of an arbitrary sequence
-still does not replace the estimates needed for convergence.
+whenever such convergence is known.  What remains unresolved is global
+convergence in a classical space on $\mathbb{R}^N$ and the proof that the
+resulting generalized solution is $\mathbb{R}^N$-valued.  Taking an extended
+limit of an arbitrary sequence still does not replace the estimates needed for
+classical convergence.
 
 \item \textbf{Partly addressed, but unresolved.} The local Sobolev argument
 passes limits through the Duhamel integrals by ordinary dominated convergence.
