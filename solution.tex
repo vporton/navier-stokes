@@ -407,12 +407,49 @@ in the supersingular-funcoid topology as well.
 
 \subsection{Properties of Lebesgue integrals}
 
+\begin{prop}
+The ordered ring $R=\SUPER(\mathbb{R})$ is closed under real-epsilon order
+limits: if $r,\alpha\in R$ and
+\[
+  r\leq\alpha+\epsilon
+\]
+for every real $\epsilon>0$, then $r\leq\alpha$.
+\end{prop}
+
+\begin{proof}
+For real numbers this is the usual order property of $\mathbb{R}$.  We lift it
+through the finite hierarchy of singularities.
+
+First suppose $r$ and $\alpha$ belong to the same singularity level.  By
+\cite[pp.~6--8]{limit}, singularities inject into their $F$-singularity
+representation by~$\Phi$, and continuous finitary operations on the base are
+computed in that representation pointwise on the corresponding filters or
+funcoids.  The operations $+$ and $\wedge=\min$ are continuous, so
+\[
+  r\leq\alpha+\epsilon
+  \quad\Longleftrightarrow\quad
+  r\wedge(\alpha+\epsilon)=r
+\]
+is transported by~$\Phi$ to the same pointwise assertion in the previous
+level of the hierarchy.  Applying the real case at level~$0$ and then
+inducting over the finite singularity level gives the pointwise identity
+\[
+  \Phi(r\wedge\alpha)=\Phi(r).
+\]
+Since~$\Phi$ is injective, $r\wedge\alpha=r$, hence $r\leq\alpha$.
+
+For arbitrary $r,\alpha\in R$, apply enough copies of the injective embedding
+$\tau$ to put both elements in one common singularity level.  The construction
+of operations on $\SUPER(\mathbb{R})$ in \cite[section~9]{limit} is precisely
+this level-raising procedure, and $\tau$ preserves and reflects the identities
+formed from the extended continuous operations $+$ and~$\wedge$.  Therefore
+the same-level result applied to the raised elements reflects back to
+$r\wedge\alpha=r$ in~$R$.
+\end{proof}
+
 \begin{thm}[Fundamental theorem for ring-valued integral values]
 Let $a<b$ be real numbers, and let $E$ be a compatible real-complete
-ring-valued normed module over $R=\SUPER(\mathbb{R})$.  Assume that order
-intervals in $R$ are closed under real norm limits in the following sense:
-if $r,\alpha\in R$ and $r\leq\alpha+\epsilon$ for every real $\epsilon>0$, then
-$r\leq\alpha$.
+ring-valued normed module over $R=\SUPER(\mathbb{R})$.
 
 Let $f:[a,b]\to E$ be norm-continuous at $x\in(a,b)$, and assume that the
 integrals below exist for all sufficiently small real $h$ with
@@ -436,7 +473,7 @@ then $F$ is differentiable at $x$ in the norm topology and
 Consequently the same derivative equality also holds in the
 $\mathrm{X}_{\SUPER}$-funcoid topology.  In particular this applies to
 $E=R$, and to $\fSNG$-valued modules whenever the stated ring-valued norm,
-integrals, and order-closedness condition are available.
+integrals, and norm-continuity condition are available.
 \end{thm}
 
 \begin{proof}
@@ -773,14 +810,14 @@ main analytic gaps is fully resolved.  The status of each issue is recorded
 explicitly.
 
 \begin{enumerate}
-\item \textbf{Unresolved.} The generalized-valued fundamental theorem of calculus is not proved.
-The interval decomposition does not cover all relevant points: the complement
-of the union of the pieces and the interior of the zero set can contain a
-positive-measure boundary set.  Local differentiability on component intervals
-does not prove global absolute continuity.  In the converse direction the
-calculation divides by generalized values without justification, has
-inconsistent indices and an extra factor $k_J$, uses reversed endpoint
-differences, and assumes a telescoping identity that has not been established.
+\item \textbf{Partly addressed, but unresolved.} The first part of the
+fundamental theorem of calculus has been proved above for norm-continuous
+integrands on ordinary real intervals with values in a ring-valued normed
+module over $R=\SUPER(\mathbb{R})$, assuming the relevant integrals exist.  This
+does not yet prove a full generalized-valued Lebesgue differentiation theorem,
+nor the converse absolutely-continuous form.  In particular, existence of the
+needed generalized-valued integrals and the Leibniz rules used later still
+require separate proof.
 
 \item \textbf{Unresolved.} The proof of Duhamel's principle assumes precisely the analytic facts that
 need proof in the new setting.  Continuity alone does not imply that the
