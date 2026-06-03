@@ -1474,6 +1474,158 @@ for those terms.  Thus the proof is internal to the $\SUPER$/$\fSNG$
 integral framework.
 \end{proof}
 
+\begin{prop}[Sobolev majorants for Duhamel kernels]
+\label{prop:sobolev-duhamel-majorants}
+Let $q:(0,T)\to H^{k+\abs{\alpha}+2\ell}(\mathbb{R}^N)^M$, where
+$k>N/2$ is an integer, $\alpha$ is a multi-index, and $\ell\geq0$ is an
+integer.  Fix $B<T$ and assume
+\[
+  Q_{\alpha,\ell,B}
+  \eqdef
+  \sup_{0<s<B}
+  \norm{\Delta^\ell\partial^\alpha q(s)}_{H^k}
+  <\infty .
+\]
+Then, for $0\leq r<B$ and $0<s<B$,
+\[
+  \norm{\partial_r^\ell\partial_x^\alpha G_rq(s)}_{L^\infty}
+  \leq C_{N,k}\nu^\ell Q_{\alpha,\ell,B}.
+\]
+Consequently, if $J\subset(0,T)$ is compact, then
+\[
+  m_{\alpha,\ell,J}(s)
+  \eqdef
+  C_{N,k}\nu^\ell Q_{\alpha,\ell,\sup J}\mathbf 1_{(0,\sup J)}(s)
+\]
+is an integrable majorant for the differentiated kernel terms and endpoint
+terms
+$\partial_t^\ell\partial_x^\alpha G_{t-s}q(s)(x)$, uniformly in
+$t\in J$, $0<s\leq t$, and $x\in\mathbb{R}^N$.
+
+If also $Q_{\alpha,\ell+1,B}<\infty$, then the corresponding difference
+quotients in the heat-time variable satisfy
+\[
+  \norm{
+  \frac{\partial_r^\ell\partial_x^\alpha G_{r+h}q(s)
+        -\partial_r^\ell\partial_x^\alpha G_rq(s)}{h}
+  }_{L^\infty}
+  \leq
+  C_{N,k}\nu^{\ell+1}Q_{\alpha,\ell+1,B}
+\]
+whenever $h\neq0$ and $r+\theta h\geq0$ for $0\leq\theta\leq1$.
+\end{prop}
+
+\begin{proof}
+The heat semigroup commutes with spatial derivatives and
+$\partial_rG_r=\nu\Delta G_r$.  Hence, for $r\geq0$,
+\[
+  \partial_r^\ell\partial_x^\alpha G_rq(s)
+  =
+  \nu^\ell G_r\Delta^\ell\partial^\alpha q(s).
+\]
+The heat semigroup is a contraction on each $H^k(\mathbb{R}^N)$, and Sobolev
+embedding gives $H^k(\mathbb{R}^N)\hookrightarrow L^\infty(\mathbb{R}^N)$
+because $k>N/2$.  Therefore
+\[
+  \norm{\partial_r^\ell\partial_x^\alpha G_rq(s)}_{L^\infty}
+  \leq
+  C_{N,k}\nu^\ell
+  \norm{G_r\Delta^\ell\partial^\alpha q(s)}_{H^k}
+  \leq
+  C_{N,k}\nu^\ell Q_{\alpha,\ell,B}.
+\]
+The displayed function $m_{\alpha,\ell,J}$ is integrable on
+$(0,\sup J)$ because it is bounded and has finite support.
+
+For the difference quotient, use the fundamental theorem in the heat-time
+variable:
+\[
+  \frac{\partial_r^\ell\partial_x^\alpha G_{r+h}q(s)
+        -\partial_r^\ell\partial_x^\alpha G_rq(s)}{h}
+  =
+  \int_0^1
+  \partial_r^{\ell+1}\partial_x^\alpha
+  G_{r+\theta h}q(s)\,d\theta ,
+\]
+provided the segment $r+\theta h$ stays nonnegative.  Applying the first
+estimate with $\ell+1$ proves the asserted bound.
+\end{proof}
+
+\begin{prop}[Nonlinear majorants from high Sobolev control]
+\label{prop:nonlinear-sobolev-majorants}
+Let
+\[
+  q(s)\eqdef\mathbb{P}\nabla\cdot(u(s)\otimes u(s))
+\]
+for a classical vector field $u$ on $(0,T)$.  Fix $B<T$, $k>N/2$, a
+multi-index $\alpha$, and an integer $\ell\geq0$.  If
+\[
+  U_{\alpha,\ell,B}
+  \eqdef
+  \sup_{0<s<B}
+  \norm{u(s)}_{H^{k+\abs{\alpha}+2\ell+1}}
+  <\infty ,
+\]
+then
+\[
+  \norm{\partial_r^\ell\partial_x^\alpha G_rq(s)}_{L^\infty}
+  \leq C_{\alpha,\ell,k,N,\nu}U_{\alpha,\ell,B}^2
+\]
+for $0\leq r<B$ and $0<s<B$.  The same statement for the heat-time difference
+quotients holds with $U_{\alpha,\ell+1,B}$ in place of
+$U_{\alpha,\ell,B}$.
+
+Thus these estimates supply the majorant part of
+Proposition~\ref{prop:super-duhamel-smoothing} on every compact time interval
+on which the required high Sobolev norms of $u$ are bounded, provided the
+spatial heat-kernel integrals in that proposition are also defined in the
+chosen module.  The estimates do not by themselves prove the separate
+$L^1_{\SUPER}$ absolute-integrability hypothesis.  If these bounds hold for
+every finite $B<T$ and every derivative order, the majorants are available on
+all finite subintervals of $(0,T)$.
+\end{prop}
+
+\begin{proof}
+The Leray projection is bounded on $H^j(\mathbb{R}^N)^N$ and commutes with
+spatial derivatives.  For $j=k+\abs{\alpha}+2\ell$,
+\[
+  \norm{\Delta^\ell\partial^\alpha q(s)}_{H^k}
+  \leq
+  C\norm{q(s)}_{H^j}
+  \leq
+  C\norm{\nabla\cdot(u(s)\otimes u(s))}_{H^j}
+  \leq
+  C\norm{u(s)\otimes u(s)}_{H^{j+1}} .
+\]
+Since $j+1>N/2$, $H^{j+1}(\mathbb{R}^N)$ is an algebra, so
+\[
+  \norm{u(s)\otimes u(s)}_{H^{j+1}}
+  \leq C\norm{u(s)}_{H^{j+1}}^2
+  \leq C U_{\alpha,\ell,B}^2 .
+\]
+This gives $Q_{\alpha,\ell,B}\leq C U_{\alpha,\ell,B}^2$, and
+Proposition~\ref{prop:sobolev-duhamel-majorants} supplies the majorants.  The
+difference quotient assertion is the same argument with $\ell+1$.
+\end{proof}
+
+\begin{rem}
+Proposition~\ref{prop:nonlinear-sobolev-majorants} proves the desired majorants
+only after one assumes the corresponding high Sobolev control.  This assumption
+is essential in the argument: already for the unprojected model term
+$G_r\nabla\cdot(u\otimes u)$, leaving the derivative on the heat kernel gives a
+bound of the form
+\[
+  \norm{\partial_x^\alpha G_r\nabla\cdot(u\otimes u)}_{L^\infty}
+  \leq C r^{-(\abs{\alpha}+1)/2}
+  \norm{u\otimes u}_{L^\infty},
+\]
+which is not integrable at $r=0$ once $\abs{\alpha}\geq1$.  Time derivatives
+produce still stronger singular powers.  The integrable majorants above come
+from moving derivatives onto the nonlinear source before estimating; globally
+this requires precisely the sort of high-order a priori bounds that are not
+proved by the generalized-limit construction.
+\end{rem}
+
 Therefore the heat terms are $C^\infty$ in the supersingular sense whenever
 the hypotheses of Theorem~\ref{thm:super-heat-smoothing} and
 Proposition~\ref{prop:super-duhamel-smoothing} are verified for the specific
@@ -1607,7 +1759,10 @@ differentiation under the supersingular integral rather than transferring the
 classical theorem.  What remains conditional is the Duhamel part:
 Proposition~\ref{prop:super-duhamel-smoothing} requires explicit integrable
 majorants near $s=t$ for the nonlinear term and its differentiated kernels.
-Those nonlinear estimates have not yet been proved globally.
+Proposition~\ref{prop:sobolev-duhamel-majorants} and
+Proposition~\ref{prop:nonlinear-sobolev-majorants} prove such majorants under
+high Sobolev bounds on the nonlinear source.  Those high-order bounds have not
+yet been proved globally by the present argument.
 
 \item \textbf{Partly addressed, but unresolved.} The previous endpoint argument has been replaced above by a continuation
 criterion, so the specific boundary argument is no longer being relied on.
