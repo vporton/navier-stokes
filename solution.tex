@@ -168,13 +168,19 @@ used in the next section.
 By a \emph{supersingular function} or a solution in \emph{supersingularities} I mean a function $f\in\fSNG(X,\mathbb{R})$ (where~$X$ is a suitable space), see~\cite{limit}.
 
 \begin{rem}
-(Lebesgue) integrals could be instead defined on the space of supersingular functions the same way as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities. But for our purposes it is enough to define integrals on the space of continuous generalized limits functions, and this special case is much simpler to prove properties of.
+(Lebesgue) integrals could be instead defined on the space of supersingular
+functions the same way as Lebesgue integrals on the space of functions with
+real number values.  This uses suprema of sets of supersingularities only in
+the cases where those suprema are known to exist.  But for our purposes it is
+enough to define integrals on the space of continuous generalized limits
+functions, and this special case is much simpler to prove properties of.
 \end{rem}
 
 Define Lebesgue integrals on the space of continuous generalized limits
-functions in the usual way for ring-valued functions, but only in the
+functions in the usual way for functions valued in the ring $R$, but only in the
 absolutely convergent case.  Namely, for a measurable set $A$ and a function
-$f$ with values in a compatible real-complete $R$-valued normed module, we
+$f$ with values in a compatible real-complete ring-valued normed module over
+$R$, we
 write $\int_A f(x)\,dx$ only when the approximating simple-function sums are
 absolutely convergent in the norm topology introduced below; in that case the
 integral is the norm limit of those sums.  No general existence theorem is
@@ -211,15 +217,15 @@ funcoid $\mu$ on the source, the corresponding funcoid-continuity condition is
 as in~\cite[p.~7]{limit}.
 
 The order on $R$ allows one to define norm-like quantities whenever the
-required suprema and integrals exist.  Let
+required suprema and integrals are known to exist.  Let
 \[
   \abs{a}_{\SUPER}\eqdef a\vee(-a),\qquad
   a\vee b\eqdef -((-a)\wedge(-b)).
 \]
 
 \begin{defn}
-An $R$-valued normed module is an $R$-module $E$ together with a partially
-defined map
+A ring-valued normed module over $R$ is an $R$-module $E$ together with a
+partially defined map
 \[
   \norm{\cdot}_E:E\to R
 \]
@@ -233,7 +239,7 @@ and
 \[
   \norm{x+y}_E\leq\norm{x}_E+\norm{y}_E.
 \]
-It is called a generalized seminormed module if the implication
+It is called a generalized ring-valued seminormed module if the implication
 $\norm{x}_E=0\Rightarrow x=0$ is omitted.
 \end{defn}
 
@@ -325,8 +331,8 @@ $R$.
 Define $L^p_R(\mathbb{R}^N)$ to be the set of generalized-valued measurable
 functions for which $\norm{v}_{L^p_{\SUPER}}$ is defined and finite in $R$.
 After quotienting by the relation $\norm{v-w}_{L^p_{\SUPER}}=0$, this is an
-$R$-valued seminormed module, and it is an $R$-valued normed module if the
-zero-norm quotient is separated.
+ring-valued seminormed module over $R$, and it is a ring-valued normed module
+over $R$ if the zero-norm quotient is separated.
 
 For an integer $m\geq0$ define the ring-valued Sobolev quantity
 \[
