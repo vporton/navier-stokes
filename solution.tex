@@ -994,6 +994,81 @@ spaces, boundary or decay conditions, and Helmholtz decomposition have already
 been specified.
 \end{defn}
 
+\begin{prop}[Sobolev Helmholtz/Poisson reconstruction]\label{prop:sobolev-pressure-recovery}
+Let $s\in\mathbb{R}$.  On $H^s(\mathbb{R}^N)^N$ define the classical Leray
+projection by the Fourier multiplier
+\[
+  \widehat{(\mathbb{P}h)}_i(\xi)
+  =
+  \sum_{j=1}^N
+  \left(\delta_{ij}-\frac{\xi_i\xi_j}{\abs{\xi}^2}\right)\widehat h_j(\xi),
+  \qquad \xi\neq0,
+\]
+with any value assigned at $\xi=0$.  Then for every
+$h\in H^s(\mathbb{R}^N)^N$ there is a tempered distribution
+$p\in\mathcal S'(\mathbb{R}^N)$, unique up to addition of a constant, such
+that
+\[
+  \nabla p=(I-\mathbb{P})h,
+  \qquad
+  \Delta p=\nabla\cdot h
+\]
+in the sense of distributions.  If
+\[
+  h\in C^k([0,T];H^s(\mathbb{R}^N)^N),
+\]
+then
+\[
+  \nabla p\in C^k([0,T];H^s(\mathbb{R}^N)^N).
+\]
+
+Consequently, if $m>N/2+1$, $u\in C^k([0,T];H^m(\mathbb{R}^N)^N)$ is
+divergence-free, and $f\in C^k([0,T];H^{m-1}(\mathbb{R}^N)^N)$, then
+pressure recovery for $u$ is admissible with
+$h_u=f-\nabla\cdot(u\otimes u)$ and $s=m-1$.
+\end{prop}
+
+\begin{proof}
+The multiplier matrices defining $\mathbb{P}$ and $I-\mathbb{P}$ are bounded
+orthogonal projections for each $\xi\neq0$, so they define bounded operators
+on $H^s(\mathbb{R}^N)^N$.  Moreover
+\[
+  \xi\cdot\widehat{\mathbb{P}h}(\xi)=0
+\]
+for $\xi\neq0$, hence $\mathbb{P}h$ is divergence-free in the distributional
+sense.  The complementary field
+\[
+  (I-\mathbb{P})h
+\]
+has Fourier transform parallel to $\xi$, so its distributional curl is zero.
+The Poincare lemma for distributions on $\mathbb{R}^N$ therefore gives
+$p\in\mathcal S'(\mathbb{R}^N)$, unique up to a constant, with
+\[
+  \nabla p=(I-\mathbb{P})h .
+\]
+Taking divergence gives
+\[
+  \Delta p=\nabla\cdot(I-\mathbb{P})h
+  =\nabla\cdot h-\nabla\cdot\mathbb{P}h
+  =\nabla\cdot h .
+\]
+If $h$ depends $C^k$ on time with values in $H^s$, then
+$\nabla p=(I-\mathbb{P})h$ has the same time regularity because
+$I-\mathbb{P}$ is bounded on $H^s$.
+
+For the final assertion, $H^m(\mathbb{R}^N)$ is an algebra when $m>N/2$, so
+$u\otimes u\in C^k([0,T];H^m)$ and
+$\nabla\cdot(u\otimes u)\in C^k([0,T];H^{m-1})$.  Since $u$ is
+divergence-free,
+\[
+  \nabla\cdot(u\otimes u)=(u\cdot\nabla)u .
+\]
+Applying the first part to
+$h_u=f-\nabla\cdot(u\otimes u)\in C^k([0,T];H^{m-1})^N$ verifies the
+gradient and Poisson reconstruction requirements in
+Definition~\ref{def:pressure-recovery}.
+\end{proof}
+
 \begin{prop}[From projected equation to pressure form]\label{prop:pressure-recovery}
 Assume that $u$ satisfies the projected equation
 \[
@@ -1186,14 +1261,15 @@ Theorem~\ref{thm:projected-mild}, and are therefore omitted from the list
 below.
 
 \begin{enumerate}
-\item \textbf{Partly addressed, but conditional.} Pressure recovery is now
-isolated in Definition~\ref{def:pressure-recovery} and
-Proposition~\ref{prop:pressure-recovery}.  The projected equation gives the
-usual pressure form only after one proves the corresponding Helmholtz/Poisson
-reconstruction in the chosen function spaces, namely that
-$(I-\mathbb{P})(f-\nabla\cdot(u\otimes u))$ is a gradient with the stated
-regularity.  Smoothness of the data alone still does not supply this
-operator-theoretic input.
+\item \textbf{Addressed in the Sobolev setting.} Pressure recovery is isolated
+in Definition~\ref{def:pressure-recovery}; the needed Helmholtz/Poisson
+reconstruction is proved for $L^2$-Sobolev spaces in
+Proposition~\ref{prop:sobolev-pressure-recovery}; and
+Proposition~\ref{prop:pressure-recovery} then converts the projected equation
+to the usual pressure form.  This resolves the pressure step for arguments
+carried out in spaces such as $H^m(\mathbb{R}^N)$, $m>N/2+1$.  It does not
+justify the broader formulation with arbitrary smooth data and no decay or
+Sobolev assumptions.
 
 \item \textbf{Unresolved.} The Picard iteration is not shown to converge in any classical function
 space, nor is it shown to remain in a space on which all displayed integrals
