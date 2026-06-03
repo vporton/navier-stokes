@@ -622,6 +622,11 @@ For $s>N/2$, define
   \mathcal{E}^{\mathrm{cl}}_s
   =\left\{\iota\circ v:v\in H^s_\sigma(\mathbb{R}^N)\right\}.
 \]
+Let
+\[
+  J_s:H^s_\sigma(\mathbb{R}^N)\to\mathcal{E}^{\mathrm{cl}}_s,\qquad
+  J_s(v)=\iota\circ v.
+\]
 Every element has a bounded continuous representative, and its ordinary
 real-valued sup norm exists.  This does not imply that its ring-valued
 supremum exists: a nonclassical upper bound in~$\mathbb{R}_*$ could be smaller
@@ -630,6 +635,45 @@ than the embedded real supremum.  Instead, define the embedded Sobolev norm by
   \norm{\iota\circ v}_{H^s,*}
   =\iota\left(\norm{v}_{H^s}\right).
 \]
+Equip $\mathcal{E}^{\mathrm{cl}}_s$ with the transported metric
+\[
+  d_{s,*}(J_su,J_sv)=\norm{u-v}_{H^s}.
+\]
+Equivalently, a sequence $J_sv_n$ converges to $J_sv$ exactly when
+$\norm{J_s(v_n-v)}_{H^s,*}=\iota(\norm{v_n-v}_{H^s})$ converges to~$0$ in the
+embedded real copy of~$\mathbb{R}\subseteq\mathbb{R}_*$.
+
+\begin{prop}\label{prop:embedded-norm-compatible-complete}
+For $s\geq0$, the embedded Sobolev norm on
+$\mathcal{E}^{\mathrm{cl}}_s$ is compatible with the transported topology, and
+$\mathcal{E}^{\mathrm{cl}}_s$ is complete.
+\end{prop}
+
+\begin{proof}
+The map $J_s$ is linear and injective, because the canonical embedding
+$\iota$ is injective on real vectors.  Hence each element of
+$\mathcal{E}^{\mathrm{cl}}_s$ has a unique representative $J_sv$.
+For $u,v\in H^s_\sigma(\mathbb{R}^N)$,
+\[
+  \norm{J_su-J_sv}_{H^s,*}
+  =\norm{J_s(u-v)}_{H^s,*}
+  =\iota\left(\norm{u-v}_{H^s}\right).
+\]
+Thus the embedded norm of a difference is precisely the ordinary Sobolev
+distance, viewed in the embedded real subfield of~$\mathbb{R}_*$.  Therefore
+the open balls, convergent sequences, and Cauchy sequences determined by
+$d_{s,*}$ are exactly those determined by the embedded norm.
+
+It remains to prove completeness.  Let $(J_sv_n)$ be Cauchy in
+$\mathcal{E}^{\mathrm{cl}}_s$.  By the displayed identity, $(v_n)$ is Cauchy
+in $H^s_\sigma(\mathbb{R}^N)$.  The Sobolev space $H^s$ is Hilbert, and
+$H^s_\sigma$ is closed: if $v_n\to v$ in $H^s$ and
+$\nabla\cdot v_n=0$, then $\nabla\cdot v_n\to\nabla\cdot v$ in
+$H^{s-1}$ for $s\geq1$, and in the distributional sense for $0\leq s<1$;
+hence $\nabla\cdot v=0$.  Consequently $v_n\to v$ for some
+$v\in H^s_\sigma(\mathbb{R}^N)$, and then $J_sv_n\to J_sv$ in
+$\mathcal{E}^{\mathrm{cl}}_s$.  This proves completeness.
+\end{proof}
 
 \begin{prop}\label{prop:classical-sobolev-realization}
 Let $s>N/2+1$.
@@ -661,9 +705,10 @@ constants embedded into~$\mathbb{R}_*$.
 \end{prop}
 
 \begin{proof}
-The space $H^s$ is a Hilbert space, and $H^s_\sigma$ is a closed subspace.
-The first claim follows from the standard theory of Bochner integration in a
-Banach space.  The Fourier symbol of the Leray projection is
+Completeness and norm compatibility are
+Proposition~\ref{prop:embedded-norm-compatible-complete}.  The remaining part
+of the first claim follows from the standard theory of Bochner integration in
+a Banach space.  The Fourier symbol of the Leray projection is
 \[
   I-\frac{\xi\otimes\xi}{\abs{\xi}^2},
 \]
