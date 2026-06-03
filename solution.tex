@@ -18,6 +18,7 @@
 \DeclareMathOperator{\SNG}{SNG}
 \DeclareMathOperator{\fSNG}{fSNG}
 \DeclareMathOperator{\interrior}{int}
+\DeclareMathOperator*{\esssup}{ess\,sup}
 \newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \newcommand{\abs}[1]{\left\lvert #1\right\rvert}
@@ -207,6 +208,64 @@ Define Lebesgue integrals on the space of continuous generalized limits function
 It is easy to show that this definition does not depend on the choice of~$k_Z$ and~$a_Z$.
 
 Below, we will, contrary to the usual notation, denote~$L^1(X)$ the space of functions on~$X$ integrable by the above formula, not all Lebesgue integrable functions.
+
+\section{Ring-valued norms}
+
+The order on $\SUPER(\mathbb{R})$ allows one to define norm-like quantities
+whenever the required suprema and integrals exist.  Let
+\[
+  \abs{a}_{\SUPER}\eqdef a\vee(-a),\qquad
+  a\vee b\eqdef -((-a)\wedge(-b)).
+\]
+For a generalized-valued scalar or vector function $v$ define, when the
+right-hand side exists,
+\[
+  \abs{v(x)}_{\SUPER}
+  \eqdef \left(\sum_i \abs{v_i(x)}_{\SUPER}^2\right)^{1/2}.
+\]
+For $1\leq p<\infty$ define the ring-valued $L^p$ quantity
+\[
+  \norm{v}_{L^p_{\SUPER}}
+  \eqdef \left(\int_{\mathbb{R}^N}\abs{v(x)}_{\SUPER}^p\,dx\right)^{1/p},
+\]
+and define
+\[
+  \norm{v}_{L^\infty_{\SUPER}}
+  \eqdef \esssup_{x\in\mathbb{R}^N}\abs{v(x)}_{\SUPER}
+\]
+when this essential supremum exists in the ordered ring
+$\SUPER(\mathbb{R})$.
+
+For an integer $m\geq0$ define the ring-valued Sobolev quantity
+\[
+  \norm{v}_{H^m_{\SUPER}}^2
+  \eqdef \sum_{\abs{\alpha}\leq m}
+  \norm{\partial^\alpha v}_{L^2_{\SUPER}}^2,
+\]
+whenever all derivatives, integrals, sums, and square roots are defined.
+Similarly, operator norms can be defined by
+\[
+  \norm{A}_{X_{\SUPER}\to Y_{\SUPER}}
+  \eqdef
+  \sup_{\norm{v}_{X_{\SUPER}}\leq 1}\norm{Av}_{Y_{\SUPER}},
+\]
+when the displayed supremum exists.  These definitions are partial, just as
+classical operator norms are meaningful only for operators acting between
+specified normed spaces.
+
+\begin{rem}
+These are ring-valued seminorms or norms only in a formal ordered-ring sense.
+They are not, by themselves, Banach norms in the classical sense used by local
+well-posedness theorems.  A continuation theorem still needs a real-valued
+bound, for instance a real number $M$ such that
+\[
+  \norm{u(t)}_{H^m_{\SUPER}}\leq M
+  \quad\text{for }0<t<T.
+\]
+When $u(t)$ is classical, this ring-valued Sobolev quantity agrees with the
+usual $H^m$ norm, so such a real bound implies the classical bound required in
+the endpoint argument.
+\end{rem}
 
 \begin{thm}
 If an integral is absolutely convergent on a measurable set, then it is convergent.
@@ -457,9 +516,10 @@ continuation criterion in a classical Banach space.
 Let $X$ be a classical solution space for which the local Na\-vi\-er-Sto\-kes
 theory is available, for instance $H^m(\mathbb{R}^N)$ with
 $m>N/2+1$ and divergence-free data.  Suppose that the generalized mild solution
-$u$ agrees with a classical solution on $[0,T)$ and that
+$u$ agrees with a classical solution on $[0,T)$ and that, for some real
+number $M$,
 \begin{equation}\label{endpoint-bound}
-  \sup_{0<t<T}\norm{u(t)}_X < \infty .
+  \sup_{0<t<T}\norm{u(t)}_X \leq M < \infty .
 \end{equation}
 Then $u(t)$ has a limit in $X$ as $t\uparrow T$ provided the mild formula gives
 the usual time-continuity estimates in $X$.  More explicitly, for
@@ -486,11 +546,22 @@ bound.  Therefore the claim that $u(t_{\operatorname{crit}})$ is classical is
 not proved by the current argument.
 
 \begin{rem}
-The estimate~\eqref{endpoint-bound} cannot be obtained merely by repeating the
-classical local theory in $\SUPER$ or $\fSNG$.  The classical argument is an
-estimate in a real-valued Banach norm.  For example, with
-$X=H^m(\mathbb{R}^N)$, $m>N/2+1$, one obtains a differential inequality of the
-form
+Using the ring-valued Sobolev quantity above, a sufficient form of
+the missing bound would be
+\begin{equation}\label{super-endpoint-bound}
+  \norm{u(t)}_{H^m_{\SUPER}}\leq M
+  \quad\text{for all }0<t<T
+\end{equation}
+with one real number $M$.  Since $u(t)$ is classical on $[0,T)$, the
+ring-valued norm agrees there with the ordinary $H^m$ norm, and
+\eqref{super-endpoint-bound} implies~\eqref{endpoint-bound}.
+\end{rem}
+
+\begin{rem}
+The estimate~\eqref{super-endpoint-bound} cannot be obtained merely by
+repeating the classical local theory in $\SUPER$ or $\fSNG$.  For
+$X=H^m(\mathbb{R}^N)$, $m>N/2+1$, the classical calculation gives a differential
+inequality of the form
 \[
   \frac{d}{dt}\norm{u(t)}_{H^m}
   \leq C\norm{u(t)}_{H^m}^2+\norm{f(t)}_{H^m},
@@ -501,18 +572,19 @@ independent a priori bound preventing the $H^m$ norm from blowing up before
 $T$.  In dimension three, proving such a bound for arbitrary smooth data is
 precisely the unresolved regularity problem.
 
-Moreover, the present $\SUPER$ and $\fSNG$ framework does not define a
-real-valued complete norm $\norm{\cdot}_X$ on generalized-valued functions, nor
-does it prove that the generalized limit of the Picard iterates preserves
-uniform $X$-bounds:
+The ring-valued version of the same computation would at best give a
+ring-valued differential inequality, assuming all products, integrals, and
+suprema involved are defined.  To use it for classical continuation one still
+needs a comparison theorem showing that the ring-valued inequality implies a
+real bound~\eqref{super-endpoint-bound}.  One also needs a theorem that the
+generalized limit of the Picard iterates preserves uniform real $H^m$ bounds:
 \[
-  \sup_n\norm{u^{(n)}(t)}_X<\infty
+  \sup_n\norm{u^{(n)}(t)}_{H^m}\leq M
   \quad\Longrightarrow\quad
-  \norm{\xlim_{n\to\infty}u^{(n)}(t)}_X<\infty .
+  \norm{\xlim_{n\to\infty}u^{(n)}(t)}_{H^m_{\SUPER}}\leq M .
 \]
-Without such a norm and such a lower-semicontinuity or boundedness theorem, a
-``supersingular'' version of the classical estimate has no defined target
-quantity and cannot imply~\eqref{endpoint-bound}.
+Without such comparison and boundedness theorems, the ring-valued norms do not
+justify~\eqref{endpoint-bound}.
 \end{rem}
 
 For further contradiction to come, one would need to prove such an estimate and
