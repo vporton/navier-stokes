@@ -1358,10 +1358,18 @@ u(t) = \lim_{n\to\infty}u^{(n+1)}(t) \\
 \end{multline*}
 that is it is a solution.
 
-Outside such a Banach/Sobolev admissible setting, the assertion that a
-generalized extended limit is a bounded operator and can be interchanged with
-the displayed integrals is an additional analytic theorem to prove; it does
-not follow from linearity alone.
+Within such a Banach/Sobolev admissible setting, boundedness follows from the
+generalized limit theorem in~\cite{limit}: continuous finitary operations on
+the target commute with generalized limits. In particular, applying it to the
+continuous unary operation $v\mapsto \norm{v}$ gives
+\[
+  \norm{\xlim_{n\to\infty}u^{(n)}} = \xlim_{n\to\infty}\norm{u^{(n)}} \leq
+  \sup_n \norm{u^{(n)}}.
+\]
+So the generalized limit is bounded on the Banach/Sobolev data used here.
+The remaining issue is the interchange of generalized limit with the displayed
+integrals and with the operators multiplication, differentiation,
+$\mathbb{P}$, and $G_t$.
 
 \begin{thm}
 The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f\in\fSNG({-},\mathbb{R})\cap L^1$ for $t>0$. (The norm is taken in~$\fSNG({-},\mathbb{R})$.)
@@ -1496,11 +1504,10 @@ below.
 \begin{enumerate}
 \item \textbf{Partly addressed, but unresolved.} The local Sobolev argument
 passes limits through the Duhamel integrals by ordinary dominated convergence.
-Outside that setting, the introduction of ring-valued Sobolev quantities gives
-some formal language for norms, but the interchange of generalized limit and
-integration is still unsupported.  Linearity of an algebraic extension of the
-usual limit does not imply boundedness.  The same problem applies to moving
-the limit through multiplication, differentiation, $\mathbb{P}$, and $G_t$.
+Outside that setting, the interchange of generalized limit and integration is
+still unsupported.  Boundedness of the generalized limit on the admissible
+Banach/Sobolev data follows from \cite{limit}; the remaining problem is
+justifying the interchange with the displayed integral operators.
 
 \item \textbf{Unresolved.} The smoothing theorem is not obtained by applying the classical heat
 semigroup theorem directly in the generalized setting.  Heat flow is nonlocal and mixes values
@@ -1521,7 +1528,7 @@ $t_{\operatorname{crit}}$ are claimed to be classical.  One needs control of
 an appropriate norm of the solution as $t\uparrow t_{\operatorname{crit}}$.
 Obtaining such control is the central unresolved global-regularity issue.  The
 existing \verb|\fxwarning{Prove}| at the gluing step records an additional
-unproved assertion rather than completing this argument.
+missing smoothness check rather than completing this argument.
 
 \item \textbf{Unresolved.} The energy-inequality section does not fill this gap.  Smoothness alone
 does not give a finite-energy inequality for arbitrary smooth data on
