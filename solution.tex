@@ -1,5 +1,8 @@
 \documentclass{amsart}
 \usepackage{hyperref}
+\usepackage[draft]{fixme}
+\fxsetup{draft,layout=inline}
+\fxusetheme{color}
 
 \newtheorem{thm}{Theorem}
 \newtheorem{lem}{Lemma}
@@ -13,6 +16,7 @@
 \newcommand{\eqdef}{\overset{\mathrm{def}}{=}}
 \newcommand{\abs}[1]{\left\lvert #1\right\rvert}
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\supfun}[1]{\left\langle #1\right\rangle}
 \newcommand{\rsuprel}[1]{\left[#1\right]^\ast}
 
 \hypersetup{pdftitle={Analyzing Na\-vi\-er-Sto\-kes Equations Using a Linearly Extended Limit Functional},
@@ -45,7 +49,10 @@ extensions of finitary continuous operations and preserves algebraic
 identities.  I describe these consequences directly and identify the
 additional analytic properties that would be required for a PDE argument.  I
 define a partial $\SUPER(\mathbb{R})$-valued sup norm and formulate the
-remaining analytic requirements in terms of this norm.
+remaining analytic requirements in terms of this norm.  The embedded
+classical Sobolev realization is complete and recovers standard local theory;
+a genuinely supersingular realization and the three-dimensional global bound
+remain open.\fxwarning{Open analytic gap: the supersingular realization and the global bound are not proved here.}
 \end{abstract}
 
 \subjclass[2020]{35Q30, 35A01, 35A09, 35A25, 35D99}
@@ -67,7 +74,7 @@ norms, operator bounds, semigroup estimates, and justified interchange of
 limits with nonlocal operators.  The purpose of this revision is to separate
 the algebraic facts from the analytic structure used in the PDE argument.
 Below I introduce a partial ring-valued sup norm as a candidate analytic
-structure and state the additional properties it would need.
+structure and state the additional properties it would need.\fxwarning{The extension theorem gives algebraic identities, not the analytic estimates needed below.}
 
 \section{Problem statement}
 
@@ -76,7 +83,7 @@ arbitrary $N$ and arbitrary smooth $u_0$ and $f$, without assumptions such as
 divergence-free initial data, decay, periodicity, or finite energy.  The
 analytic claims specify the function spaces in which they are intended to
 hold.  Moreover, the incompressibility equation requires the compatibility
-condition $\nabla\cdot u_0=0$.
+condition $\nabla\cdot u_0=0$.\fxwarning{This setup is broader than the Clay problem and still needs the usual compatibility hypotheses on the data.}
 
 Consider classical real-valued smooth solutions of the Na\-vi\-er-Sto\-kes
 equations on $\mathbb{R}^N$ ($N\in\mathbb{N}$).
@@ -189,6 +196,30 @@ They give reflexivity, antisymmetry, and transitivity.  For real $a,b$, the
 identity $\min\{a,b\}=a$ is equivalent to the usual inequality $a\leq b$.
 \end{proof}
 
+\begin{prop}\label{prop:ordered-ring}
+The partial order on~$\SUPER(\mathbb{R})$ is compatible with the levelwise
+ring operations: addition is order preserving, negation is order reversing,
+and multiplication by a nonnegative element is order preserving.
+\end{prop}
+
+\begin{proof}
+Let $\vee$ be the levelwise extension of~$\max$.  The identities
+\[
+\begin{aligned}
+  (a+c)\wedge(b+c)&=(a\wedge b)+c,\\
+  (-b)\wedge(-a)&=-(a\vee b),\\
+  a\vee b+a\wedge b&=a+b,\\
+  \abs{c}&=c-2(c\wedge0),\\
+  (a\abs{c})\wedge(b\abs{c})&=(a\wedge b)\abs{c}
+\end{aligned}
+\]
+hold on~$\mathbb{R}$ and therefore hold after levelwise extension.  The first
+identity gives translation invariance of the order.  The second and third give
+reversal under negation.  If $c\geq0$, then $c\wedge0=0$, so the fourth
+identity gives $\abs{c}=c$.  The last identity then shows that multiplication
+by~$c$ preserves the order.
+\end{proof}
+
 \begin{rem}
 The cited construction also claims closure under differential operators.
 This gives formal supersingular derivatives.  A full theory also includes a
@@ -200,9 +231,14 @@ for supersingular-valued functions.
 Let $\mathrm{X}$ be the base funcoid on~$R$.  The construction
 in~\cite[sections ``Funcoid of singularities'' and ``Funcoid of
 supersingularities'']{limit} equips $\SUPER(R)$ with a funcoid, hence with a
-generalized nearness structure in the sense of~\cite{limit}.  As a bare set,
-$\SUPER(R)$ also admits ordinary topologies, for example the discrete
-topology.
+generalized nearness structure in the sense of~\cite{limit}.  This funcoid
+generates an ordinary topology on~$\SUPER(R)$: if $\mathrm{Y}$ denotes the
+resulting endofuncoid on~$\SUPER(R)$, then a subset
+$O\subseteq\SUPER(R)$ is open when
+\[
+  O\in\supfun{\mathrm{Y}}{\uparrow}\{y\}
+  \quad\text{for every }y\in O.
+\]
 \end{prop}
 
 \begin{proof}
@@ -215,25 +251,28 @@ $y_0$ and~$y_1$ near when there exist $m,n\in\mathbb{N}$ such that
   \tau^m[y_1\cap\SNG^n(R)].
 \]
 Both sides belong to the same level $\SNG^{m+n}(R)$.  The cited proof checks
-the pointfree funcoid axioms for this relation.  Independently, every set
-admits the discrete topology.
+the pointfree funcoid axioms for this relation.  Since
+$\supfun{\mathrm{Y}}{\uparrow}\{y\}$ is a filter for each~$y$, the subsets
+defined by the displayed condition are closed under arbitrary unions and
+finite intersections, and therefore form a topology.
 \end{proof}
 
 \begin{rem}\label{rem:funcoid-not-analytic}
 Proposition~\ref{prop:funcoid-super} is not an analytic realization.  A
-funcoid is a generalized nearness structure, while the discrete topology is
-only a set-theoretic example.  The following construction is a candidate
-normed structure, but its domain, completeness, integration theory, and
-operator bounds still have to be studied.
+funcoid-generated topology supplies the underlying convergence structure, but
+the following construction is a candidate normed structure whose domain,
+completeness, integration theory, and operator bounds still have to be
+studied.
 \end{rem}
 
 \section{A partial ring-valued sup norm}
+\fxwarning{Suprema in $\mathbb{R}_*$ may fail to exist, so the norm is only partial and completeness is open.}
 
 Write
 \[
   \mathbb{R}_*=\SUPER(\mathbb{R}).
 \]
-It has levelwise ring operations and the partial order defined above.
+By Proposition~\ref{prop:ordered-ring}, it is a partially ordered ring.
 For $z\in\SUPER(\mathbb{R}^Q)$, let $\abs{z}_*$ denote the levelwise extension
 of the Euclidean norm on~$\mathbb{R}^Q$.  In particular, for $Q=1$ this is the
 levelwise extension of the absolute value.
@@ -314,34 +353,54 @@ consisting of sup-normable functions.  On such a space
 $\norm{{-}}_{\infty,*}$ is a total $\mathbb{R}_*$-valued norm.
 \end{defn}
 
-\begin{prop}\label{prop:real-radius-topology}
-Let $\mathcal{E}(D)$ be admissible.  For $\epsilon>0$, let
+\begin{prop}\label{prop:finite-range-admissible}
+The space
 \[
-  U_\epsilon=
-  \left\{(v,w)\in\mathcal{E}(D)^2:
-  \norm{v-w}_{\infty,*}\leq\epsilon\right\},
+  \mathcal{E}_{\mathrm{fin}}(D)
+  =\left\{v\in\fSNG(D,\mathbb{R}^Q):v[D]\text{ is finite}\right\}
 \]
-where $\epsilon$ is embedded into~$\mathbb{R}_*$.  The sets~$U_\epsilon$
-generate a translation-invariant uniform topology on~$\mathcal{E}(D)$.
+is an admissible ring-normed space.
 \end{prop}
 
 \begin{proof}
-The diagonal belongs to every~$U_\epsilon$, and each~$U_\epsilon$ is
-symmetric.  The triangle inequality gives
-\[
-  U_{\epsilon/2}\circ U_{\epsilon/2}\subseteq U_\epsilon.
-\]
-Also,
-$U_{\min\{\epsilon,\delta\}}\subseteq U_\epsilon\cap U_\delta$.
-These are the axioms for a base of a uniformity.
+The image of a linear combination of two finite-range functions is finite.
+For $v\in\mathcal{E}_{\mathrm{fin}}(D)$, the set
+$\{\abs{v(x)}_*:x\in D\}$ is finite.  Its supremum exists by applying the
+levelwise extension of~$\max$ finitely many times.
 \end{proof}
 
 \begin{rem}
-The real-radius topology need not be Hausdorff.  A nonzero~$v$ satisfying
-$\norm{v}_{\infty,*}\leq\epsilon$ for every real $\epsilon>0$ cannot be
-separated from zero by these neighborhoods.  One may pass to the Hausdorff
-quotient or investigate a suitable directed family of positive
-$\mathbb{R}_*$-valued radii.  Either choice requires separate analysis.
+Proposition~\ref{prop:finite-range-admissible} proves that the definition is
+not empty, including for genuinely supersingular values.  It does not solve
+the analytic problem: completeness has not been proved, and spatial
+differentiation, heat flow, and the Leray projection need not preserve finite
+range.
+\end{rem}
+
+\begin{prop}\label{prop:funcoid-topology-e}
+Let $\mathcal{E}(D)$ be admissible and suppose it is equipped with an
+endofuncoid~$\mathrm{Y}_{\mathcal{E}}$, for example the restriction of the
+funcoid on the relevant supersingular function space.  Then
+$\mathrm{Y}_{\mathcal{E}}$ generates a topology on~$\mathcal{E}(D)$ by
+declaring $O\subseteq\mathcal{E}(D)$ open when
+\[
+  O\in\supfun{\mathrm{Y}_{\mathcal{E}}}{\uparrow}\{v\}
+  \quad\text{for every }v\in O.
+\]
+\end{prop}
+
+\begin{proof}
+The proof is the same as in Proposition~\ref{prop:funcoid-super}.  For each
+$v$, the value $\supfun{\mathrm{Y}_{\mathcal{E}}}{\uparrow}\{v\}$ is a filter,
+so finite intersections of neighborhoods remain neighborhoods and arbitrary
+unions are immediate.
+\end{proof}
+
+\begin{rem}
+The funcoid-generated topology is not proved here to be Hausdorff.
+Hausdorffness, compatibility with the ring-valued norm, and completeness are
+additional properties of the chosen funcoid on~$\mathcal{E}(D)$, not
+consequences of admissibility alone.
 \end{rem}
 
 \begin{defn}\label{def:ring-operator-bound}
@@ -380,6 +439,7 @@ for all $v\in\mathcal{E}_1$ and $w\in\mathcal{E}_2$.
 \end{defn}
 
 \section{Analytic structure required by the PDE argument}
+\fxwarning{The following items are required assumptions, not consequences of the generalized-limit construction.}
 
 The pointwise algebra and the partial ring-valued norm above are the starting
 points for a ring-valued analytic realization.  For each relevant domain~$D$,
@@ -387,9 +447,10 @@ one needs to choose admissible spaces~$\mathcal{E}(D)$ with at least the
 following properties:
 
 \begin{enumerate}
-\item The ring-valued norm is total on~$\mathcal{E}(D)$, and an appropriate
-topology, such as a Hausdorff version of the topology from
-Proposition~\ref{prop:real-radius-topology}, is complete.
+\item The ring-valued norm is total on~$\mathcal{E}(D)$, and the topology
+generated by the chosen funcoid on~$\mathcal{E}(D)$ is compatible with this
+norm and complete, possibly after passing to an appropriate Hausdorff
+realization.
 \item Continuous time-dependent elements of $\mathcal{E}(D)$ can be integrated.
 The integral is linear, satisfies an appropriate fundamental theorem of
 calculus, permits the required differentiation under the integral sign, and
@@ -425,6 +486,7 @@ Definition~\ref{def:ring-sup-norm}.
 \end{proof}
 
 \section{Classical Duhamel principle and its ring-valued analogue}
+\fxwarning{Only the classical Duhamel principle is proved here; the ring-valued replacement is still missing.}
 
 The variation-of-constants formula is naturally formulated in a Banach space.
 The following standard statement shows which analytic facts need ring-valued
@@ -465,7 +527,113 @@ whenever both sides are defined.  It must also prove the Leibniz rule and the
 required commutation with spatial operators.  Proposition~\ref{prop:not-analytic}
 identifies the role of the pointwise extension theorem in that construction.
 
+\section{A complete embedded Sobolev realization}
+\fxwarning{This is a classical control case, not a supersingular realization.}
+
+There is one immediate complete control case: use classical Sobolev spaces
+embedded into the supersingular hierarchy.  This supplies a consistency check
+for the proposed formalism, but it does not add nonclassical solutions or
+produce an admissible space for the partial ring-valued sup norm.
+
+Let $\iota:\mathbb{R}^Q\to\SUPER(\mathbb{R}^Q)$ denote the canonical embedding
+induced by~$\tau$.  For $s\geq0$, write
+\[
+  H^s_\sigma(\mathbb{R}^N)
+  =\left\{v\in H^s(\mathbb{R}^N;\mathbb{R}^N):
+  \nabla\cdot v=0\right\}.
+\]
+For $s>N/2$, define
+\[
+  \mathcal{E}^{\mathrm{cl}}_s
+  =\left\{\iota\circ v:v\in H^s_\sigma(\mathbb{R}^N)\right\}.
+\]
+Every element has a bounded continuous representative, and its ordinary
+real-valued sup norm exists.  This does not imply that its ring-valued
+supremum exists: a nonclassical upper bound in~$\mathbb{R}_*$ could be smaller
+than the embedded real supremum.  Instead, define the embedded Sobolev norm by
+\[
+  \norm{\iota\circ v}_{H^s,*}
+  =\iota\left(\norm{v}_{H^s}\right).
+\]
+
+\begin{prop}\label{prop:classical-sobolev-realization}
+Let $s>N/2+1$.
+\begin{enumerate}
+\item The topology transported from $H^s_\sigma(\mathbb{R}^N)$ makes
+$\mathcal{E}^{\mathrm{cl}}_s$ complete.  The embedded Sobolev norm takes values
+in the embedded copy of~$\mathbb{R}$.  Bochner integration of continuous
+time-dependent elements is defined and satisfies the usual norm inequality
+and fundamental theorem of calculus.
+\item The Leray projection is bounded on $H^r(\mathbb{R}^N;\mathbb{R}^N)$
+for every $r\geq0$.
+\item For $k\in\mathbb{N}$ and $t>0$, the heat semigroup satisfies
+\[
+  \norm{\nabla^kG_t v}_{H^r}
+  \leq C_k(\nu t)^{-k/2}\norm{v}_{H^r}.
+\]
+\item Multiplication satisfies the Sobolev algebra estimate
+\[
+  \norm{vw}_{H^s}\leq C_s\norm{v}_{H^s}\norm{w}_{H^s}.
+\]
+Consequently,
+\[
+  \norm{\mathbb{P}\nabla\cdot(v\otimes w)}_{H^{s-1}}
+  \leq C_s\norm{v}_{H^s}\norm{w}_{H^s}.
+\]
+\end{enumerate}
+All of these estimates remain true after applying~$\iota$, with real
+constants embedded into~$\mathbb{R}_*$.
+\end{prop}
+
+\begin{proof}
+The space $H^s$ is a Hilbert space, and $H^s_\sigma$ is a closed subspace.
+The first claim follows from the standard theory of Bochner integration in a
+Banach space.  The Fourier symbol of the Leray projection is
+\[
+  I-\frac{\xi\otimes\xi}{\abs{\xi}^2},
+\]
+which is bounded uniformly in~$\xi\ne0$, proving the second claim.  The third
+claim follows by maximizing
+$\abs{\xi}^ke^{-\nu t\abs{\xi}^2}$.  Since $s>N/2$, the Sobolev multiplication
+theorem gives the fourth claim.  The last estimate follows by applying one
+derivative and then the bounded Leray projection.  The embedded estimates are
+the same inequalities viewed in~$\mathbb{R}_*$.
+\end{proof}
+
+\begin{thm}\label{thm:classical-local}
+Let $s>N/2+1$, let
+$u_0\in H^s_\sigma(\mathbb{R}^N)$, and let
+\[
+  f\in C([0,T_0];H^s(\mathbb{R}^N;\mathbb{R}^N)).
+\]
+For some $T>0$, the mild equation~\eqref{mild} has a unique strong Sobolev solution
+\[
+  u\in C([0,T];H^s_\sigma(\mathbb{R}^N)).
+\]
+The solution can be continued while its $H^s$ norm remains bounded.
+\end{thm}
+
+\begin{proof}
+This is the standard local well-posedness argument for the
+Na\-vi\-er-Sto\-kes initial-value problem: use the heat-semigroup estimates and
+the bilinear estimate from Proposition~\ref{prop:classical-sobolev-realization}
+in the Picard mapping.  More precisely, the heat semigroup maps the
+$H^{s-1}$-valued nonlinear term into~$H^s$ with an integrable
+$(t-s)^{-1/2}$ factor.  See also the semigroup approaches
+in~\cite{Fujita-Kato,Kato1984}.
+\end{proof}
+
+\begin{rem}\label{rem:classical-not-global}
+Theorem~\ref{thm:classical-local} closes the analytic requirements only in the
+embedded classical control case.  It neither proves admissibility for the
+partial ring-valued sup norm nor proves a uniform-in-time $H^s$ bound for
+arbitrary three-dimensional data.  Such a bound would solve the
+global-regularity part of the Clay problem.  The ring-valued sup norm does not
+provide this bound.
+\end{rem}
+
 \section{Na\-vi\-er-Sto\-kes mild equation}
+\fxwarning{All claims here are conditional on a separate analytic realization.}
 
 Let $\mathbb{P}$ denote the Leray projection and let
 $G_t=e^{\nu t\Delta}$.  Pointwise tensor products are defined for
@@ -520,6 +688,7 @@ This is a direct analytic problem; it is not a consequence of the finitary
 extension theorem.
 
 \section{Picard iteration and generalized sequence limits}
+\fxwarning{The contraction estimate and the limit interchange are still open.}
 
 Formally define the Picard mapping
 \[
@@ -564,6 +733,7 @@ handles the pointwise algebraic expression.  Ring-valued operator estimates
 and compatibility theorems supply the required interchanges.
 
 \section{Smoothing, classicality, and continuation}
+\fxwarning{Smoothing and continuation in the supersingular setting remain unproved.}
 
 In classical spaces the heat semigroup has smoothing estimates.  A
 ring-valued realization needs corresponding estimates between chosen
@@ -585,20 +755,25 @@ three-dimensional bound needed for global continuation is the key
 regularity estimate.
 
 \section{Energy inequality}
+\fxwarning{This only restates the classical energy estimate; the supersingular case remains open.}
 
 For classical finite-energy solutions, the standard energy inequality is
 available.  The argument uses this inequality together with the
 three-dimensional regularity bound needed for global continuation of smooth
 data on~$\mathbb{R}^N$.
 
-\section{Remaining analytic steps}
+\section{Limits of the present construction}
+\fxwarning{The list below is a checklist of missing proofs, not completed results.}
 
-The preceding discussion isolates the following analytic steps in the proof.
+The complete control case in
+Proposition~\ref{prop:classical-sobolev-realization} is classical.  For a
+genuinely supersingular realization, the preceding discussion isolates the
+following open steps.
 
 \begin{enumerate}
 \item Choose admissible spaces~$\mathcal{E}(D)$ on which the partial
-ring-valued norm is total.  Prove completeness for a suitable Hausdorff
-topology derived from the norm.
+ring-valued norm is total.  Equip them with the funcoid-generated topology
+and prove Hausdorffness, norm compatibility, and completeness.
 
 \item Formal supersingular derivatives are used together with a fundamental
 theorem of calculus, a Leibniz rule for parameter-dependent integrals, and
@@ -636,7 +811,17 @@ three-dimensional regularity bound to obtain global continuation for smooth
 data on $\mathbb{R}^N$.
 \end{enumerate}
 
+\begin{rem}
+The items above are not proved by the generalized-limit construction or by
+the partial ring-valued norm.  In particular, this article does not prove
+global existence of classical smooth solutions of the three-dimensional
+Na\-vi\-er-Sto\-kes equations.  As recorded in the official Clay problem
+description~\cite{navier-stokes-clay}, that global regularity question remains
+the central unresolved issue.\fxerror{The central global-existence claim is not established in this document.}
+\end{rem}
+
 \section{Further directions}
+\fxwarning{These are future-work directions, not established consequences.}
 
 A possible next step is to identify useful admissible subspaces for the
 partial ring-valued sup norm and prove integration and semigroup estimates on
@@ -648,6 +833,7 @@ semicategory actions.  Its value as an independent construction does not depend
 on the Na\-vi\-er-Sto\-kes application.
 
 \section{The ChatGPT prompt}
+\fxwarning{The source prompt is missing, so this reconstruction is incomplete.}
 
 The prompt is not displayed in~\cite{navier-stokes-chat} (apparently, due to a ChatGPT bug). So, the exact prompt has been lost. It seems that I asked ChatGPT to solve the Na\-vi\-er-Sto\-kes Millennium Prize problem positively using my general topology result as an axiom.
 
