@@ -962,9 +962,69 @@ Apply Theorem~\ref{thm:semigroup-duhamel} with $A=\nu\Delta$ and
 $F=F_u$.
 \end{proof}
 
-\begin{rem}
-Pressure recovery is separate.  It is a Helmholtz/Poisson problem.
-\end{rem}
+\begin{defn}[Admissible pressure recovery]\label{def:pressure-recovery}
+Let $u$ be a solution of the projected equation in an admissible
+projected-heat setting, and put
+\[
+  h_u(t)\eqdef f(t)-\nabla\cdot(u(t)\otimes u(t)).
+\]
+Pressure recovery for $u$ is called admissible on $[0,T]$ if the following
+additional facts have been proved in the same function-space framework:
+\begin{enumerate}
+\item $u$ is divergence-free and
+\[
+  \nabla\cdot(u\otimes u)=(u\cdot\nabla)u .
+\]
+\item The complementary part $(I-\mathbb{P})h_u(t)$ is defined for every
+$t\in[0,T]$ and belongs to the range of the gradient operator.
+\item There is a scalar function $p$ with the required space and time
+regularity, unique up to addition of a function of $t$, such that
+\[
+  \nabla p(t)=(I-\mathbb{P})h_u(t).
+\]
+\end{enumerate}
+Equivalently, $p$ must solve the compatible Helmholtz/Poisson reconstruction
+problem associated with the chosen spaces.  Formally it satisfies
+\[
+  \Delta p(t)=\nabla\cdot f(t)
+  -\nabla\cdot\nabla\cdot(u(t)\otimes u(t)),
+\]
+but this scalar Poisson equation alone is not sufficient unless the function
+spaces, boundary or decay conditions, and Helmholtz decomposition have already
+been specified.
+\end{defn}
+
+\begin{prop}[From projected equation to pressure form]\label{prop:pressure-recovery}
+Assume that $u$ satisfies the projected equation
+\[
+  \partial_tu-\nu\Delta u+\mathbb{P}\nabla\cdot(u\otimes u)=\mathbb{P}f
+\]
+on $[0,T]$, and that pressure recovery for $u$ is admissible in the sense of
+Definition~\ref{def:pressure-recovery}.  Then $(u,p)$ satisfies
+\[
+  \partial_tu-\nu\Delta u+(u\cdot\nabla)u+\nabla p=f
+\]
+on $[0,T]$.
+\end{prop}
+
+\begin{proof}
+The projected equation is
+\[
+  \partial_tu-\nu\Delta u=\mathbb{P}h_u .
+\]
+By admissible pressure recovery,
+\[
+  h_u=\mathbb{P}h_u+(I-\mathbb{P})h_u
+      =\mathbb{P}h_u+\nabla p .
+\]
+Therefore
+\[
+  \partial_tu-\nu\Delta u+\nabla p=h_u
+  =f-\nabla\cdot(u\otimes u).
+\]
+Since $u$ is divergence-free, $\nabla\cdot(u\otimes u)=(u\cdot\nabla)u$,
+which gives the asserted pressure form.
+\end{proof}
 
 \section{The sequence of approximate solutions}
 
@@ -1126,11 +1186,14 @@ Theorem~\ref{thm:projected-mild}, and are therefore omitted from the list
 below.
 
 \begin{enumerate}
-\item \textbf{Unresolved.} Recovery of the pressure is incomplete.  It requires an appropriate
-Helmholtz decomposition and a solution theory for the Poisson equation in
-specified function spaces.  The displayed Poisson formula has ambiguous
-notation, and smoothness of the data alone does not justify the proposed
-piecewise construction or the claim that the constructions agree on boundaries.
+\item \textbf{Partly addressed, but conditional.} Pressure recovery is now
+isolated in Definition~\ref{def:pressure-recovery} and
+Proposition~\ref{prop:pressure-recovery}.  The projected equation gives the
+usual pressure form only after one proves the corresponding Helmholtz/Poisson
+reconstruction in the chosen function spaces, namely that
+$(I-\mathbb{P})(f-\nabla\cdot(u\otimes u))$ is a gradient with the stated
+regularity.  Smoothness of the data alone still does not supply this
+operator-theoretic input.
 
 \item \textbf{Unresolved.} The Picard iteration is not shown to converge in any classical function
 space, nor is it shown to remain in a space on which all displayed integrals
