@@ -209,14 +209,54 @@ It is easy to show that this definition does not depend on the choice of~$k_Z$ a
 
 Below, we will, contrary to the usual notation, denote~$L^1(X)$ the space of functions on~$X$ integrable by the above formula, not all Lebesgue integrable functions.
 
-\section{Ring-valued norms}
+\section{Generalized ring-valued Banach and Sobolev spaces}
 
-The order on $\SUPER(\mathbb{R})$ allows one to define norm-like quantities
-whenever the required suprema and integrals exist.  Let
+Let
+\[
+  R\eqdef\SUPER(\mathbb{R})
+\]
+with the order defined above.  The order on $R$ allows one to define
+norm-like quantities whenever the required suprema and integrals exist.  Let
 \[
   \abs{a}_{\SUPER}\eqdef a\vee(-a),\qquad
   a\vee b\eqdef -((-a)\wedge(-b)).
 \]
+
+\begin{defn}
+An $R$-valued normed module is an $R$-module $E$ together with a partially
+defined map
+\[
+  \norm{\cdot}_E:E\to R
+\]
+such that, whenever the displayed expressions are defined,
+\[
+  \norm{x}_E\geq0,\qquad
+  \norm{x}_E=0\Longleftrightarrow x=0,\qquad
+  \norm{ax}_E=\abs{a}_{\SUPER}\norm{x}_E,
+\]
+and
+\[
+  \norm{x+y}_E\leq\norm{x}_E+\norm{y}_E.
+\]
+It is called a generalized seminormed module if the implication
+$\norm{x}_E=0\Rightarrow x=0$ is omitted.
+\end{defn}
+
+\begin{defn}
+Let $E$ be an $R$-valued normed module.  A sequence $(x_n)$ is
+real-Cauchy if for every real $\epsilon>0$ there is $N$ such that
+\[
+  \norm{x_n-x_m}_E\leq\epsilon
+  \quad\text{for all }m,n\geq N.
+\]
+The module $E$ is called real-complete, or a generalized Banach module, if
+every real-Cauchy sequence converges to an element of $E$ in this sense.  This
+definition uses real $\epsilon$'s because the classical continuation theorem
+requires a genuine real topology.  One may also define a purely $R$-Cauchy
+notion by allowing generalized positive $\epsilon\in R$, but that gives a
+different and stronger structure and is not presently used.
+\end{defn}
+
 For a generalized-valued scalar or vector function $v$ define, when the
 right-hand side exists,
 \[
@@ -234,7 +274,13 @@ and define
   \eqdef \esssup_{x\in\mathbb{R}^N}\abs{v(x)}_{\SUPER}
 \]
 when this essential supremum exists in the ordered ring
-$\SUPER(\mathbb{R})$.
+$R$.
+
+Define $L^p_R(\mathbb{R}^N)$ to be the set of generalized-valued measurable
+functions for which $\norm{v}_{L^p_{\SUPER}}$ is defined and finite in $R$.
+After quotienting by the relation $\norm{v-w}_{L^p_{\SUPER}}=0$, this is an
+$R$-valued seminormed module, and it is an $R$-valued normed module if the
+zero-norm quotient is separated.
 
 For an integer $m\geq0$ define the ring-valued Sobolev quantity
 \[
@@ -243,6 +289,26 @@ For an integer $m\geq0$ define the ring-valued Sobolev quantity
   \norm{\partial^\alpha v}_{L^2_{\SUPER}}^2,
 \]
 whenever all derivatives, integrals, sums, and square roots are defined.
+
+Define
+\[
+  H^m_R(\mathbb{R}^N)
+  \eqdef
+  \setcond{v\in\fSNG({-},R^N)}
+  {\partial^\alpha v\in L^2_R(\mathbb{R}^N)\text{ for every }\abs{\alpha}\leq m}
+\]
+modulo the zero $H^m_{\SUPER}$ seminorm.  When the quotient is separated and
+real-complete, $H^m_R(\mathbb{R}^N)$ is a generalized ring-valued Sobolev
+Banach module.  If the inner product
+\[
+  \langle v,w\rangle_{H^m_R}
+  \eqdef
+  \sum_{\abs{\alpha}\leq m}
+  \int_{\mathbb{R}^N}\partial^\alpha v\cdot\partial^\alpha w\,dx
+\]
+is defined, it is also a generalized Hilbert module in the formal sense that
+$\norm{v}_{H^m_{\SUPER}}^2=\langle v,v\rangle_{H^m_R}$.
+
 Similarly, operator norms can be defined by
 \[
   \norm{A}_{X_{\SUPER}\to Y_{\SUPER}}
@@ -254,10 +320,10 @@ classical operator norms are meaningful only for operators acting between
 specified normed spaces.
 
 \begin{rem}
-These are ring-valued seminorms or norms only in a formal ordered-ring sense.
-They are not, by themselves, Banach norms in the classical sense used by local
-well-posedness theorems.  A continuation theorem still needs a real-valued
-bound, for instance a real number $M$ such that
+These are Banach/Sobolev structures in the generalized ring-valued sense above.
+They are not automatically classical Banach spaces.  A continuation theorem for
+classical Na\-vi\-er-Sto\-kes solutions still needs a real-valued bound, for
+instance a real number $M$ such that
 \[
   \norm{u(t)}_{H^m_{\SUPER}}\leq M
   \quad\text{for }0<t<T.
