@@ -203,9 +203,9 @@ By a \emph{supersingular function} or a solution in \emph{supersingularities} I 
 (Lebesgue) integrals could be instead defined on the space of supersingular functions the same way as Lebesgue integrals on the space of functions with real number values. This requires existence of (possibly infinite) supremum of a set of supersingularities. But for our purposes it is enough to define integrals on the space of continuous generalized limits functions, and this special case is much simpler to prove properties of.
 \end{rem}
 
-Define Lebesgue integrals on the space of continuous generalized limits functions as \[ \int_A f(x) dx = \sum_{Z\in S}k_Z\int_Z a_Z(x) dx \] if each Lebesgue integral on the right side exists and the sum is absolutely convergent (and so does not depend on the order of summation), where $S$~is the set of zones.
+Define Lebesgue integrals on the space of continuous generalized limits functions in the usual way for ring-valued functions: for a measurable set $A$ and an integrable function $f$ with values in the ambient ring, $\int_A f(x)\,dx$ denotes the standard ring-valued integral whenever it exists.
 
-It is easy to show that this definition does not depend on the choice of~$k_Z$ and~$a_Z$.
+It is easy to show that this definition agrees with the usual scalar Lebesgue integral on real-valued functions and is compatible with scalar multiplication by real numbers.
 
 Below, we will, contrary to the usual notation, denote~$L^1(X)$ the space of functions on~$X$ integrable by the above formula, not all Lebesgue integrable functions.
 
@@ -677,11 +677,14 @@ To finish the proof by contradicting to the value $t_{\operatorname{crit}}$, we 
 
 This is the opinion (now edited by me) of Open AI's GPT-5.5 Medium on my proof.
 
-The preceding argument does not prove global existence of classical solutions.  The
-following list records the issues and their status.
+The preceding argument does not prove global existence of classical solutions.
+Some points below have been partly addressed by adding definitions or by
+replacing an invalid argument with a conditional criterion, but none of the
+main analytic gaps is fully resolved.  The status of each issue is recorded
+explicitly.
 
 \begin{enumerate}
-\item The zone sets do not form the claimed indexed partition as written.  If
+\item \textbf{Unresolved.} The zone sets do not form the claimed indexed partition as written.  If
 $k'=ck$ for a nonzero real scalar $c$, then $Z_{k'}=Z_k$, so distinct indices
 can name the same nonempty set.  The proof that zone boundaries have value zero
 also assumes without proof that the only alternative to nearby zero values is a
@@ -690,17 +693,15 @@ different zones.  The multiplication argument in that case does not establish
 the conclusion.  Consequently openness, measurability, and the representation
 on the closure of each zone are not established.
 
-\item Continuity and absolute convergence for generalized-valued functions are
+\item \textbf{Partly addressed, but unresolved.} Ring-valued norm-like
+quantities have been introduced above, but continuity and absolute convergence
+for generalized-valued functions are still
 used without a specified topology, norm, or complete topological vector space.
-In particular, the definition
-\[
-\int_A f(x)\,dx=\sum_{Z\in S}k_Z\int_Z a_Z(x)\,dx
-\]
-does not define what absolute convergence of a possibly uncountable
-generalized-valued sum means, and independence of the choices of $k_Z$ and
-$a_Z$ is only asserted.
+In particular, the ring-valued integral is only asserted at the level of
+notation, without a precise construction, existence theorem, or proof of
+compatibility with the generalized-valued setting.
 
-\item The generalized-valued fundamental theorem of calculus is not proved.
+\item \textbf{Unresolved.} The generalized-valued fundamental theorem of calculus is not proved.
 The interval decomposition does not cover all relevant points: the complement
 of the union of the zones and the interior of the zero set can contain a
 positive-measure boundary set.  Local differentiability on component intervals
@@ -709,13 +710,13 @@ calculation divides by generalized values without justification, has
 inconsistent indices and an extra factor $k_J$, uses reversed endpoint
 differences, and assumes a telescoping identity that has not been established.
 
-\item The proof of Duhamel's principle assumes precisely the analytic facts that
+\item \textbf{Unresolved.} The proof of Duhamel's principle assumes precisely the analytic facts that
 need proof in the new setting.  Continuity alone does not imply that the
 newly-defined integral exists.  The Leibniz rule, differentiation under the
 integral sign, and commutation of $\Delta$ with the integral are not justified
 for generalized-valued functions.
 
-\item The Leray projection and heat semigroup are nonlocal operators.  Their
+\item \textbf{Unresolved.} The Leray projection and heat semigroup are nonlocal operators.  Their
 classical Fourier formulas do not automatically extend by ``linear
 combinations for the zones.''  Function spaces on which these operators act,
 their mapping properties, and their compatibility with generalized limits must
@@ -723,7 +724,7 @@ be proved.  The lemma declaring the nonlinear integrand continuous is therefore
 not obvious.  Moreover, the statement that the integrand is $L^1$ because it is
 $C^\infty$ is false on $\mathbb{R}^N$.
 
-\item There are sign errors in the projected-equation computation.  Applying
+\item \textbf{Unresolved.} There are sign errors in the projected-equation computation.  Applying
 $\mathbb{P}$ to the displayed Na\-vi\-er-Sto\-kes equation gives a plus sign in
 front of $\mathbb{P}((u\cdot\nabla)u)$, contrary to one displayed line.
 Differentiating the mild formula should give
@@ -734,14 +735,14 @@ Differentiating the mild formula should give
 not the formula displayed in the converse calculation.  The signs of the
 integral terms in that differentiation are also reversed.
 
-\item Recovery of the pressure is incomplete.  It requires an appropriate
+\item \textbf{Unresolved.} Recovery of the pressure is incomplete.  It requires an appropriate
 Helmholtz decomposition and a solution theory for the Poisson equation in
 specified function spaces.  The displayed Poisson formula has ambiguous
 notation, and smoothness of the data alone does not justify the proposed
 zone-by-zone construction or the claim that the constructions agree on zone
 boundaries.
 
-\item The Picard iteration is not shown to converge in any classical function
+\item \textbf{Unresolved.} The Picard iteration is not shown to converge in any classical function
 space, nor is it shown to remain in a space on which all displayed integrals
 exist.  Taking an extended limit of an arbitrary sequence does not replace the
 estimates needed for convergence.  It is also necessary to prove shift
@@ -751,34 +752,38 @@ invariance
 \]
 before passing from $u^{(n+1)}=\mathcal{T}u^{(n)}$ to a fixed-point equation.
 
-\item The interchange of generalized limit and integration is unsupported.
+\item \textbf{Partly addressed, but unresolved.} The introduction of
+ring-valued Sobolev quantities gives some formal language for norms, but the
+interchange of generalized limit and integration is still unsupported.
 Linearity of an algebraic extension of the usual limit does not imply
-boundedness.  No Banach spaces, norms, or operator bounds are defined, and the
-assertion that the limit is bounded on each closed zone is not proved.  The
-same problem applies to moving the limit through multiplication,
+boundedness, and the assertion that the limit is bounded on each closed zone is
+not proved in a classical Banach-space topology.  The same problem applies to
+moving the limit through multiplication,
 differentiation, $\mathbb{P}$, and $G_t$.
 
-\item The smoothing theorem is not obtained by applying the classical heat
+\item \textbf{Unresolved.} The smoothing theorem is not obtained by applying the classical heat
 semigroup theorem separately on zones.  Heat flow is nonlocal and mixes values
 from different spatial regions.  In addition, estimates near $s=t$ are needed
 to infer smoothness of the time integral in the mild formula.  These estimates
 are absent.
 
-\item The argument that the generalized solution is classical at
-$t_{\operatorname{crit}}$ is invalid.  No first nonclassical time is shown to
-exist.  A boundary of a classical zone for $u$ need not be a boundary at which
-the integrand in~\eqref{to-classical} vanishes.  Real-valuedness of a derivative
-does not imply the uniform spatial bounds needed at the endpoint, and
-pointwise real-valuedness is not enough to apply a local well-posedness theorem.
+\item \textbf{Partly addressed, but unresolved.} The previous zone-based
+endpoint argument has been replaced above by a zone-free continuation
+criterion, so the specific zone-boundary argument is no longer being relied on.
+However, the criterion is conditional: the needed real a priori bound
+\eqref{endpoint-bound}, or a comparison theorem implying it from
+\eqref{super-endpoint-bound}, has not been proved.  No first nonclassical time
+is rigorously constructed, and pointwise real-valuedness is still not enough to
+apply a local well-posedness theorem.
 
-\item The continuation principle cannot be applied merely because values at
+\item \textbf{Unresolved.} The continuation principle cannot be applied merely because values at
 $t_{\operatorname{crit}}$ are claimed to be classical.  One needs control of
 an appropriate norm of the solution as $t\uparrow t_{\operatorname{crit}}$.
 Obtaining such control is the central unresolved global-regularity issue.  The
 existing \verb|\fxwarning{Prove}| at the gluing step records an additional
 unproved assertion rather than completing this argument.
 
-\item The energy-inequality section does not fill this gap.  Smoothness alone
+\item \textbf{Unresolved.} The energy-inequality section does not fill this gap.  Smoothness alone
 does not give a finite-energy inequality for arbitrary smooth data on
 $\mathbb{R}^N$, and the standard energy inequality does not provide the
 three-dimensional regularity bound needed for global continuation.
