@@ -1372,15 +1372,112 @@ supersingular integrals is needed for this Sobolev step, because the displayed
 Duhamel integrals are ordinary $H^m$-valued Bochner integrals and the passage
 to the limit is the classical dominated-convergence argument above.
 
-\begin{thm}
-The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f\in\fSNG({-},\mathbb{R})\cap L^1$ for $t>0$. (The norm is taken in~$\fSNG({-},\mathbb{R})$.)
+\begin{thm}[Direct supersingular heat smoothing]\label{thm:super-heat-smoothing}
+Let $E$ be a compatible real-complete ring-valued normed module over
+$R=\SUPER(\mathbb{R})$, and let
+$f:\mathbb{R}^N\to E$ be absolutely integrable in the sense used above.  For
+$t>0$ define
+\[
+  (G_t^{\SUPER}f)(x)
+  \eqdef \int_{\mathbb{R}^N}
+  K_t(x-y)f(y)\,dy,
+  \qquad
+  K_t(z)\eqdef(4\pi\nu t)^{-N/2}e^{-\abs{z}^2/(4\nu t)} .
+\]
+Then $G_t^{\SUPER}f$ is $C^\infty$ as an $E$-valued function of $x$, and for
+every multi-index $\alpha$
+\[
+  \partial_x^\alpha G_t^{\SUPER}f(x)
+  =
+  \int_{\mathbb{R}^N}\partial_x^\alpha K_t(x-y)f(y)\,dy .
+\]
+The same statement holds componentwise for $E=R^M$ and, in particular, for
+$\fSNG$-valued vector fields whenever the displayed integrals land in the
+closed $\fSNG$ part.
 \end{thm}
 
 \begin{proof}
-Apply the classical heat-semigroup smoothing theorem.
+The proof uses only the defining $\SUPER$ operations and the real-complete
+module integral, not a transfer of the classical heat theorem.
+
+Fix $t>0$, a compact set $Q\subset\mathbb{R}^N$, a multi-index
+$\alpha$, and a coordinate direction $i$.  For each
+$\beta\leq\alpha+e_i$ the real functions $\partial^\beta K_t$ are bounded on
+$\mathbb{R}^N$.  Hence
+\[
+  \norm{\partial^\beta K_t(x-y)f(y)}_E
+  \leq C_{\beta,t,Q}\norm{f(y)}_E,
+  \qquad x\in Q ,
+\]
+and the right hand side is integrable by absolute integrability of $f$.
+Thus all integrals with kernel derivatives are defined.
+
+For $h\neq0$ small enough that $x+he_i\in Q$, the ordinary one-dimensional
+mean-value formula applied to the real kernel gives
+\[
+  \frac{\partial^\alpha K_t(x+he_i-y)-\partial^\alpha K_t(x-y)}{h}
+  =
+  \int_0^1
+  \partial^{\alpha+e_i}K_t(x+\theta he_i-y)\,d\theta .
+\]
+Subtracting $\partial^{\alpha+e_i}K_t(x-y)$ and using uniform continuity of
+$\partial^{\alpha+e_i}K_t$ on $\mathbb{R}^N$ gives pointwise
+convergence to zero as $h\to0$.  The same bounded-kernel estimate above
+dominates the difference quotient by an integrable multiple of
+$\norm{f(y)}_E$.  Dominated convergence for the real-complete module integral
+therefore permits passing the limit through the integral and gives
+\[
+  \partial_{x_i}\int_{\mathbb{R}^N}\partial^\alpha K_t(x-y)f(y)\,dy
+  =
+  \int_{\mathbb{R}^N}\partial^{\alpha+e_i}K_t(x-y)f(y)\,dy .
+\]
+Induction on $\abs{\alpha}$ proves the displayed derivative formula.  The
+same domination argument, without the difference quotient, proves continuity
+of each derivative in $x$.  Therefore $G_t^{\SUPER}f$ is $C^\infty$.
 \end{proof}
 
-Therefore the integral~$u$ is $C^\infty$ (on the set $\fSNG({-},\mathbb{R}^N)$).
+\begin{prop}[Direct supersingular Duhamel smoothing]\label{prop:super-duhamel-smoothing}
+Let $q:(0,T)\to L^1_{\SUPER}(\mathbb{R}^N;E)$ be such that, for every compact
+time interval $J\subset(0,T)$ and every multi-index $\alpha$, there is an
+integrable function $m_{\alpha,J}\in L^1((0,\sup J))$ satisfying
+\[
+  \norm{\partial_x^\alpha G_{t-s}^{\SUPER}q(s)(x)}_E
+  \leq m_{\alpha,J}(s),
+  \qquad t\in J,\quad 0<s<t,\quad x\in\mathbb{R}^N .
+\]
+Assume also that the same kind of locally integrable majorants hold for the
+time difference quotients needed to differentiate the integrand with respect
+to $t$.  Then
+\[
+  w(t,x)\eqdef\int_0^tG_{t-s}^{\SUPER}q(s)(x)\,ds
+\]
+is $C^\infty$ in $x$ and has exactly the time regularity justified by those
+majorants.  All derivatives are obtained by differentiating the kernel under
+the supersingular integral.
+\end{prop}
+
+\begin{proof}
+For spatial derivatives, apply Theorem~\ref{thm:super-heat-smoothing} to
+$q(s)$ for each $s<t$ and then use the stated majorant to pass
+$\partial_x^\alpha$ through the time integral.  This gives
+\[
+  \partial_x^\alpha w(t,x)
+  =
+  \int_0^t\int_{\mathbb{R}^N}
+  \partial_x^\alpha K_{t-s}(x-y)q(s,y)\,dy\,ds .
+\]
+Continuity follows from the same dominated-convergence argument on compact
+time intervals.  Time derivatives are identical except that the differentiand
+also contains derivatives of $K_{t-s}$ and an endpoint contribution at
+$s=t$; the proposition assumes precisely the local integrable majorants needed
+for those terms.  Thus the proof is internal to the $\SUPER$/$\fSNG$
+integral framework.
+\end{proof}
+
+Therefore the heat terms are $C^\infty$ in the supersingular sense whenever
+the hypotheses of Theorem~\ref{thm:super-heat-smoothing} and
+Proposition~\ref{prop:super-duhamel-smoothing} are verified for the specific
+data and nonlinear term.
 
 It remains to prove that $u$ takes on values in~$\mathbb{R}^N$ (is classical).
 
@@ -1503,11 +1600,14 @@ Theorem~\ref{thm:projected-mild}, and are therefore omitted from the list
 below.
 
 \begin{enumerate}
-\item \textbf{Unresolved.} The smoothing theorem is not obtained by applying the classical heat
-semigroup theorem directly in the generalized setting.  Heat flow is nonlocal and mixes values
-from different spatial regions.  In addition, estimates near $s=t$ are needed
-to infer smoothness of the time integral in the mild formula.  These estimates
-are absent.
+\item \textbf{Partly addressed, but unresolved.} The heat-semigroup smoothing
+step is now proved directly in the $\SUPER$/$\fSNG$ framework by
+Theorem~\ref{thm:super-heat-smoothing}, using the heat kernel and
+differentiation under the supersingular integral rather than transferring the
+classical theorem.  What remains conditional is the Duhamel part:
+Proposition~\ref{prop:super-duhamel-smoothing} requires explicit integrable
+majorants near $s=t$ for the nonlinear term and its differentiated kernels.
+Those nonlinear estimates have not yet been proved globally.
 
 \item \textbf{Partly addressed, but unresolved.} The previous endpoint argument has been replaced above by a continuation
 criterion, so the specific boundary argument is no longer being relied on.
