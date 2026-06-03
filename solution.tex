@@ -485,6 +485,36 @@ term.  The present generalized-limit construction does not yet provide this
 bound.  Therefore the claim that $u(t_{\operatorname{crit}})$ is classical is
 not proved by the current argument.
 
+\begin{rem}
+The estimate~\eqref{endpoint-bound} cannot be obtained merely by repeating the
+classical local theory in $\SUPER$ or $\fSNG$.  The classical argument is an
+estimate in a real-valued Banach norm.  For example, with
+$X=H^m(\mathbb{R}^N)$, $m>N/2+1$, one obtains a differential inequality of the
+form
+\[
+  \frac{d}{dt}\norm{u(t)}_{H^m}
+  \leq C\norm{u(t)}_{H^m}^2+\norm{f(t)}_{H^m},
+\]
+which gives a bound only on a short time interval depending on the initial
+norm.  Iterating this local estimate up to a prescribed time $T$ requires an
+independent a priori bound preventing the $H^m$ norm from blowing up before
+$T$.  In dimension three, proving such a bound for arbitrary smooth data is
+precisely the unresolved regularity problem.
+
+Moreover, the present $\SUPER$ and $\fSNG$ framework does not define a
+real-valued complete norm $\norm{\cdot}_X$ on generalized-valued functions, nor
+does it prove that the generalized limit of the Picard iterates preserves
+uniform $X$-bounds:
+\[
+  \sup_n\norm{u^{(n)}(t)}_X<\infty
+  \quad\Longrightarrow\quad
+  \norm{\xlim_{n\to\infty}u^{(n)}(t)}_X<\infty .
+\]
+Without such a norm and such a lower-semicontinuity or boundedness theorem, a
+``supersingular'' version of the classical estimate has no defined target
+quantity and cannot imply~\eqref{endpoint-bound}.
+\end{rem}
+
 For further contradiction to come, one would need to prove such an estimate and
 then assume that such $t_{\operatorname{crit}}$ exists.
 
