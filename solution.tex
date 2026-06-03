@@ -407,21 +407,78 @@ in the supersingular-funcoid topology as well.
 
 \subsection{Properties of Lebesgue integrals}
 
-\begin{thm}
-The fundamental theorem of calculus holds for integrals of continuous functions on the space of generalized limits functions:
+\begin{thm}[Fundamental theorem for ring-valued integral values]
+Let $a<b$ be real numbers, and let $E$ be a compatible real-complete
+ring-valued normed module over $R=\SUPER(\mathbb{R})$.  Assume that order
+intervals in $R$ are closed under real norm limits in the following sense:
+if $r,\alpha\in R$ and $r\leq\alpha+\epsilon$ for every real $\epsilon>0$, then
+$r\leq\alpha$.
 
-Let $a<b$ be real numbers. Then:
-\begin{enumerate}
-\item If $f\in L^1([a,b])$ (absolutely integrable by Lebesgue) and
-\[ F(x) = \int_a^x f(t) dt \quad\text{for } x\in [a,b]\]
-then $F$ is absolutely continuous on $[a,b]$, differentiable almost everywhere on $[a,b]$, and $F'(x) = f(x)$ almost everywhere on $[a,b]$.
-\item If $G\in\fSNG([a,b],\mathbb{R})$ is absolutely continuous on $[a,b]$, $G'$ exists almost everywhere, and $G'(x) \in L^1([a,b])$, then
-\[ G(x)-G(a) = \int_a^x G'(t) dt \quad\text{for } x\in [a,b].\]
-\end{enumerate}
+Let $f:[a,b]\to E$ be norm-continuous at $x\in(a,b)$, and assume that the
+integrals below exist for all sufficiently small real $h$ with
+$x+h\in[a,b]$.  Define the oriented interval integral by
+\[
+  \int_\alpha^\beta f(t)\,dt
+  \eqdef
+  \begin{cases}
+    \int_{[\alpha,\beta]} f(t)\,dt,& \alpha\leq\beta,\\
+    -\int_{[\beta,\alpha]} f(t)\,dt,& \beta<\alpha.
+  \end{cases}
+\]
+If
+\[
+  F(y)\eqdef\int_a^y f(t)\,dt ,
+\]
+then $F$ is differentiable at $x$ in the norm topology and
+\[
+  F'(x)=f(x).
+\]
+Consequently the same derivative equality also holds in the
+$\mathrm{X}_{\SUPER}$-funcoid topology.  In particular this applies to
+$E=R$, and to $\fSNG$-valued modules whenever the stated ring-valued norm,
+integrals, and order-closedness condition are available.
 \end{thm}
 
 \begin{proof}
-Let $f\in L^1([a,b])$ and $F(x)=\int_a^x f(t)\,dt$. The classical fundamental theorem of calculus gives the first statement. The second statement is the standard converse form of the same theorem.
+For real $h\neq0$ with $x+h\in[a,b]$,
+\[
+  \frac{F(x+h)-F(x)}{h}-f(x)
+  =
+  \frac{1}{h}\int_x^{x+h}(f(t)-f(x))\,dt .
+\]
+Let $\epsilon>0$ be real.  By norm-continuity of $f$ at $x$, there is
+$\delta>0$ such that
+\[
+  \norm{f(t)-f(x)}_E\leq\epsilon
+  \quad\text{whenever } t\in[a,b]\text{ and } \abs{t-x}<\delta .
+\]
+Fix such an $h$ with $0<\abs{h}<\delta$, and put $g(t)=f(t)-f(x)$ on the
+ordinary real interval between $x$ and $x+h$.  Every simple-function
+approximating sum $S=\sum_i m_i g(t_i)$ for this interval satisfies, by the
+triangle inequality and homogeneity with real coefficients,
+\[
+  \norm{S}_E
+  \leq
+  \sum_i m_i\norm{g(t_i)}_E
+  \leq
+  \epsilon\sum_i m_i
+  =
+  \epsilon\abs{h}.
+\]
+Passing to the defining norm limit of the integral and using the assumed
+closedness of order intervals gives
+\[
+  \norm{\int_x^{x+h}g(t)\,dt}_E\leq\epsilon\abs{h}.
+\]
+Therefore
+\[
+  \norm{\frac{F(x+h)-F(x)}{h}-f(x)}_E
+  \leq\epsilon .
+\]
+Since this holds for every real $\epsilon>0$ once $\abs{h}$ is sufficiently
+small, the difference quotient converges to $f(x)$ in the norm topology.
+Compatibility of the norm topology with $\mathrm{X}_{\SUPER}$ then gives the
+same convergence in the supersingular-funcoid topology.
 \end{proof}
 
 \section{Inhomogenious linear differential equations}
