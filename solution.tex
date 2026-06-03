@@ -160,40 +160,8 @@ so $a\leq c$.  Finally, for $a,b\in\mathbb{R}$ the equality
 $\min\{a,b\}=a$ is equivalent to the usual inequality $a\leq b$.
 \end{proof}
 
-The following theorem allows to extend Lebesgue integrals to the space of generalized limits functions in an easy way:
-
-\begin{thm}
-If a set $X$ is Lebesgue measurable and $f\in\fSNG({-},\mathbb{R}^N)$ is continuous, then:
-\begin{enumerate}
-\item $\setcond{x\in X}{f(x)\ne 0}$ is partitioned into Lebesgue measurable sets (\emph{zones})
-  \[ \setcond{Z_k}{k\in\SUPER(\mathbb{R}^N)\setminus\{0\}}\setminus\{\emptyset\}, \]
-  where zone
-  \[ Z_k=\setcond{x\in X}{\exists a\in\mathbb{R}\setminus\{0\}:f(x)=ka}. \]
-\item Each $Z_k$ is an open set in~$X$.
-\item $f(x)=0$ for each $x$ on the boundary $X\cap\partial Z$ of each zone.
-\item\label{as-func-mult} $f(x)=k_Z g_Z(x)$ for each $x\in X\cap\overline{Z}$ for some $k_Z\in\SUPER(\mathbb{R}^N)\setminus\{0\}$ and $g_Z:X\cap\overline{Z}\to\mathbb{R}$ for each zone $Z$.
-\end{enumerate}
-\end{thm}
-
-\begin{proof}
-To prove that $f(a)=0$ on boundaries of zones, consider two only possible cases for $a\in X\cap\partial Z_k$:
-\begin{enumerate}
-\item ``$a\in\overline{Z_k}$ and $\forall\epsilon>0\exists x\in\mathbb{R}:(\abs{a-x}<\epsilon\land f(x)=0)$.'' This is possible only if $f(a)=0$ due to continuity of~$f$.
-
-\item ``$a\in\overline{Z_k}$ and $\forall\epsilon>0\exists x\in\mathbb{R}:(\abs{a-x}<\epsilon\land f(x)=k'g(x))$, where $k'\in\SUPER(\mathbb{R}^N)\setminus\{0\}$ and $g:X\cap\overline{Z'}\to\mathbb{R}$ where zone $Z'\ne Z_k$.''
-$f(x)$ belongs to the same zone $Z_k$, unless $f(a)=0$, because otherwise we would have $kf(x)=k'f(x)$ for $k$ and~$k'$ from different zones $Z_k$ and~$Z'$, respectively.
-\end{enumerate}
-
-$Z_k$ doesn't intersect $\partial Z_k$ and is, therefore, open. Obviously zones don't intersect and their union is $\setcond{x\in X}{f(x)\ne 0}$.
-
-Item~\ref{as-func-mult} is obvious.
-
-We have zones (without loss of generality) being open sets (because not containing points from their boundaries) and therefore Lebesgue measurable.
-\end{proof}
-
-\begin{defn}
-I call the zone with $k\in\mathbb{R}^N\setminus\{0\}$ \emph{the classical zone}.
-\end{defn}
+The following theorem is just the classical fundamental theorem of calculus,
+used in the next section.
 
 \section{Lebesgue integrals}
 
@@ -447,35 +415,7 @@ then $F$ is absolutely continuous on $[a,b]$, differentiable almost everywhere o
 \end{thm}
 
 \begin{proof}
-Let $f\in L^1([a,b])$ and $F(x) = \int_a^x f(t) dt$. Then because each zone (for function~$f$) $Z$ is an open set, it is representable as at most countable union~$I_Z$ of intervals. Moreover, then the entire union of all zones $\bigcup_{Z\in S} I_Z$ is representable as at most countable union~$I'$ of intervals. The interior $\interrior\setcond{x\in [a,b]}{f(x)=0}$ is also representable as at most countable union~$I''$ of intervals. Let denote the set of all such intervals $I = I'\cup I''$. The set of points on the borders of these intervals~$I$ is therefore at most countable and thus negligible.
-
-Let us denote $K=\setcond{J\in I'}{\max J<x}$.
-
-Therefore either $x\in J$ for some~$J\in I'$ or $x\in J$ for some $J\in I''$ ($f(x)=0$). Consider both cases
-
-\begin{itemize}
-\item If $x\in J$ for some $J\in I'$ then
-\[ F(x) = \int_{\bigcup K} f(t) dt + \int_{J\cap [a,x]} f(t) dt \]
-(This integral is absolutely convergent because $K$ is at most countable.)
-
-Obviously, $F$ is absolutely continuous at~$x$, differentiable at~$x$ (except of a negligible set of points) and \[ F'(x) = 0 + \left(x\mapsto\int_{J\cap [a,x]} f(t) dt\right)' = f(x). \]
-
-\item If $x\in J$ for some $J\in I''$, then it's obvious.
-\end{itemize}
-
-The other direction:
-
-Let $G\in\fSNG([a,b],\mathbb{R})$ be absolutely continuous on $[a,b]$, $G'$ exists almost everywhere, and $G'(x) \in L^1([a,b])$.
-
-We have for suitable~$k_j$
-\begin{multline*}
-\int_a^x G'(t) dt =
-\sum_{j\in K}\int_j k_j (G'(t)/k_j) dt + \int_{J\cap [a,x]} k_J (G'(t)/k_J) dt =\\
-\sum_{J\in K}k_j\int_j (G'(t)/k_j) dt + k_J\int_{J\cap [a,x]} k_J (G'(t)/k_J) dt =\\
-\sum_{J\in K}k_j(G(\inf j) - G(\sup j))/k_j + k_J(G(x) - G(a))/k_J =\\
-\sum_{J\in K}(G(\inf j) - G(\sup j)) + (G(x) - G(a)) = G(x) - G(a),
-\end{multline*}
-because $G'$ is zero between zones.
+Let $f\in L^1([a,b])$ and $F(x)=\int_a^x f(t)\,dt$. The classical fundamental theorem of calculus gives the first statement. The second statement is the standard converse form of the same theorem.
 \end{proof}
 
 \section{Inhomogenious linear differential equations}
@@ -558,7 +498,7 @@ $\mathbb{P}\nabla q=0$ for any scalar~$q$.
 
 $\mathbb{P}$ commutes with $\Delta$ and with the heat semigroup: 
 $\mathbb{P}\Delta=\Delta\mathbb{P}$,
-$\mathbb{P}e^{\nu t \Delta}=e^{\nu t \Delta}\mathbb{P}$. (It's clear from these equalities in the classical case and linear combinations for the zones.)
+$\mathbb{P}e^{\nu t \Delta}=e^{\nu t \Delta}\mathbb{P}$. (This follows from the corresponding classical identities and linearity.)
 
 Apply $\mathbb{P}$ to the PDE (partial differential equation). Since $\mathbb{P}\nabla p=0$, we get
 \[ \mathbb{P}\partial_t u - \nu\mathbb{P}\Delta u - \mathbb{P}((u\cdot\nabla) u) = \mathbb{P}f. \]
@@ -614,11 +554,7 @@ when $\nabla\cdot u=0$ initially and evolution preserves it (or check separately
 
 Use $\nabla\cdot(u\cdot\nabla)u = \sum_{i,j}\partial_i\partial_j(u_i u_j)$. Thus
 \[ -\Delta p = \nabla \cdot \nabla (u\otimes u) - \nabla \cdot f\quad\text{(Poisson)}. \]
-It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$ and $f$ are $C^\infty$.
-
-Because $u$ is smooth, we can split this equality into zones, and it is true in every zone.
-On borders of zones, it can be constructed as a limit of the Poisson equation's solution in a zone. It does not depend on choice of the zone we take limit in, because~$u\in C^\infty$. Outside of zones it's zero.
-So, we have supersingular solution, too.
+It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$ and $f$ are $C^\infty$, so we recover a smooth pressure as well.
 \end{proof}
 
 \section{The sequence of approximate solutions}
@@ -638,7 +574,7 @@ Try as the solution $u(t)=\lim_{n\to\infty}u^{(n)}(t)$ the generalized limit of 
 
 \section{Interchange of limit and integration}
 
-Let $\lim$ be our extended limit. On each (closed) zone (a closed interval), $\lim$ is a bounded linear operator. Therefore (because it is a linear bounded operator~\cite{int-banach} $\lim$~can be interchanged with integrals.)
+Let $\lim$ be our extended limit. On each closed interval, $\lim$ is a bounded linear operator. Therefore (because it is a linear bounded operator~\cite{int-banach}) $\lim$ can be interchanged with integrals.
 It also maps absolutely convergent series to absolutely convergent series, therefore this extends to the entire closed interval. Thus we have:
 
 \begin{multline*}
@@ -651,7 +587,7 @@ The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ fo
 \end{thm}
 
 \begin{proof}
-Apply the classical result for each closed zone~$\overline{Z}$ of~$G_t f$. (Outside closed zones, points have a neighborhood where $G_t f$ is zero and thus smooth, too.)
+Apply the classical heat-semigroup smoothing theorem.
 \end{proof}
 
 Therefore the integral~$u$ is $C^\infty$ (on the set $\fSNG({-},\mathbb{R}^N)$).
@@ -663,9 +599,9 @@ Rewrite the equation as:
 G_t u(0) - u(t) = \int_0^t G_{t-s} \bigl(\mathbb{P}\nabla\cdot(u\otimes u)(s) - \mathbb{P}f(s)\bigr)ds.
 \end{equation}
 
-\subsection{A zone-free endpoint criterion}
+\subsection{Endpoint criterion}
 
-The zone argument should not be used.  The standard way to prove that a
+The standard way to prove that a
 candidate solution is classical at a possible critical time is instead a
 continuation criterion in a classical Banach space.
 
@@ -694,7 +630,7 @@ $u_T\in X\subseteq\mathbb{R}^N$ with $u(t)\to u_T$ in $X$.  Applying the local
 existence theorem with initial data $u_T$ continues the classical solution
 beyond $T$.
 
-Thus, a zone-free proof of classicality at $t_{\operatorname{crit}}$ would
+Thus, a proof of classicality at $t_{\operatorname{crit}}$ would
 follow from a classical a priori bound such as~\eqref{endpoint-bound}, together
 with the corresponding time-continuity estimates for the nonlinear Duhamel
 term.  The present generalized-limit construction does not yet provide this
@@ -774,18 +710,18 @@ main analytic gaps is fully resolved.  The status of each issue is recorded
 explicitly.
 
 \begin{enumerate}
-\item \textbf{Unresolved.} The zone sets do not form the claimed indexed partition as written.  If
+\item \textbf{Unresolved.} The proposed pieces do not form the claimed indexed partition as written.  If
 $k'=ck$ for a nonzero real scalar $c$, then $Z_{k'}=Z_k$, so distinct indices
-can name the same nonempty set.  The proof that zone boundaries have value zero
+can name the same nonempty set.  The proof that boundary values vanish
 also assumes without proof that the only alternative to nearby zero values is a
-single fixed neighboring zone.  A neighborhood can meet infinitely many
-different zones.  The multiplication argument in that case does not establish
+single fixed neighboring piece.  A neighborhood can meet infinitely many
+different pieces.  The multiplication argument in that case does not establish
 the conclusion.  Consequently openness, measurability, and the representation
-on the closure of each zone are not established.
+on the closure of each piece are not established.
 
 \item \textbf{Unresolved.} The generalized-valued fundamental theorem of calculus is not proved.
 The interval decomposition does not cover all relevant points: the complement
-of the union of the zones and the interior of the zero set can contain a
+of the union of the pieces and the interior of the zero set can contain a
 positive-measure boundary set.  Local differentiability on component intervals
 does not prove global absolute continuity.  In the converse direction the
 calculation divides by generalized values without justification, has
@@ -799,8 +735,7 @@ integral sign, and commutation of $\Delta$ with the integral are not justified
 for generalized-valued functions.
 
 \item \textbf{Unresolved.} The Leray projection and heat semigroup are nonlocal operators.  Their
-classical Fourier formulas do not automatically extend by ``linear
-combinations for the zones.''  Function spaces on which these operators act,
+classical Fourier formulas do not automatically extend by linearity alone.  Function spaces on which these operators act,
 their mapping properties, and their compatibility with generalized limits must
 be proved.  The lemma declaring the nonlinear integrand continuous is therefore
 not obvious.  Moreover, the statement that the integrand is $L^1$ because it is
@@ -821,8 +756,7 @@ integral terms in that differentiation are also reversed.
 Helmholtz decomposition and a solution theory for the Poisson equation in
 specified function spaces.  The displayed Poisson formula has ambiguous
 notation, and smoothness of the data alone does not justify the proposed
-zone-by-zone construction or the claim that the constructions agree on zone
-boundaries.
+piecewise construction or the claim that the constructions agree on boundaries.
 
 \item \textbf{Unresolved.} The Picard iteration is not shown to converge in any classical function
 space, nor is it shown to remain in a space on which all displayed integrals
@@ -838,20 +772,19 @@ before passing from $u^{(n+1)}=\mathcal{T}u^{(n)}$ to a fixed-point equation.
 ring-valued Sobolev quantities gives some formal language for norms, but the
 interchange of generalized limit and integration is still unsupported.
 Linearity of an algebraic extension of the usual limit does not imply
-boundedness, and the assertion that the limit is bounded on each closed zone is
+boundedness, and the assertion that the limit is bounded on each closed interval is
 not proved in a classical Banach-space topology.  The same problem applies to
 moving the limit through multiplication,
 differentiation, $\mathbb{P}$, and $G_t$.
 
 \item \textbf{Unresolved.} The smoothing theorem is not obtained by applying the classical heat
-semigroup theorem separately on zones.  Heat flow is nonlocal and mixes values
+semigroup theorem directly in the generalized setting.  Heat flow is nonlocal and mixes values
 from different spatial regions.  In addition, estimates near $s=t$ are needed
 to infer smoothness of the time integral in the mild formula.  These estimates
 are absent.
 
-\item \textbf{Partly addressed, but unresolved.} The previous zone-based
-endpoint argument has been replaced above by a zone-free continuation
-criterion, so the specific zone-boundary argument is no longer being relied on.
+\item \textbf{Partly addressed, but unresolved.} The previous endpoint argument has been replaced above by a continuation
+criterion, so the specific boundary argument is no longer being relied on.
 However, the criterion is conditional: the needed real a priori bound
 \eqref{endpoint-bound}, or a comparison theorem implying it from
 \eqref{super-endpoint-bound}, has not been proved.  No first nonclassical time
