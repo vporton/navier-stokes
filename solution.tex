@@ -448,9 +448,45 @@ Rewrite the equation as:
 G_t u(0) - u(t) = \int_0^t G_{t-s} \bigl(\mathbb{P}\nabla\cdot(u\otimes u)(s) - \mathbb{P}f(s)\bigr)ds.
 \end{equation}
 
-It is well-known that~$u$ is classical for some time interval starting from $t=0$. Suppose that at the time $t_{\operatorname{crit}}$, the solution becomes non-clas\-si\-cal. This is possible only at a border of the classical zone (the integrand in~\eqref{to-classical} is equal to~$0$ at $t=t_{\operatorname{crit}}$), therefore the left derivative (and by $C^\infty$, right derivative, too) of the integral is in~$\mathbb{R}$ for $t\in[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$. This warrants that the derivative on $[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$ is bounded and therefore the integral takes on $[t_{\operatorname{crit}}-\epsilon,t_{\operatorname{crit}}]$ values in~$\mathbb{R}$. Therefore the integral is in~$\mathbb{R}$ at~$t=t_{\operatorname{crit}}$.
+\subsection{A zone-free endpoint criterion}
 
-For further contradiction to come, assume that such $t_{\operatorname{crit}}$ exists.
+The zone argument should not be used.  The standard way to prove that a
+candidate solution is classical at a possible critical time is instead a
+continuation criterion in a classical Banach space.
+
+Let $X$ be a classical solution space for which the local Na\-vi\-er-Sto\-kes
+theory is available, for instance $H^m(\mathbb{R}^N)$ with
+$m>N/2+1$ and divergence-free data.  Suppose that the generalized mild solution
+$u$ agrees with a classical solution on $[0,T)$ and that
+\begin{equation}\label{endpoint-bound}
+  \sup_{0<t<T}\norm{u(t)}_X < \infty .
+\end{equation}
+Then $u(t)$ has a limit in $X$ as $t\uparrow T$ provided the mild formula gives
+the usual time-continuity estimates in $X$.  More explicitly, for
+$0<r<t<T$,
+\begin{multline*}
+u(t)-u(r)
+= (G_{t-r}-I)u(r) \\
+-\int_r^tG_{t-s}\mathbb{P}\nabla\cdot(u\otimes u)(s)\,ds
+-\int_0^r(G_{t-s}-G_{r-s})\mathbb{P}\nabla\cdot(u\otimes u)(s)\,ds \\
+{}+\int_r^tG_{t-s}\mathbb{P}f(s)\,ds
+{}+\int_0^r(G_{t-s}-G_{r-s})\mathbb{P}f(s)\,ds .
+\end{multline*}
+If the terms on the right tend to zero in $X$, uniformly for $r,t\uparrow T$,
+then $u(t)$ is Cauchy in $X$.  Since $X$ is complete, there is
+$u_T\in X\subseteq\mathbb{R}^N$ with $u(t)\to u_T$ in $X$.  Applying the local
+existence theorem with initial data $u_T$ continues the classical solution
+beyond $T$.
+
+Thus, a zone-free proof of classicality at $t_{\operatorname{crit}}$ would
+follow from a classical a priori bound such as~\eqref{endpoint-bound}, together
+with the corresponding time-continuity estimates for the nonlinear Duhamel
+term.  The present generalized-limit construction does not yet provide this
+bound.  Therefore the claim that $u(t_{\operatorname{crit}})$ is classical is
+not proved by the current argument.
+
+For further contradiction to come, one would need to prove such an estimate and
+then assume that such $t_{\operatorname{crit}}$ exists.
 
 \section{The energy inequality}
 
