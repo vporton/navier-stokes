@@ -18,6 +18,7 @@
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \newcommand{\supfun}[1]{\left\langle #1\right\rangle}
 \newcommand{\rsuprel}[1]{\left[#1\right]^\ast}
+\newcommand{\nasymp}{\not\asymp}
 
 \hypersetup{pdftitle={Analyzing Na\-vi\-er-Sto\-kes Equations Using a Linearly Extended Limit Functional},
  pdfauthor={Victor Porton},
@@ -257,12 +258,86 @@ defined by the displayed condition are closed under arbitrary unions and
 finite intersections, and therefore form a topology.
 \end{proof}
 
+\begin{lem}\label{lem:rounded-ultrafilter-separation}
+Let $\mathrm{X}$ be a symmetric Hausdorff endofuncoid satisfying
+$\mathrm{X}^{-1}\circ\mathrm{X}=\mathrm{X}$.  If $\mathcal{U}$ and
+$\mathcal{V}$ are ultrafilters, then
+\[
+  \supfun{\mathrm{X}}\mathcal{U}\ne\supfun{\mathrm{X}}\mathcal{V}
+  \quad\Longrightarrow\quad
+  \supfun{\mathrm{X}}\mathcal{U}
+  \asymp
+  \supfun{\mathrm{X}}\mathcal{V}.
+\]
+\end{lem}
+
+\begin{proof}
+Suppose instead that
+$\supfun{\mathrm{X}}\mathcal{U}\nasymp\supfun{\mathrm{X}}\mathcal{V}$.
+By the defining adjunction between the two components of a funcoid,
+\[
+  \mathcal{U}
+  \nasymp
+  \supfun{\mathrm{X}^{-1}}\supfun{\mathrm{X}}\mathcal{V}
+  =
+  \supfun{\mathrm{X}^{-1}\circ\mathrm{X}}\mathcal{V}
+  =
+  \supfun{\mathrm{X}}\mathcal{V}.
+\]
+Since $\mathcal{U}$ is an ultrafilter, every proper filter meshing with
+$\mathcal{U}$ is above~$\mathcal{U}$ in the reversed filter order.  Hence
+$\mathcal{U}\sqsubseteq\supfun{\mathrm{X}}\mathcal{V}$.  Applying
+$\supfun{\mathrm{X}}$ and using symmetry gives
+\[
+  \supfun{\mathrm{X}}\mathcal{U}
+  \sqsubseteq
+  \supfun{\mathrm{X}\circ\mathrm{X}}\mathcal{V}
+  =
+  \supfun{\mathrm{X}}\mathcal{V}.
+\]
+The same argument with $\mathcal{U}$ and~$\mathcal{V}$ interchanged gives the
+reverse inequality, so the two rounded filters are equal, a contradiction.
+\end{proof}
+
+\begin{prop}\label{prop:super-hausdorff}
+For the generalized limits of functions and sequences considered in this
+article, the funcoid-generated topology on~$\SUPER(R)$ is Hausdorff whenever
+the base funcoid~$\mathrm{X}$ is symmetric, Hausdorff, and satisfies
+$\mathrm{X}^{-1}\circ\mathrm{X}=\mathrm{X}$.  In particular this applies to
+the metric proximity on~$\mathbb{R}^Q$ used above.
+\end{prop}
+
+\begin{proof}
+First consider one singularity step.  Represent singularities by
+$F$-singularities as in~\cite[section ``Generalized limit vs axiomatic
+generalized limit'']{limit}.  For limits of functions, the value at an atomic
+domain filter is of the form $\supfun{\mathrm{X}}\mathcal{U}$ for an
+ultrafilter~$\mathcal{U}$ on the target.  If two represented singularities
+are distinct, funcoids are determined by their values on atomic filters, so
+there is an atomic domain filter at which their values differ.  By
+Lemma~\ref{lem:rounded-ultrafilter-separation}, those two target values are
+apart.
+
+The funcoid of singularities is defined pointwise on atomic domain filters.
+Thus apart target neighborhoods at the distinguishing atom give disjoint
+cylinder neighborhoods of the two singularities.  Hence the generated
+topology on one singularity level is Hausdorff.
+
+The same argument applies inductively to
+$R,\SNG(R),\SNG^2(R),\ldots$.  Finally, for two distinct elements of
+$\SUPER(R)$, promote them by the injective maps~$\tau$ to a common
+singularity level.  They remain distinct at that level, and the defining
+formula for the funcoid of supersingularities compares elements exactly after
+such promotion to a common level.  Pulling back the disjoint neighborhoods
+from that level separates the original two supersingularities.
+\end{proof}
+
 \begin{rem}\label{rem:funcoid-not-analytic}
 Proposition~\ref{prop:funcoid-super} is not an analytic realization.  A
-funcoid-generated topology supplies the underlying convergence structure, but
-the following construction is a candidate normed structure whose domain,
-completeness, integration theory, and operator bounds still have to be
-studied.
+funcoid-generated Hausdorff topology supplies the underlying convergence
+structure, but the following construction is a candidate normed structure
+whose domain, completeness, integration theory, and operator bounds still have
+to be studied.
 \end{rem}
 
 \section{A partial ring-valued sup norm}
@@ -397,10 +472,11 @@ unions are immediate.
 \end{proof}
 
 \begin{rem}
-The funcoid-generated topology is not proved here to be Hausdorff.
-Hausdorffness, compatibility with the ring-valued norm, and completeness are
-additional properties of the chosen funcoid on~$\mathcal{E}(D)$, not
-consequences of admissibility alone.
+If $\mathrm{Y}_{\mathcal{E}}$ is the restriction of the pointwise funcoid
+induced by the Hausdorff funcoid on~$\SUPER(\mathbb{R}^Q)$, then the topology
+above is Hausdorff.  Compatibility with the ring-valued norm and completeness
+are still additional analytic properties of the chosen
+space~$\mathcal{E}(D)$, not consequences of admissibility alone.
 \end{rem}
 
 \begin{defn}\label{def:ring-operator-bound}
@@ -449,8 +525,7 @@ following properties:
 \begin{enumerate}
 \item The ring-valued norm is total on~$\mathcal{E}(D)$, and the topology
 generated by the chosen funcoid on~$\mathcal{E}(D)$ is compatible with this
-norm and complete, possibly after passing to an appropriate Hausdorff
-realization.
+norm and complete.
 \item Continuous time-dependent elements of $\mathcal{E}(D)$ can be integrated.
 The integral is linear, satisfies an appropriate fundamental theorem of
 calculus, permits the required differentiation under the integral sign, and
@@ -773,7 +848,7 @@ following open steps.
 \begin{enumerate}
 \item Choose admissible spaces~$\mathcal{E}(D)$ on which the partial
 ring-valued norm is total.  Equip them with the funcoid-generated topology
-and prove Hausdorffness, norm compatibility, and completeness.
+and prove norm compatibility and completeness.
 
 \item Formal supersingular derivatives are used together with a fundamental
 theorem of calculus, a Leibniz rule for parameter-dependent integrals, and
