@@ -761,6 +761,68 @@ property for integrals gives
 so $(\partial_t - \Delta)u = f$.
 \end{proof}
 
+\begin{thm}[Semigroup form of Duhamel's principle]\label{thm:semigroup-duhamel}
+Let $T>0$, let $E$ be a compatible real-complete ring-valued normed module, and
+let $A:E\to E$ be a continuous $R$-linear map.  Suppose that
+$G_r:E\to E$, $0\leq r\leq T$, is a family of continuous $R$-linear maps such
+that $G_0=I$, $G_{r+\rho}=G_rG_\rho$ whenever $r,\rho,r+\rho\in[0,T]$, and
+the map $(r,x)\mapsto G_rx$ is norm-continuous.  Suppose also that, for every
+$x\in E$, the path $r\mapsto G_rx$ is norm-$C^1$ and
+\[
+  \frac{d}{dr}G_rx=AG_rx=G_rAx .
+\]
+Let $F:[0,T]\to E$ be norm-continuous, and assume that all displayed interval
+integrals exist.  Then
+\[
+  u(t)\eqdef G_tu_0+\int_0^tG_{t-s}F(s)\,ds
+\]
+is norm-$C^1$ on $(0,T)$ and satisfies
+\[
+  u'(t)-Au(t)=F(t),\qquad u(0)=u_0 .
+\]
+\end{thm}
+
+\begin{proof}
+Put $H(t)=\int_0^tG_{t-s}F(s)\,ds$.  For $h>0$ small,
+\begin{multline*}
+  \frac{H(t+h)-H(t)}{h}
+  =
+  \int_0^t
+  \frac{G_{t+h-s}F(s)-G_{t-s}F(s)}{h}\,ds\\
+  +\frac1h\int_t^{t+h}G_{t+h-s}F(s)\,ds .
+\end{multline*}
+By the assumed norm-$C^1$ dependence of $G_r$,
+\[
+  \frac{G_{t+h-s}F(s)-G_{t-s}F(s)}{h}
+  \longrightarrow AG_{t-s}F(s)
+\]
+uniformly for $s\in[0,t]$ on compact subintervals on which the stated
+continuities hold; the bounded-integral estimate passes this limit through the
+integral.  The second term converges to $F(t)$ by norm-continuity of the
+semigroup action, $G_0=I$, and norm-continuity of $F$ at~$t$.  Hence the
+right derivative of $H$ equals
+\[
+  F(t)+\int_0^tAG_{t-s}F(s)\,ds .
+\]
+The same computation for $h<0$ uses
+\[
+H(t+h)-H(t)
+=\int_0^{t+h}(G_{t+h-s}-G_{t-s})F(s)\,ds
+-\int_{t+h}^tG_{t-s}F(s)\,ds ,
+\]
+and gives the same left derivative.  Therefore
+\[
+  H'(t)=F(t)+\int_0^tAG_{t-s}F(s)\,ds .
+\]
+Since $A$ is continuous and $R$-linear, it passes through the integral:
+\[
+  A\int_0^tG_{t-s}F(s)\,ds
+  =\int_0^tAG_{t-s}F(s)\,ds .
+\]
+Also $\frac{d}{dt}G_tu_0=AG_tu_0$.  Combining these identities gives
+$u'(t)-Au(t)=F(t)$, and $u(0)=G_0u_0=u_0$.
+\end{proof}
+
 \section{Rewriting in integral form}
 
 Let denote Leray projection as~$\mathbb{P}$.
@@ -819,7 +881,10 @@ Denote $G_t = e^{\nu t\Delta}$.
 
 For the linear homogeneous heat equation $\partial_t v - \nu\Delta v = 0$ with initial data $v(0)=v_0$ the solution is $v(t) = G_t v_0$.
 
-For the inhomogeneous equation, the Duhamel principle (variation-of-constants formula) gives the unique solution as
+Assume, in the selected generalized-valued function space, that $G_t$ satisfies
+the hypotheses of Theorem~\ref{thm:semigroup-duhamel} with $A=\nu\Delta$ and
+that the following integrals exist.  Then the Duhamel principle
+(variation-of-constants formula) gives the solution as
 \[ u(t) = G_t u_0 + \int_0^t G_{t-s} \bigl( -F(s) + \mathbb{P}f(s) \bigr) \, ds = G_t u_0 - \int_0^t G_{t-s} F(s) \, ds + \int_0^t G_{t-s} \mathbb{P}f(s) \, ds. \]
 
 Substituting the value of~$F$ gives exactly the mild formula.
@@ -1010,12 +1075,16 @@ calculus, has been removed after the added details above; the remaining items
 keep their previous numbering.
 
 \begin{enumerate}
-\item \textbf{Partly addressed, but unresolved.} Duhamel's principle is now
-stated with explicit norm-continuity, integrability, and
-$\Delta$-commutation assumptions, and the needed ring-valued Leibniz rule is
-proved above.  What remains is to verify those assumptions for the particular
-auxiliary heat-equation family used later in the selected generalized-valued
-function spaces; they do not follow from mere continuity in the parameter~$s$.
+\item \textbf{Resolved as a conditional step.} Duhamel's principle is no longer
+used from mere parameter-continuity.  The semigroup version,
+Theorem~\ref{thm:semigroup-duhamel}, states the exact hypotheses needed:
+norm-continuity of the semigroup action, norm-$C^1$ dependence on time,
+commutation with the generator, continuity of the forcing term, and existence
+of the displayed integrals.  The later mild-formula derivation is now explicitly
+conditional on these hypotheses in the chosen generalized-valued function
+space.  This does not prove that the heat semigroup has all required mapping
+properties there; that separate issue is recorded below with the nonlocal
+operator gap.
 
 \item \textbf{Unresolved.} The Leray projection and heat semigroup are nonlocal operators.  Their
 classical Fourier formulas do not automatically extend by linearity alone.  Function spaces on which these operators act,
