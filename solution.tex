@@ -1120,15 +1120,157 @@ Each element of this sequence is a continuous supersingular function.
 
 Try as the solution $u(t)=\lim_{n\to\infty}u^{(n)}(t)$ the generalized limit of this sequence.
 
+\begin{prop}[Shift invariance for a convergent Picard sequence]\label{prop:picard-shift}
+Let $E$ be a compatible real-complete ring-valued normed module and let
+$(x_n)$ be an $E$-valued sequence converging in the norm topology to $x$.
+Assume that the extended limit $\xlim$ agrees with the ordinary limit on
+convergent $E$-valued sequences and is linear.  Then
+\[
+  \xlim_{n\to\infty}x_{n+1}=\xlim_{n\to\infty}x_n .
+\]
+\end{prop}
+
+\begin{proof}
+Since $x_n\to x$, also $x_{n+1}\to x$.  Hence the defining agreement with
+ordinary limits gives
+\[
+  \xlim_{n\to\infty}x_n=x
+  \quad\text{and}\quad
+  \xlim_{n\to\infty}x_{n+1}=x.
+\]
+Equivalently, $x_{n+1}-x_n\to0$, so linearity gives
+\[
+  \xlim_{n\to\infty}x_{n+1}-\xlim_{n\to\infty}x_n
+  =
+  \xlim_{n\to\infty}(x_{n+1}-x_n)=0.
+\]
+\end{proof}
+
+\begin{thm}[Local Sobolev Picard admissibility and convergence]
+\label{thm:local-sobolev-picard}
+Let $m>N/2+1$, let
+$u_0\in H^m(\mathbb{R}^N)^N$ be divergence-free, and let
+\[
+  f\in C([0,T_0];H^{m-1}(\mathbb{R}^N)^N).
+\]
+Then there is $0<T\leq T_0$ and $R>0$ such that the Picard map
+$\mathcal T$ maps the closed ball
+\[
+  B_R\eqdef
+  \setcond{v\in C([0,T];H^m(\mathbb{R}^N)^N)}
+  {\sup_{0\leq t\leq T}\norm{v(t)}_{H^m}\leq R}
+\]
+to itself, all Duhamel integrals displayed in the Picard formula exist as
+absolutely convergent $H^m$-valued Bochner integrals, and
+$\mathcal T$ is a contraction on $B_R$.  Consequently the Picard iterates stay
+in $B_R$ and converge in $C([0,T];H^m)$ to the unique mild solution on
+$[0,T]$.
+\end{thm}
+
+\begin{proof}
+We use the standard Sobolev estimates on $\mathbb{R}^N$.  Since
+$m>N/2$, $H^m$ is an algebra.  Since the heat semigroup gains one derivative,
+there is a constant $C_m$ such that, for $0<r\leq T_0$,
+\[
+  \norm{G_r\mathbb{P}\nabla\cdot(a\otimes b)}_{H^m}
+  \leq C_m r^{-1/2}\norm{a}_{H^m}\norm{b}_{H^m},
+\]
+and
+\[
+  \norm{G_r\mathbb{P}g}_{H^m}
+  \leq C_m r^{-1/2}\norm{g}_{H^{m-1}} .
+\]
+The value at $r=0$ is irrelevant for these Bochner integrals, since it occurs
+only on a set of measure zero.
+
+Put
+\[
+  A=\norm{u_0}_{H^m},\qquad
+  F=\sup_{0\leq t\leq T_0}\norm{\mathbb{P}f(t)}_{H^{m-1}},
+\]
+and choose $R\geq 2A+1$.  For $v\in B_R$,
+\[
+  \norm{(\mathcal Tv)(t)}_{H^m}
+  \leq
+  A+C_m\int_0^t(t-s)^{-1/2}
+  \bigl(\norm{v(s)}_{H^m}^2+\norm{\mathbb{P}f(s)}_{H^{m-1}}\bigr)\,ds .
+\]
+Thus
+\[
+  \sup_{0\leq t\leq T}\norm{(\mathcal Tv)(t)}_{H^m}
+  \leq A+2C_mT^{1/2}(R^2+F).
+\]
+Choose $T$ small enough that
+\[
+  2C_mT^{1/2}(R^2+F)\leq R-A .
+\]
+Then $\mathcal T(B_R)\subseteq B_R$.
+
+The same estimate proves absolute convergence of the two Duhamel integrals:
+their $H^m$ norms are dominated by an integrable multiple of
+$(t-s)^{-1/2}$ on $[0,t]$.  Continuity in $t$ follows from the strong
+continuity of $G_r$ and dominated convergence, using the same singular
+majorant.
+
+For $v,w\in B_R$,
+\[
+  v\otimes v-w\otimes w=(v-w)\otimes v+w\otimes(v-w),
+\]
+so the Sobolev algebra estimate gives
+\[
+  \norm{v(s)\otimes v(s)-w(s)\otimes w(s)}_{H^m}
+  \leq C_m R\norm{v(s)-w(s)}_{H^m},
+\]
+after increasing $C_m$ if necessary.  Therefore
+\[
+  \sup_{0\leq t\leq T}\norm{\mathcal Tv(t)-\mathcal Tw(t)}_{H^m}
+  \leq
+  2C_mRT^{1/2}
+  \sup_{0\leq t\leq T}\norm{v(t)-w(t)}_{H^m}.
+\]
+Shrinking $T$ further so that $2C_mRT^{1/2}<1$, $\mathcal T$ is a contraction.
+Banach's fixed point theorem gives convergence of the Picard iterates in
+$C([0,T];H^m)$, and the fixed point satisfies the mild equation.
+\end{proof}
+
+\begin{rem}
+Theorem~\ref{thm:local-sobolev-picard} proves the hard admissibility point
+locally in a classical space: the iterates remain in a space where the
+displayed Duhamel integrals are meaningful, and the Picard sequence actually
+converges in $H^m$, hence also after embedding into the supersingular
+framework.  This is still not a global proof on $\mathbb{R}^N$ for arbitrary
+smooth data without Sobolev bounds; extending the estimates uniformly in time
+is the unresolved regularity problem.
+\end{rem}
+
 \section{Interchange of limit and integration}
 
-Let $\lim$ be our extended limit. On each closed interval, $\lim$ is a bounded linear operator. Therefore (because it is a linear bounded operator~\cite{int-banach}) $\lim$ can be interchanged with integrals.
-It also maps absolutely convergent series to absolutely convergent series, therefore this extends to the entire closed interval. Thus we have:
+In the local Sobolev setting of
+Theorem~\ref{thm:local-sobolev-picard}, the passage to the limit in the
+Picard formula is justified by ordinary Banach-space convergence.  Namely,
+$u^{(n)}\to u$ in $C([0,T];H^m)$ and
+Proposition~\ref{prop:picard-shift} gives
+\[
+  \xlim_{n\to\infty}u^{(n+1)}=\xlim_{n\to\infty}u^{(n)}=u.
+\]
+The estimates used in Theorem~\ref{thm:local-sobolev-picard} also give an
+integrable majorant for the nonlinear Duhamel terms.  Therefore dominated
+convergence in $H^m$ gives
 
 \begin{multline*}
-u(t) = \lim_{n\to\infty}u^{(n)}(t) =\\ G_t u_0 - \int_0^t \lim_{n\to\infty}\bigl(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds =\\ G_t u_0 - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds,
+u(t) = \lim_{n\to\infty}u^{(n+1)}(t) \\
+= G_t u_0 - \int_0^t \lim_{n\to\infty}
+\bigl(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)ds
++ \int_0^t G_{t-s} \mathbb{P}f(s)ds \\
+= G_t u_0 - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s)ds
++ \int_0^t G_{t-s} \mathbb{P}f(s)ds,
 \end{multline*}
 that is it is a solution.
+
+Outside such a Banach/Sobolev admissible setting, the assertion that a
+generalized extended limit is a bounded operator and can be interchanged with
+the displayed integrals is an additional analytic theorem to prove; it does
+not follow from linearity alone.
 
 \begin{thm}
 The heat semigroup $G_t$ is infinitely smoothing, that is $G_t f\in C^\infty$ for any $f\in\fSNG({-},\mathbb{R})\cap L^1$ for $t>0$. (The norm is taken in~$\fSNG({-},\mathbb{R})$.)
@@ -1271,24 +1413,27 @@ carried out in spaces such as $H^m(\mathbb{R}^N)$, $m>N/2+1$.  It does not
 justify the broader formulation with arbitrary smooth data and no decay or
 Sobolev assumptions.
 
-\item \textbf{Unresolved.} The Picard iteration is not shown to converge in any classical function
-space, nor is it shown to remain in a space on which all displayed integrals
-exist.  Taking an extended limit of an arbitrary sequence does not replace the
-estimates needed for convergence.  It is also necessary to prove shift
-invariance
+\item \textbf{Locally addressed in Sobolev spaces, but globally unresolved.}
+Theorem~\ref{thm:local-sobolev-picard} proves that, for data in
+$H^m(\mathbb{R}^N)$ with $m>N/2+1$ and on a sufficiently short time interval,
+the Picard iterates remain in a space on which the displayed Duhamel integrals
+exist and converge in $C([0,T];H^m)$.  Proposition~\ref{prop:picard-shift}
+then proves the needed shift invariance
 \[
 \lim_{n\to\infty}u^{(n+1)}=\lim_{n\to\infty}u^{(n)}
 \]
-before passing from $u^{(n+1)}=\mathcal{T}u^{(n)}$ to a fixed-point equation.
+whenever such convergence is known.  This does not prove global convergence in
+a classical space on $\mathbb{R}^N$, nor does it treat arbitrary smooth data
+without Sobolev bounds.  Taking an extended limit of an arbitrary sequence
+still does not replace the estimates needed for convergence.
 
-\item \textbf{Partly addressed, but unresolved.} The introduction of
-ring-valued Sobolev quantities gives some formal language for norms, but the
-interchange of generalized limit and integration is still unsupported.
-Linearity of an algebraic extension of the usual limit does not imply
-boundedness, and the assertion that the limit is bounded on each closed interval is
-not proved in a classical Banach-space topology.  The same problem applies to
-moving the limit through multiplication,
-differentiation, $\mathbb{P}$, and $G_t$.
+\item \textbf{Partly addressed, but unresolved.} The local Sobolev argument
+passes limits through the Duhamel integrals by ordinary dominated convergence.
+Outside that setting, the introduction of ring-valued Sobolev quantities gives
+some formal language for norms, but the interchange of generalized limit and
+integration is still unsupported.  Linearity of an algebraic extension of the
+usual limit does not imply boundedness.  The same problem applies to moving
+the limit through multiplication, differentiation, $\mathbb{P}$, and $G_t$.
 
 \item \textbf{Unresolved.} The smoothing theorem is not obtained by applying the classical heat
 semigroup theorem directly in the generalized setting.  Heat flow is nonlocal and mixes values
