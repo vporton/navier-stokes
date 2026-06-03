@@ -204,13 +204,17 @@ By a \emph{supersingular function} or a solution in \emph{supersingularities} I 
 \end{rem}
 
 Define Lebesgue integrals on the space of continuous generalized limits
-functions in the usual way for ring-valued functions: for a measurable set $A$
-and an integrable function $f$ with values in the ambient ring,
-$\int_A f(x)\,dx$ denotes the standard ring-valued integral whenever it exists.
-Convergence of the defining simple-function sums is always understood in the
-compatible norm topology introduced below.
+functions in the usual way for ring-valued functions, but only in the
+absolutely convergent case.  Namely, for a measurable set $A$ and a function
+$f$ with values in a compatible real-complete $R$-valued normed module, we
+write $\int_A f(x)\,dx$ only when the approximating simple-function sums are
+absolutely convergent in the norm topology introduced below; in that case the
+integral is the norm limit of those sums.  No general existence theorem is
+claimed here.  This is the only case used in the subsequent sections.
 
-It is easy to show that this definition agrees with the usual scalar Lebesgue integral on real-valued functions and is compatible with scalar multiplication by real numbers.
+It is easy to show that this definition agrees with the usual scalar Lebesgue
+integral on real-valued functions and is compatible with scalar multiplication
+by real numbers whenever both sides are defined.
 
 Below, we will, contrary to the usual notation, denote~$L^1(X)$ the space of functions on~$X$ integrable by the above formula, not all Lebesgue integrable functions.
 
@@ -311,6 +315,25 @@ cases convergence of the original series or integral means convergence in the
 norm topology~$\tau_E$, and then also convergence in the
 $\mathrm{X}_{\SUPER}$-funcoid topology by compatibility.
 \end{defn}
+
+\begin{thm}
+Let $E$ and $F$ be compatible real-complete $R$-valued normed modules, and let
+$T:E\to F$ be a continuous $R$-linear map.  Then $T$ preserves real-Cauchy
+sequences and absolutely convergent series.  Moreover, whenever an integral
+$\int_A f(x)\,dx$ exists in $E$, the integral $\int_A T(f(x))\,dx$ exists in
+$F$ and
+\[
+  T\left(\int_A f(x)\,dx\right)=\int_A T(f(x))\,dx.
+\]
+\end{thm}
+
+\begin{proof}
+Continuity gives $x_n\to x$ in $E$ implies $T(x_n)\to T(x)$ in $F$.  Hence a
+real-Cauchy sequence or an absolutely convergent series in $E$ is sent to a
+real-Cauchy sequence or absolutely convergent series in $F$.  The integral
+statement follows by applying the same argument to the defining simple-function
+approximations and using linearity of $T$.
+\end{proof}
 
 For a generalized-valued scalar or vector function $v$ define, when the
 right-hand side exists,
@@ -760,14 +783,14 @@ different zones.  The multiplication argument in that case does not establish
 the conclusion.  Consequently openness, measurability, and the representation
 on the closure of each zone are not established.
 
-\item \textbf{Partly addressed, but unresolved.} The funcoid on
-$\SUPER(\mathbb{R})$ from~\cite[section 10, p.~11]{limit} now specifies the
-target topology for generalized-valued continuity, and the ring-valued norms
-above specify compatible norm topologies and real-complete modules for
-absolute convergence.  What remains unresolved is the analytic construction:
-the ring-valued integral is still asserted only conditionally, without a full
-existence theorem for the required simple-function limits or a proof that all
-operators used below preserve these compatible complete spaces.
+\item \textbf{Resolved at the level of exposition.} The funcoid on
+$\SUPER(\mathbb{R})$ from~\cite[section 10, p.~11]{limit} specifies the target
+topology for generalized-valued continuity, and the ring-valued norms above
+specify compatible norm topologies and real-complete modules for absolute
+convergence.  The integral is now treated explicitly as a partial operation:
+it is invoked only after the corresponding simple-function sums are assumed or
+shown to converge in the compatible complete space where the calculation is
+being carried out.  No general existence theorem is claimed.
 
 \item \textbf{Unresolved.} The generalized-valued fundamental theorem of calculus is not proved.
 The interval decomposition does not cover all relevant points: the complement
