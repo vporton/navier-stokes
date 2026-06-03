@@ -713,30 +713,50 @@ u({\cdot},0) &= 0.
 \end{defn}
 
 \begin{thm}[First order Duhamel's principle]
-Define auxiliary equations
+Let $T>0$, and let $E$ be a compatible real-complete ring-valued normed
+module of supersingular functions on which $\Delta:E\to E$ is a continuous
+$R$-linear map.  For $s\in[0,T]$, define auxiliary equations
 \begin{equation*}
 \left\{
 \begin{aligned}
-(\partial_t - \Delta)u_s &= 0;\\
-u_s(x,s) &= f(x,s).
+(\partial_t - \Delta)u_s(t) &= 0;\\
+u_s(s) &= f(s).
 \end{aligned}
 \right.
 \end{equation*}
-If the above family of equations have continuous in~$s$ solutions~$u_s(x,t)$ in supersingularities then the function
-\[ u(x,t) = \int_0^t u_s(x,t) ds \]
-is a continuous solution of the inhomogeneous linear evolution equation in supersingularities.
+Assume these equations have solutions $u_s(t)\in E$ such that
+$q(s,t)\eqdef u_s(t)$ and
+$\partial_2q(s,t)=\partial_tu_s(t)$ are norm-continuous on $[0,T]^2$, and
+assume all displayed interval integrals exist.  Then
+\[
+  u(t) = \int_0^t u_s(t)\,ds
+\]
+satisfies the inhomogeneous linear evolution equation in the norm topology, and
+hence also in the supersingular-funcoid topology.
 \end{thm}
 
 \begin{proof}
-Continuity of $u_s$ makes the integral defined.
-
-$u({\cdot},0) = 0$ is obvious.
+The integral defining $u$ exists by hypothesis, and $u(0)=0$ is immediate.
 
 By the Leibniz rule for an integral with moving upper limit,
-\[ \partial_t u(x,t) = \partial_t \int_0^t u_s(x,t) ds = u_t(x,t) + \int_0^t \partial_t u_s(x,t) ds. \]
+\[
+  \partial_t u(t)
+  =
+  \partial_t \int_0^t u_s(t)\,ds
+  =
+  u_t(t)+\int_0^t \partial_tu_s(t)\,ds .
+\]
+Here $u_t(t)$ is the member of the family with parameter $s=t$, evaluated at
+time~$t$, so $u_t(t)=f(t)$ by the auxiliary initial condition.
+Since $\Delta:E\to E$ is continuous and $R$-linear, the continuous-linear-map
+property for integrals gives
+\[
+  \Delta u(t)=\int_0^t \Delta u_s(t)\,ds .
+\]
 \begin{multline*}
-(\partial_t - \Delta)u(x,t) = \partial_t \int_0^t u_s(x,t) ds - \Delta \int_0^t u_s(x,t) ds =\\
-u_t(x,t) + \int_0^t (\partial_t u_s(x,t) - \Delta u_s(x,t)) ds = f(x,t),
+(\partial_t - \Delta)u(t)
+= u_t(t)+\int_0^t \bigl(\partial_tu_s(t)-\Delta u_s(t)\bigr)\,ds \\
+= f(t),
 \end{multline*}
 so $(\partial_t - \Delta)u = f$.
 \end{proof}
@@ -990,13 +1010,12 @@ calculus, has been removed after the added details above; the remaining items
 keep their previous numbering.
 
 \begin{enumerate}
-\setcounter{enumi}{1}
-\item \textbf{Unresolved.} The proof of Duhamel's principle assumes precisely
-the hypotheses of the ring-valued integral rules that still need verification
-for the functions at hand.  Continuity alone does not imply that the
-newly-defined integral exists.  It remains to prove that the relevant
-time-derivatives are norm-continuous and integrable and that $\Delta$ commutes
-with the integral in the selected generalized-valued function spaces.
+\item \textbf{Partly addressed, but unresolved.} Duhamel's principle is now
+stated with explicit norm-continuity, integrability, and
+$\Delta$-commutation assumptions, and the needed ring-valued Leibniz rule is
+proved above.  What remains is to verify those assumptions for the particular
+auxiliary heat-equation family used later in the selected generalized-valued
+function spaces; they do not follow from mere continuity in the parameter~$s$.
 
 \item \textbf{Unresolved.} The Leray projection and heat semigroup are nonlocal operators.  Their
 classical Fourier formulas do not automatically extend by linearity alone.  Function spaces on which these operators act,
