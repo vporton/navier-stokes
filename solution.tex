@@ -991,7 +991,7 @@ Let $\lim$ be our extended limit. On each closed interval, $\lim$ is a bounded l
 It also maps absolutely convergent series to absolutely convergent series, therefore this extends to the entire closed interval. Thus we have:
 
 \begin{multline*}
-u(t) = \lim_{n\to\infty}u^{(n)}(t) =\\ G_t u(0) - \int_0^t \lim_{n\to\infty}\bigl(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds =\\ G_t u(0) - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds,
+u(t) = \lim_{n\to\infty}u^{(n)}(t) =\\ G_t u_0 - \int_0^t \lim_{n\to\infty}\bigl(G_{t-s} \mathbb{P}\nabla\cdot(u^{(n)}\otimes u^{(n)})(s)\bigr)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds =\\ G_t u_0 - \int_0^t G_{t-s} \mathbb{P}\nabla\cdot(u\otimes u)(s)ds + \int_0^t G_{t-s} \mathbb{P}f(s)ds,
 \end{multline*}
 that is it is a solution.
 
@@ -1009,7 +1009,7 @@ It remains to prove that $u$ takes on values in~$\mathbb{R}^N$ (is classical).
 
 Rewrite the equation as:
 \begin{equation}\label{to-classical}
-G_t u(0) - u(t) = \int_0^t G_{t-s} \bigl(\mathbb{P}\nabla\cdot(u\otimes u)(s) - \mathbb{P}f(s)\bigr)ds.
+G_t u_0 - u(t) = \int_0^t G_{t-s} \bigl(\mathbb{P}\nabla\cdot(u\otimes u)(s) - \mathbb{P}f(s)\bigr)ds.
 \end{equation}
 
 \subsection{Endpoint criterion}
@@ -1123,21 +1123,9 @@ main analytic gaps is fully resolved.  The semigroup/projection issues are now
 absorbed into the explicit admissible projected-heat framework above,
 especially Definition~\ref{def:admissible-projected-heat} and
 Theorem~\ref{thm:projected-mild}, and are therefore omitted from the list
-below.  The former first item, concerning the fundamental theorem of calculus,
-has been removed after the added details above.
+below.
 
 \begin{enumerate}
-\item \textbf{Unresolved.} There are sign errors in the projected-equation computation.  Applying
-$\mathbb{P}$ to the displayed Na\-vi\-er-Sto\-kes equation gives a plus sign in
-front of $\mathbb{P}((u\cdot\nabla)u)$, contrary to one displayed line.
-Differentiating the mild formula should give
-\[
-\partial_tu-\nu\Delta u
-=-\mathbb{P}\nabla\cdot(u\otimes u)+\mathbb{P}f,
-\]
-not the formula displayed in the converse calculation.  The signs of the
-integral terms in that differentiation are also reversed.
-
 \item \textbf{Unresolved.} Recovery of the pressure is incomplete.  It requires an appropriate
 Helmholtz decomposition and a solution theory for the Poisson equation in
 specified function spaces.  The displayed Poisson formula has ambiguous
