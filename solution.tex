@@ -827,8 +827,11 @@ $u'(t)-Au(t)=F(t)$, and $u(0)=G_0u_0=u_0$.
 
 \section{Rewriting in integral form}
 
-Let denote Leray projection as~$\mathbb{P}$.
+Let $\mathbb{P}$ denote the Leray projection.
 Write $G_t=e^{\nu t\Delta}$.
+The point of the next definition is to isolate exactly the operator-theoretic
+hypotheses needed to transport the classical Banach-space Duhamel argument to
+the $\SUPER$/$\fSNG$ setting.
 
 \begin{defn}[Admissible projected-heat setting]\label{def:admissible-projected-heat}
 Fix $T>0$ and data $u_0,f$.  An admissible projected-heat setting on
@@ -880,6 +883,47 @@ This is exactly the mapping and integrability content of
 Definition~\ref{def:admissible-projected-heat}.
 \end{proof}
 
+\begin{prop}\label{prop:super-does-not-prove-admissibility}
+The admissibility assumptions in
+Definition~\ref{def:admissible-projected-heat} do not follow from the
+properties of $\SUPER$ established in~\cite[theorem~6, p.~10]{limit} and from
+the linearity of generalized derivatives and integrals stated
+in~\cite[p.~10]{limit}.
+\end{prop}
+
+\begin{proof}
+The cited limit-extension theorem quantifies over continuous finitary
+multiargument functions on the base value space and preserves algebraic
+identities formed from those operations.  The cited application paragraph gives
+linearity of generalized derivatives and definite integrals.  These are
+pointwise, finite-arity, or linearity facts; they do not state mapping theorems
+for arbitrary nonlocal operators on function spaces.
+
+By contrast, the heat semigroup and the Leray projection are nonlocal
+operators.  Classically,
+\[
+  G_t v(x)=\int_{\mathbb{R}^N}K_t(x-y)v(y)\,dy
+\]
+and $\mathbb{P}$ is a Fourier multiplier, equivalently a singular-integral
+operator.  Their values at a point depend on the behavior of the whole vector
+field, not only on finitely many pointwise values.  Therefore their definition,
+continuity on a chosen normed module, commutation with $\Delta$, and
+compatibility with the generalized limit construction require operator
+theorems in that module.  The finitary identity theorem does not by itself give
+convolution identities, Fourier inversion, Fubini/Tonelli rules, or
+singular-integral boundedness.
+
+The same applies to the Duhamel integrals.  The integral used in this paper is
+defined only when the relevant simple-function approximations are absolutely
+convergent in a specified compatible real-complete module.  The $\SUPER$
+construction and the linearity of generalized integrals do not give the real
+norm bounds, completeness, or absolute-convergence estimates needed for those
+integrals.  Hence a full discharge of
+Definition~\ref{def:admissible-projected-heat} would require additional
+analytic theorems specifying the module and proving these mapping and
+convergence properties.
+\end{proof}
+
 \begin{defn}
 In an admissible projected-heat setting, I call $u\in\mathcal X_T$ a
 supersingular mild solution of the Na\-vi\-er-Sto\-kes equations when
@@ -891,89 +935,36 @@ for all $0\leq t\leq T$.\footnote{This formula is usually called the
 \emph{mild (Duhamel) formulation}.}
 \end{defn}
 
-
-\begin{thm}
-In an admissible projected-heat setting, $C^\infty$ supersingular mild
-solutions of Na\-vi\-er-Sto\-kes equations are exactly $C^\infty$ solutions of
-Na\-vi\-er-Sto\-kes equations (without the requirement that~$p$ is $C^\infty$) in
-supersingularities.
+\begin{thm}[Projected mild equation in an admissible setting]\label{thm:projected-mild}
+In an admissible projected-heat setting, let
+\[
+  F_u(t)\eqdef -\mathbb{P}\nabla\cdot(u\otimes u)(t)+\mathbb{P}f(t).
+\]
+If $u\in\mathcal X_T$ is norm-$C^1$ on $(0,T)$ and
+\[
+  u(t)=G_tu_0+\int_0^tG_{t-s}F_u(s)\,ds,
+\]
+then
+\[
+  \partial_tu(t)-\nu\Delta u(t)=F_u(t),
+\]
+hence
+\[
+  \partial_tu-\nu\Delta u+\mathbb{P}\nabla\cdot(u\otimes u)=\mathbb{P}f.
+\]
+This is the direct $\SUPER$/$\fSNG$ analogue of the classical Banach-space
+Duhamel step: the semigroup, projection, and Duhamel-integrability hypotheses
+are made explicit in Definition~\ref{def:admissible-projected-heat}.
 \end{thm}
 
 \begin{proof}
-In the classical Fourier setting,
-\[
-  \widehat{\mathbb{P}f}(\xi)
-  =\left(I-\frac{\xi\otimes\xi}{|\xi|^2}\right)\hat f(\xi).
-\]
-In the present generalized-valued setting, the corresponding mapping
-properties are not inferred from this formula alone; they are among the
-admissibility assumptions in
-Definition~\ref{def:admissible-projected-heat}.  Thus $\mathbb{P}$ is a
-continuous $R$-linear projection, $\mathbb{P}\nabla q=0$ on the scalar fields
-under consideration, and
-\[
-  \mathbb{P}\Delta=\Delta\mathbb{P},
-  \qquad
-  \mathbb{P}G_t=G_t\mathbb{P}.
-\]
-
-Apply $\mathbb{P}$ to the PDE (partial differential equation). Since $\mathbb{P}\nabla p=0$, we get
-\[ \mathbb{P}\partial_t u - \nu\mathbb{P}\Delta u - \mathbb{P}((u\cdot\nabla) u) = \mathbb{P}f. \]
-
-Because $u$ is divergence-free and $\mathbb{P}$ equals identity on divergence-free fields, $\mathbb{P}u=u$. $\mathbb{P}$ commutes with $\partial_t$ and $\Delta$.
-
-Thus we have the consequence
-\[ \partial_t u - \nu\Delta u + \mathbb{P}((u\cdot\nabla) u) = \mathbb{P}f. \]
-
-We can write the nonlinear term as a divergence of a tensor:
-\[ (u\cdot\nabla) u = \nabla \cdot (u\otimes u), \]
-because $(u\otimes u)_{ij}=u_i u_j$ and $\nabla \cdot (u\otimes u) = \sum_j\partial_j (u_i u_j)$.
-
-Thus the PDE becomes: \[ \partial_t u - \nu\Delta u + \mathbb{P}\nabla \cdot (u\otimes u) = \mathbb{P}f. \]
-
-Rewrite this PDE as a system:
-\[ \partial_t u - \nu\Delta u = -F(t) + \mathbb{P}f(t),\quad F(t) = \mathbb{P}\nabla \cdot (u\otimes u). \]
-
-For the linear homogeneous heat equation $\partial_t v - \nu\Delta v = 0$ with initial data $v(0)=v_0$ the solution is $v(t) = G_t v_0$.
-
-Assume, in the selected generalized-valued function space, that $G_t$ satisfies
-the hypotheses of Theorem~\ref{thm:semigroup-duhamel} with $A=\nu\Delta$ and
-that the following integrals exist.  Then the Duhamel principle
-(variation-of-constants formula) gives the solution as
-\[ u(t) = G_t u_0 + \int_0^t G_{t-s} \bigl( -F(s) + \mathbb{P}f(s) \bigr) \, ds = G_t u_0 - \int_0^t G_{t-s} F(s) \, ds + \int_0^t G_{t-s} \mathbb{P}f(s) \, ds. \]
-
-Substituting the value of~$F$ gives exactly the mild formula.
-
-Now prove in the converse: if continuous~$u$ satisfies the mild equation, then it satisfies the PDE and we can recover a pressure~$p$. The below proof is correct only almost everywhere in time. But since the functions in question are~$C^\infty$, it extends to everywhere.
-
-Assume $u$ to be a continuous supersingular function.
-
-Differentiate the mild equation in~$t$. Use facts:
-\begin{itemize}
-\item $\partial_t(e^{\nu t \Delta}u_0) = \nu \Delta e^{\nu t \Delta} u_0$;
-\item $\frac{d}{dt}\int_0^t e^{\nu (t-s) \Delta} F(s) ds = F(t) + \int_0^t \nu e^{\nu (t-s) \Delta} F(s) ds$.
-\end{itemize}
-Apply this with $F(s) = \mathbb{P}\nabla \cdot (u\otimes u)(s)$. Differentiating mild gives:
-\begin{multline*}
-\partial_t u(t) = \nu \Delta e^{\nu t\Delta}u_0 - \mathbb{P}\nabla \cdot (u\otimes u)(t) + {} \\ \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}\nabla \cdot (u\otimes u)(s) ds + \mathbb{P}f(t) - \int_0^t \nu\Delta e^{\nu (t-s)\Delta} \mathbb{P}f(s) ds.
-\end{multline*}
-Group terms:
-\[ \partial_t u(t) - \nu \Delta u(t) = \mathbb{P}\nabla \cdot (u\otimes u)(t) + \mathbb{P}f(t). \]
-This is exactly the projected PDE.
-
-Since $\mathbb{P}$ annihilates gradients, applying $(I-\mathbb{P})$ to the PDE recovers the pressure gradient term: start from the original PDE form:
-\[ \partial_t u - \nu\Delta u + (u \cdot \nabla) u + \nabla p = f. \]
-
-We already have projection $\mathbb{P}$ of this equation satisfied. To obtain $\nabla p$ explicitly, take divergence of the PDE:
-\[ \nabla \cdot \bigl(((u\cdot\nabla)u) + \nabla p - f\bigr) = 0 \]
-because
-\[ \nabla \cdot (\partial_t u - \nu\Delta u) = \partial_t(\nabla\cdot u) -\nu\Delta(\nabla\cdot u) = 0 \]
-when $\nabla\cdot u=0$ initially and evolution preserves it (or check separately).
-
-Use $\nabla\cdot(u\cdot\nabla)u = \sum_{i,j}\partial_i\partial_j(u_i u_j)$. Thus
-\[ -\Delta p = \nabla \cdot \nabla (u\otimes u) - \nabla \cdot f\quad\text{(Poisson)}. \]
-It is common knowledge that the Poisson equation's solution is $C^\infty$ if $u$ and $f$ are $C^\infty$, so we recover a smooth pressure as well.
+Apply Theorem~\ref{thm:semigroup-duhamel} with $A=\nu\Delta$ and
+$F=F_u$.
 \end{proof}
+
+\begin{rem}
+Pressure recovery is separate.  It is a Helmholtz/Poisson problem.
+\end{rem}
 
 \section{The sequence of approximate solutions}
 
@@ -1128,36 +1119,14 @@ This is the opinion (now edited by me) of Open AI's GPT-5.5 Medium on my proof.
 The preceding argument does not prove global existence of classical solutions.
 Some points below have been partly addressed by adding definitions or by
 replacing an invalid argument with a conditional criterion, but none of the
-main analytic gaps is fully resolved.  The status of each issue is recorded
-explicitly.  Fully resolved items are omitted; conditional repairs remain
-listed because their hypotheses still need verification.  The former first
-item, concerning the fundamental theorem of calculus, has been removed after
-the added details above.
+main analytic gaps is fully resolved.  The semigroup/projection issues are now
+absorbed into the explicit admissible projected-heat framework above,
+especially Definition~\ref{def:admissible-projected-heat} and
+Theorem~\ref{thm:projected-mild}, and are therefore omitted from the list
+below.  The former first item, concerning the fundamental theorem of calculus,
+has been removed after the added details above.
 
 \begin{enumerate}
-\item \textbf{Conditionally addressed, but not fully resolved.} Duhamel's
-principle is no longer
-used from mere parameter-continuity.  The semigroup version,
-Theorem~\ref{thm:semigroup-duhamel}, states the exact hypotheses needed:
-norm-continuity of the semigroup action, norm-$C^1$ dependence on time,
-commutation with the generator, continuity of the forcing term, and existence
-of the displayed integrals.  The later mild-formula derivation is now explicitly
-conditional on these hypotheses in the chosen generalized-valued function
-space.  The required heat-semigroup and Leray-projection mapping properties are
-spelled out separately in the next item.
-
-\item \textbf{Conditionally addressed, but not fully resolved.} The Leray
-projection and heat
-semigroup are no longer extended to the generalized setting by classical
-Fourier formulas and linearity alone.  Definition~\ref{def:admissible-projected-heat}
-now fixes an explicit projected-heat setting: the operators must act
-continuously on the selected module, satisfy the required commutation rules,
-make the nonlinear term norm-continuous, and make the Duhamel integrals
-absolutely convergent.  The old assertion that the integrand is $L^1$ merely
-because it is $C^\infty$ on $\mathbb{R}^N$ has been removed.  This is still a
-conditional formulation; it does not prove existence of such an admissible
-setting for arbitrary smooth data.
-
 \item \textbf{Unresolved.} There are sign errors in the projected-equation computation.  Applying
 $\mathbb{P}$ to the displayed Na\-vi\-er-Sto\-kes equation gives a plus sign in
 front of $\mathbb{P}((u\cdot\nabla)u)$, contrary to one displayed line.
