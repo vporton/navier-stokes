@@ -1494,37 +1494,43 @@ Theorem~\ref{thm:projected-mild}, and are therefore omitted from the list
 below.
 
 \begin{enumerate}
-\item \textbf{Addressed in the Sobolev setting.} Pressure recovery is isolated
-in Definition~\ref{def:pressure-recovery}; the needed Helmholtz/Poisson
-reconstruction is proved for $L^2$-Sobolev spaces in
+\item \textbf{Addressed conditionally, and addressed in Sobolev spaces.}
+Pressure recovery is isolated in Definition~\ref{def:pressure-recovery}; the
+needed Helmholtz/Poisson reconstruction is proved for $L^2$-Sobolev spaces in
 Proposition~\ref{prop:sobolev-pressure-recovery}; and
-Proposition~\ref{prop:pressure-recovery} then converts the projected equation
-to the usual pressure form.  This resolves the pressure step for arguments
-carried out in spaces such as $H^m(\mathbb{R}^N)$, $m>N/2+1$.  It does not
-justify the broader formulation with arbitrary smooth data and no decay or
-Sobolev assumptions.
+Proposition~\ref{prop:pressure-recovery} converts the projected equation to
+the usual pressure form whenever pressure recovery is admissible.  Thus the
+pressure step is proved for arguments carried out in classical spaces such as
+$H^m(\mathbb{R}^N)$, $m>N/2+1$, with the usual divergence-free and Sobolev
+assumptions.  What is not yet proved is a Helmholtz/Poisson recovery theorem
+for arbitrary $\SUPER$/$\fSNG$ vector fields or for arbitrary smooth data with
+no decay or Sobolev assumptions.
 
-\item \textbf{Partly addressed.}
-Theorem~\ref{thm:unrestricted-super-picard} proves that, after giving up
-real-valuedness and interpreting the time and nonlocal operations in the
-formal supersingular sense, every finite Picard iterate is defined for every
-finite time $t\geq0$.  Thus the iterates remain in a $\SUPER$/$\fSNG$-valued
-space on the unrestricted time interval.
+\item \textbf{Solved for finite supersingular Picard iterates; classically
+local.}
+Theorem~\ref{thm:unrestricted-super-picard} proves the unrestricted-time
+Picard-admissibility statement after giving up real-valuedness: interpreted
+with the formal supersingular time integral and formal supersingular versions
+of $G_t$ and $\mathbb{P}$, every finite Picard iterate is defined for every
+finite time $t\geq0$.  In this sense the iterates remain globally in a
+$\SUPER$/$\fSNG$-valued space on the unrestricted time interval, and the
+displayed Picard integrals exist there by construction.
 
-In the classical Sobolev setting, Theorem~\ref{thm:local-sobolev-picard}
-proves more, but only locally in time: for data in $H^m(\mathbb{R}^N)$ with
-$m>N/2+1$, the Picard iterates remain in a space on which the displayed
-Duhamel integrals exist and converge in $C([0,T];H^m)$ for sufficiently small
-$T$.  Proposition~\ref{prop:picard-shift} then proves the needed shift
-invariance
+The stronger classical statement remains only local in the current proof:
+Theorem~\ref{thm:local-sobolev-picard} shows that, for data in
+$H^m(\mathbb{R}^N)$ with $m>N/2+1$, the Picard iterates remain in
+$C([0,T];H^m)$ and converge there for sufficiently small $T$.  This local
+classical convergence also gives the needed shift invariance by
+Proposition~\ref{prop:picard-shift}:
 \[
 \lim_{n\to\infty}u^{(n+1)}=\lim_{n\to\infty}u^{(n)}
 \]
 whenever such convergence is known.  What remains unresolved is global
 convergence in a classical space on $\mathbb{R}^N$ and the proof that the
-resulting generalized solution is $\mathbb{R}^N$-valued.  Taking an extended
-limit of an arbitrary sequence still does not replace the estimates needed for
-classical convergence.
+supersingular generalized-limit solution is actually $\mathbb{R}^N$-valued.
+The unrestricted supersingular construction gives global existence of the
+formal iterates, but it does not by itself give the classical estimates needed
+for global classical convergence.
 
 \item \textbf{Partly addressed, but unresolved.} The local Sobolev argument
 passes limits through the Duhamel integrals by ordinary dominated convergence.
