@@ -1,6 +1,5 @@
 \documentclass{amsart}
 \usepackage{hyperref}
-\usepackage[draft]{fixme}
 \usepackage{xcolor}
 \usepackage{mathrsfs}
 
@@ -1672,10 +1671,12 @@ u(t)-u(r)
 {}+\int_0^r(G_{t-s}-G_{r-s})\mathbb{P}f(s)\,ds .
 \end{multline*}
 If the terms on the right tend to zero in $X$, uniformly for $r,t\uparrow T$,
-then $u(t)$ is Cauchy in $X$.  Since $X$ is complete, there is
-$u_T\in X\subseteq\mathbb{R}^N$ with $u(t)\to u_T$ in $X$.  Applying the local
-existence theorem with initial data $u_T$ continues the classical solution
-beyond $T$.
+then $u(t)$ is Cauchy in $X$.  Since $X$ is complete, there is an endpoint
+vector field $u_T\in X$ with $u(t)\to u_T$ in $X$; in a divergence-free
+solution space this limit remains divergence-free.  If the forcing has the
+regularity required by the local theorem, applying local existence with
+initial data $u_T$ continues the solution beyond $T$ in the same classical
+space.
 
 Thus, a proof of classicality at $t_{\operatorname{crit}}$ would
 follow from the ring-valued a priori bound~\eqref{super-endpoint-bound},
@@ -1730,54 +1731,103 @@ But it is well-known that the energy inequality holds for classical solutions. F
 
 \section{Local continuation principle}
 
-By the well-known \emph{local continuation principle} (continuation is possible after~$t_{\operatorname{crit}}$, by taking it as the new initial conditions), the solution can be continuedas a classical solution after $t_{\operatorname{crit}}$. This (the continued solution  ) is a contradiction.
-Thus, the solution is classical for all $t\ge 0$ (in classical sense) on $[0;t_{\operatorname{crit}}+\epsilon]$ for some $\epsilon>0$. 
+The continuation step must be stated in a concrete classical topology.  In the
+Sobolev framework used above it has the following form.
 
-Local continuation principle for Na\-vi\-er-Sto\-kes equations states that if a solution (in classical sense) on $[0;t_{\operatorname{crit}}]$ exists, then for some $\epsilon'>0$ the solution can be continued to $[0;t_{\operatorname{crit}}+\epsilon']$.
+\begin{prop}[Local Sobolev continuation principle]
+\label{prop:local-continuation-principle}
+Let $m>N/2+1$, let $T<\infty$, and let $\delta>0$.  Assume
+\[
+  f\in C([0,T+\delta];H^{m-1}(\mathbb{R}^N)^N)
+\]
+and let
+\[
+  u\in C([0,T);H^m(\mathbb{R}^N)^N)
+\]
+be a divergence-free mild solution on $[0,T)$.  If there is a divergence-free
+$u_T\in H^m(\mathbb{R}^N)^N$ such that
+\[
+  u(t)\to u_T\quad\text{in }H^m(\mathbb{R}^N)^N
+  \quad\text{as }t\uparrow T,
+\]
+then for some $0<\epsilon\leq\delta$ there is a unique local mild solution
+$v\in C([T,T+\epsilon];H^m(\mathbb{R}^N)^N)$ with $v(T)=u_T$.  The glued
+velocity
+\[
+  U(t)\eqdef
+  \begin{cases}
+    u(t),&0\leq t<T,\\
+    v(t),&T\leq t\leq T+\epsilon
+  \end{cases}
+\]
+is an $H^m$ continuation of $u$ past $T$.  Therefore this proposition
+contradicts only a maximality statement made in the same $H^m$ solution class.
+\end{prop}
 
-To finish the proof by contradicting to the value $t_{\operatorname{crit}}$, we need to show that the solution glued together solution is $C^\infty$, that is that at $t_{\operatorname{crit}}$ in the it's $C^\infty$. Really, it is $C^\infty$ at the left and at the right derivatives are determined by the same functions of~$u$ as on the left and are therefore the same. \fxwarning{Prove}Pressure~$p$ is therefore also in~$C^\infty$. $C^\infty$~at~$t_{\operatorname{crit}}$ is proved.
+\begin{proof}
+Apply Theorem~\ref{thm:local-sobolev-picard} to the shifted initial datum
+$u_T$ and the shifted forcing $f_T(s)\eqdef f(T+s)$ on $[0,\delta]$.  This
+gives a mild solution on $[T,T+\epsilon]$ after translating time back by $T$.
+The assumed convergence $u(t)\to u_T$ gives continuity at the joining time.
+Moreover, the boundedness of $u$ near $T$ in $H^m$, the continuity of $f$ in
+$H^{m-1}$, and the same Duhamel estimates used in
+Theorem~\ref{thm:local-sobolev-picard} let the mild formula pass to the limit
+as $t\uparrow T$.  The semigroup property then combines the mild formula on
+$[0,T]$ with the shifted mild formula on $[T,T+\epsilon]$.  Uniqueness is the
+local uniqueness supplied by the same Picard theorem.
+\end{proof}
 
-\section{Errors and insufficiently justified steps}
+This is weaker than the $C^\infty$ conclusion needed for a classical
+continuation argument.  A solution produced from one $H^m$ endpoint is an
+$H^m$ continuation at $T$; even if parabolic smoothing makes it smooth for
+$t>T$, that does not by itself prove smoothness at $T$.  To obtain a
+$C^\infty$ glued solution, one needs endpoint control in every Sobolev order
+(or a specified local theorem in a smooth Frechet space), convergence to a
+smooth divergence-free datum, and the corresponding regularity of the forcing.
+Under those stronger hypotheses the equality of left and right time
+derivatives is proved recursively from the equation, and pressure is recovered
+using Proposition~\ref{prop:sobolev-pressure-recovery}.  These stronger
+endpoint and gluing hypotheses have not been proved by the present argument.
+
+\section{Remaining errors and insufficiently justified steps}
 
 This is the opinion (now edited by me) of Open AI's GPT-5.5 Medium on my proof.
 
 The preceding argument does not prove global existence of classical solutions.
-Some points below have been partly addressed by adding definitions or by
-replacing an invalid argument with a conditional criterion, but none of the
-main analytic gaps is fully resolved.  The semigroup/projection issues are now
-absorbed into the explicit admissible projected-heat framework above,
-especially Definition~\ref{def:admissible-projected-heat} and
-Theorem~\ref{thm:projected-mild}, and are therefore omitted from the list
-below.
+The list below contains only the mathematical gaps that remain after the
+preceding revisions.  Issues that have been converted into explicit hypotheses,
+such as the semigroup/projection assumptions in
+Definition~\ref{def:admissible-projected-heat} and
+Theorem~\ref{thm:projected-mild}, are not repeated as errors.
 
 \begin{enumerate}
-\item \textbf{Partly addressed, but unresolved.} The heat-semigroup smoothing
-step is now proved directly in the $\SUPER$/$\fSNG$ framework by
-Theorem~\ref{thm:super-heat-smoothing}, using the heat kernel and
-differentiation under the supersingular integral rather than transferring the
-classical theorem.  What remains conditional is the Duhamel part:
+\item \textbf{Unresolved.} The nonlinear Duhamel smoothing step remains
+conditional.
 Proposition~\ref{prop:super-duhamel-smoothing} requires explicit integrable
 majorants near $s=t$ for the nonlinear term and its differentiated kernels.
 Proposition~\ref{prop:sobolev-duhamel-majorants} and
 Proposition~\ref{prop:nonlinear-sobolev-majorants} prove such majorants under
-high Sobolev bounds on the nonlinear source.  Those high-order bounds have not
-yet been proved globally by the present argument.
+high Sobolev bounds on the nonlinear source, but those high-order bounds have
+not been proved globally by the present argument.  These estimates also do not
+by themselves prove the separate $L^1_{\SUPER}$ absolute-integrability
+hypothesis.
 
-\item \textbf{Partly addressed, but unresolved.} The previous endpoint argument has been replaced above by a ring-valued
-continuation criterion, so the specific boundary argument is no longer being
-relied on.  However, the criterion is conditional: the needed
-real-majorized ring-valued bound~\eqref{super-endpoint-bound}, or a comparison
-theorem deriving it from a ring-valued differential inequality, has not been
-proved.  No first nonclassical time is rigorously constructed, and pointwise
-real-valuedness is still not enough to apply a local well-posedness theorem.
+\item \textbf{Unresolved.} The ring-valued continuation criterion is
+conditional.  The needed real-majorized ring-valued
+bound~\eqref{super-endpoint-bound}, or a comparison theorem deriving it from a
+ring-valued differential inequality, has not been proved.  No first
+nonclassical time is rigorously constructed, and pointwise real-valuedness is
+still not enough to apply a local well-posedness theorem.
 
 \item \textbf{Unresolved.} The continuation principle cannot be applied merely because values at
 $t_{\operatorname{crit}}$ are claimed to be classical.  One needs a real
 upper bound for the ring-valued Sobolev quantity
 $\norm{u(t)}_{H^m_{\SUPER}}$ as $t\uparrow t_{\operatorname{crit}}$.
 Obtaining such control is the central unresolved global-regularity issue.  The
-existing \verb|\fxwarning{Prove}| at the gluing step records an additional
-missing smoothness check rather than completing this argument.
+Sobolev continuation principle above gives only continuation in the chosen
+$H^m$ class; a $C^\infty$ continuation through the joining time would require
+endpoint control in every Sobolev order, or an equivalent local theorem in a
+specified smooth solution space.
 
 \item \textbf{Unresolved.} The energy-inequality section does not fill this gap.  Smoothness alone
 does not give a finite-energy inequality for arbitrary smooth data on
