@@ -1638,17 +1638,25 @@ Rewrite the equation as:
 G_t u_0 - u(t) = \int_0^t G_{t-s} \bigl(\mathbb{P}\nabla\cdot(u\otimes u)(s) - \mathbb{P}f(s)\bigr)ds.
 \end{equation}
 
-\subsection{Endpoint criterion}
+\subsection{Ring-valued endpoint criterion}
 
-The standard way to prove that a
-candidate solution is classical at a possible critical time is instead a
-continuation criterion in a classical Banach space.
+The endpoint control should be formulated in the ring-valued Sobolev norm
+introduced above, with a real upper bound.  This is the form compatible with
+the generalized-valued construction, while still strong enough to imply the
+classical continuation hypothesis.
 
 Let $X$ be a classical solution space for which the local Na\-vi\-er-Sto\-kes
 theory is available, for instance $H^m(\mathbb{R}^N)$ with
 $m>N/2+1$ and divergence-free data.  Suppose that the generalized mild solution
-$u$ agrees with a classical solution on $[0,T)$ and that, for some real
-number $M$,
+$u$ agrees with a classical solution on $[0,T)$ and that, for some real number
+$M$,
+\begin{equation}\label{super-endpoint-bound}
+  \norm{u(t)}_{H^m_{\SUPER}}\leq M
+  \quad\text{for all }0<t<T .
+\end{equation}
+Since $u(t)$ is classical on $[0,T)$, the ring-valued Sobolev norm agrees there
+with the ordinary $H^m$ norm.  Hence~\eqref{super-endpoint-bound} implies the
+classical endpoint estimate
 \begin{equation}\label{endpoint-bound}
   \sup_{0<t<T}\norm{u(t)}_X \leq M < \infty .
 \end{equation}
@@ -1670,23 +1678,12 @@ existence theorem with initial data $u_T$ continues the classical solution
 beyond $T$.
 
 Thus, a proof of classicality at $t_{\operatorname{crit}}$ would
-follow from a classical a priori bound such as~\eqref{endpoint-bound}, together
-with the corresponding time-continuity estimates for the nonlinear Duhamel
-term.  The present generalized-limit construction does not yet provide this
+follow from the ring-valued a priori bound~\eqref{super-endpoint-bound},
+together with the corresponding time-continuity estimates for the nonlinear
+Duhamel term in the classical space.  The present generalized-limit
+construction does not yet provide this ring-valued bound with a real upper
 bound.  Therefore the claim that $u(t_{\operatorname{crit}})$ is classical is
 not proved by the current argument.
-
-\begin{rem}
-Using the ring-valued Sobolev quantity above, a sufficient form of
-the missing bound would be
-\begin{equation}\label{super-endpoint-bound}
-  \norm{u(t)}_{H^m_{\SUPER}}\leq M
-  \quad\text{for all }0<t<T
-\end{equation}
-with one real number $M$.  Since $u(t)$ is classical on $[0,T)$, the
-ring-valued norm agrees there with the ordinary $H^m$ norm, and
-\eqref{super-endpoint-bound} implies~\eqref{endpoint-bound}.
-\end{rem}
 
 \begin{rem}
 The estimate~\eqref{super-endpoint-bound} cannot be obtained merely by
@@ -1699,16 +1696,18 @@ inequality of the form
 \]
 which gives a bound only on a short time interval depending on the initial
 norm.  Iterating this local estimate up to a prescribed time $T$ requires an
-independent a priori bound preventing the $H^m$ norm from blowing up before
-$T$.  In dimension three, proving such a bound for arbitrary smooth data is
-precisely the unresolved regularity problem.
+independent ring-valued a priori bound with a real majorant, preventing the
+$H^m_{\SUPER}$ norm from escaping every real bound before $T$.  In dimension
+three, proving such a bound for arbitrary smooth data is precisely the
+unresolved regularity problem.
 
-The ring-valued version of the same computation would at best give a
-ring-valued differential inequality, assuming all products, integrals, and
-suprema involved are defined.  To use it for classical continuation one still
-needs a comparison theorem showing that the ring-valued inequality implies a
-real bound~\eqref{super-endpoint-bound}.  One also needs a theorem that the
-generalized limit of the Picard iterates preserves uniform real $H^m$ bounds:
+The ring-valued version of the same computation would at best give a formal
+ring-valued differential inequality, assuming all products, integrals, suprema,
+and differentiations involved are defined.  To use it for classical
+continuation one still needs a comparison theorem showing that the ring-valued
+inequality implies the real-majorized bound~\eqref{super-endpoint-bound}.  One
+also needs a theorem that the generalized limit of the Picard iterates
+preserves uniform real $H^m_{\SUPER}$ bounds:
 \[
   \sup_n\norm{u^{(n)}(t)}_{H^m}\leq M
   \quad\Longrightarrow\quad
@@ -1764,17 +1763,18 @@ Proposition~\ref{prop:nonlinear-sobolev-majorants} prove such majorants under
 high Sobolev bounds on the nonlinear source.  Those high-order bounds have not
 yet been proved globally by the present argument.
 
-\item \textbf{Partly addressed, but unresolved.} The previous endpoint argument has been replaced above by a continuation
-criterion, so the specific boundary argument is no longer being relied on.
-However, the criterion is conditional: the needed real a priori bound
-\eqref{endpoint-bound}, or a comparison theorem implying it from
-\eqref{super-endpoint-bound}, has not been proved.  No first nonclassical time
-is rigorously constructed, and pointwise real-valuedness is still not enough to
-apply a local well-posedness theorem.
+\item \textbf{Partly addressed, but unresolved.} The previous endpoint argument has been replaced above by a ring-valued
+continuation criterion, so the specific boundary argument is no longer being
+relied on.  However, the criterion is conditional: the needed
+real-majorized ring-valued bound~\eqref{super-endpoint-bound}, or a comparison
+theorem deriving it from a ring-valued differential inequality, has not been
+proved.  No first nonclassical time is rigorously constructed, and pointwise
+real-valuedness is still not enough to apply a local well-posedness theorem.
 
 \item \textbf{Unresolved.} The continuation principle cannot be applied merely because values at
-$t_{\operatorname{crit}}$ are claimed to be classical.  One needs control of
-an appropriate norm of the solution as $t\uparrow t_{\operatorname{crit}}$.
+$t_{\operatorname{crit}}$ are claimed to be classical.  One needs a real
+upper bound for the ring-valued Sobolev quantity
+$\norm{u(t)}_{H^m_{\SUPER}}$ as $t\uparrow t_{\operatorname{crit}}$.
 Obtaining such control is the central unresolved global-regularity issue.  The
 existing \verb|\fxwarning{Prove}| at the gluing step records an additional
 missing smoothness check rather than completing this argument.
